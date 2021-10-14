@@ -1,21 +1,20 @@
-public class TimedExercise {
+public class TimedExercise extends Exercise{
 
     private int set_time;
-    private int break_time;
 
-    public TimedExercise(int set_time, int break_time) {
-        // time that the break and set took in seconds
+
+    public TimedExercise(String name, int sets, int rest, String muscle, int set_time) {
+        super(name, sets, rest, muscle);
         this.set_time = set_time;
-        this.break_time = break_time;
     }
 
     public String getSet_time() {
         return String.valueOf(set_time);
     }
 
-    public String getBreak_time() {
-        return String.valueOf(break_time);
-    }
 
-
+    @Override
+    public double getVolume() {
+        return super.numSets * this.set_time;
     }
+}
