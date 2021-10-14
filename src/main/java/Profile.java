@@ -1,14 +1,13 @@
 import java.util.HashMap;
 import java.util.Map;
-//test
 public class Profile {
 
 
-    private User user;
+    private final User user;
     //private Schedule schedule;
     //private Location location;
-    private Map<String, Profile> following;
-    private Map<String, Profile> followers;
+    private final Map<String, Profile> following;
+    private final Map<String, Profile> followers;
 
 
     public Profile(String name, String password, String email){
