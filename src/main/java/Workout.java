@@ -5,11 +5,11 @@ import java.time.Period;
 import java.util.ArrayList;
 
 public class Workout {
-    public String name;
-    public String description;
-    public ArrayList<Exercise> exercises;
-    public LocalDateTime startTime;
-    public LocalDateTime endTime;
+    private String name;
+    private String description;
+    private ArrayList<Exercise> exercises;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
     /**
      * Constructor for a workout class, takes in all nececcary variables needed for a workout
      * @param name The String name referring to the name of the workout

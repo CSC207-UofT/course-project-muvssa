@@ -1,8 +1,8 @@
 public abstract class Exercise {
-    public String name;
-    public int numSets;
-    public int numRest;
-    public String muscleGroup;
+    private String name;
+    private int numSets;
+    private int numRest;
+    private String muscleGroup;
 
     /**
      * Constructor for a User class, takes in all nececcary variables needed to make a User
