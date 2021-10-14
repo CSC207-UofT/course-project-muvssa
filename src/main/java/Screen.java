@@ -6,12 +6,12 @@ public class Screen {
     }
 
     public void showFollowers(){
-        for(Object key: profile.getFollowers().keySet()) {
+        for(Object key: profile.getProfileFollower().keySet()) {
             System.out.println(key);
         }
     }
     public void showFollowing(){
-        for(Object key: profile.getFollowing().keySet()) {
+        for(Object key: profile.getProfileFollowing().keySet()){
             System.out.println(key);
         }
     }
