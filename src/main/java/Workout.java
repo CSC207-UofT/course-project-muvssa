@@ -21,6 +21,10 @@ public class Workout {
         this.exercises = new ArrayList<Exercise>();
     }
 
+    /**
+     * Creates a workout given another workout, other.
+     * @param other - another workout
+     */
     public Workout(Workout other)
     {
         this.name = other.name;
