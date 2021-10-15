@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 
-public class ProfilePosts {
+public class Feed {
     private ArrayList<Post> posts;
 
     /**
      * Constructor creating an ArrayList of Posts
      */
-    public ProfilePosts(){
+    public Feed(){
         this.posts = new ArrayList<>();
     }
 

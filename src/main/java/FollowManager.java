@@ -1,20 +1,20 @@
 import java.util.HashMap;
 import java.util.Map;
-public class ProfileFollow {
+public class FollowManager {
 
 
     private final User user;
-    private Map<String, ProfileFollow> following;
-    private Map<String, ProfileFollow> followers;
+    private final Map<String, FollowManager> following;
+    private final Map<String, FollowManager> followers;
 
     /**
      * Hold all follow related commands within a profile
      * @param user take in the profiles owner/User
      */
-    public ProfileFollow(User user){
+    public FollowManager(User user){
         this.user = user;
-        this.following = new HashMap<String, ProfileFollow>();
-        this.followers = new HashMap<String, ProfileFollow>();
+        this.following = new HashMap<>();
+        this.followers = new HashMap<>();
     }
 
     /**
@@ -37,7 +37,7 @@ public class ProfileFollow {
      * private class that gives this class a follower
      * @param person A ProfileFollow class containing a User is receiving a follower
      */
-    private void addFollower(ProfileFollow person){
+    private void addFollower(FollowManager person){
         this.followers.put(user.getUsername(), person);
 
     }
@@ -47,8 +47,8 @@ public class ProfileFollow {
      * @param person A ProfileFollow class containing a User is receiving
      *              this class's User as a follower
      */
-    public void follow(ProfileFollow person){
-        this.following.put(user.getUsername(), person);
+    public void follow(FollowManager person){
+        this.following.put(person.user.getUsername(), person);
         person.addFollower(this);
 
     }
