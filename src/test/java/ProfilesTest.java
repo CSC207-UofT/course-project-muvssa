@@ -1,8 +1,8 @@
 import org.junit.After;
 import org.junit.Before;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class ProfilesTest {
     Profiles profileDatabase;
@@ -11,50 +11,51 @@ public class ProfilesTest {
     @Before
     public void setUp() throws Exception {
         profileDatabase = new Profiles();
-        profileDatabase.signUp("Souren","nicePassword1", "test@gmail.com");
+        profileDatabase.signUp("Souren", "nicePassword1", "test@gmail.com");
         profileDatabase.signUp("Other", "mypass", "cool@gmail.com");
-        testProfile = new Profile("Souren","nicePassword1", "test@gmail.com");
+        testProfile = new Profile("Souren", "nicePassword1", "test@gmail.com");
 
     }
+
     @After
     public void tearDown() throws Exception {
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testSignUp() {
-        assertEquals(false, profileDatabase.signUp("Souren",
+        assertFalse(profileDatabase.signUp("Souren",
                 "nicePassword2", "test2@gmail.com"));
-        assertEquals(true, profileDatabase.signUp("Bob",
+        assertTrue(profileDatabase.signUp("Bob",
                 "nicePassword2", "test2@gmail.com"));
 
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testLoginToProfile() {
-        Profile signedIn = profileDatabase.loginToProfile("Souren","nicePassword1");
-        Profile signedIn2 = profileDatabase.loginToProfile("Ted","nicePassword1");
-        Profile signedIn3 = profileDatabase.loginToProfile("Souren","wrongpassword");
-        assertEquals(testProfile, signedIn);
-        //assertEquals(null, signedIn2);
-        //assertEquals(null, signedIn3);
+        Profile signedIn = profileDatabase.loginToProfile("Souren", "nicePassword1");
+        Profile signedIn2 = profileDatabase.loginToProfile("Ted", "nicePassword1");
+        Profile signedIn3 = profileDatabase.loginToProfile("Souren", "wrongpassword");
+        assertEquals(testProfile.getUser().getUsername(), signedIn.getUser().getUsername());
+        assertNull(signedIn2);
+        assertNull(signedIn3);
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testSearch() {
         Profile found = profileDatabase.search("Souren");
         Profile found2 = profileDatabase.search("Jen");
-        assertEquals(testProfile, found);
-        //assertEquals(null, found2);
+        assertEquals(testProfile.getUser().getUsername(), found.getUser().getUsername());
+        assertNull(found2);
 
     }
 
-    @Test
+    @Test(timeout = 50)
     public void testsDeleteProfile() {
         profileDatabase.deleteProfile("Other", "mypass");
         Profile found = profileDatabase.search("Souren");
         Profile found2 = profileDatabase.search("Other");
-        //assertEquals(null, found2);
-        //assertEquals(testProfile, found);
+        assertNull(found2);
+        assertEquals(testProfile.getUser().getUsername(), found.getUser().getUsername());
 
     }
 }
