@@ -44,6 +44,21 @@ public class Post {
         return this.likes.size();
     }
 
+    /**
+     * Returns the Workout of the post
+     * @return returns a Workout
+     */
+    public Workout getWorkout() {
+        return workout;
+    }
+
+    /**
+     * Returns the Content of the post
+     * @return returns a String
+     */
+    public String getContent() {
+        return content;
+    }
 }
 
 
