@@ -20,6 +20,30 @@ public abstract class Exercise {
     }
 
     /**
+     * Creates an Exercise object given another.
+     * @param other
+     */
+    public Exercise(Exercise other)
+    {
+        this.name = other.name;
+        this.numSets = other.numSets;
+        this.numRest = other.numRest;
+        this.muscleGroup = other.muscleGroup;
+    }
+
+    /**
+     * Creates an Exercise object given the name.
+     * @param name
+     */
+    public Exercise(String name) {
+        this.name = name;
+        this.numSets = 0;
+        this.numRest = 0;
+        this.muscleGroup = "";
+    }
+
+
+    /**
      * returns the name of the exercise
      * @return the string name
      */

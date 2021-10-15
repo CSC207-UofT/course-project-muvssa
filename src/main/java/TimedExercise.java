@@ -8,6 +8,12 @@ public class TimedExercise extends Exercise{
         this.set_time = set_time;
     }
 
+    public TimedExercise(TimedExercise other)
+    {
+        super(other);
+        this.set_time = 0;
+    }
+
     public String getSet_time() {
         return String.valueOf(set_time);
     }
