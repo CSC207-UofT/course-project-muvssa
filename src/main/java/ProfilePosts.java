@@ -1,0 +1,40 @@
+import java.util.ArrayList;
+
+public class ProfilePosts {
+    private ArrayList<Post> posts;
+
+    /**
+     * Constructor creating an ArrayList of Posts
+     */
+    public ProfilePosts(){
+        this.posts = new ArrayList<>();
+    }
+
+    /**
+     * adds a post to the ArrayList
+     * @param workout is the workout in the post
+     * @param content is the String writing making the post
+     */
+    public void addPost(Workout workout, String content){
+        Post post = new Post(workout,content);
+        this.posts.add(post);
+    }
+
+    /**
+     * get all posts from the User
+     * @return return an ArrayList of Posts
+     */
+    public ArrayList<Post> getPosts(){
+        return this.posts;
+    }
+
+    /**
+     * Gets a single post
+     * @param postNumb the index of the post you want
+     * @return returns a single post at postNumb index
+     */
+    public Post getPost(int postNumb){
+        return this.posts.get(postNumb);
+    }
+
+}

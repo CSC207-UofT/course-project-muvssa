@@ -5,13 +5,17 @@ public class Profile {
 
     private User user;
     private ProfileFollow profileFollow;
-    //private ProfileSchedule profileSchedule;
+    private WeeklySchedule weeklySchedule;
+    private ProfilePosts profilePosts;
+
 
 
 
     public Profile(String name, String password, String email){
         this.user = new User(name, password, email);
         this.profileFollow = new ProfileFollow(this.user);
+        this.weeklySchedule = new WeeklySchedule();
+        this.profilePosts = new ProfilePosts();
     }
     public User getUser() {
         return user;
@@ -24,8 +28,12 @@ public class Profile {
         return profileFollow.getFollowers();
     }
 
-//    public ProfileSchedule getProfileSchedule(){
-//        return profileSchedule;
-//    }
+    public WeeklySchedule getWeeklySchedule() {
+        return weeklySchedule;
+    }
+
+    public ProfilePosts getProfilePosts(){
+        return profilePosts;
+    }
 
 }
