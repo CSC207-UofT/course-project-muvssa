@@ -7,6 +7,15 @@ public class WeightedRepExercise extends RepExercise{
                 this.weight = weight;
         }
 
+        /**
+         * Creates another WeightedRepExercise given another
+         * @param other - another
+         */
+        public WeightedRepExercise(WeightedRepExercise other)
+        {
+                super(other);
+                this.weight = other.weight;
+        }
         public String getWeight() {
                 return String.valueOf(weight);
         }

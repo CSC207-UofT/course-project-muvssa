@@ -15,11 +15,42 @@ public class Workout {
      * @param name The String name referring to the name of the workout
      * @param description The String repressants the description of the workout
      */
-
     public Workout(String name, String description) {
         this.name = name;
         this.description = description;
         this.exercises = new ArrayList<Exercise>();
+    }
+
+    public Workout(Workout other)
+    {
+        this.name = other.name;
+        this.description = other.description;
+
+        for(Exercise exercise : other.exercises)
+        {
+            // inefficient code, fix it later :)
+            Exercise e;
+
+            if(exercise instanceof WeightedRepExercise)
+            {
+                e = new WeightedRepExercise((WeightedRepExercise) exercise);
+            }
+            else if(exercise instanceof RepExercise)
+            {
+                e = new RepExercise((RepExercise) exercise);
+            }
+            else if(exercise instanceof TimedExercise)
+            {
+                e = new TimedExercise((TimedExercise) exercise);
+            }
+            else
+            {
+                // ignore this for now, it's a workaround. We will have an entirely different approach later.
+                e = new RepExercise("Empty Exercise");
+            }
+
+            this.exercises.add(e);
+        }
     }
 
     /**

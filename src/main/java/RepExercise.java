@@ -7,6 +7,26 @@ public class RepExercise extends Exercise {
         this.numReps = numreps;
     }
 
+    /**
+     * Creates a RepExercise Object given another
+     * @param other
+     */
+    public RepExercise(RepExercise other)
+    {
+        super(other);
+        this.numReps = 0;
+    }
+
+    /**
+     * Creates a RepExercise object given the name
+     * @param name
+     */
+    public RepExercise(String name)
+    {
+        super(name);
+        this.numReps = 0;
+    }
+
     public String getNumReps() {
         return String.valueOf(numReps);
     }
