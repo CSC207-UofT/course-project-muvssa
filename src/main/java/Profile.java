@@ -1,12 +1,10 @@
-import java.util.Map;
-
 public class Profile {
 
 
-    private User user;
-    private ProfileFollow profileFollow;
-    private WeeklySchedule weeklySchedule;
-    private ProfilePosts profilePosts;
+    private final User user;
+    private final FollowManager followManager;
+    private final WeeklySchedule weeklySchedule;
+    private final Feed feed;
 
 
     /**
@@ -17,9 +15,9 @@ public class Profile {
      */
     public Profile(String name, String password, String email){
         this.user = new User(name, password, email);
-        this.profileFollow = new ProfileFollow(this.user);
+        this.followManager = new FollowManager(this.user);
         this.weeklySchedule = new WeeklySchedule();
-        this.profilePosts = new ProfilePosts();
+        this.feed = new Feed();
     }
 
     /**
@@ -32,19 +30,11 @@ public class Profile {
     }
 
     /**
-     * gets who the User is following
+     * gets who the User is following and who is following them
      * @return returns a HashMap of people User is following
      */
-    public Map getProfileFollowing(){
-        return profileFollow.getFollowing();
-    }
-
-    /**
-     * gets who the User's followers are
-     * @return returns a HashMap of people who are following the User
-     */
-    public Map getProfileFollower(){
-        return profileFollow.getFollowers();
+    public FollowManager getProfileFollow(){
+        return followManager;
     }
 
     /**
@@ -59,8 +49,8 @@ public class Profile {
      * Posts made by the User
      * @return the ProfilePosts class
      */
-    public ProfilePosts getProfilePosts(){
-        return profilePosts;
+    public Feed getProfilePosts(){
+        return feed;
     }
 
 }

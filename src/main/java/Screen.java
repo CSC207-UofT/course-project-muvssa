@@ -1,11 +1,9 @@
-import java.time.DayOfWeek;
-
 public class Screen {
-    private Profile profile;
+    private final Profile profile;
 
     /**
      * Is a very temporary UI for the user to see what they are interacting with
-     * @param profile
+     * @param profile takes in another profile
      */
     public Screen(Profile profile){
         this.profile = profile;
@@ -17,7 +15,7 @@ public class Screen {
      */
     public void showFollowers(){
         System.out.println("A list of people following this profile");
-        for(Object key: profile.getProfileFollower().keySet()) {
+        for(Object key: profile.getProfileFollow().getFollowers().keySet()) {
             System.out.println(key);
         }
     }
@@ -27,7 +25,7 @@ public class Screen {
      */
     public void showFollowing(){
         System.out.println("A list of people this profile is following:");
-        for(Object key: profile.getProfileFollowing().keySet()){
+        for(Object key: profile.getProfileFollow().getFollowing().keySet()){
             System.out.println(key);
         }
     }
@@ -50,8 +48,9 @@ public class Screen {
         for(Object key: schedule.getWeeklySchedule().keySet()) {
 
             System.out.println("Day of the week: " + key);
+
             Workout workout = schedule.getWeeklySchedule().get(key);
-            System.out.println("Workout name: " + workout.getName());
+            System.out.println("Workout done that day: " + workout.getName());
         }
 
     }
@@ -61,8 +60,8 @@ public class Screen {
      */
     public void showPost(int postNumb){
         Post post = profile.getProfilePosts().getPost(postNumb);
-        System.out.println("Under Workout " + post.getWorkout().getName());
-        System.out.println("Is this post: " + post.getContent());
+        System.out.println("Post workout: " + post.getWorkout().getName());
+        System.out.println("Content of Post: " + post.getContent());
     }
 
 }

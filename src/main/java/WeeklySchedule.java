@@ -11,9 +11,10 @@ public class WeeklySchedule {
      */
     public WeeklySchedule() {
         weeklySchedule = new HashMap<>(7);
-        for (DayOfWeek day : DayOfWeek.values()) {
-            weeklySchedule.put(day, null);
-        }
+
+        //for (DayOfWeek day : DayOfWeek.values()) {
+        //    weeklySchedule.put(day, null);
+        //}
     }
 
     /**
