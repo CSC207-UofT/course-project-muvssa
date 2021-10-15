@@ -29,6 +29,15 @@ public class Comment {
         this.content = content;
     }
 
+    /**
+     *
+     * @return the commenter's username
+     */
+    public String getUsername()
+    {
+        return this.user.getUsername();
+    }
+
 
 
 

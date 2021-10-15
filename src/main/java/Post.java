@@ -41,7 +41,7 @@ public class Post {
      */
     public int getTotalLikes()
     {
-        return this.likes.size() + 1;
+        return this.likes.size();
     }
 
 }
