@@ -56,10 +56,16 @@ public class Screen {
         for (DayOfWeek day : DayOfWeek.values()) {
 
             String dayOfWeek = day.getDisplayName(TextStyle.FULL, Locale.CANADA);
-            String workoutName = schedule.getWorkout(day).getName();
+            Workout workout = schedule.getWorkout(day);
 
-//            System.out.println(dayOfWeek + " -> " + workoutName);
-            System.out.printf("%-9s ->  %s\n", dayOfWeek, workoutName);
+            String activityName;
+            if (workout != null) {
+                activityName = workout.getName();
+            } else {    // workout is null
+                activityName = "Rest";
+            }
+
+            System.out.printf("%-9s ->  %s\n", dayOfWeek, activityName);
         }
         System.out.println();
 
