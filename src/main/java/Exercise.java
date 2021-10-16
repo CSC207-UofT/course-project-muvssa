@@ -21,7 +21,7 @@ public abstract class Exercise {
 
     /**
      * Creates an Exercise object given another.
-     * @param other
+     * @param other - the other exercise
      */
     public Exercise(Exercise other)
     {
@@ -33,7 +33,7 @@ public abstract class Exercise {
 
     /**
      * Creates an Exercise object given the name.
-     * @param name
+     * @param name - name of the exercise
      */
     public Exercise(String name) {
         this.name = name;

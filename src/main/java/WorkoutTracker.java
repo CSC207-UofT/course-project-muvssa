@@ -38,7 +38,7 @@ public class WorkoutTracker {
             avg += workout.getDuration().toMinutesPart();
         }
 
-        return avg;
+        return avg / this.workoutHistory.size();
     }
 
 
