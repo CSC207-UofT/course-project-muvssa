@@ -1,31 +1,20 @@
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class WeeklySchedule {
-    private final HashMap<DayOfWeek, Workout> weeklySchedule;
+    private final Map<DayOfWeek, Workout> weeklySchedule;
 
     /**
-     * Constructor that maps all the days of the week to a rest workout
+     * Constructor that maps all the days of the week to null (representing rest)
      */
     public WeeklySchedule() {
         weeklySchedule = new HashMap<>(7);
 
         for (DayOfWeek day : DayOfWeek.values()) {
-            weeklySchedule.put(day, new Workout());
+            weeklySchedule.put(day, null);
         }
-    }
-
-    /**
-     * Constructor that maps a given day of the week to a given workout and the rest of the
-     * days rest workouts
-     *
-     * @param dayOfWeek specific day of the week to map a workout to
-     * @param workout   workout to put to a day of the week
-     */
-    public WeeklySchedule(DayOfWeek dayOfWeek, Workout workout) {
-        this();
-        weeklySchedule.put(dayOfWeek, workout);
     }
 
     /**
@@ -57,7 +46,7 @@ public class WeeklySchedule {
      *
      * @return a map of the weekly schedule
      */
-    public HashMap<DayOfWeek, Workout> getWeeklySchedule() {
+    public Map<DayOfWeek, Workout> getWeeklySchedule() {
         return weeklySchedule;
     }
 
@@ -78,7 +67,7 @@ public class WeeklySchedule {
      * @param workout workout to add to the day
      */
     public void addWorkout(DayOfWeek day, Workout workout) {
-        weeklySchedule.replace(day, workout);
+        weeklySchedule.put(day, workout);
     }
 
     /**
@@ -102,9 +91,9 @@ public class WeeklySchedule {
     }
 
     /**
-     * Clear all workouts from the schedule by making them rest workout
+     * Clear all workouts from the schedule by making them null (representing rest)
      */
     public void clearSchedule() {
-        weeklySchedule.replaceAll((k, v) -> new Workout());  // makes each value in the map an empty workout (rest)
+        weeklySchedule.replaceAll((k, v) -> null);  // makes each value in the map an empty workout (rest)
     }
 }

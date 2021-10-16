@@ -15,7 +15,7 @@ public class Screen {
     }
 
     /**
-     * a String representation of the Profile's followers
+     * Displays a profile's followers to the screen
      */
     public void showFollowers() {
         System.out.println(profile.getUser().getUsername() + "'s followers are:");
@@ -26,7 +26,7 @@ public class Screen {
     }
 
     /**
-     * a String representation of who the Profile is following
+     * Displays a list of people the profile is following
      */
     public void showFollowing() {
         System.out.println(profile.getUser().getUsername() + " is following:");
@@ -37,7 +37,7 @@ public class Screen {
     }
 
     /**
-     * a String representation of the Profile's User info
+     * Displays information of the user associated with the profile
      */
     public void showUserInfo() {
         System.out.print("Username" + profile.getUser().getUsername());
@@ -47,7 +47,7 @@ public class Screen {
     }
 
     /**
-     * a String representation of the Profile's Schedule
+     * Displays the schedule from Monday-Sunday of the profiles workouts
      */
     public void showSchedule() {
         WeeklySchedule schedule = profile.getWeeklySchedule();
@@ -66,7 +66,9 @@ public class Screen {
     }
 
     /**
-     * a String representation of a post made by the Profile
+     * Displays a post given by a post number of the profile
+     *
+     * @param postNumb post number for the post wanting to be displayed
      */
     public void showPost(int postNumb) {
         System.out.println("------- Posts for " + profile.getUser().getUsername() + " -------");

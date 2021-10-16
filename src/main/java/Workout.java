@@ -22,12 +22,10 @@ public class Workout {
     }
 
     /**
-     * Constructor for Rest Workout which contains no exercises.
+     * Creates a workout given another workout, other.
+     *
+     * @param other - another workout
      */
-    public Workout() {
-        this.name = "Rest";
-    }
-
     public Workout(Workout other) {
         this.name = other.name;
         this.description = other.description;
@@ -43,42 +41,6 @@ public class Workout {
             } else if (exercise instanceof TimedExercise) {
                 e = new TimedExercise((TimedExercise) exercise);
             } else {
-                // ignore this for now, it's a workaround. We will have an entirely different approach later.
-                e = new RepExercise("Empty Exercise");
-            }
-
-            this.exercises.add(e);
-        }
-    }
-
-    /**
-     * Creates a workout given another workout, other.
-     * @param other - another workout
-     */
-    public Workout(Workout other)
-    {
-        this.name = other.name;
-        this.description = other.description;
-
-        for(Exercise exercise : other.exercises)
-        {
-            // inefficient code, fix it later :)
-            Exercise e;
-
-            if(exercise instanceof WeightedRepExercise)
-            {
-                e = new WeightedRepExercise((WeightedRepExercise) exercise);
-            }
-            else if(exercise instanceof RepExercise)
-            {
-                e = new RepExercise((RepExercise) exercise);
-            }
-            else if(exercise instanceof TimedExercise)
-            {
-                e = new TimedExercise((TimedExercise) exercise);
-            }
-            else
-            {
                 // ignore this for now, it's a workaround. We will have an entirely different approach later.
                 e = new RepExercise("Empty Exercise");
             }
