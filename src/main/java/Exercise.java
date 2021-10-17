@@ -5,12 +5,12 @@ public abstract class Exercise {
     public String muscleGroup;
 
     /**
-     * Constructor for a User class, takes in all nececcary variables needed to make a User
+     * Constructor for a User class, takes in all necessary variables needed to make a User
      *
      * @param name The String name referring to the name of the exercise
-     * @param sets The int repressants the number of sets
-     * @param rest The int repressants the time taken to rest
-     * @param muscle The String repressants the muscle group
+     * @param sets The int represents the number of sets
+     * @param rest The int represents the time taken to rest
+     * @param muscle The String represents the muscle group
      */
     public Exercise(String name, int sets, int rest, String muscle) {
         this.name = name;

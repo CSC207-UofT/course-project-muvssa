@@ -1,15 +1,15 @@
 public class RepExercise extends Exercise {
 
-    private int numReps;
+    private final int numReps;
 
-    public RepExercise(String name, int sets, int rest, String muscle, int numreps) {
+    public RepExercise(String name, int sets, int rest, String muscle, int numReps) {
         super(name,sets,rest,muscle);
-        this.numReps = numreps;
+        this.numReps = numReps;
     }
 
     /**
      * Creates a RepExercise Object given another
-     * @param other
+     * @param other another rep exercise
      */
     public RepExercise(RepExercise other)
     {
@@ -19,7 +19,7 @@ public class RepExercise extends Exercise {
 
     /**
      * Creates a RepExercise object given the name
-     * @param name
+     * @param name name of the rep exercise
      */
     public RepExercise(String name)
     {

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class WorkoutTracker {
-    private ArrayList<Workout> workoutHistory;
+    private final ArrayList<Workout> workoutHistory;
     private Workout currWorkout;
 
     /**
@@ -31,14 +31,14 @@ public class WorkoutTracker {
      */
     public double getAvgDuration()
     {
-        double avg = 0;
+        double sum = 0;
 
         for(Workout workout : this.workoutHistory)
         {
-            avg += workout.getDuration().toMinutesPart();
+            sum += workout.getDuration().toMinutesPart();
         }
 
-        return avg / this.workoutHistory.size();
+        return sum / this.workoutHistory.size();
     }
 
 

@@ -5,7 +5,7 @@ public class User {
     private final String email;
 
     /**
-     * Constructor for a User class, takes in all necary variables needed to make a User
+     * Constructor for a User class, takes in all necessary variables needed to make a User
      * @param username The String username referring to the account
      * @param password The String password used to log in to the account
      * @param email The String email that is connected to the account

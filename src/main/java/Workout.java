@@ -45,6 +45,7 @@ public class Workout {
                 e = new RepExercise("Empty Exercise");
             }
 
+            assert false;
             this.exercises.add(e);
         }
     }
@@ -62,7 +63,7 @@ public class Workout {
     /**
      * Change the workouts name
      *
-     * @param name
+     * @param name new name for workout
      */
     public void setName(String name) {
         this.name = name;
@@ -80,7 +81,7 @@ public class Workout {
     /**
      * Change the start time of the workout
      *
-     * @param startTime
+     * @param startTime new start time for workout
      */
     public void setStartTime(LocalDateTime startTime) {
         this.startTime = startTime;
@@ -98,7 +99,7 @@ public class Workout {
     /**
      * Change the end time of the workout
      *
-     * @param endTime
+     * @param endTime new end time for workout
      */
     public void setEndTime(LocalDateTime endTime) {
         this.endTime = endTime;
@@ -116,7 +117,7 @@ public class Workout {
     /**
      * Change the workouts description
      *
-     * @param description
+     * @param description new description for workout
      */
     public void setDescription(String description) {
         this.description = description;
@@ -125,7 +126,7 @@ public class Workout {
     /**
      * A method used to add exercises
      *
-     * @param exercise
+     * @param exercise new exercise to be added to workout
      */
     public void addExercise(Exercise exercise) {
         this.exercises.add(exercise);

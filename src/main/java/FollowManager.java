@@ -9,7 +9,7 @@ public class FollowManager {
 
     /**
      * Hold all follow related commands within a profile
-     * @param user take in the profiles owner/User
+     * @param user take in the profiles' owner/User
      */
     public FollowManager(User user){
         this.user = user;
@@ -21,7 +21,7 @@ public class FollowManager {
      * get who the User is following
      * @return returns a HashMap of who they are following
      */
-    public Map getFollowing() {
+    public Map<String, FollowManager> getFollowing() {
         return following;
     }
 
@@ -29,7 +29,7 @@ public class FollowManager {
      * get who is following the User
      * @return returns a HashMap of who they are getting followed by
      */
-    public Map getFollowers() {
+    public Map<String, FollowManager> getFollowers() {
         return followers;
     }
 

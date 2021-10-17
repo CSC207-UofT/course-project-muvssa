@@ -5,10 +5,10 @@ public class Profiles {
     private final Map<String, Profile> profiles;
 
     /**
-     * Create a Profiles constructor to hold multiple Profiles
+     * Constructor for Profiles to hold multiple Profiles
      */
     public Profiles(){
-        this.profiles = new HashMap<String, Profile>();
+        this.profiles = new HashMap<>();
 
     }
 
@@ -53,8 +53,7 @@ public class Profiles {
      */
     public Profile search(String name){
         if(profiles.containsKey(name)){
-            Profile person = profiles.get(name);
-            return person;
+            return profiles.get(name);
         }
         return null;
     }

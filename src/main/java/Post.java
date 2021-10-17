@@ -1,10 +1,10 @@
 import java.util.ArrayList;
 
 public class Post {
-    private Workout workout;
+    private final Workout workout;
     private ArrayList<Comment> comments;
     private ArrayList<User> likes;
-    private String content;
+    private final String content;
 
     /**
      * Creates a new post given a workout

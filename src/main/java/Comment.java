@@ -1,5 +1,5 @@
 public class Comment {
-    private User user;
+    private final User user;
     private String content;
 
     /**

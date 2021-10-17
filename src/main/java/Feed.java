@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 public class Feed {
-    private ArrayList<Post> posts;
+    private final ArrayList<Post> posts;
 
     /**
      * Constructor creating an ArrayList of Posts

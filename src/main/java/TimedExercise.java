@@ -1,6 +1,6 @@
 public class TimedExercise extends Exercise{
 
-    private int set_time;
+    private final int set_time;
 
 
     public TimedExercise(String name, int sets, int rest, String muscle, int set_time) {
