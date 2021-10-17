@@ -100,8 +100,9 @@ public class Routine {
     public boolean equals(Object o) {
         if (this == o)
             return true;
-        if (!(o instanceof Routine routine))
+        if (!(o instanceof Routine))
             return false;
+        Routine routine = (Routine) o;
         return name.equals(routine.name) && description.equals(routine.description) &&
                 workouts.equals(routine.workouts);
     }
