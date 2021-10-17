@@ -114,6 +114,11 @@ into sections and assigned them to each person
 working on next
   * _Sana:_ &nbsp;&nbsp; Open questions we are struggling with
 
+Our future plans heavily include incorporating the Android aspect of the project and ensuring
+that our design is near perfect. We want to ensure that any problems in the design are
+detected early on. We also need to further develop our classes by adding more methods to
+make sure they are fulfilling their responsibility. Finally, we also want to start thinking
+about the User Interface of our app.
 
 ---
 ### Open questions we are struggling with
