@@ -1,6 +1,6 @@
-## Replace this README.md!
+## Fitness Tracker with Social Media
 
-This is a standard README.md file for you to replace. You'll want to include your own content here!
+We want to develop an android app that will serve as a fitness tracker with a social media
+component for fitness enthusiasts who want to monitor and share their fitness experience.
 
-MD (Markdown) files use [Markdown formatting](https://guides.github.com/features/mastering-markdown/): 
-these look very much like .txt files, so you can write them in a very similar way.
+To run this program, locate the main method in `FitApp.java`.
