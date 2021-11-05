@@ -2,7 +2,7 @@ package fitappfiles;
 
 import java.util.HashMap;
 import java.util.Map;
-
+// TODO: Make this a use case. Remove the unnecessary methods.
 public class Profiles {
     private final Map<String, Profile> profiles;
 
