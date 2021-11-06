@@ -1,14 +1,12 @@
-package fitappfiles;
+package core.useCase;
 
 
+import core.entity.User;
 
 public class Profile {
 
     private final User user;
-    private final FollowManager followManager;
     private final WeeklySchedule weeklySchedule;
-    private final Feed feed;
-
 
     /**
      * Creates the main profile for one user
@@ -18,9 +16,7 @@ public class Profile {
      */
     public Profile(String name, String password, String email){
         this.user = new User(name, password, email);
-        this.followManager = new FollowManager(this.user);
         this.weeklySchedule = new WeeklySchedule();
-        this.feed = new Feed();
     }
 
     /**
@@ -33,14 +29,6 @@ public class Profile {
     }
 
     /**
-     * gets who the User is following and who is following them
-     * @return returns a HashMap of people User is following
-     */
-    public FollowManager getProfileFollow(){
-        return followManager;
-    }
-
-    /**
      * returns the User's weekly Schedule
      * @return the WeeklySchedule class
      */
@@ -48,12 +36,5 @@ public class Profile {
         return weeklySchedule;
     }
 
-    /**
-     * Posts made by the User
-     * @return the ProfilePosts class
-     */
-    public Feed getProfilePosts(){
-        return feed;
-    }
 
 }

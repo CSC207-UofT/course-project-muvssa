@@ -1,4 +1,4 @@
-package fitappfiles;
+package core.entity;
 
 public abstract class Exercise {
     public String name;

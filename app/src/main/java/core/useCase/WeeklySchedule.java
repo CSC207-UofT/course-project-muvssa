@@ -1,4 +1,4 @@
-package fitappfiles;
+package core.useCase;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;

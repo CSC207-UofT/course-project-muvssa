@@ -1,4 +1,4 @@
-package fitappfiles;
+package core.useCase;
 
 import java.util.ArrayList;
 

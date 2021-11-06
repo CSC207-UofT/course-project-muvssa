@@ -1,4 +1,6 @@
-package fitappfiles;
+package core;
+
+import core.useCase.Profiles;
 
 public class LoginController {
 

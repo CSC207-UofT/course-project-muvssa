@@ -1,6 +1,6 @@
 package com.example.fitappa;
 
-import fitappfiles.Profile;
+import core.useCase.Profile;
 
 import java.util.*;
 

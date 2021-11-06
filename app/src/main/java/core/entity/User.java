@@ -1,4 +1,4 @@
-package fitappfiles;
+package core.entity;
 
 public class User {
 

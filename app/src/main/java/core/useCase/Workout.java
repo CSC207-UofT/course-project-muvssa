@@ -1,4 +1,9 @@
-package fitappfiles;
+package core.useCase;
+
+import core.entity.Exercise;
+import core.entity.RepExercise;
+import core.entity.TimedExercise;
+import core.entity.WeightedRepExercise;
 
 import java.time.Duration;
 import java.time.LocalDateTime;

@@ -1,6 +1,4 @@
-package fitappfiles;
-
-import fitappfiles.Exercise;
+package core.entity;
 
 public class RepExercise extends Exercise {
 

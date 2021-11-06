@@ -1,4 +1,4 @@
-package fitappfiles;
+package core.entity;
 
 public class TimedExercise extends Exercise{
 

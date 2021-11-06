@@ -6,10 +6,7 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
-import fitappfiles.Profiles;
-
-import java.util.Observable;
-import java.util.Observer;
+import core.useCase.Profiles;
 
 
 public class InteractorCreateAccount extends AppCompatActivity {
