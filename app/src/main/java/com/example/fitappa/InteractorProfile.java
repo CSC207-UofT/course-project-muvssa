@@ -6,48 +6,58 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import fitappfiles.Profile;
+import fitappfiles.Profiles;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.io.Serializable;
 
-public class InteractorProfile extends AppCompatActivity implements Observer {
+public class InteractorProfile extends AppCompatActivity {
     private TextView user;
-    private TextView b;
     private Profile profile;
+    private TextView followerNumber;
+    private TextView followingNumber;
+    private TextView submit;
+    private TextView search;
     private ModelProfile modelProfile;
+    private Intent retrieveIntent;
+    private Profiles profiles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.main_profile);
+        this.retrieveIntent = getIntent();
+        this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
+        this.profiles = new Profiles();
+        // for testing purposes, here we would have a database
+        this.profiles.signUp("test","testpass", "testEmail");
 
-        System.out.println("heleleoeoeoeoeoeo");
 
-        modelProfile = new ModelProfile();
-        modelProfile.addObserver(this);
-        user = findViewById(R.id.userName);
-        b = findViewById(R.id.back);
 
-        b.setOnClickListener(new View.OnClickListener() {
+        user = findViewById(R.id.userNameProfile);
+        user.setText(profile.getUser().getUsername());
+
+        followerNumber = findViewById(R.id.followerNumber);
+        followerNumber.setText(profile.getProfileFollow().followerCount());
+
+        followingNumber = findViewById(R.id.followingNumber);
+        followingNumber.setText(profile.getProfileFollow().followingCount());
+
+        submit =  findViewById(R.id.submitSearch);
+        search =  findViewById(R.id.searchText);
+        submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mainMenu();
+                searched(search.getText().toString());
             }
         });
 
     }
+    private void searched(String username) {
+        this.profile = this.profiles.search(username);
 
-    private void mainMenu() {
-
-        Intent intent = new Intent(this, Interactor.class);
+        Intent intent = new Intent(this, InteractorProfile.class);
+        intent.putExtra("persons_Profile", (Serializable) this.profile);
         startActivity(intent);
     }
 
-
-    @Override
-    public void update(Observable o, Object arg) {
-        this.profile = modelProfile.getProfile();
-        user.setText(profile.getUser().getUsername());
-    }
 }

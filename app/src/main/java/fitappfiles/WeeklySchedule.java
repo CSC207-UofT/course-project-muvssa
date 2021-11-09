@@ -1,11 +1,12 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WeeklySchedule {
+public class WeeklySchedule implements Serializable {
     private final Map<DayOfWeek, Workout> weeklySchedule;
 
     /**

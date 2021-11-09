@@ -1,8 +1,9 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Post {
+public class Post implements Serializable {
     private final Workout workout;
     private ArrayList<Comment> comments;
     private ArrayList<User> likes;

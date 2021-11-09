@@ -1,6 +1,8 @@
 package fitappfiles;
 
-public abstract class Exercise {
+import java.io.Serializable;
+
+public abstract class Exercise implements Serializable {
     public String name;
     public int numSets;
     public int numRest;

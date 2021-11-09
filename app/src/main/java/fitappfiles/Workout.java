@@ -1,10 +1,11 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class Workout {
+public class Workout implements Serializable {
     public String name;
     public String description;
     public ArrayList<Exercise> exercises;

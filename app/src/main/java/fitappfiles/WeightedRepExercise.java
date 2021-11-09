@@ -1,6 +1,8 @@
 package fitappfiles;
 
-public class WeightedRepExercise extends RepExercise{
+import java.io.Serializable;
+
+public class WeightedRepExercise extends RepExercise implements Serializable {
 
         private final double weight;
 

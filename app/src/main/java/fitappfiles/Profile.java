@@ -1,8 +1,9 @@
 package fitappfiles;
 
 
+import java.io.Serializable;
 
-public class Profile {
+public class Profile implements Serializable {
 
     private final User user;
     private final FollowManager followManager;

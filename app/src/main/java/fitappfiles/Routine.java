@@ -1,8 +1,9 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Routine {
+public class Routine implements Serializable {
     private String name;
     private String description;
     private ArrayList<Workout> workouts;
