@@ -47,6 +47,7 @@ public class InteractorCreateAccount extends AppCompatActivity {
 
         Intent intent = new Intent(this, InteractorProfile.class);
         intent.putExtra("persons_Profile", (Serializable) profiles.loginToProfile(username,password));
+        intent.putExtra("my_Profile", (Serializable) profiles.loginToProfile(username,password));
         startActivity(intent);
     }
 

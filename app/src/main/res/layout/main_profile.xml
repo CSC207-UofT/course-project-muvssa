@@ -54,6 +54,12 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true" android:layout_marginTop="75dp" android:id="@+id/submitSearch"
             android:layout_alignParentEnd="true" android:layout_marginEnd="8dp"/>
+    <TextView
+            android:text="@string/followButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="242dp" android:layout_marginLeft="45dp" android:id="@+id/followButton"/>
     <com.google.android.material.textfield.TextInputLayout
             android:layout_width="208dp"
             android:layout_height="36dp" android:layout_alignParentRight="true"
@@ -65,4 +71,10 @@
                 android:layout_height="match_parent"
                 android:hint="@string/searchText" android:id="@+id/searchText"/>
     </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+            android:text="@string/returnHome"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="25dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="47dp" android:layout_marginLeft="25dp" android:id="@+id/returnHome"/>
 </RelativeLayout>

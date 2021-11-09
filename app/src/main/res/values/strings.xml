@@ -13,4 +13,6 @@
     <string name="emailText">Email:</string>
     <string name="searchText">Search a Username</string>
     <string name="submit_Search">Submit</string>
+    <string name="followButton">Follow!</string>
+    <string name="returnHome">Return to my Profile</string>
 </resources>
