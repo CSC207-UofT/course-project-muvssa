@@ -1,8 +1,9 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WorkoutTracker {
+public class WorkoutTracker implements Serializable {
     private final ArrayList<Workout> workoutHistory;
     private Workout currWorkout;
 

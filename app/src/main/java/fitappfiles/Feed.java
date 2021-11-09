@@ -1,8 +1,9 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Feed {
+public class Feed implements Serializable {
     private final ArrayList<Post> posts;
 
     /**

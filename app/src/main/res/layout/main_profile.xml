@@ -1,28 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                                                    xmlns:app="http://schemas.android.com/apk/res-auto"
                                                    xmlns:tools="http://schemas.android.com/tools"
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:id="@+id/userNameUpdate">
-
     <TextView
-            android:text="Username"
-            android:layout_width="89dp"
-            android:layout_height="19dp" android:id="@+id/textView"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="56dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="40dp" android:layout_marginStart="40dp"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="656dp"
-            android:layout_marginEnd="312dp" android:layout_marginRight="312dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            android:text="@string/user_Name"
+            android:layout_width="266dp"
+            android:layout_height="wrap_content" android:id="@+id/userNameProfile"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="43dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="114dp" android:layout_marginLeft="43dp" android:textSize="24sp"/>
     <TextView
-            android:text="Go Back"
+            android:text="@string/welcomeText"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/back"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="57dp" android:layout_marginLeft="178dp" android:layout_marginStart="178dp"
-            app:layout_constraintStart_toEndOf="@+id/textView" android:layout_marginEnd="72dp"
-            android:layout_marginRight="72dp" app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="655dp"/>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="45dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="89dp" android:layout_marginLeft="45dp" android:id="@+id/textView"/>
+    <TextView
+            android:text="@string/followersNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="55dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="308dp" android:layout_marginLeft="55dp" android:id="@+id/followerNumber"/>
+    <TextView
+            android:text="@string/followersText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="43dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="275dp" android:layout_marginLeft="43dp" android:id="@+id/textView3"/>
+    <TextView
+            android:text="@string/followingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="126dp"
+            android:layout_marginTop="281dp" android:layout_marginRight="126dp" android:id="@+id/textView4"/>
+    <TextView
+            android:text="@string/followingNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="125dp"
+            android:layout_marginTop="307dp" android:layout_marginRight="125dp" android:id="@+id/followingNumber"/>
+    <TextView
+            android:text="@string/emailText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="49dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
+            android:layout_marginTop="155dp" android:layout_marginLeft="49dp" android:id="@+id/textView6"/>
+    <TextView
+            android:text="@string/submit_Search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true" android:layout_marginTop="75dp" android:id="@+id/submitSearch"
+            android:layout_alignParentEnd="true" android:layout_marginEnd="8dp"/>
+    <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="208dp"
+            android:layout_height="36dp" android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="6dp"
+            android:layout_marginTop="38dp" android:layout_marginRight="6dp" android:id="@+id/searchInput">
+
+        <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="208dp"
+                android:layout_height="match_parent"
+                android:hint="@string/searchText" android:id="@+id/searchText"/>
+    </com.google.android.material.textfield.TextInputLayout>
+</RelativeLayout>

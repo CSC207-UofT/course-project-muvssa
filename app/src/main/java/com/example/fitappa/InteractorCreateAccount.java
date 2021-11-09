@@ -6,8 +6,10 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputEditText;
+import fitappfiles.Profile;
 import fitappfiles.Profiles;
 
+import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -18,14 +20,12 @@ public class InteractorCreateAccount extends AppCompatActivity {
     private TextInputEditText mail;
     private TextView enter;
     private Profiles profiles;
-    private ModelProfile Mprofile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
         this.profiles = new Profiles();
-        this.Mprofile = new ModelProfile();
 
 
         user = findViewById(R.id.userName);
@@ -46,6 +46,7 @@ public class InteractorCreateAccount extends AppCompatActivity {
         System.out.println(this.profiles.signUp(username,password,email));
 
         Intent intent = new Intent(this, InteractorProfile.class);
+        intent.putExtra("persons_Profile", (Serializable) profiles.loginToProfile(username,password));
         startActivity(intent);
     }
 

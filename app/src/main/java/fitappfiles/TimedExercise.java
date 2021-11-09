@@ -1,6 +1,8 @@
 package fitappfiles;
 
-public class TimedExercise extends Exercise{
+import java.io.Serializable;
+
+public class TimedExercise extends Exercise implements Serializable {
 
     private final int set_time;
 

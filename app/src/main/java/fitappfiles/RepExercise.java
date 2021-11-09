@@ -2,7 +2,9 @@ package fitappfiles;
 
 import fitappfiles.Exercise;
 
-public class RepExercise extends Exercise {
+import java.io.Serializable;
+
+public class RepExercise extends Exercise implements Serializable {
 
     private final int numReps;
 

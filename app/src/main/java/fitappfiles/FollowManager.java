@@ -1,8 +1,9 @@
 package fitappfiles;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-public class FollowManager {
+public class FollowManager implements Serializable {
 
 
     private final User user;
@@ -55,12 +56,12 @@ public class FollowManager {
 
     }
 
-    public int followerCount(){
-        return this.followers.size();
+    public String followerCount(){
+        return String.valueOf(this.followers.size());
 
     }
-    public int followingCount(){
-        return this.following.size();
+    public String followingCount(){
+        return String.valueOf(this.following.size());
 
     }
 
