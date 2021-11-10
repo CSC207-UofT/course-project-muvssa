@@ -12,11 +12,14 @@ import java.io.Serializable;
 
 public class InteractorProfile extends AppCompatActivity {
     private TextView user;
+    private Profile myProfile;
     private Profile profile;
     private TextView followerNumber;
     private TextView followingNumber;
     private TextView submit;
     private TextView search;
+    private TextView followButton;
+    private TextView returnHome;
     private ModelProfile modelProfile;
     private Intent retrieveIntent;
     private Profiles profiles;
@@ -27,10 +30,21 @@ public class InteractorProfile extends AppCompatActivity {
         setContentView(R.layout.main_profile);
         this.retrieveIntent = getIntent();
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
+        this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
         this.profiles = new Profiles();
         // for testing purposes, here we would have a database
         this.profiles.signUp("test","testpass", "testEmail");
+        this.profiles.signUp(myProfile.getUser().getUsername(),"testpass", "testEmail");
 
+        this.followButton = findViewById(R.id.followButton);
+        this.followButton.setVisibility(View.INVISIBLE);
+
+        this.returnHome = findViewById(R.id.returnHome);
+        this.returnHome.setVisibility(View.INVISIBLE);
+        if (!this.myProfile.getUser().getUsername().equals(this.profile.getUser().getUsername())){
+            this.followButton.setVisibility(View.VISIBLE);
+            this.returnHome.setVisibility(View.VISIBLE);
+        }
 
 
         user = findViewById(R.id.userNameProfile);
@@ -44,6 +58,7 @@ public class InteractorProfile extends AppCompatActivity {
 
         submit =  findViewById(R.id.submitSearch);
         search =  findViewById(R.id.searchText);
+        String name = this.myProfile.getUser().getUsername();
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,11 +66,18 @@ public class InteractorProfile extends AppCompatActivity {
             }
         });
 
+        returnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                searched(name);
+            }
+        });
+
     }
     private void searched(String username) {
-        this.profile = this.profiles.search(username);
-
         Intent intent = new Intent(this, InteractorProfile.class);
+        intent.putExtra("my_Profile", (Serializable) this.myProfile);
+        this.profile = this.profiles.search(username);
         intent.putExtra("persons_Profile", (Serializable) this.profile);
         startActivity(intent);
     }
