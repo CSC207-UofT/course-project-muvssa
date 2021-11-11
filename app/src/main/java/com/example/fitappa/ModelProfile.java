@@ -8,24 +8,22 @@ public class ModelProfile extends Observable {
 
     // declaring a list of integer
     private Profile profile;
+    private Profile otherProfile;
 
-    // constructor to initialize the list
-    public ModelProfile(){
-
+    public ModelProfile(Profile profile){
+        this.profile = profile;
 
     }
-
-    // defining getter and setter functions
-
-
-    public Profile getProfile() {
-        return profile;
+    public Profile getFollow1(){
+        return this.profile;
+    }
+    public Profile getFollow2(){
+        return this.otherProfile;
     }
 
-    // function to make changes in the activity button's
-    // count value when user touch it
-    public void setProfile(Profile p){
-        this.profile = p;
+    public void setFollow(Profile profile){
+        this.profile.getProfileFollow().follow(profile.getProfileFollow());
+        this.otherProfile = profile;
         setChanged();
         notifyObservers();
     }

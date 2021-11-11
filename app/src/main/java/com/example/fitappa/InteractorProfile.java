@@ -9,8 +9,10 @@ import fitappfiles.Profile;
 import fitappfiles.Profiles;
 
 import java.io.Serializable;
+import java.util.Observable;
+import java.util.Observer;
 
-public class InteractorProfile extends AppCompatActivity {
+public class InteractorProfile extends AppCompatActivity implements Observer {
     private TextView user;
     private Profile myProfile;
     private Profile profile;
@@ -31,6 +33,11 @@ public class InteractorProfile extends AppCompatActivity {
         this.retrieveIntent = getIntent();
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
+
+        this.modelProfile = new ModelProfile(this.myProfile);
+        this.modelProfile.addObserver(this);
+
+
         this.profiles = new Profiles();
         // for testing purposes, here we would have a database
         this.profiles.signUp("test","testpass", "testEmail");
@@ -69,7 +76,13 @@ public class InteractorProfile extends AppCompatActivity {
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searched(name);
+                home();
+            }
+        });
+        followButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                followPress();
             }
         });
 
@@ -81,5 +94,23 @@ public class InteractorProfile extends AppCompatActivity {
         intent.putExtra("persons_Profile", (Serializable) this.profile);
         startActivity(intent);
     }
+    private void home() {
+        Intent intent = new Intent(this, InteractorProfile.class);
+        intent.putExtra("my_Profile", (Serializable) this.myProfile);
+        intent.putExtra("persons_Profile", (Serializable) this.myProfile);
+        startActivity(intent);
+    }
+    private void followPress(){
+        modelProfile.setFollow(this.profile);
 
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        this.myProfile = this.modelProfile.getFollow1();
+        this.profile = this.modelProfile.getFollow2();
+        if (!myProfile.getUser().getUsername().equals(profile.getUser().getUsername())){
+            followerNumber.setText(profile.getProfileFollow().followerCount());
+        }
+    }
 }
