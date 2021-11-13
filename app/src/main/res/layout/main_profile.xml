@@ -43,12 +43,6 @@
             android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="125dp"
             android:layout_marginTop="307dp" android:layout_marginRight="125dp" android:id="@+id/followingNumber"/>
     <TextView
-            android:text="@string/emailText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="49dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="155dp" android:layout_marginLeft="49dp" android:id="@+id/textView6"/>
-    <TextView
             android:text="@string/submit_Search"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
