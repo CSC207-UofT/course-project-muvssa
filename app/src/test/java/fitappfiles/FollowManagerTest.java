@@ -3,7 +3,7 @@ package fitappfiles;
 import junit.framework.TestCase;
 
 public class FollowManagerTest extends TestCase {
-    FollowManager x;
+
 
     public void setUp() throws Exception {
         super.setUp();
