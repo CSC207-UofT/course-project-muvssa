@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import io.realm.Realm;
 
 public class Interactor extends AppCompatActivity {
     private TextView messageCreate;
@@ -15,6 +16,8 @@ public class Interactor extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        // Initialize Database, I think we just need to do it once here.
+        Realm.init(this);
 
         messageCreate = findViewById(R.id.createATitle);
         messageLog = findViewById(R.id.logIn);
