@@ -22,6 +22,7 @@ public class InteractorProfile extends AppCompatActivity implements Observer {
     private TextView search;
     private TextView followButton;
     private TextView returnHome;
+    private TextView goToWorkouts;
     private ModelProfile modelProfile;
     private Intent retrieveIntent;
     private Profiles profiles;
@@ -52,7 +53,7 @@ public class InteractorProfile extends AppCompatActivity implements Observer {
             this.followButton.setVisibility(View.VISIBLE);
             this.returnHome.setVisibility(View.VISIBLE);
         }
-
+        goToWorkouts = findViewById(R.id.gotToWorkouts);
 
         user = findViewById(R.id.userNameProfile);
         user.setText(profile.getUser().getUsername());
@@ -85,6 +86,12 @@ public class InteractorProfile extends AppCompatActivity implements Observer {
                 followPress();
             }
         });
+        goToWorkouts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setGoToWorkouts();
+            }
+        });
 
     }
     private void searched(String username) {
@@ -103,6 +110,11 @@ public class InteractorProfile extends AppCompatActivity implements Observer {
     private void followPress(){
         modelProfile.setFollow(this.profile);
 
+    }
+    private void setGoToWorkouts(){
+        Intent intent = new Intent(this, WorkoutsActivity.class);
+        intent.putExtra("my_Profile", (Serializable) this.myProfile);
+        startActivity(intent);
     }
 
     @Override

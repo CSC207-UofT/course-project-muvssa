@@ -15,4 +15,5 @@
     <string name="submit_Search">Submit</string>
     <string name="followButton">Follow!</string>
     <string name="returnHome">Return to my Profile</string>
+    <string name="goToWorkout">See your workouts</string>
 </resources>
