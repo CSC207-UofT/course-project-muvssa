@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import java.io.Serializable;
 
 
-public class SignUpActivity extends AppCompatActivity implements SignUpPresenter.view{
+public class SignUpActivity extends AppCompatActivity implements SignUpPresenter.View{
     private TextInputEditText user;
     private TextInputEditText pass;
     private TextInputEditText mail;
@@ -25,7 +25,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
 
-        this.presenter = new SignUpPresenter((SignUpPresenter.View) this);
+        this.presenter = new SignUpPresenter(this);
 
 
         user = findViewById(R.id.userName);
@@ -36,9 +36,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                presenter.signUp(user.getText().toString(),pass.getText().toString(),mail.getText().toString());
+                presenter.signUpToProfile(user.getText().toString(),pass.getText().toString(),mail.getText().toString());
             }
         });
+
 
     }
 
