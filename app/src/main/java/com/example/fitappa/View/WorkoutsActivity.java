@@ -25,6 +25,7 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
         // Default Android Stuff
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workouts2);
+        this.retrieveIntent = getIntent();
 
         // Load the elements
         routinesView = findViewById(R.id.routinesView);
