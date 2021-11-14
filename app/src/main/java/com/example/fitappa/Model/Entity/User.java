@@ -52,5 +52,9 @@ public class User implements Serializable {
         this.password = password;
     }
 
+    public Boolean verifyCredentials(String email, String password) {
+        return this.email.equals(email) && this.password.equals(password);
+    }
+
 
 }

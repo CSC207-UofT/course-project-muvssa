@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        System.out.println("Test in on create");
 
         this.SignUpBtn = findViewById(R.id.SignUp);
         this.SignInBtn = findViewById(R.id.SignIn);
