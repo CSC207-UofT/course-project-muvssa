@@ -3,14 +3,15 @@ package com.example.fitappa.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
 import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView messageCreate;
-    private TextView messageLog;
+    private Button SignIn;
+    private Button SignUp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,18 +20,18 @@ public class MainActivity extends AppCompatActivity {
         // Initialize Database, I think we just need to do it once here.
         Realm.init(this);
 
-        messageCreate = findViewById(R.id.createATitle);
-        messageLog = findViewById(R.id.logIn);
+        SignUp = findViewById(R.id.SignUp);
+        SignIn = findViewById(R.id.SignIn);
 
         //Define and attach click listener
-        messageCreate.setOnClickListener(new View.OnClickListener() {
+        SignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 createA();
             }
         });
 
-        messageLog.setOnClickListener(new View.OnClickListener() {
+        SignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 logIn();
