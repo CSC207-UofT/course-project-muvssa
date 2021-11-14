@@ -5,25 +5,27 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.fitappa.Model.Profile;
+import com.example.fitappa.Presenter.SignUpPresenter;
 import com.example.fitappa.R;
 import com.google.android.material.textfield.TextInputEditText;
-import fitappfiles.Profiles;
 
 import java.io.Serializable;
 
 
-public class SignUpActivity extends AppCompatActivity {
+public class SignUpActivity extends AppCompatActivity implements SignUpPresenter.view{
     private TextInputEditText user;
     private TextInputEditText pass;
     private TextInputEditText mail;
     private TextView enter;
-    private Profiles profiles;
+    private SignUpPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
-        this.profiles = new Profiles();
+
+        this.presenter = new SignUpPresenter((SignUpPresenter.View) this);
 
 
         user = findViewById(R.id.userName);
@@ -34,19 +36,18 @@ public class SignUpActivity extends AppCompatActivity {
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createA(user.getText().toString(),pass.getText().toString(),mail.getText().toString());
+                presenter.signUp(user.getText().toString(),pass.getText().toString(),mail.getText().toString());
             }
         });
 
     }
 
-    private void createA(String username, String password, String email) {
-        System.out.println(this.profiles.signUp(username,password,email));
-
+    public void loggedIn(Profile profile){
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("persons_Profile", (Serializable) profiles.loginToProfile(username,password));
-        intent.putExtra("my_Profile", (Serializable) profiles.loginToProfile(username,password));
+        intent.putExtra("persons_Profile", (Serializable) profile);
+        intent.putExtra("my_Profile", (Serializable) profile);
         startActivity(intent);
+
     }
 
 }
