@@ -7,41 +7,85 @@
     tools:context=".View.CreateWorkoutActivity">
 
     <TextView
-            android:id="@+id/routineLabel2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Create Workout"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" tools:layout_editor_absoluteY="36dp"
-            tools:layout_editor_absoluteX="-25dp"/>
+        android:id="@+id/routineLabel2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="13dp"
+        android:gravity="center"
+        android:text="Create Workout"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/button7"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
-            android:id="@+id/routineLabel3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Get started by adding an exercise to your routine"
-            android:textAppearance="@style/TextAppearance.AppCompat.Medium" tools:layout_editor_absoluteY="211dp"
-            tools:layout_editor_absoluteX="0dp"/>
+        android:id="@+id/routineLabel3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="21dp"
+        android:gravity="center"
+        android:text="Get started by adding an exercise to your routine"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@+id/button16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
     <EditText
-            android:layout_width="408dp"
-            android:layout_height="41dp"
-            android:inputType="textPersonName"
-            android:text="Workout title"
-            android:ems="10"
-            android:id="@+id/editTextTextPersonName2" tools:layout_editor_absoluteY="134dp"
-            tools:layout_editor_absoluteX="0dp"/>
+        android:id="@+id/editTextTextPersonName2"
+        android:layout_width="408dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="6dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Workout title"
+        app:layout_constraintBottom_toTopOf="@+id/imageView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button7" />
+
     <Button
-            android:text="Select routine"
-            android:layout_width="168dp"
-            android:layout_height="35dp" android:id="@+id/button7" tools:layout_editor_absoluteY="86dp"
-            tools:layout_editor_absoluteX="0dp"/>
+        android:id="@+id/button7"
+        android:layout_width="168dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="243dp"
+        android:layout_marginBottom="12dp"
+        android:text="Select routine"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routineLabel2" />
+
     <Button
-            android:text="Add exercise"
-            android:layout_width="157dp"
-            android:layout_height="49dp" android:id="@+id/button16" tools:layout_editor_absoluteY="256dp"
-            tools:layout_editor_absoluteX="127dp"/>
+        android:id="@+id/button16"
+        android:layout_width="157dp"
+        android:layout_height="49dp"
+        android:layout_marginStart="127dp"
+        android:layout_marginTop="21dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="426dp"
+        android:text="Add exercise"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routineLabel3" />
+
     <ImageView
-            android:layout_width="63dp"
-            android:layout_height="42dp" app:srcCompat="@drawable/dumbbell" android:id="@+id/imageView2"
-            tools:layout_editor_absoluteY="169dp" tools:layout_editor_absoluteX="174dp"/>
+        android:id="@+id/imageView2"
+        android:layout_width="63dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="174dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="174dp"
+        android:layout_marginBottom="11dp"
+        app:layout_constraintBottom_toTopOf="@+id/routineLabel3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        app:srcCompat="@drawable/dumbbell" />
 </androidx.constraintlayout.widget.ConstraintLayout>

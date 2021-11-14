@@ -7,28 +7,52 @@
     tools:context=".View.AddExerciseActivity">
 
     <Button
-            android:text="Add"
-            android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button13" tools:layout_editor_absoluteY="491dp"
-            tools:layout_editor_absoluteX="327dp"/>
+        android:id="@+id/button13"
+        android:layout_width="64dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="13dp"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7" />
+
     <Button
-            android:text="Add"
-            android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button14" tools:layout_editor_absoluteY="546dp"
-            tools:layout_editor_absoluteX="331dp"/>
+        android:id="@+id/button14"
+        android:layout_width="64dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="12dp"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+        app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button13" />
+
     <Button
-            android:text="Add"
-            android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button15" tools:layout_editor_absoluteY="602dp"
-            tools:layout_editor_absoluteX="331dp"/>
+        android:id="@+id/button15"
+        android:layout_width="64dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="13dp"
+        android:text="Add"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName10"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName9" />
+
     <TextView
-            android:id="@+id/routineLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Add Exercise"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" tools:layout_editor_absoluteY="33dp"
-            tools:layout_editor_absoluteX="0dp"/>
+        android:id="@+id/routineLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:text="Add Exercise"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <EditText
             android:layout_width="408dp"
             android:layout_height="43dp"
@@ -111,9 +135,13 @@
             android:layout_width="142dp"
             android:layout_height="43dp" android:id="@+id/button6" tools:layout_editor_absoluteY="137dp"
             tools:layout_editor_absoluteX="253dp" app:iconTint="#430505" app:rippleColor="#390B0B"/>
+
     <SearchView
-            android:layout_width="375dp"
-            android:layout_height="52dp" tools:layout_editor_absoluteY="85dp" tools:layout_editor_absoluteX="16dp"/>
+        android:id="@+id/searchView"
+        android:layout_width="375dp"
+        android:layout_height="52dp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="85dp" />
     <Button
             android:text="Add"
             android:layout_width="64dp"
