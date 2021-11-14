@@ -15,9 +15,6 @@ public class WorkoutsActivityPresenter {
         this.profile = profile;
     }
 
-    public void updateRoutines(Routine routine) {
-
-    }
 
     // Dependency Inversion
     public interface View

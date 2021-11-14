@@ -6,137 +6,140 @@
     android:layout_height="match_parent"
     tools:context=".View.AddExerciseActivity">
 
-    <Button
-            android:text="Add"
-            android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button13" tools:layout_editor_absoluteY="491dp"
-            tools:layout_editor_absoluteX="327dp"/>
-    <Button
-            android:text="Add"
-            android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button14" tools:layout_editor_absoluteY="546dp"
-            tools:layout_editor_absoluteX="331dp"/>
-    <Button
-            android:text="Add"
-            android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button15" tools:layout_editor_absoluteY="602dp"
-            tools:layout_editor_absoluteX="331dp"/>
     <TextView
-            android:id="@+id/routineLabel"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Add Exercise"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" tools:layout_editor_absoluteY="33dp"
-            tools:layout_editor_absoluteX="0dp"/>
+        android:id="@+id/routineLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="33dp"
+        android:layout_marginBottom="23dp"
+        android:gravity="center"
+        android:text="Add Exercise"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toTopOf="@+id/searchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <EditText
             android:layout_width="408dp"
             android:layout_height="43dp"
             android:inputType="textPersonName"
             android:text="Push up (Weighted)"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName7" tools:layout_editor_absoluteY="435dp"
+            android:id="@+id/editTextTextPersonName7"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_marginTop="2dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName6"
+            app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="246dp"/>
     <EditText
             android:layout_width="408dp"
             android:layout_height="43dp"
             android:inputType="textPersonName"
             android:text="Bench Press (Barbell)"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName5" tools:layout_editor_absoluteY="325dp"
+            android:id="@+id/editTextTextPersonName5"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="7dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName6"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"/>
     <EditText
             android:layout_width="408dp"
             android:layout_height="43dp"
             android:inputType="textPersonName"
             android:text="Push up"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName6" tools:layout_editor_absoluteY="375dp"
+            android:id="@+id/editTextTextPersonName6"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <EditText
-            android:layout_width="408dp"
-            android:layout_height="43dp"
-            android:inputType="textPersonName"
-            android:text="Sumo Deadlift"
-            android:ems="10"
-            android:id="@+id/editTextTextPersonName" tools:layout_editor_absoluteY="491dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <EditText
-            android:layout_width="408dp"
-            android:layout_height="43dp"
-            android:inputType="textPersonName"
-            android:text="Pull ups"
-            android:ems="10"
-            android:id="@+id/editTextTextPersonName9" tools:layout_editor_absoluteY="546dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
-    <EditText
-            android:layout_width="408dp"
-            android:layout_height="43dp"
-            android:inputType="textPersonName"
-            android:text="Crunches"
-            android:ems="10"
-            android:id="@+id/editTextTextPersonName10" tools:layout_editor_absoluteY="602dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName5" android:layout_marginBottom="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName7"/>
     <EditText
             android:layout_width="408dp"
             android:layout_height="43dp"
             android:inputType="textPersonName"
             android:text="Bicep Curl"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName3" tools:layout_editor_absoluteY="216dp"
+            android:id="@+id/editTextTextPersonName3"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginTop="13dp"
+            app:layout_constraintTop_toBottomOf="@+id/button" android:layout_marginBottom="14dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName4"/>
     <EditText
             android:layout_width="408dp"
             android:layout_height="43dp"
             android:inputType="textPersonName"
             android:text="21s Bicep Curl"
             android:ems="10"
-            android:id="@+id/editTextTextPersonName4" tools:layout_editor_absoluteY="273dp"
+            android:id="@+id/editTextTextPersonName4"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"/>
+            app:layout_constraintHorizontal_bias="0.0" android:layout_marginBottom="9dp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName5" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"/>
     <Button
             android:text="All Equipment"
             android:layout_width="154dp"
-            android:layout_height="43dp" android:id="@+id/button" tools:layout_editor_absoluteY="137dp"
-            tools:layout_editor_absoluteX="16dp" app:iconTint="#3E1E1E" app:strokeColor="#651E1E"/>
+            android:layout_height="43dp" android:id="@+id/button"
+            app:iconTint="#3E1E1E" app:strokeColor="#651E1E" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="16dp" app:layout_constraintTop_toBottomOf="@+id/searchView"
+            app:layout_constraintEnd_toStartOf="@+id/button6" android:layout_marginEnd="83dp"
+            android:layout_marginBottom="13dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"/>
+
     <Button
             android:text="All Muscle"
-            android:layout_width="142dp"
-            android:layout_height="43dp" android:id="@+id/button6" tools:layout_editor_absoluteY="137dp"
-            tools:layout_editor_absoluteX="253dp" app:iconTint="#430505" app:rippleColor="#390B0B"/>
+            android:layout_width="164dp"
+            android:layout_height="44dp" android:id="@+id/button6"
+            app:iconTint="#430505" app:rippleColor="#390B0B" android:layout_marginStart="16dp"
+            app:layout_constraintStart_toEndOf="@+id/searchView" android:layout_marginTop="74dp"
+            app:layout_constraintTop_toBottomOf="@+id/routineLabel" app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginBottom="13dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
+            app:layout_constraintHorizontal_bias="1.0" app:layout_constraintVertical_bias="0.628"
+    />
     <SearchView
+            android:id="@+id/searchView"
             android:layout_width="375dp"
-            android:layout_height="52dp" tools:layout_editor_absoluteY="85dp" tools:layout_editor_absoluteX="16dp"/>
+            android:layout_height="52dp"
+            android:layout_marginTop="22dp" app:layout_constraintTop_toBottomOf="@+id/routineLabel"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+            android:layout_marginEnd="20dp" app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/button" app:layout_constraintHorizontal_bias="0.0"/>
     <Button
             android:text="Add"
             android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button8" tools:layout_editor_absoluteY="216dp"
-            tools:layout_editor_absoluteX="327dp"/>
+            android:layout_height="37dp" android:id="@+id/button9"
+            android:layout_marginStart="-80dp" app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+            android:layout_marginTop="1dp" app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3"
+            android:layout_marginBottom="15dp" app:layout_constraintBottom_toTopOf="@+id/button10"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName4" android:layout_marginEnd="12dp"/>
     <Button
             android:text="Add"
             android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button9" tools:layout_editor_absoluteY="273dp"
-            tools:layout_editor_absoluteX="327dp"/>
+            android:layout_height="37dp" android:id="@+id/button8"
+            app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName3" android:layout_marginStart="-80dp"
+            android:layout_marginTop="27dp" app:layout_constraintTop_toBottomOf="@+id/button6"
+            android:layout_marginBottom="-10dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName3"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName3" android:layout_marginEnd="13dp"/>
     <Button
             android:text="Add"
             android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button11" tools:layout_editor_absoluteY="375dp"
-            tools:layout_editor_absoluteX="327dp"/>
+            android:layout_height="37dp" android:id="@+id/button11"
+            android:layout_marginStart="-80dp" app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName5"
+            android:layout_marginBottom="-20dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName6"
+            app:layout_constraintTop_toBottomOf="@+id/button10"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5" android:layout_marginEnd="9dp"/>
     <Button
             android:text="Add"
             android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button12" tools:layout_editor_absoluteY="435dp"
-            tools:layout_editor_absoluteX="327dp"/>
+            android:layout_height="37dp" android:id="@+id/button13"
+            android:layout_marginStart="-80dp" app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName6"
+            android:layout_marginBottom="-40dp" app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName7"
+            android:layout_marginTop="10dp" app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName7"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName7" android:layout_marginEnd="15dp"/>
     <Button
             android:text="Add"
             android:layout_width="64dp"
-            android:layout_height="37dp" android:id="@+id/button10" tools:layout_editor_absoluteY="325dp"
-            tools:layout_editor_absoluteX="327dp"/>
+            android:layout_height="37dp" android:id="@+id/button10"
+            android:layout_marginStart="-80dp" app:layout_constraintStart_toEndOf="@+id/editTextTextPersonName4"
+            android:layout_marginTop="6dp" app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName4"
+            android:layout_marginBottom="1dp" app:layout_constraintBottom_toTopOf="@+id/button11"
+            app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName5" android:layout_marginEnd="4dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>

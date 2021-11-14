@@ -12,6 +12,7 @@ public class Profile implements Serializable {
     private final FollowManager followManager;
     private final WeeklySchedule weeklySchedule;
     private final Feed feed;
+    private ArrayList<Routine> routines;
 
     /**
      * Creates the main profile for one user
@@ -24,6 +25,15 @@ public class Profile implements Serializable {
         this.followManager = new FollowManager(this.user);
         this.weeklySchedule = new WeeklySchedule();
         this.feed = new Feed();
+        this.routines = new ArrayList<Routine>();
+
+        // Temporary Hardcode
+        this.routines.add(new Routine("My routine", "A new routine"));
+
+    }
+
+    public ArrayList<Routine> getRoutines() {
+        return this.routines;
     }
 
     /**

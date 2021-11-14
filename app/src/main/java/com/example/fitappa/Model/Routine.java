@@ -21,6 +21,19 @@ public class Routine implements Serializable {
     }
 
     /**
+     * A constructor that creates a Routine given a name and list of workouts
+     *
+     * @param name     the name of the Routine
+     * @param workouts the list of workouts
+     */
+    public Routine(String name, String description) {
+        this.name = name;
+        this.description = description;
+        // Hard code
+        this.workouts.add(new Workout("Pull", "Pull!!!"));
+    }
+
+    /**
      * Gets the name
      *
      * @return name of the Routine
