@@ -4,6 +4,7 @@ package com.example.fitappa.Model;
 import fitappfiles.FollowManager;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 public class Profile implements Serializable {
 
@@ -11,7 +12,6 @@ public class Profile implements Serializable {
     private final FollowManager followManager;
     private final WeeklySchedule weeklySchedule;
     private final Feed feed;
-
 
     /**
      * Creates the main profile for one user

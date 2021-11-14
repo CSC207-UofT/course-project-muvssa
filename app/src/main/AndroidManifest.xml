@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitAppA">
-        <activity android:name=".View.CreateWorkoutActivity"></activity>
+        <activity android:name=".View.TrackWorkoutActivity"></activity>
+        <activity android:name=".View.CreateWorkoutActivity" />
         <activity android:name=".View.AddExerciseActivity" />
         <activity android:name=".View.WorkoutsActivity" />
         <activity
