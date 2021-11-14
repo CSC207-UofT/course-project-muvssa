@@ -1,6 +1,6 @@
 package com.example.fitappa.Presenter;
-import android.view.View;
-import com.example.fitappa.Model.*;
+import com.example.fitappa.Model.UseCase.Profile;
+import com.example.fitappa.Model.UseCase.Routine;
 
 import java.util.ArrayList;
 

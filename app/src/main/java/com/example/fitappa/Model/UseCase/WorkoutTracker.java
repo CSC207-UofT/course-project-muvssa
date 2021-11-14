@@ -1,6 +1,6 @@
-package com.example.fitappa.Model;
+package com.example.fitappa.Model.UseCase;
 
-import com.example.fitappa.Model.Workout;
+import com.example.fitappa.Model.Entity.Workout;
 
 import java.io.Serializable;
 import java.util.ArrayList;

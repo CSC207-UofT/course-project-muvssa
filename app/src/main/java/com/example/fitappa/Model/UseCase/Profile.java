@@ -1,6 +1,7 @@
-package com.example.fitappa.Model;
+package com.example.fitappa.Model.UseCase;
 
 
+import com.example.fitappa.Model.Entity.User;
 import fitappfiles.FollowManager;
 
 import java.io.Serializable;
@@ -10,8 +11,6 @@ public class Profile implements Serializable {
 
     private final User user;
     private final FollowManager followManager;
-    private final WeeklySchedule weeklySchedule;
-    private final Feed feed;
     private ArrayList<Routine> routines;
 
     /**
@@ -23,8 +22,6 @@ public class Profile implements Serializable {
     public Profile(String name, String password, String email){
         this.user = new User(name, password, email);
         this.followManager = new FollowManager(this.user);
-        this.weeklySchedule = new WeeklySchedule();
-        this.feed = new Feed();
         this.routines = new ArrayList<Routine>();
 
         // Temporary Hardcode
@@ -51,22 +48,6 @@ public class Profile implements Serializable {
      */
     public FollowManager getProfileFollow(){
         return followManager;
-    }
-
-    /**
-     * returns the User's weekly Schedule
-     * @return the WeeklySchedule class
-     */
-    public WeeklySchedule getWeeklySchedule() {
-        return weeklySchedule;
-    }
-
-    /**
-     * Posts made by the User
-     * @return the ProfilePosts class
-     */
-    public Feed getProfilePosts(){
-        return feed;
     }
 
 }

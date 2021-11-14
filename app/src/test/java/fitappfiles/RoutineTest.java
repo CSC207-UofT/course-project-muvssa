@@ -1,7 +1,7 @@
 package fitappfiles;
 
-import com.example.fitappa.Model.Routine;
-import com.example.fitappa.Model.Workout;
+import com.example.fitappa.Model.UseCase.Routine;
+import com.example.fitappa.Model.Entity.Workout;
 import junit.framework.TestCase;
 
 public class RoutineTest extends TestCase {

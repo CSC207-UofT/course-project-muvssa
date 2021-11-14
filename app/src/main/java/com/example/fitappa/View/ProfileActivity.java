@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.ModelProfile;
 import com.example.fitappa.R;
-import com.example.fitappa.Model.Profile;
+import com.example.fitappa.Model.UseCase.Profile;
 import fitappfiles.Profiles;
 
 import java.io.Serializable;
@@ -15,7 +15,6 @@ import java.util.Observable;
 import java.util.Observer;
 
 public class ProfileActivity extends AppCompatActivity implements Observer {
-    private TextView user;
     private Profile myProfile;
     private Profile profile;
     private TextView followerNumber;
@@ -57,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer {
         }
         goToWorkouts = findViewById(R.id.gotToWorkouts);
 
-        user = findViewById(R.id.userNameProfile);
+        TextView user = findViewById(R.id.userNameProfile);
         user.setText(profile.getUser().getUsername());
 
         followerNumber = findViewById(R.id.followerNumber);

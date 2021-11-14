@@ -1,6 +1,6 @@
 package fitappfiles;
 
-import com.example.fitappa.Model.RepExercise;
+import com.example.fitappa.Model.Entity.RepExercise;
 import junit.framework.TestCase;
 
 public class RepExerciseTest extends TestCase {

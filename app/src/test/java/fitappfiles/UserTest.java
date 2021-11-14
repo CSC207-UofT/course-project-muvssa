@@ -1,6 +1,6 @@
 package fitappfiles;
 
-import com.example.fitappa.Model.User;
+import com.example.fitappa.Model.Entity.User;
 import junit.framework.TestCase;
 
 public class UserTest extends TestCase {

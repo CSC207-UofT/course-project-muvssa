@@ -1,4 +1,4 @@
-package com.example.fitappa.Model;
+package com.example.fitappa.Model.Entity;
 
 import android.os.Build;
 

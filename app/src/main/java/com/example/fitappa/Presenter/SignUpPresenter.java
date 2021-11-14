@@ -1,6 +1,6 @@
 package com.example.fitappa.Presenter;
 
-import com.example.fitappa.Model.Profile;
+import com.example.fitappa.Model.UseCase.Profile;
 import fitappfiles.Profiles;
 
 public class SignUpPresenter {

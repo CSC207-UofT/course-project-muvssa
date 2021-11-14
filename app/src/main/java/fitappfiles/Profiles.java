@@ -3,7 +3,7 @@ package fitappfiles;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.example.fitappa.Model.Profile;
+import com.example.fitappa.Model.UseCase.Profile;
 
 // TODO: Make this a use case. Remove the unnecessary methods.
 public class Profiles {

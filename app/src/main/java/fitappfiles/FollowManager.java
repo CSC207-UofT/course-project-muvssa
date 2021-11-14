@@ -1,6 +1,6 @@
 package fitappfiles;
 
-import com.example.fitappa.Model.User;
+import com.example.fitappa.Model.Entity.User;
 
 import java.io.Serializable;
 import java.util.HashMap;

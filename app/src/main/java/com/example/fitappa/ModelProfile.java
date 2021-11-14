@@ -1,6 +1,6 @@
 package com.example.fitappa;
 
-import com.example.fitappa.Model.Profile;
+import com.example.fitappa.Model.UseCase.Profile;
 
 import java.util.*;
 

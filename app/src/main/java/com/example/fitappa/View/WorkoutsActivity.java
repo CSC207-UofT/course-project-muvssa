@@ -8,10 +8,10 @@ import android.widget.TableRow;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import com.example.fitappa.Model.Routine;
+import com.example.fitappa.Model.UseCase.Routine;
 import com.example.fitappa.Presenter.WorkoutsActivityPresenter;
 import com.example.fitappa.R;
-import com.example.fitappa.Model.Profile;
+import com.example.fitappa.Model.UseCase.Profile;
 
 import java.util.ArrayList;
 
