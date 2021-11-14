@@ -1,5 +1,6 @@
 package fitappfiles;
 
+import com.example.fitappa.Model.WeightedRepExercise;
 import junit.framework.TestCase;
 
 public class WeightedRepExerciseTest extends TestCase {

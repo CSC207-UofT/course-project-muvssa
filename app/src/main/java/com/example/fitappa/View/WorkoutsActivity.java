@@ -1,9 +1,10 @@
-package com.example.fitappa;
+package com.example.fitappa.View;
 
 import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import fitappfiles.Profile;
+import com.example.fitappa.R;
+import com.example.fitappa.Model.Profile;
 
 public class WorkoutsActivity extends AppCompatActivity {
     private Intent retrieveIntent;

@@ -9,10 +9,10 @@
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
             android:theme="@style/Theme.FitAppA">
-        <activity android:name=".WorkoutsActivity">
+        <activity android:name=".View.WorkoutsActivity">
         </activity>
         <activity
-                android:name=".Interactor"
+                android:name=".View.MainActivity"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-                android:name=".InteractorCreateAccount"
+                android:name=".View.SignUpActivity"
                 android:exported="true">
         </activity>
         <activity
-                android:name=".InteractorProfile"
+                android:name=".View.ProfileActivity"
                 android:exported="true">
         </activity>
     </application>

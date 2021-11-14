@@ -1,6 +1,4 @@
-package fitappfiles;
-
-import fitappfiles.Exercise;
+package com.example.fitappa.Model;
 
 import java.io.Serializable;
 

@@ -1,5 +1,6 @@
 package fitappfiles;
 
+import com.example.fitappa.Model.TimedExercise;
 import junit.framework.TestCase;
 
 public class TimedExerciseTest extends TestCase {

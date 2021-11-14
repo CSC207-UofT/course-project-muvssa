@@ -1,4 +1,4 @@
-package fitappfiles;
+package com.example.fitappa.Model;
 
 import java.io.Serializable;
 import java.time.DayOfWeek;

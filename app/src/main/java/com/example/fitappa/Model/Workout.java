@@ -1,4 +1,6 @@
-package fitappfiles;
+package com.example.fitappa.Model;
+
+import android.os.Build;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -154,7 +156,13 @@ public class Workout implements Serializable {
      * @return The workout's duration
      */
     public Duration getDuration() {
-        return Duration.between(this.startTime, this.endTime);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            return Duration.between(this.startTime, this.endTime);
+        }
+        else
+        {
+            return null; // TODO: Increase Min API Level from 16 to 24
+        }
     }
 
 

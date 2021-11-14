@@ -1,6 +1,6 @@
 package com.example.fitappa;
 
-import fitappfiles.Profile;
+import com.example.fitappa.Model.Profile;
 
 import java.util.*;
 

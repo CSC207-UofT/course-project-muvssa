@@ -1,5 +1,7 @@
-package fitappfiles;
+package com.example.fitappa.Model;
 
+
+import fitappfiles.FollowManager;
 
 import java.io.Serializable;
 

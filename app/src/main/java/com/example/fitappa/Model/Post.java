@@ -1,11 +1,13 @@
-package fitappfiles;
+package com.example.fitappa.Model;
+
+import com.example.fitappa.Model.User;
+import com.example.fitappa.Model.Workout;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Post implements Serializable {
     private final Workout workout;
-    private ArrayList<Comment> comments;
     private ArrayList<User> likes;
     private final String content;
 
@@ -18,15 +20,6 @@ public class Post implements Serializable {
     {
         this.workout = workout;
         this.content = content;
-    }
-
-    /**
-     *  Adds a comment into the post
-     * @param comment - the actual comment
-     */
-    public void addComment(Comment comment)
-    {
-        this.comments.add(comment);
     }
 
     /**

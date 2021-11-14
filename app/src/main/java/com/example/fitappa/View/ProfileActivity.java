@@ -1,18 +1,20 @@
-package com.example.fitappa;
+package com.example.fitappa.View;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import fitappfiles.Profile;
+import com.example.fitappa.ModelProfile;
+import com.example.fitappa.R;
+import com.example.fitappa.Model.Profile;
 import fitappfiles.Profiles;
 
 import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class InteractorProfile extends AppCompatActivity implements Observer {
+public class ProfileActivity extends AppCompatActivity implements Observer {
     private TextView user;
     private Profile myProfile;
     private Profile profile;
@@ -95,14 +97,14 @@ public class InteractorProfile extends AppCompatActivity implements Observer {
 
     }
     private void searched(String username) {
-        Intent intent = new Intent(this, InteractorProfile.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("my_Profile", (Serializable) this.myProfile);
         this.profile = this.profiles.search(username);
         intent.putExtra("persons_Profile", (Serializable) this.profile);
         startActivity(intent);
     }
     private void home() {
-        Intent intent = new Intent(this, InteractorProfile.class);
+        Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("my_Profile", (Serializable) this.myProfile);
         intent.putExtra("persons_Profile", (Serializable) this.myProfile);
         startActivity(intent);
