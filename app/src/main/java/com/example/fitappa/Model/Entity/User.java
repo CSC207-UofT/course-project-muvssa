@@ -52,18 +52,5 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    /**
-     * Confirm by returning true or false if someone is logged into their account
-     *
-     * @param name the string username tied to the account
-     * @param password the string password tied to the username
-     * @return a boolean true if the name and password match the user, false if not
-     */
-    public boolean login(String name, String password) {
-        if(name.equals(this.username)){
-            return(this.password.equals(password));
-        }
-        return false;
-    }
 
 }

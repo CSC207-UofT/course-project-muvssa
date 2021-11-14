@@ -31,10 +31,4 @@ public class UserTest extends TestCase {
         user_1.setPassword("abc");
         assertEquals("abc", user_1.getPassword());
     }
-
-    public void testLogin() {
-        assertTrue(user_1.login("damnsana", "abcd"));
-        assertFalse(user_1.login("damnsana", "djhfskj"));
-        assertFalse(user_1.login("shsh", "abcd"));
-    }
 }

@@ -44,7 +44,7 @@ public class Profiles {
     public Profile loginToProfile(String name, String password){
         if(profiles.containsKey(name)){
             Profile person = profiles.get(name);
-            if (person.getUser().login(name,password)){
+            if (person.getUser().getUsername().equals(name) && person.getUser().getPassword().equals(password)){
                 return person;
             }
         }
@@ -71,7 +71,7 @@ public class Profiles {
     public void deleteProfile(String name, String password){
         if(profiles.containsKey(name)){
             Profile person = profiles.get(name);
-            if (person.getUser().login(name,password)){
+            if (person.getUser().getUsername().equals(name) && person.getUser().getPassword().equals(password)){
                 this.profiles.remove(name);
             }
         }
