@@ -6,4 +6,39 @@
     android:layout_height="match_parent"
     tools:context=".View.TrackWorkoutActivity">
 
+    <TextView
+            android:id="@+id/routineLabel4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Track Workout"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:layout_marginBottom="15dp"
+            app:layout_constraintBottom_toTopOf="@+id/routineLabel5" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="33dp" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+    <TextView
+            android:id="@+id/routineLabel7"
+            android:layout_width="228dp"
+            android:layout_height="23dp"
+            android:gravity="center"
+            android:text="Bench Press (Barbell)"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" tools:layout_editor_absoluteY="162dp"
+            tools:layout_editor_absoluteX="-21dp"/>
+    <TextView
+            android:id="@+id/routineLabel5"
+            android:layout_width="440dp"
+            android:layout_height="48dp"
+            android:gravity="center"
+            android:text="Duration     Volume      Sets"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2" tools:layout_editor_absoluteY="78dp"
+            tools:layout_editor_absoluteX="-120dp"/>
+    <EditText
+            android:layout_width="427dp"
+            android:layout_height="39dp"
+            android:inputType="textPersonName"
+            android:text="     1s            0lb           0"
+            android:ems="10"
+            android:id="@+id/editTextTextPersonName8" tools:layout_editor_absoluteY="107dp"
+            tools:layout_editor_absoluteX="-3dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
