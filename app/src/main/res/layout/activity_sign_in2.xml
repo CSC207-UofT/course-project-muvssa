@@ -17,6 +17,10 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
             <EditText
                 android:id="@+id/UsernameField"
                 android:layout_width="match_parent"
