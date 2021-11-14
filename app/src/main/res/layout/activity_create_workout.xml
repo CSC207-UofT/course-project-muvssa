@@ -6,4 +6,42 @@
     android:layout_height="match_parent"
     tools:context=".View.CreateWorkoutActivity">
 
+    <TextView
+            android:id="@+id/routineLabel2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Create Workout"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" tools:layout_editor_absoluteY="36dp"
+            tools:layout_editor_absoluteX="-25dp"/>
+    <TextView
+            android:id="@+id/routineLabel3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Get started by adding an exercise to your routine"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" tools:layout_editor_absoluteY="211dp"
+            tools:layout_editor_absoluteX="0dp"/>
+    <EditText
+            android:layout_width="408dp"
+            android:layout_height="41dp"
+            android:inputType="textPersonName"
+            android:text="Workout title"
+            android:ems="10"
+            android:id="@+id/editTextTextPersonName2" tools:layout_editor_absoluteY="134dp"
+            tools:layout_editor_absoluteX="0dp"/>
+    <Button
+            android:text="Select routine"
+            android:layout_width="168dp"
+            android:layout_height="35dp" android:id="@+id/button7" tools:layout_editor_absoluteY="86dp"
+            tools:layout_editor_absoluteX="0dp"/>
+    <Button
+            android:text="Add exercise"
+            android:layout_width="157dp"
+            android:layout_height="49dp" android:id="@+id/button16" tools:layout_editor_absoluteY="256dp"
+            tools:layout_editor_absoluteX="127dp"/>
+    <ImageView
+            android:layout_width="63dp"
+            android:layout_height="42dp" app:srcCompat="@drawable/dumbbell" android:id="@+id/imageView2"
+            tools:layout_editor_absoluteY="169dp" tools:layout_editor_absoluteX="174dp"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
