@@ -29,7 +29,7 @@ public class WeeklySchedule implements Serializable {
     public WeeklySchedule(Routine routine, DayOfWeek startDay) {
         this();
 
-        ArrayList<Workout> workouts = routine.getWorkouts();
+        ArrayList<Workout> workouts = (ArrayList<Workout>) routine.getWorkouts();
         for (int i = 0; i < workouts.size(); i++) {
             weeklySchedule.put(startDay.plus(i), workouts.get(i));
         }

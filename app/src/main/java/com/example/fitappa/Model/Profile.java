@@ -28,7 +28,7 @@ public class Profile implements Serializable {
         this.routines = new ArrayList<Routine>();
 
         // Temporary Hardcode
-        this.routines.add(new Routine("My routine", "A new routine"));
+//        this.routines.add(new Routine("My routine", "A new routine"));
 
     }
 

@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
-import io.realm.Realm;
 
 public class MainActivity extends AppCompatActivity {
     private Button SignIn;
@@ -17,8 +16,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        // Initialize Database, I think we just need to do it once here.
-        Realm.init(this);
 
         SignUp = findViewById(R.id.SignUp);
         SignIn = findViewById(R.id.SignIn);

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "936793614598",
+    "project_id": "fitapp-a7b60",
+    "storage_bucket": "fitapp-a7b60.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:936793614598:android:b49eba0fd4c7e396529687",
+        "android_client_info": {
+          "package_name": "com.example.fitappa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "936793614598-tr0qn4jse55v8qgm6dhqrdcp1bqvp7rk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgGxLLb-sZENTHvzVegQa4aqjEXggf3pE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "936793614598-tr0qn4jse55v8qgm6dhqrdcp1bqvp7rk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

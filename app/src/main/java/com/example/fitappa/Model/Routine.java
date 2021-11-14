@@ -2,17 +2,18 @@ package com.example.fitappa.Model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Routine implements Serializable {
     private String name;
     private String description;
-    private ArrayList<Workout> workouts;
+    private List<Workout> workouts;
 
     /**
      * A constructor that creates a Routine given a name and list of workouts
      *
-     * @param name     the name of the Routine
-     * @param workouts the list of workouts
+     * @param name        the name of the Routine
+     * @param description the description of the Routine
      */
     public Routine(String name, String description, ArrayList<Workout> workouts) {
         this.name = name;
@@ -73,7 +74,7 @@ public class Routine implements Serializable {
      *
      * @return list of workouts for the Routine
      */
-    public ArrayList<Workout> getWorkouts() {
+    public List<Workout> getWorkouts() {
         return workouts;
     }
 
