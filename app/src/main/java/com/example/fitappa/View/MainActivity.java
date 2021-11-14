@@ -9,41 +9,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
 
 public class MainActivity extends AppCompatActivity {
-    private Button SignIn;
-    private Button SignUp;
+    private Button SignInBtn;
+    private Button SignUpBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SignUp = findViewById(R.id.SignUp);
-        SignIn = findViewById(R.id.SignIn);
+        this.SignUpBtn = findViewById(R.id.SignUp);
+        this.SignInBtn = findViewById(R.id.SignIn);
 
         //Define and attach click listener
-        SignUp.setOnClickListener(new View.OnClickListener() {
+        this.SignUpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                createA();
+                openSignUpPage();
             }
         });
 
-        SignIn.setOnClickListener(new View.OnClickListener() {
+        this.SignInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                logIn();
+                openLogInPage();
             }
         });
     }
 
-    private void createA() {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
+    private void openSignUpPage() {
+        Intent signUpIntent = new Intent(this, SignUpActivity.class);
+        startActivity(signUpIntent);
     }
 
-    private void logIn() {
-        Intent intent = new Intent(this, ProfileActivity.class);
-
-        startActivity(intent);
+    private void openLogInPage() {
+        Intent loginIntent = new Intent(this, ProfileActivity.class);
+        startActivity(loginIntent);
     }
 }
