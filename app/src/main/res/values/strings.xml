@@ -2,7 +2,7 @@
     <string name="app_name">FitAppA</string>
     <string name="createAText">Create Account</string>
     <string name="logTitle">Log In</string>
-    <string name="back"/>
+    <string name="back" />
     <string name="user_name">username</string>
     <string name="user_Name">username</string>
     <string name="welcomeText">Welcome:</string>
