@@ -13,11 +13,7 @@ public class SignUpPresenter {
     }
 
     public void signUpToProfile(String name, String password, String email){
-        System.out.println(name);
-        System.out.println(password);
-        System.out.println(email);
         profiles.signUp(name, password, email);
-        System.out.println("her2");
         view.loggedIn(profiles.loginToProfile(name,password));
 
     }
