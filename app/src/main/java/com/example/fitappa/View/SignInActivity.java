@@ -2,6 +2,7 @@ package com.example.fitappa.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import com.example.fitappa.R;
 
 public class SignInActivity extends AppCompatActivity {
 
