@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.ModelProfile;
+import com.example.fitappa.Presenter.ProfilePresenter;
+import com.example.fitappa.Presenter.SignUpPresenter;
 import com.example.fitappa.R;
 import com.example.fitappa.Model.UseCase.Profile;
 import fitappfiles.Profiles;
@@ -14,7 +16,7 @@ import java.io.Serializable;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ProfileActivity extends AppCompatActivity implements Observer {
+public class ProfileActivity extends AppCompatActivity implements Observer, ProfilePresenter.View {
     private Profile myProfile;
     private Profile profile;
     private TextView followerNumber;
@@ -27,6 +29,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer {
     private ModelProfile modelProfile;
     private Intent retrieveIntent;
     private Profiles profiles;
+    private ProfilePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,42 +39,47 @@ public class ProfileActivity extends AppCompatActivity implements Observer {
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
 
-        this.modelProfile = new ModelProfile(this.myProfile);
-        this.modelProfile.addObserver(this);
-
-
         this.profiles = new Profiles();
         // for testing purposes, here we would have a database
         this.profiles.signUp("test","testpass", "testEmail");
         this.profiles.signUp(myProfile.getUser().getUsername(),"testpass", "testEmail");
+
+
+        this.presenter = new ProfilePresenter(this, myProfile, profile, profiles);
+
+
+        this.modelProfile = new ModelProfile(this.myProfile);
+        this.modelProfile.addObserver(this);
+
+
 
         this.followButton = findViewById(R.id.followButton);
         this.followButton.setVisibility(View.INVISIBLE);
 
         this.returnHome = findViewById(R.id.returnHome);
         this.returnHome.setVisibility(View.INVISIBLE);
-        if (!this.myProfile.getUser().getUsername().equals(this.profile.getUser().getUsername())){
+        if (!presenter.isMyProfile()){
             this.followButton.setVisibility(View.VISIBLE);
             this.returnHome.setVisibility(View.VISIBLE);
         }
         goToWorkouts = findViewById(R.id.gotToWorkouts);
 
         TextView user = findViewById(R.id.userNameProfile);
-        user.setText(profile.getUser().getUsername());
+        user.setText(presenter.getUsername());
 
         followerNumber = findViewById(R.id.followerNumber);
-        followerNumber.setText(profile.getProfileFollow().followerCount());
+        followerNumber.setText(presenter.getFollow());
 
         followingNumber = findViewById(R.id.followingNumber);
-        followingNumber.setText(profile.getProfileFollow().followingCount());
+        followingNumber.setText(presenter.getFollowing());
 
         submit =  findViewById(R.id.submitSearch);
         search =  findViewById(R.id.searchText);
-        String name = this.myProfile.getUser().getUsername();
+
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                searched(search.getText().toString());
+                presenter.searching(search.getText().toString());
             }
         });
 
@@ -95,14 +103,14 @@ public class ProfileActivity extends AppCompatActivity implements Observer {
         });
 
     }
-    private void searched(String username) {
+    public void searched(Profile searchedProfile) {
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("my_Profile", (Serializable) this.myProfile);
-        this.profile = this.profiles.search(username);
+        this.profile = searchedProfile;
         intent.putExtra("persons_Profile", (Serializable) this.profile);
         startActivity(intent);
     }
-    private void home() {
+    public void home() {
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("my_Profile", (Serializable) this.myProfile);
         intent.putExtra("persons_Profile", (Serializable) this.myProfile);
@@ -112,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer {
         modelProfile.setFollow(this.profile);
 
     }
-    private void setGoToWorkouts(){
+    public void setGoToWorkouts(){
         Intent intent = new Intent(this, WorkoutsActivity.class);
         intent.putExtra("my_Profile", (Serializable) this.myProfile);
         startActivity(intent);
