@@ -16,12 +16,12 @@ public class SignUpPresenter {
         Profile profile = signUpInputBoundary.signUp(email, username, password);
 
         if (profile != null) {
-            view.loggedIn(profile);
+            view.openHome(profile);
         }
     }
 
     public interface View {
-        void loggedIn(Profile profile);
+        void openHome(Profile profile);
     }
 
 }

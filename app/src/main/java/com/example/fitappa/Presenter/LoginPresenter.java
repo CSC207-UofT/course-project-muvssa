@@ -2,8 +2,6 @@ package com.example.fitappa.Presenter;
 
 import com.example.fitappa.Model.UseCase.LoginInputBoundary;
 import com.example.fitappa.Model.UseCase.Profile;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class LoginPresenter {
     private final LoginInputBoundary loginInputBoundary;
@@ -15,14 +13,12 @@ public class LoginPresenter {
     }
 
     public interface View {
-        void loggedIn(Profile profile);
+        void openHome(Profile profile);
     }
 
     public void runLogin(String email, String password) {
 
-
-
-
-        view.loggedIn(loginInputBoundary.login(email, password));
+        Profile profile = loginInputBoundary.login(email, password);
+        view.openHome(profile);
     }
 }

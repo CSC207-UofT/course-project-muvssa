@@ -26,6 +26,10 @@ public class Workout implements Serializable {
         this.exercises = new ArrayList<>();
     }
 
+    public Workout() {
+
+    }
+
     /**
      * Creates a workout given another workout, other.
      *

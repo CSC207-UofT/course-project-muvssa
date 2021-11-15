@@ -1,8 +1,8 @@
 package com.example.fitappa.Presenter;
 
-import android.view.View;
+import com.example.fitappa.Model.Gateway.ProfileReadWriter;
+import com.example.fitappa.Model.Gateway.ReadWriter;
 import com.example.fitappa.Model.UseCase.Profile;
-import fitappfiles.Profiles;
 
 public class ProfilePresenter {
     private Profile currentProfile;
@@ -33,6 +33,10 @@ public class ProfilePresenter {
         return currentProfile.getProfileFollow().followingCount();
     }
 
+    public void saveData() {
+        ReadWriter readWriter = new ProfileReadWriter();
+        readWriter.save(this.currentProfile);
+    }
 
 
 

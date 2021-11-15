@@ -1,22 +1,17 @@
 package com.example.fitappa.Model.Gateway;
 
-import android.util.Log;
-import androidx.annotation.NonNull;
-import com.example.fitappa.Model.Entity.User;
+import com.example.fitappa.Model.UseCase.LoginInputBoundary;
+import com.example.fitappa.Model.UseCase.LoginUseCase;
 import com.example.fitappa.Model.UseCase.Profile;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 
 public class ProfileReadWriter implements ReadWriter {
 
-    FirebaseFirestore db;
-    Profile newProfile;
+    private final FirebaseFirestore db;
 
     public ProfileReadWriter() {
         db = FirebaseFirestore.getInstance();
@@ -24,32 +19,28 @@ public class ProfileReadWriter implements ReadWriter {
 
     @Override
     public void save(Object o) {
-//        db.collection("users").add(o);
+        db.collection("users").add(o);
     }
 
     @Override
-    public Profile read(String email, String password) {
-//        db.collection("users")
-//                .get()
-//                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-//                        if (task.isSuccessful()) {
-//                            for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
-//                                HashMap<String, Object> profile = (HashMap<String, Object>) document.getData();
-//                                HashMap<String, String> user = (HashMap<String, String>) profile.get("user");
-//                                if (user.get("email").equals(email) && user.get("password").equals(password)) {
-//
-//                                }
-////                                Log.d("Testing1", user.get("email"));
-////                                Log.d("Testing1", user.get("password"));
-////                                Log.d("Testing1", user.get("username"));
-////                                Log.d("testing1", profile.toString());
-//                            }
-//                        }
-//                    }
-//                });
-//        return newProfile;
-        return null;
+    public void read(String email, String password, LoginInputBoundary useCase) {
+        db.collection("users")
+                .get()
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        List<DocumentSnapshot> documents = Objects.requireNonNull(task.getResult()).getDocuments();
+                        for (DocumentSnapshot document : documents) {
+                            Profile newProfile = document.toObject(Profile.class);
+                            assert newProfile != null;
+                            if (newProfile.getUser().getEmail().equals(email) && newProfile.getUser().getPassword().equals(password)) {
+                                useCase.updateProfile(newProfile);
+                                break; // exit early in case there is a duplicate profile in database
+                            } else {
+                                // make profile null if it doesn't match anything in database
+                                useCase.updateProfile(null);
+                            }
+                        }
+                    }
+                });
     }
 }

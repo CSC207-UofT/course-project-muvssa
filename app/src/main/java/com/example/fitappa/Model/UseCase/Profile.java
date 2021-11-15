@@ -8,12 +8,11 @@ import fitappfiles.FollowManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Profile implements Serializable {
 
-    private final User user;
-    private final FollowManager followManager;
+    private User user;
+    private FollowManager followManager;
     private ArrayList<Routine> routines;
 
     /**
@@ -34,10 +33,14 @@ public class Profile implements Serializable {
 
     }
 
-//    public Profile(String username, String password, String email, List<Routine> routines) {
-//        this.user = new User(username, password, email);
-//
-//    }
+    // empty constructor necessary for Firebase
+    public Profile() {}
+
+    public Profile(String username, String password, String email, ArrayList<Routine> routines) {
+        this.user = new User(username, password, email);
+        this.routines = routines;
+        this.followManager = new FollowManager(user);
+    }
 
     public ArrayList<Routine> getRoutines() {
         return this.routines;

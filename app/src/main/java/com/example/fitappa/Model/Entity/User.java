@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class User implements Serializable {
 
-    private final String username;
+    private String username;
     private String password;
-    private final String email;
+    private String email;
 
     /**
      * Constructor for a User class, takes in all necessary variables needed to make a User
@@ -18,6 +18,10 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.email = email;
+    }
+
+    public User() {
+
     }
 
     /**

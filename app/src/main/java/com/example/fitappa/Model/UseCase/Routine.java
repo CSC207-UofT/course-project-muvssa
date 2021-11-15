@@ -4,7 +4,6 @@ import com.example.fitappa.Model.Entity.Workout;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.List;
 
 public class Routine implements Serializable {
     private String name;
@@ -21,6 +20,10 @@ public class Routine implements Serializable {
         this.name = name;
         this.description = description;
         this.workouts = workouts;
+    }
+
+    public Routine() {
+
     }
 
     /**

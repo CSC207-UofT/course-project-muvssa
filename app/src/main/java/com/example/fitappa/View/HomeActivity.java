@@ -6,6 +6,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.fitappa.Model.UseCase.Profile;
+import com.example.fitappa.Presenter.ProfilePresenter;
 import com.example.fitappa.R;
 
 import java.io.Serializable;
@@ -27,7 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         this.openProfileBtn = findViewById(R.id.GoToProfilesBtn);
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
 
-
         if(profile == null) {
             goBackToLogin();
         }
@@ -46,6 +46,14 @@ public class HomeActivity extends AppCompatActivity {
                 openProfile();
             }
         });
+
+//        logoutBtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                presenter.saveData();
+//                profile = null;
+//            }
+//        });
 
     }
 
