@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.fitappa.ModelProfile;
+import com.example.fitappa.Presenter.ProfileController;
 import com.example.fitappa.Presenter.ProfilePresenter;
 import com.example.fitappa.R;
 import com.example.fitappa.Model.UseCase.Profile;
@@ -23,7 +23,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
     private TextView search;
     private TextView followButton;
     private TextView returnHome;
-    private ModelProfile modelProfile;
+    private ProfileController profileController;
     private Intent retrieveIntent;
     private ProfilePresenter presenter;
 
@@ -38,8 +38,8 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         this.presenter = new ProfilePresenter(this, myProfile, profile);
 
 
-        this.modelProfile = new ModelProfile(this.myProfile);
-        this.modelProfile.addObserver(this);
+        this.profileController = new ProfileController(this.myProfile);
+        this.profileController.addObserver(this);
 
         this.followButton = findViewById(R.id.followButton);
         this.followButton.setVisibility(View.INVISIBLE);
@@ -98,15 +98,15 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         startActivity(intent);
     }
     private void followPress(){
-        modelProfile.setFollow(this.profile);
+        profileController.setFollow(this.profile);
 
     }
 
 
     @Override
     public void update(Observable o, Object arg) {
-        this.myProfile = this.modelProfile.getFollow1();
-        this.profile = this.modelProfile.getFollow2();
+        this.myProfile = this.profileController.getFollow1();
+        this.profile = this.profileController.getFollow2();
         if (!myProfile.getUser().getUsername().equals(profile.getUser().getUsername())){
             followerNumber.setText(profile.getProfileFollow().followerCount());
         }

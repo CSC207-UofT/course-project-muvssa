@@ -1,16 +1,16 @@
-package com.example.fitappa;
+package com.example.fitappa.Presenter;
 
 import com.example.fitappa.Model.UseCase.Profile;
 
 import java.util.*;
 
-public class ModelProfile extends Observable {
+public class ProfileController extends Observable {
 
     // declaring a list of integer
     private Profile profile;
     private Profile otherProfile;
 
-    public ModelProfile(Profile profile){
+    public ProfileController(Profile profile){
         this.profile = profile;
 
     }
