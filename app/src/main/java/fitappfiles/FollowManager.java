@@ -44,7 +44,6 @@ public class FollowManager implements Serializable {
      */
     private void addFollower(FollowManager person){
         this.followers.put(user.getUsername(), person);
-
     }
 
     /**
@@ -64,6 +63,10 @@ public class FollowManager implements Serializable {
     }
     public String followingCount(){
         return String.valueOf(this.following.size());
+
+    }
+
+    public void save() {
 
     }
 

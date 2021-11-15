@@ -2,10 +2,13 @@ package com.example.fitappa.Model.UseCase;
 
 
 import com.example.fitappa.Model.Entity.User;
+import com.example.fitappa.Model.Gateway.ProfileReadWriter;
+import com.example.fitappa.Model.Gateway.ReadWriter;
 import fitappfiles.FollowManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Profile implements Serializable {
 
@@ -29,6 +32,11 @@ public class Profile implements Serializable {
 
     }
 
+//    public Profile(String username, String password, String email, List<Routine> routines) {
+//        this.user = new User(username, password, email);
+//
+//    }
+
     public ArrayList<Routine> getRoutines() {
         return this.routines;
     }
@@ -48,6 +56,14 @@ public class Profile implements Serializable {
      */
     public FollowManager getProfileFollow(){
         return followManager;
+    }
+
+    /**
+     * Save the current Profile object into the database
+     */
+    public void saveData() {
+        ReadWriter rw = new ProfileReadWriter();
+        rw.save(this);
     }
 
 }

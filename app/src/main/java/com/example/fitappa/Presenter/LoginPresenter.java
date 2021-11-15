@@ -15,12 +15,10 @@ public class LoginPresenter {
     }
 
     public interface View {
-//        void updateUserInfoTextView(String info);
-//        void showProgressBar();
-//        void hideProgressBar();
+        void loggedIn(Profile profile);
     }
 
     public void runLogin(String email, String password) {
-        loginInputBoundary.login(email, password);
+        view.loggedIn(loginInputBoundary.login(email, password));
     }
 }

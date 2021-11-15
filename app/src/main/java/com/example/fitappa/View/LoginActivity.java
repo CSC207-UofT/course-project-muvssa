@@ -1,5 +1,6 @@
 package com.example.fitappa.View;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
@@ -55,5 +56,12 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
     @Override
     public void onStart() {
         super.onStart();
+    }
+
+    public void loggedIn(Profile profile) {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        intent.putExtra("persons_Profile", profile);
+        intent.putExtra("my_Profile", profile);
+        startActivity(intent);
     }
 }
