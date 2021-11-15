@@ -5,11 +5,11 @@ import com.example.fitappa.Model.UseCase.Routine;
 import java.util.ArrayList;
 import java.util.List;
 
-public class WorkoutsActivityPresenter {
+public class ViewRoutinesPresenter {
     private Profile profile;
     private View view;
 
-    public WorkoutsActivityPresenter(View view, Profile profile) {
+    public ViewRoutinesPresenter(View view, Profile profile) {
         this.view = view;
         this.profile = profile;
     }

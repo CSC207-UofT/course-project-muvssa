@@ -1,29 +1,22 @@
 package com.example.fitappa.View;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.fitappa.Model.UseCase.Routine;
-import com.example.fitappa.Presenter.WorkoutsActivityPresenter;
+import com.example.fitappa.Presenter.ViewRoutinesPresenter;
 import com.example.fitappa.R;
 import com.example.fitappa.Model.UseCase.Profile;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActivityPresenter.View {
-    private Intent retrieveIntent;
+public class ViewRoutinesActivity extends AppCompatActivity implements ViewRoutinesPresenter.View {
     private Profile profile;
-    private WorkoutsActivityPresenter presenter;
+    private ViewRoutinesPresenter presenter;
     private LinearLayout routinesLayout;
     private Button createWorkoutBtn;
     private Button createRoutineBtn;
@@ -32,8 +25,7 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
     protected void onCreate(Bundle savedInstanceState) {
         // Default Android Stuff
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_workouts);
-        this.retrieveIntent = getIntent();
+        setContentView(R.layout.activity_routines);
 
         // Load the elements
         routinesLayout = (LinearLayout) findViewById(R.id.routinesLayout);
@@ -41,10 +33,10 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
         createRoutineBtn = (Button) findViewById(R.id.CreateRoutineBtn);
 
         // Get the profile
-        this.profile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
+        this.profile = (Profile) getIntent().getSerializableExtra("my_Profile");
 
         // We must initialize the Presenter in the View.
-        this.presenter = new WorkoutsActivityPresenter(this, profile);
+        this.presenter = new ViewRoutinesPresenter(this, profile);
 
         // Initialize RoutinesView
         this.initializeRoutinesView(this.profile.getRoutines());
@@ -79,7 +71,14 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
         button.setText(routine.getName());
         //button.setBackgroundColor(Color.parseColor("#22359D"));
         //button.setTextColor(Color.parseColor("#ffffff"));
-        //button.setPadding(5, 20, 5, 20);
+
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                openViewRoutine(routine);
+            }
+        });
+
         routinesLayout.addView(button);
 
     }
@@ -106,6 +105,12 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
     private void openAddWorkout() {
         Intent createWorkoutIntent = new Intent(this, AddWorkoutActivity.class);
         startActivity(createWorkoutIntent);
+    }
+
+    public void openViewRoutine(Routine r) {
+        Intent routine = new Intent(this, ViewRoutineActivity.class );
+        routine.putExtra("routineObj", (Serializable) r);
+        startActivity(routine);
     }
 
 }

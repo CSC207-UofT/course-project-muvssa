@@ -8,8 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.example.fitappa.R;
 
-import java.io.Serializable;
-
 public class AddRoutineActivity extends AppCompatActivity {
     Button submitBtn;
     EditText routineName;
@@ -35,7 +33,7 @@ public class AddRoutineActivity extends AppCompatActivity {
 
     public void goBackToWorkouts(String routineName)
     {
-        Intent workout = new Intent(this, WorkoutsActivity.class);
+        Intent workout = new Intent(this, ViewRoutinesActivity.class);
         workout.putExtra("routineName", routineName);
         setResult(RESULT_OK, workout);
         finish();

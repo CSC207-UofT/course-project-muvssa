@@ -7,7 +7,6 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.ModelProfile;
 import com.example.fitappa.Presenter.ProfilePresenter;
-import com.example.fitappa.Presenter.SignUpPresenter;
 import com.example.fitappa.R;
 import com.example.fitappa.Model.UseCase.Profile;
 import fitappfiles.Profiles;
@@ -121,7 +120,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
 
     }
     public void setGoToWorkouts(){
-        Intent intent = new Intent(this, WorkoutsActivity.class);
+        Intent intent = new Intent(this, ViewRoutinesActivity.class);
         intent.putExtra("my_Profile", (Serializable) this.myProfile);
         startActivity(intent);
     }
