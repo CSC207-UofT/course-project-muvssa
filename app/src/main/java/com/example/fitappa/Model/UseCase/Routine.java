@@ -35,6 +35,11 @@ public class Routine implements Serializable {
         //this.workouts.add(new Workout("Pull", "Pull!!!"));
     }
 
+    public Routine(String name) {
+        this.name = name;
+        this.description = "";
+    }
+
     /**
      * Gets the name
      *

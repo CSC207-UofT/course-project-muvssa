@@ -1,7 +1,12 @@
 package com.example.fitappa.View;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.util.Log;
+import android.view.ContextThemeWrapper;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,7 +24,7 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
     private Intent retrieveIntent;
     private Profile profile;
     private WorkoutsActivityPresenter presenter;
-    private TableLayout routinesView;
+    private LinearLayout routinesLayout;
     private Button createWorkoutBtn;
     private Button createRoutineBtn;
 
@@ -31,7 +36,7 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
         this.retrieveIntent = getIntent();
 
         // Load the elements
-        routinesView = (TableLayout) findViewById(R.id.routinesView);
+        routinesLayout = (LinearLayout) findViewById(R.id.routinesLayout);
         createWorkoutBtn = (Button) findViewById(R.id.CreateWorkoutBtn);
         createRoutineBtn = (Button) findViewById(R.id.CreateRoutineBtn);
 
@@ -41,16 +46,24 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
         // We must initialize the Presenter in the View.
         this.presenter = new WorkoutsActivityPresenter(this, profile);
 
-        // Test
-        this.updateRoutinesView(profile.getRoutines());
+        // Initialize RoutinesView
+        this.initializeRoutinesView(this.profile.getRoutines());
 
         // Listeners
         createRoutineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                openAddRoutine();
             }
         });
+
+        createWorkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openAddWorkout();
+            }
+        });
+
 
 
 
@@ -58,37 +71,40 @@ public class WorkoutsActivity extends AppCompatActivity implements WorkoutsActiv
 
 
     @Override
-    public void updateRoutinesView(ArrayList<Routine> routines) {
-        for(Routine routine : routines) {
-
-            LinearLayout myLayout = findViewById(R.id.routinesLayout);
-
-            Button button = new Button(this);
-            button.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT));
-
-            button.setText(routine.getName());
+    public void updateRoutinesView(Routine routine) {
 
 
-            TableRow row = new TableRow(this);
-            row.setLayoutParams(new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.MATCH_PARENT,
-                    LinearLayout.LayoutParams.MATCH_PARENT));
+        Button button = new Button(this);
+        //button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+        button.setText(routine.getName());
+        //button.setBackgroundColor(Color.parseColor("#22359D"));
+        //button.setTextColor(Color.parseColor("#ffffff"));
+        //button.setPadding(5, 20, 5, 20);
+        routinesLayout.addView(button);
 
-            row.addView(button);
+    }
 
-            routinesView.addView(row);
+    public void initializeRoutinesView(ArrayList<Routine> routines) {
+        for(Routine r : routines) {
+            updateRoutinesView(r);
         }
     }
 
-    private void openCreateRoutines() {
-        Intent createRoutinesIntent = new Intent(this, SignUpActivity.class);
-        startActivity(createRoutinesIntent);
+    private void openAddRoutine() {
+        Intent createRoutinesIntent = new Intent(this, AddRoutineActivity.class);
+        startActivityForResult(createRoutinesIntent, 1);
     }
 
-    private void openCreateWorkout() {
-        Intent createWorkoutIntent = new Intent(this, CreateWorkoutActivity.class);
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK)
+        {
+            presenter.addRoutine(data.getStringExtra("routineName").toString());
+        }
+    }
+
+    private void openAddWorkout() {
+        Intent createWorkoutIntent = new Intent(this, AddWorkoutActivity.class);
         startActivity(createWorkoutIntent);
     }
 
