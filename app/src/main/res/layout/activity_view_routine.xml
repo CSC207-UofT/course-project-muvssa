@@ -2,24 +2,14 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/WorkoutsActivityHeader"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.WorkoutsActivity">
+    tools:context=".View.ViewRoutineActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/purple_700"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:title="Workouts" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -39,22 +29,7 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical">
-
-                <Button
-                    android:id="@+id/CreateRoutineBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Create Routine" />
-
-                <Button
-                    android:id="@+id/CreateWorkoutBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create Workout"
-                    app:backgroundTint="#22359D" />
-
-            </LinearLayout>
+                android:orientation="vertical"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -64,7 +39,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/routinesLayout"
+            android:id="@+id/RoutineLayout"
             android:layout_width="409dp"
             android:layout_height="532dp"
             android:layout_marginStart="1dp"
@@ -77,15 +52,14 @@
             android:padding="15dp">
 
             <TextView
-                android:id="@+id/RoutineLabel"
+                android:id="@+id/RoutineLabel2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Routines"
+                android:text="Routine"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
