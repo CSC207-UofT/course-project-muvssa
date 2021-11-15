@@ -1,10 +1,7 @@
 package com.example.fitappa.Presenter;
 
-import com.example.fitappa.Model.UseCase.LoginInputBoundary;
-import com.example.fitappa.Model.UseCase.LoginUseCase;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.SignUpInputBoundary;
-import fitappfiles.Profiles;
 
 public class SignUpPresenter {
     private View view;
@@ -16,18 +13,10 @@ public class SignUpPresenter {
     }
 
     public void runSignUp(String email, String username, String password){
-//        view.loggedIn(profiles.loginToProfile(name,password));
-
-//        signUpInputBoundary.signUp();
-//        view.loggedIn(signUpInputBoundary);
         Profile profile = signUpInputBoundary.signUp(email, username, password);
 
-        System.out.println("Testtt");
         if (profile != null) {
             view.loggedIn(profile);
-            System.out.println("Success");
-        } else {
-            System.out.println("Fail");
         }
     }
 

@@ -2,6 +2,7 @@ package com.example.fitappa.View;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,7 +38,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
 
         String username = Objects.requireNonNull(user.getText()).toString();
         String password = Objects.requireNonNull(pass.getText()).toString();
-        String email = Objects.requireNonNull(mail.getText()).toString();
+        String email = mail.getText().toString();
+
+        Log.d("Tag", "email is '" + email + "'");
 
         ReadWriter readWriter = new ProfileReadWriter();
         SignUpInputBoundary signUpInputBoundary = new SignUpUseCase(readWriter);
@@ -46,7 +49,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println("Test");
+                Log.d("Tag", "TESTING EMAIL: '" + email + "'");
                 presenter.runSignUp(email, username, password);
             }
         });
