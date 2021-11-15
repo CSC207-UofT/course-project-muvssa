@@ -39,7 +39,6 @@ public class ProfilePresenter {
     public interface View{
         void searched(Profile searchedProfile);
         void home();
-        void setGoToWorkouts();
 
     }
 

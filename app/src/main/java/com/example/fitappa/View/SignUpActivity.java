@@ -13,7 +13,6 @@ import com.example.fitappa.Model.UseCase.SignUpInputBoundary;
 import com.example.fitappa.Model.UseCase.SignUpUseCase;
 import com.example.fitappa.Presenter.SignUpPresenter;
 import com.example.fitappa.R;
-import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.Objects;
 import java.util.regex.Pattern;
@@ -29,7 +28,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.create_account);
+        setContentView(R.layout.activity_signup);
 
         user = findViewById(R.id.userName1);
         pass = findViewById(R.id.password);

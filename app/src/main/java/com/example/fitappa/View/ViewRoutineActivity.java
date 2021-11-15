@@ -11,8 +11,10 @@ import com.example.fitappa.Model.Entity.Workout;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.Routine;
 import com.example.fitappa.Presenter.ViewRoutinePresenter;
+import com.example.fitappa.Presenter.ViewWorkoutPresenter;
 import com.example.fitappa.R;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutinePresenter.View {
@@ -55,7 +57,12 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
     public void updateRoutineView(Workout workout) {
         Button button = new Button(this);
         button.setText(workout.getName());
-        Log.d("WORKOUT NAME", workout.getName());
+        button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                openViewWorkout(workout);
+            }
+        });
         routineLayout.addView(button);
 
     }
@@ -77,6 +84,12 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         {
             presenter.addWorkout(data.getStringExtra("workoutName").toString());
         }
+    }
+
+    private void openViewWorkout(Workout w) {
+        Intent workout = new Intent(this, ViewWorkoutActivity.class );
+        workout.putExtra("workoutObj", (Serializable) w);
+        startActivity(workout);
     }
 
 

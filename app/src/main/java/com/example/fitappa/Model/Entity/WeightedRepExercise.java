@@ -20,7 +20,13 @@ public class WeightedRepExercise extends RepExercise implements Serializable {
                 super(other);
                 this.weight = other.weight;
         }
-        public String getWeight() {
+
+    public WeightedRepExercise(String name) {
+        super(name);
+        weight = 0;
+    }
+
+    public String getWeight() {
                 return String.valueOf(weight);
         }
 }

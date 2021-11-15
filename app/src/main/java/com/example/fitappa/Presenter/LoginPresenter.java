@@ -19,6 +19,10 @@ public class LoginPresenter {
     }
 
     public void runLogin(String email, String password) {
+
+
+
+
         view.loggedIn(loginInputBoundary.login(email, password));
     }
 }

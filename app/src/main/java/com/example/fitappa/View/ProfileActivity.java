@@ -9,7 +9,6 @@ import com.example.fitappa.ModelProfile;
 import com.example.fitappa.Presenter.ProfilePresenter;
 import com.example.fitappa.R;
 import com.example.fitappa.Model.UseCase.Profile;
-import fitappfiles.Profiles;
 
 import java.io.Serializable;
 import java.util.Observable;
@@ -24,7 +23,6 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
     private TextView search;
     private TextView followButton;
     private TextView returnHome;
-    private TextView goToWorkouts;
     private ModelProfile modelProfile;
     private Intent retrieveIntent;
     private ProfilePresenter presenter;
@@ -32,7 +30,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.main_profile);
+        setContentView(R.layout.activity_profiles);
         this.retrieveIntent = getIntent();
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
@@ -52,7 +50,6 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
             this.followButton.setVisibility(View.VISIBLE);
             this.returnHome.setVisibility(View.VISIBLE);
         }
-        goToWorkouts = findViewById(R.id.gotToWorkouts);
 
         TextView user = findViewById(R.id.userNameProfile);
         user.setText(presenter.getUsername());
@@ -85,12 +82,6 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
                 followPress();
             }
         });
-        goToWorkouts.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                setGoToWorkouts();
-            }
-        });
 
     }
     public void searched(Profile searchedProfile) {
@@ -110,11 +101,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         modelProfile.setFollow(this.profile);
 
     }
-    public void setGoToWorkouts(){
-        Intent intent = new Intent(this, ViewRoutinesActivity.class);
-        intent.putExtra("my_Profile", (Serializable) this.myProfile);
-        startActivity(intent);
-    }
+
 
     @Override
     public void update(Observable o, Object arg) {
