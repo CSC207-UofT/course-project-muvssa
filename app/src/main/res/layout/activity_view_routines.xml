@@ -5,7 +5,7 @@
     android:id="@+id/WorkoutsActivityHeader"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.WorkoutsActivity">
+    tools:context=".View.ViewRoutinesActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,13 +47,6 @@
                     android:layout_height="wrap_content"
                     android:text="Create Routine" />
 
-                <Button
-                    android:id="@+id/CreateWorkoutBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create Workout"
-                    app:backgroundTint="#22359D" />
-
             </LinearLayout>
 
             <Space
@@ -73,7 +66,8 @@
             android:layout_marginEnd="1dp"
             android:layout_marginRight="1dp"
             android:layout_marginBottom="1dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="15dp">
 
             <TextView
                 android:id="@+id/RoutineLabel"
@@ -83,61 +77,6 @@
                 android:text="Routines"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-            <TableLayout
-                android:id="@+id/routinesView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingTop="25dp">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="256dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="100"
-                        android:text="Push Pull Legs" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="100"
-                        android:text="Upper Lower" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <Button
-                        android:id="@+id/button4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="100"
-                        android:text="POWERLIFTING" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    tools:visibility="visible">
-
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="100"
-                        android:text="My Routine" />
-                </TableRow>
-            </TableLayout>
         </LinearLayout>
 
     </LinearLayout>
