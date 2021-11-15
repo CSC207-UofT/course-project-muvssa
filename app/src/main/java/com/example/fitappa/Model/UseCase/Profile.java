@@ -26,6 +26,8 @@ public class Profile implements Serializable {
 
         // Temporary Hardcode
         this.routines.add(new Routine("My routine", "A new routine"));
+        this.routines.add(new Routine("My routine2", "A new routine"));
+
 
     }
 
@@ -50,4 +52,7 @@ public class Profile implements Serializable {
         return followManager;
     }
 
+    public void addRoutine(Routine r) {
+        this.routines.add(r);
+    }
 }

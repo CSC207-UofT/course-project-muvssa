@@ -5,7 +5,7 @@ import android.os.Bundle;
 import com.example.fitappa.R;
 
 
-public class CreateWorkoutActivity extends AppCompatActivity {
+public class AddWorkoutActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
