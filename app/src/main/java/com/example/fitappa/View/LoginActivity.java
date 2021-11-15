@@ -2,6 +2,7 @@ package com.example.fitappa.View;
 
 import android.content.Intent;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +25,8 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity implements LoginPresenter.View {
     private LoginPresenter presenter;
-    private TextInputEditText passwordText;
-    private TextInputEditText emailText;
+    private EditText passwordField;
+    private EditText emailField;
     private TextView enter;
 
     @Override
@@ -33,13 +34,13 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in2);
 
-        passwordText = findViewById(R.id.password);
-        emailText = findViewById(R.id.email);
+        passwordField = findViewById(R.id.password);
+        emailField = findViewById(R.id.email);
         enter = findViewById(R.id.submit);
 
         // Convert text to string
-        String password = Objects.requireNonNull(passwordText.getText()).toString().trim();
-        String email = Objects.requireNonNull(emailText.getText()).toString().trim();
+        String password = Objects.requireNonNull(passwordField.getText()).toString().trim();
+        String email = Objects.requireNonNull(emailField.getText()).toString().trim();
 
         ReadWriter readWriter = new ProfileReadWriter();
         LoginInputBoundary loginInputBoundary = new LoginUseCase(readWriter);

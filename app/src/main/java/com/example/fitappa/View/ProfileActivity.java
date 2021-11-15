@@ -27,7 +27,6 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
     private TextView goToWorkouts;
     private ModelProfile modelProfile;
     private Intent retrieveIntent;
-    private Profiles profiles;
     private ProfilePresenter presenter;
 
     @Override
@@ -38,19 +37,11 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
 
-        this.profiles = new Profiles();
-        // for testing purposes, here we would have a database
-        this.profiles.signUp("test","testpass", "testEmail");
-        this.profiles.signUp(myProfile.getUser().getUsername(),"testpass", "testEmail");
-
-
-        this.presenter = new ProfilePresenter(this, myProfile, profile, profiles);
+        this.presenter = new ProfilePresenter(this, myProfile, profile);
 
 
         this.modelProfile = new ModelProfile(this.myProfile);
         this.modelProfile.addObserver(this);
-
-
 
         this.followButton = findViewById(R.id.followButton);
         this.followButton.setVisibility(View.INVISIBLE);
@@ -75,12 +66,12 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         submit =  findViewById(R.id.submitSearch);
         search =  findViewById(R.id.searchText);
 
-        submit.setOnClickListener(new View.OnClickListener() {
+        /*submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 presenter.searching(search.getText().toString());
             }
-        });
+        });*/
 
         returnHome.setOnClickListener(new View.OnClickListener() {
             @Override

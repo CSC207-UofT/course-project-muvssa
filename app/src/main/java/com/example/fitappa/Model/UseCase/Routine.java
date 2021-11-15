@@ -21,8 +21,6 @@ public class Routine implements Serializable {
         this.name = name;
         this.description = description;
         this.workouts = workouts;
-        this.workouts.add(new Workout("Pull", "Pull!!!"));
-        this.workouts.add(new Workout("Push", "Pull!!!"));
     }
 
     /**
@@ -34,19 +32,12 @@ public class Routine implements Serializable {
         this.name = name;
         this.description = description;
         this.workouts = new ArrayList<Workout>();
-        // Hard code
-        //this.workouts.add(new Workout("Pull", "Pull!!!"));
-        this.workouts.add(new Workout("Pull", "Pull!!!"));
-        this.workouts.add(new Workout("Push", "Pull!!!"));
     }
 
     public Routine(String name) {
         this.name = name;
         this.description = "";
         this.workouts = new ArrayList<Workout>();
-        this.workouts.add(new Workout("Pull", "Pull!!!"));
-        this.workouts.add(new Workout("Push", "Pull!!!"));
-
     }
 
     /**

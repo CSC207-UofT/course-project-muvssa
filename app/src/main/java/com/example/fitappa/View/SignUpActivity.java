@@ -3,7 +3,8 @@ package com.example.fitappa.View;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
+import android.widget.Button;
+import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Model.Gateway.ProfileReadWriter;
 import com.example.fitappa.Model.Gateway.ReadWriter;
@@ -19,10 +20,10 @@ import java.util.regex.Pattern;
 
 
 public class SignUpActivity extends AppCompatActivity implements SignUpPresenter.View {
-    private TextInputEditText user;
-    private TextInputEditText pass;
-    private TextInputEditText mail;
-    private TextView enter;
+    private EditText user;
+    private EditText pass;
+    private EditText mail;
+    private Button enter;
     private SignUpPresenter presenter;
 
     @Override
@@ -30,7 +31,7 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_account);
 
-        user = findViewById(R.id.userName);
+        user = findViewById(R.id.userName1);
         pass = findViewById(R.id.password);
         mail = findViewById(R.id.email);
         enter = findViewById(R.id.submit);
