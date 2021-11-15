@@ -2,7 +2,6 @@ package com.example.fitappa.View;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,8 +14,8 @@ import com.example.fitappa.Presenter.SignUpPresenter;
 import com.example.fitappa.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-import java.io.Serializable;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 
 public class SignUpActivity extends AppCompatActivity implements SignUpPresenter.View {
@@ -36,12 +35,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         mail = findViewById(R.id.email);
         enter = findViewById(R.id.submit);
 
-        String username = Objects.requireNonNull(user.getText()).toString();
-        String password = Objects.requireNonNull(pass.getText()).toString();
-        String email = mail.getText().toString();
-
-        Log.d("Tag", "email is '" + email + "'");
-
         ReadWriter readWriter = new ProfileReadWriter();
         SignUpInputBoundary signUpInputBoundary = new SignUpUseCase(readWriter);
         this.presenter = new SignUpPresenter(signUpInputBoundary, this);
@@ -49,8 +42,17 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Tag", "TESTING EMAIL: '" + email + "'");
-                presenter.runSignUp(email, username, password);
+                if (verifyCredentials(
+                        Objects.requireNonNull(mail.getText()).toString(),
+                        Objects.requireNonNull(user.getText()).toString(),
+                        Objects.requireNonNull(pass.getText()).toString()))
+                {
+                    // only run signup if credentials are verified
+                    presenter.runSignUp(
+                            Objects.requireNonNull(mail.getText()).toString(),
+                            Objects.requireNonNull(user.getText()).toString(),
+                            Objects.requireNonNull(pass.getText()).toString());
+                }
             }
         });
 
@@ -59,10 +61,49 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
 
     public void loggedIn(Profile profile) {
         Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("persons_Profile", (Serializable) profile);
-        intent.putExtra("my_Profile", (Serializable) profile);
+        intent.putExtra("persons_Profile", profile);
+        intent.putExtra("my_Profile", profile);
         startActivity(intent);
+    }
 
+    /**
+     * Make sure email, username, and password are valid entries
+     * @param email
+     * @param username
+     * @param password
+     * @return true iff credentials are valid
+     */
+    private boolean verifyCredentials(String email, String username, String password) {
+
+        String emailRegex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
+        Pattern pat = Pattern.compile(emailRegex);
+
+        if (username.isEmpty()) {
+            user.setError("Please fill out username");
+            user.requestFocus();
+            return false;
+        } else if (username.length() < 5) {
+            user.setError("Please make your username at least 5 characters long");
+            user.requestFocus();
+            return false;
+        } else if (password.isEmpty()) {
+            pass.setError("Please fill out password");
+            pass.requestFocus();
+            return false;
+        } else if (password.length() < 6) {
+            pass.setError("Please make your password at least 6 characters long");
+            pass.requestFocus();
+            return false;
+        } else if (email.isEmpty()) {
+            mail.setError("Please fill out email");
+            mail.requestFocus();
+            return false;
+        } else if (!pat.matcher(email).matches()) {
+            mail.setError("Please enter a proper email address");
+            mail.requestFocus();
+            return false;
+        }
+        return true;
     }
 
 }

@@ -4,8 +4,8 @@ import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.SignUpInputBoundary;
 
 public class SignUpPresenter {
-    private View view;
-    private SignUpInputBoundary signUpInputBoundary;
+    private final View view;
+    private final SignUpInputBoundary signUpInputBoundary;
 
     public SignUpPresenter(SignUpInputBoundary signUpInputBoundary, View view) {
         this.view = view;
