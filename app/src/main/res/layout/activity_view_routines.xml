@@ -47,13 +47,6 @@
                     android:layout_height="wrap_content"
                     android:text="Create Routine" />
 
-                <Button
-                    android:id="@+id/CreateWorkoutBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Create Workout"
-                    app:backgroundTint="#22359D" />
-
             </LinearLayout>
 
             <Space

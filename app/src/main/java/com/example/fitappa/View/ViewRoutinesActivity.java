@@ -18,18 +18,16 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
     private Profile profile;
     private ViewRoutinesPresenter presenter;
     private LinearLayout routinesLayout;
-    private Button createWorkoutBtn;
     private Button createRoutineBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Default Android Stuff
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_routines);
+        setContentView(R.layout.activity_view_routines);
 
         // Load the elements
         routinesLayout = (LinearLayout) findViewById(R.id.routinesLayout);
-        createWorkoutBtn = (Button) findViewById(R.id.CreateWorkoutBtn);
         createRoutineBtn = (Button) findViewById(R.id.CreateRoutineBtn);
 
         // Get the profile
@@ -48,16 +46,6 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
                 openAddRoutine();
             }
         });
-
-        createWorkoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddWorkout();
-            }
-        });
-
-
-
 
     }
 
@@ -100,11 +88,6 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         {
             presenter.addRoutine(data.getStringExtra("routineName").toString());
         }
-    }
-
-    private void openAddWorkout() {
-        Intent createWorkoutIntent = new Intent(this, AddWorkoutActivity.class);
-        startActivity(createWorkoutIntent);
     }
 
     public void openViewRoutine(Routine r) {

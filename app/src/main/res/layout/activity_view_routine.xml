@@ -29,7 +29,15 @@
                 android:layout_width="30dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:orientation="vertical"/>
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/AddWorkoutBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Add Workout"
+                    app:backgroundTint="@color/purple_700" />
+            </LinearLayout>
 
             <Space
                 android:layout_width="wrap_content"
@@ -56,7 +64,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:text="Routine"
+                android:text="Workouts"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         </LinearLayout>

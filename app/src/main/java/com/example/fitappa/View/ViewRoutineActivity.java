@@ -1,5 +1,6 @@
 package com.example.fitappa.View;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
 public class ViewRoutineActivity extends AppCompatActivity {
     private Routine routine;
     private LinearLayout routineLayout;
+    private Button addWorkoutBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +26,24 @@ public class ViewRoutineActivity extends AppCompatActivity {
 
         // Retrieve UI
         this.routineLayout = findViewById(R.id.RoutineLayout);
+        this.addWorkoutBtn = findViewById(R.id.AddWorkoutBtn);
 
         // retrieve routine
         this.routine = (Routine) getIntent().getSerializableExtra("routineObj");
 
         // Initialize view
         initializeRoutineView(this.routine.getWorkouts());
+
+
+        // Listeners
+        addWorkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view)
+            {
+                openAddWorkout();
+            }
+        });
+
 
     }
 
@@ -45,6 +59,11 @@ public class ViewRoutineActivity extends AppCompatActivity {
         for(Workout w : workouts) {
             updateRoutineView(w);
         }
+    }
+
+    private void openAddWorkout() {
+        Intent createWorkoutIntent = new Intent(this, AddWorkoutActivity.class);
+        startActivity(createWorkoutIntent);
     }
 
 
