@@ -14,6 +14,8 @@ public class AddRoutineActivity extends AppCompatActivity {
     Button submitBtn;
     EditText routineName;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
