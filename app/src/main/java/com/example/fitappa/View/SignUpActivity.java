@@ -61,9 +61,9 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
     }
 
     public void loggedIn(Profile profile) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("persons_Profile", profile);
-        intent.putExtra("my_Profile", profile);
+        intent.putExtra("profile", profile);
         startActivity(intent);
     }
 
