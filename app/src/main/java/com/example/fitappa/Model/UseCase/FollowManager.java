@@ -1,4 +1,4 @@
-package fitappfiles;
+package com.example.fitappa.Model.UseCase;
 
 import com.example.fitappa.Model.Entity.User;
 

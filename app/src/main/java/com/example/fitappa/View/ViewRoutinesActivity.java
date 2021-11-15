@@ -52,13 +52,8 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     @Override
     public void updateRoutinesView(Routine routine) {
-
-
         Button button = new Button(this);
-        //button.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         button.setText(routine.getName());
-        //button.setBackgroundColor(Color.parseColor("#22359D"));
-        //button.setTextColor(Color.parseColor("#ffffff"));
 
         button.setOnClickListener(new View.OnClickListener(){
             @Override

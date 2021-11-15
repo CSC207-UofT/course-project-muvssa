@@ -4,7 +4,6 @@ package com.example.fitappa.Model.UseCase;
 import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.Gateway.ProfileReadWriter;
 import com.example.fitappa.Model.Gateway.ReadWriter;
-import fitappfiles.FollowManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
