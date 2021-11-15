@@ -9,7 +9,7 @@ import java.util.List;
 public class Routine implements Serializable {
     private String name;
     private String description;
-    private List<Workout> workouts;
+    private ArrayList<Workout> workouts;
 
     /**
      * A constructor that creates a Routine given a name and list of workouts
@@ -21,6 +21,8 @@ public class Routine implements Serializable {
         this.name = name;
         this.description = description;
         this.workouts = workouts;
+        this.workouts.add(new Workout("Pull", "Pull!!!"));
+        this.workouts.add(new Workout("Push", "Pull!!!"));
     }
 
     /**
@@ -31,8 +33,20 @@ public class Routine implements Serializable {
     public Routine(String name, String description) {
         this.name = name;
         this.description = description;
+        this.workouts = new ArrayList<Workout>();
         // Hard code
         //this.workouts.add(new Workout("Pull", "Pull!!!"));
+        this.workouts.add(new Workout("Pull", "Pull!!!"));
+        this.workouts.add(new Workout("Push", "Pull!!!"));
+    }
+
+    public Routine(String name) {
+        this.name = name;
+        this.description = "";
+        this.workouts = new ArrayList<Workout>();
+        this.workouts.add(new Workout("Pull", "Pull!!!"));
+        this.workouts.add(new Workout("Push", "Pull!!!"));
+
     }
 
     public Routine(String name) {
@@ -81,7 +95,7 @@ public class Routine implements Serializable {
      *
      * @return list of workouts for the Routine
      */
-    public List<Workout> getWorkouts() {
+    public ArrayList<Workout> getWorkouts() {
         return workouts;
     }
 
