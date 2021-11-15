@@ -47,13 +47,18 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-//        logoutBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                presenter.saveData();
-//                profile = null;
-//            }
-//        });
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                profile = null;
+                goBackToLogin();
+            }
+
+            /*@Override
+                //presenter.saveData();
+               //profile = null;
+            }*/
+       });
 
     }
 
