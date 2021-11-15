@@ -22,22 +22,23 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/UsernameField"
+                android:id="@+id/EmailField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
-                android:inputType="textPersonName"
-                android:text="@string/user_Name" />
+                android:hint="Email"
+                android:inputType="textPersonName" />
 
             <EditText
                 android:id="@+id/PasswordField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
+                android:hint="Password"
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/SignInBtn"
+                android:id="@+id/LogInBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sign In" />
