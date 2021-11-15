@@ -5,5 +5,5 @@ import com.example.fitappa.Model.UseCase.Profile;
 public interface ReadWriter {
     void save(Object o);
 
-    Profile read();
+    Profile read(String email, String password);
 }

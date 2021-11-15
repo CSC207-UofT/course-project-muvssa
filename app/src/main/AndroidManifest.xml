@@ -9,9 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitAppA">
+        <activity android:name=".View.LoginActivity"></activity>
         <activity android:name=".View.ViewRoutineActivity"></activity>
         <activity android:name=".View.AddRoutineActivity" />
-        <activity android:name=".View.SignInActivity" />
         <activity android:name=".View.TrackWorkoutActivity" />
         <activity android:name=".View.AddWorkoutActivity" />
         <activity android:name=".View.AddExerciseActivity" />

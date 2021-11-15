@@ -1,24 +1,26 @@
 package com.example.fitappa.Presenter;
 
 import com.example.fitappa.Model.UseCase.Profile;
-import fitappfiles.Profiles;
+import com.example.fitappa.Model.UseCase.SignUpInputBoundary;
 
 public class SignUpPresenter {
-    private View view;
-    private Profiles profiles;
+    private final View view;
+    private final SignUpInputBoundary signUpInputBoundary;
 
-    public SignUpPresenter(View view) {
+    public SignUpPresenter(SignUpInputBoundary signUpInputBoundary, View view) {
         this.view = view;
-        this.profiles = new Profiles();
+        this.signUpInputBoundary = signUpInputBoundary;
     }
 
-    public void signUpToProfile(String name, String password, String email){
-        profiles.signUp(name, password, email);
-        view.loggedIn(profiles.loginToProfile(name,password));
+    public void runSignUp(String email, String username, String password){
+        Profile profile = signUpInputBoundary.signUp(email, username, password);
 
+        if (profile != null) {
+            view.loggedIn(profile);
+        }
     }
 
-    public interface View{
+    public interface View {
         void loggedIn(Profile profile);
     }
 
