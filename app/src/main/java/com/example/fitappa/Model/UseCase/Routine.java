@@ -112,6 +112,12 @@ public class Routine implements Serializable {
         this.workouts.add(workout);
     }
 
+
+    public void addWorkout(String workoutName) {
+        this.workouts.add(new Workout(workoutName, ""));
+    }
+
+
     /**
      * Remove a workout if the given name matches any of the workout names from the Routine
      *

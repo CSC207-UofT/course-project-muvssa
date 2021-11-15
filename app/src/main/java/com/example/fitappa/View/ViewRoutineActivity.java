@@ -10,19 +10,24 @@ import android.os.Bundle;
 import com.example.fitappa.Model.Entity.Workout;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.Routine;
+import com.example.fitappa.Presenter.ViewRoutinePresenter;
 import com.example.fitappa.R;
 
 import java.util.ArrayList;
 
-public class ViewRoutineActivity extends AppCompatActivity {
+public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutinePresenter.View {
     private Routine routine;
     private LinearLayout routineLayout;
     private Button addWorkoutBtn;
+    private ViewRoutinePresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_routine);
+
+        // Setup presenter
+        this.presenter = new ViewRoutinePresenter(this, this.routine);
 
         // Retrieve UI
         this.routineLayout = findViewById(R.id.RoutineLayout);
@@ -63,7 +68,15 @@ public class ViewRoutineActivity extends AppCompatActivity {
 
     private void openAddWorkout() {
         Intent createWorkoutIntent = new Intent(this, AddWorkoutActivity.class);
-        startActivity(createWorkoutIntent);
+        startActivityForResult(createWorkoutIntent, 1);
+    }
+
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1 && resultCode == RESULT_OK)
+        {
+            presenter.addWorkout(data.getStringExtra("workoutName").toString());
+        }
     }
 
 
