@@ -26,9 +26,6 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_routine);
 
-        // Setup presenter
-        this.presenter = new ViewRoutinePresenter(this, this.routine);
-
         // Retrieve UI
         this.routineLayout = findViewById(R.id.RoutineLayout);
         this.addWorkoutBtn = findViewById(R.id.AddWorkoutBtn);
@@ -36,9 +33,12 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         // retrieve routine
         this.routine = (Routine) getIntent().getSerializableExtra("routineObj");
 
+        // Setup presenter
+        this.presenter = new ViewRoutinePresenter(this, this.routine);
+
+
         // Initialize view
         initializeRoutineView(this.routine.getWorkouts());
-
 
         // Listeners
         addWorkoutBtn.setOnClickListener(new View.OnClickListener() {
