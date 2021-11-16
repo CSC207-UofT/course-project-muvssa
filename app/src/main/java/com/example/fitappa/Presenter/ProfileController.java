@@ -15,7 +15,7 @@ public class ProfileController extends Observable {
      *
      * @param profile type profile that represents the user's profile
      */
-    public ProfileController(Profile profile){
+    public ProfileController(Profile profile) {
         this.profile = profile;
 
     }
@@ -25,7 +25,8 @@ public class ProfileController extends Observable {
      *
      * @return the user's profile as type Profile
      */
-    public Profile getFollow1(){
+
+    public Profile getFollow1() {
         return this.profile;
     }
 
@@ -34,7 +35,8 @@ public class ProfileController extends Observable {
      *
      * @return another user's profile as type Profile
      */
-    public Profile getFollow2(){
+
+    public Profile getFollow2() {
         return this.otherProfile;
     }
 
@@ -43,8 +45,8 @@ public class ProfileController extends Observable {
      *
      * @param profile type profile that represents a profile
      */
-    public void setFollow(Profile profile){
-        this.profile.getProfileFollow().follow(profile.getProfileFollow());
+    public void setFollow(Profile profile) {
+        this.profile.getFollowManager().follow(profile.getFollowManager());
         this.otherProfile = profile;
         setChanged();
         notifyObservers();

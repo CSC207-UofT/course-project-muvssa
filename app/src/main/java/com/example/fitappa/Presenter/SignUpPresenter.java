@@ -26,7 +26,7 @@ public class SignUpPresenter {
      * @param username String of the user's username
      * @param password String of the user's password
      */
-    public void runSignUp(String email, String username, String password){
+    public void runSignUp(String email, String username, String password) {
         Profile profile = signUpInputBoundary.signUp(email, username, password);
 
         if (profile != null) {
