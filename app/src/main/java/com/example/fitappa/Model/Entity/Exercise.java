@@ -23,9 +23,7 @@ public abstract class Exercise implements Serializable {
         this.muscleGroup = muscle;
     }
 
-    public Exercise() {
 
-    }
 
     /**
      * Creates an Exercise object given another.

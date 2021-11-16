@@ -11,11 +11,18 @@ public class AddExercisePresenter {
     private ExerciseRepository exRep;
     private View view;
 
+    /**
+     * Update exercise repository
+     * @param view type view that represents the view of the exercise that will be seen by the user
+     */
     public AddExercisePresenter(View view) {
         this.view = view;
         exRep = new ExerciseRepository();
     }
 
+    /**
+     * Initialize an exercise from the view of the exercise
+     */
     public void init() {
         view.loadExercise(exRep.getExercises());
     }
