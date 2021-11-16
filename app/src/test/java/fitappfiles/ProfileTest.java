@@ -4,10 +4,7 @@ import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.UseCase.FollowManager;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.Routine;
-import com.example.fitappa.R;
 import junit.framework.TestCase;
-
-import java.util.ArrayList;
 
 public class ProfileTest extends TestCase {
     Profile profile;
@@ -34,20 +31,24 @@ public class ProfileTest extends TestCase {
         user2 = new User("Hello", "world123", "helloworld@gmail.com");
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()
-        assertNotSame(user.getUsername(), profile.getUser().getUsername());
-        assertEquals(user2.getPassword(), profile.getUser().getPassword());
-        assertEquals(user2.getEmail(), profile.getUser().getEmail());
+        assertEquals(user.getUsername(), profile.getUser().getUsername());
+        assertNotSame(user2.getPassword(), profile.getUser().getPassword());
+        assertEquals(user2.getEmail(), profile2.getUser().getEmail());
     }
 
     public void testGetProfileFollow() {
         user3f = new FollowManager(profile.getUser());
-        assertNotSame(user3f, profile.getProfileFollow()); //shows same data types are being compared
+        assertNotSame(user3f, profile.getFollowManager()); //shows same data types are being compared
         //shows the getter works
-        userf = profile.getProfileFollow();
-        user2f = profile2.getProfileFollow();
-        assertTrue(userf.getFollowers().containsKey("follower"));
-        assertEquals(user2f, profile2.getProfileFollow());
-        assertNotSame(userf, profile2.getProfileFollow()); //shows userf is not equal to user2f
+        userf = profile.getFollowManager();
+        userf.getFollowers().put("Username1", user2f);
+        userf.getFollowing().put("Username2", user2f);
+        user2f = profile2.getFollowManager();
+
+        assertTrue(userf.getFollowers().containsKey("Username1"));
+        assertTrue(userf.getFollowing().containsKey("Username2"));
+        assertEquals(user2f, profile2.getFollowManager());
+        assertNotSame(userf, profile2.getFollowManager()); //shows userf is not equal to user2f
     }
 
     public void testGetRoutines() {

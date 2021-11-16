@@ -2,7 +2,7 @@ package com.example.fitappa.View;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,7 +22,6 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
     private EditText user;
     private EditText pass;
     private EditText mail;
-    private Button enter;
     private SignUpPresenter presenter;
 
     @Override
@@ -33,26 +32,22 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
         user = findViewById(R.id.userName1);
         pass = findViewById(R.id.password);
         mail = findViewById(R.id.email);
-        enter = findViewById(R.id.submit);
+        Button enter = findViewById(R.id.submit);
 
         ReadWriter readWriter = new ProfileReadWriter();
         SignUpInputBoundary signUpInputBoundary = new SignUpUseCase(readWriter);
         this.presenter = new SignUpPresenter(signUpInputBoundary, this);
 
-        enter.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (verifyCredentials(
+        enter.setOnClickListener(v -> {
+            if (verifyCredentials(
+                    Objects.requireNonNull(mail.getText()).toString(),
+                    Objects.requireNonNull(user.getText()).toString(),
+                    Objects.requireNonNull(pass.getText()).toString())) {
+                // only run signup if credentials are verified
+                presenter.runSignUp(
                         Objects.requireNonNull(mail.getText()).toString(),
                         Objects.requireNonNull(user.getText()).toString(),
-                        Objects.requireNonNull(pass.getText()).toString()))
-                {
-                    // only run signup if credentials are verified
-                    presenter.runSignUp(
-                            Objects.requireNonNull(mail.getText()).toString(),
-                            Objects.requireNonNull(user.getText()).toString(),
-                            Objects.requireNonNull(pass.getText()).toString());
-                }
+                        Objects.requireNonNull(pass.getText()).toString());
             }
         });
 
@@ -68,9 +63,10 @@ public class SignUpActivity extends AppCompatActivity implements SignUpPresenter
 
     /**
      * Make sure email, username, and password are valid entries
-     * @param email
-     * @param username
-     * @param password
+     *
+     * @param email    email address for user
+     * @param username username for user
+     * @param password password for user
      * @return true iff credentials are valid
      */
     private boolean verifyCredentials(String email, String username, String password) {

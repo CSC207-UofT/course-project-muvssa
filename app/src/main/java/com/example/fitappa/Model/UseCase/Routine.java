@@ -4,43 +4,27 @@ import com.example.fitappa.Model.Entity.Workout;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Routine implements Serializable {
     private String name;
     private String description;
-    private ArrayList<Workout> workouts;
+    private List<Workout> workouts;
 
-    /**
-     * A constructor that creates a Routine given a name and list of workouts
-     *
-     * @param name        the name of the Routine
-     * @param description the description of the Routine
-     */
-    public Routine(String name, String description, ArrayList<Workout> workouts) {
-        this.name = name;
-        this.description = description;
-        this.workouts = workouts;
-    }
-
+    // Empty constructor necessary for Firebase
+    @SuppressWarnings("unused")
     public Routine() {
-
     }
 
     /**
      * A constructor that creates a Routine given a name and list of workouts
      *
-     * @param name     the name of the Routine
+     * @param name the name of the Routine
      */
     public Routine(String name, String description) {
         this.name = name;
         this.description = description;
-        this.workouts = new ArrayList<Workout>();
-    }
-
-    public Routine(String name) {
-        this.name = name;
-        this.description = "";
-        this.workouts = new ArrayList<Workout>();
+        this.workouts = new ArrayList<>();
     }
 
     /**
@@ -84,7 +68,7 @@ public class Routine implements Serializable {
      *
      * @return list of workouts for the Routine
      */
-    public ArrayList<Workout> getWorkouts() {
+    public List<Workout> getWorkouts() {
         return workouts;
     }
 
@@ -105,12 +89,6 @@ public class Routine implements Serializable {
     public void addWorkout(Workout workout) {
         this.workouts.add(workout);
     }
-
-
-    public void addWorkout(String workoutName) {
-        this.workouts.add(new Workout(workoutName, ""));
-    }
-
 
     /**
      * Remove a workout if the given name matches any of the workout names from the Routine

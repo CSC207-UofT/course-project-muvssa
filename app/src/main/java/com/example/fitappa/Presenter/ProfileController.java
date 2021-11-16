@@ -2,16 +2,17 @@ package com.example.fitappa.Presenter;
 
 import com.example.fitappa.Model.UseCase.Profile;
 
-import java.util.*;
+import java.util.Observable;
 
 public class ProfileController extends Observable {
 
     // declaring a list of integer
-    private Profile profile;
+    private final Profile profile;
     private Profile otherProfile;
 
     /**
      * Initializes a profile
+     *
      * @param profile type profile that represents the user's profile
      */
     public ProfileController(Profile profile){
@@ -21,6 +22,7 @@ public class ProfileController extends Observable {
 
     /**
      * Gets the user's profile
+     *
      * @return the user's profile as type Profile
      */
     public Profile getFollow1(){
@@ -29,6 +31,7 @@ public class ProfileController extends Observable {
 
     /**
      * Gets another user's profile
+     *
      * @return another user's profile as type Profile
      */
     public Profile getFollow2(){
@@ -37,6 +40,7 @@ public class ProfileController extends Observable {
 
     /**
      * Adds a profile to the follower list of another profile
+     *
      * @param profile type profile that represents a profile
      */
     public void setFollow(Profile profile){

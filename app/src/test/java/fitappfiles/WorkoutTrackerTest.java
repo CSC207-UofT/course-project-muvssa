@@ -8,6 +8,7 @@ import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
+// TODO: Phase 2
 public class WorkoutTrackerTest extends TestCase {
     Workout workout;
     WorkoutTracker tracker;
@@ -27,7 +28,7 @@ public class WorkoutTrackerTest extends TestCase {
     }
 
     public void testGetTotalVolume() {
-        assertEquals(0, tracker.getTotalVolume());
+        assertEquals(0.0, tracker.getTotalVolume());
     }
 
     public void testGetAvgDuration() {

@@ -6,13 +6,14 @@ import java.io.Serializable;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Workout implements Serializable {
-    public String name;
-    public String description;
-    public ArrayList<Exercise> exercises;
-    public LocalDateTime startTime;
-    public LocalDateTime endTime;
+    private String name;
+    private String description;
+    private List<Exercise> exercises;
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 
     /**
      * Constructor for a workout class, takes in all necessary variables needed for a workout
@@ -26,8 +27,8 @@ public class Workout implements Serializable {
         this.exercises = new ArrayList<>();
     }
 
+    // Constructor necessary for Firebase
     public Workout() {
-
     }
 
     /**
@@ -38,6 +39,8 @@ public class Workout implements Serializable {
     public Workout(Workout other) {
         this.name = other.name;
         this.description = other.description;
+        this.startTime = null;
+        this.endTime = null;
 
         for (Exercise exercise : other.exercises) {
             // inefficient code, fix it later :)
@@ -54,7 +57,6 @@ public class Workout implements Serializable {
                 e = new RepExercise("Empty Exercise");
             }
 
-            assert false;
             this.exercises.add(e);
         }
     }
@@ -133,6 +135,15 @@ public class Workout implements Serializable {
     }
 
     /**
+     * Gets the exercises for this workout
+     *
+     * @return list of exercises for this workout
+     */
+    public List<Exercise> getExercises() {
+        return exercises;
+    }
+
+    /**
      * A method used to add exercises
      *
      * @param exercise new exercise to be added to workout
@@ -162,9 +173,7 @@ public class Workout implements Serializable {
     public Duration getDuration() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return Duration.between(this.startTime, this.endTime);
-        }
-        else
-        {
+        } else {
             return null; // TODO: Increase Min API Level from 16 to 24
         }
     }

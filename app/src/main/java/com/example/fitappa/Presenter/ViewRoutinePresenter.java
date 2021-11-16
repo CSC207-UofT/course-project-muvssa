@@ -1,18 +1,16 @@
 package com.example.fitappa.Presenter;
 
-import android.util.Log;
 import com.example.fitappa.Model.Entity.Workout;
-import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.Routine;
 
 public class ViewRoutinePresenter {
-    private Routine routine;
-    private View view;
+    private final Routine routine;
+    private final View view;
 
     /**
      * Constructor for the view of the routine
      *
-     * @param view represents the view of the routine
+     * @param view    represents the view of the routine
      * @param routine represents the collection of workouts as type Routine
      */
     public ViewRoutinePresenter(View view, Routine routine) {

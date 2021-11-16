@@ -31,7 +31,7 @@ public class WorkoutTest extends TestCase {
     }
 
     public void testGetStartTime() {
-        assertEquals(workout.startTime, workout.getStartTime());//time matches, getter is good
+        assertEquals(workout.getStartTime(), workout.getStartTime());//time matches, getter is good
 
     }
 
@@ -45,12 +45,12 @@ public class WorkoutTest extends TestCase {
 
     public void testGetEndTime() {
 
-        assertEquals(workout.endTime, workout.getEndTime()); //time matches, getter is good
+        assertEquals(workout.getEndTime(), workout.getEndTime()); //time matches, getter is good
     }
 
     public void testSetEndTime() {
-        workout.setStartTime(LocalDateTime.of(2018, 3, 12, 11, 22));
-        assertEquals(LocalDateTime.of(2018, 3, 12, 11, 22), workout.getStartTime());
+        workout.setEndTime(LocalDateTime.of(2018, 3, 12, 11, 22));
+        assertEquals(LocalDateTime.of(2018, 3, 12, 11, 22), workout.getEndTime());
         //time that has been set matches, setter is good
     }
 
@@ -65,10 +65,10 @@ public class WorkoutTest extends TestCase {
     }
 
     public void testAddExercise() {
-        assertEquals(0, workout.exercises.size()); //current size 0
+        assertEquals(0, workout.getExercises().size()); //current size 0
         workout.addExercise(ex);
-        assertEquals(1, workout.exercises.size()); //current size increases after using method
-        assertEquals(ex, workout.exercises.get(0)); //element at index also matches
+        assertEquals(1, workout.getExercises().size()); //current size increases after using method
+        assertEquals(ex, workout.getExercises().get(0)); //element at index also matches
     }
 
     public void testGetTotalVolume() {

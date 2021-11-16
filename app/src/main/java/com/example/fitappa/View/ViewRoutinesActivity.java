@@ -1,24 +1,20 @@
 package com.example.fitappa.View;
 
 import android.content.Intent;
-import android.view.View;
-import android.widget.Button;
-import android.widget.*;
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import androidx.appcompat.app.AppCompatActivity;
+import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.Routine;
 import com.example.fitappa.Presenter.ViewRoutinesPresenter;
 import com.example.fitappa.R;
-import com.example.fitappa.Model.UseCase.Profile;
 
-import java.io.Serializable;
-import java.util.ArrayList;
+import java.util.List;
 
 public class ViewRoutinesActivity extends AppCompatActivity implements ViewRoutinesPresenter.View {
-    private Profile profile;
     private ViewRoutinesPresenter presenter;
     private LinearLayout routinesLayout;
-    private Button createRoutineBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,25 +23,20 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         setContentView(R.layout.activity_view_routines);
 
         // Load the elements
-        routinesLayout = (LinearLayout) findViewById(R.id.routinesLayout);
-        createRoutineBtn = (Button) findViewById(R.id.CreateRoutineBtn);
+        routinesLayout = findViewById(R.id.routinesLayout);
+        Button createRoutineBtn = findViewById(R.id.CreateRoutineBtn);
 
         // Get the profile
-        this.profile = (Profile) getIntent().getSerializableExtra("my_Profile");
+        Profile profile = (Profile) getIntent().getSerializableExtra("my_Profile");
 
         // We must initialize the Presenter in the View.
         this.presenter = new ViewRoutinesPresenter(this, profile);
 
         // Initialize RoutinesView
-        this.initializeRoutinesView(this.profile.getRoutines());
+        this.initializeRoutinesView(profile.getRoutines());
 
         // Listeners
-        createRoutineBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openAddRoutine();
-            }
-        });
+        createRoutineBtn.setOnClickListener(view -> openAddRoutine());
 
     }
 
@@ -55,19 +46,14 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         Button button = new Button(this);
         button.setText(routine.getName());
 
-        button.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                openViewRoutine(routine);
-            }
-        });
+        button.setOnClickListener(view -> openViewRoutine(routine));
 
         routinesLayout.addView(button);
 
     }
 
-    public void initializeRoutinesView(ArrayList<Routine> routines) {
-        for(Routine r : routines) {
+    public void initializeRoutinesView(List<Routine> routines) {
+        for (Routine r : routines) {
             updateRoutinesView(r);
         }
     }
@@ -79,15 +65,14 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK)
-        {
-            presenter.addRoutine(data.getStringExtra("routineName").toString());
+        if (requestCode == 1 && resultCode == RESULT_OK) {
+            presenter.addRoutine(data.getStringExtra("routineName"));
         }
     }
 
     public void openViewRoutine(Routine r) {
-        Intent routine = new Intent(this, ViewRoutineActivity.class );
-        routine.putExtra("routineObj", (Serializable) r);
+        Intent routine = new Intent(this, ViewRoutineActivity.class);
+        routine.putExtra("routineObj", r);
         startActivity(routine);
     }
 

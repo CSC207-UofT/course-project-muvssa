@@ -1,11 +1,10 @@
 package com.example.fitappa.View;
 
 import android.content.Intent;
-import android.view.View;
+import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.fitappa.R;
 
 public class AddRoutineActivity extends AppCompatActivity {
@@ -18,21 +17,15 @@ public class AddRoutineActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_routine);
 
         // Initialize elements
-        this.submitBtn = (Button) findViewById(R.id.SaveRoutineBtn);
-        this.routineName = (EditText) findViewById(R.id.RoutineNameField);
+        this.submitBtn = findViewById(R.id.SaveRoutineBtn);
+        this.routineName = findViewById(R.id.RoutineNameField);
 
 
-        submitBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goBackToWorkouts(routineName.getText().toString());
-            }
-        });
+        submitBtn.setOnClickListener(v -> goBackToWorkouts(routineName.getText().toString()));
     }
 
 
-    public void goBackToWorkouts(String routineName)
-    {
+    public void goBackToWorkouts(String routineName) {
         Intent workout = new Intent(this, ViewRoutinesActivity.class);
         workout.putExtra("routineName", routineName);
         setResult(RESULT_OK, workout);

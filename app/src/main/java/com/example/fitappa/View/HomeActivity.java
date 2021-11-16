@@ -1,21 +1,13 @@
 package com.example.fitappa.View;
 
 import android.content.Intent;
-import android.view.View;
+import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.fitappa.Model.UseCase.Profile;
-import com.example.fitappa.Presenter.ProfilePresenter;
 import com.example.fitappa.R;
 
-import java.io.Serializable;
-
-
 public class HomeActivity extends AppCompatActivity {
-    private Button logoutBtn;
-    private Button openRoutinesBtn;
-    private Button openProfileBtn;
     private Profile profile;
 
     @Override
@@ -23,48 +15,31 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        this.logoutBtn = findViewById(R.id.LogoutBtn);
-        this.openRoutinesBtn = findViewById(R.id.GoToRoutinesBtn);
-        this.openProfileBtn = findViewById(R.id.GoToProfilesBtn);
+        Button logoutBtn = findViewById(R.id.LogoutBtn);
+        Button openRoutinesBtn = findViewById(R.id.GoToRoutinesBtn);
+        Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
 
-        if(profile == null) {
+        if (profile == null) {
             goBackToLogin();
         }
 
         // Listeners
-        openRoutinesBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openRoutines();
-            }
+        openRoutinesBtn.setOnClickListener(v -> openRoutines());
+
+        openProfileBtn.setOnClickListener(v -> openProfile());
+
+        logoutBtn.setOnClickListener(v -> {
+            profile.saveData();
+            profile = null;
+            goBackToLogin();
         });
-
-        openProfileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openProfile();
-            }
-        });
-
-        logoutBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                profile = null;
-                goBackToLogin();
-            }
-
-            /*@Override
-                //presenter.saveData();
-               //profile = null;
-            }*/
-       });
 
     }
 
     public void openRoutines() {
         Intent routines = new Intent(this, ViewRoutinesActivity.class);
-        routines.putExtra("my_Profile", (Serializable) this.profile);
+        routines.putExtra("my_Profile", this.profile);
         startActivity(routines);
     }
 

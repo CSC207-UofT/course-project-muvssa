@@ -1,11 +1,10 @@
 package com.example.fitappa.View;
 
 import android.content.Intent;
-import android.view.View;
+import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
-import android.os.Bundle;
 import com.example.fitappa.Model.Gateway.ProfileReadWriter;
 import com.example.fitappa.Model.Gateway.ReadWriter;
 import com.example.fitappa.Model.UseCase.LoginInputBoundary;
@@ -18,7 +17,6 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
     private LoginPresenter presenter;
     private EditText passwordField;
     private EditText emailField;
-    private TextView loginBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +25,7 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
 
         passwordField = findViewById(R.id.PasswordField);
         emailField = findViewById(R.id.EmailField);
-        loginBtn = findViewById(R.id.LogInBtn);
+        TextView loginBtn = findViewById(R.id.LogInBtn);
 
         ReadWriter readWriter = new ProfileReadWriter();
         LoginInputBoundary loginInputBoundary = new LoginUseCase(readWriter);
@@ -45,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements LoginPresenter.V
     public void openHome(Profile profile) {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile", profile);
-//        intent.putExtra("my_Profile", profile);
         startActivity(intent);
     }
 }

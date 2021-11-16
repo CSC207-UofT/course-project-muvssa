@@ -3,17 +3,17 @@ package com.example.fitappa.Model.Entity;
 import java.io.Serializable;
 
 public abstract class Exercise implements Serializable {
-    public String name;
-    public int numSets;
-    public int numRest;
-    public String muscleGroup;
+    protected String name;
+    protected int numSets;
+    protected int numRest;
+    protected String muscleGroup;
 
     /**
      * Constructor for a User class, takes in all necessary variables needed to make a User
      *
-     * @param name The String name referring to the name of the exercise
-     * @param sets The int represents the number of sets
-     * @param rest The int represents the time taken to rest
+     * @param name   The String name referring to the name of the exercise
+     * @param sets   The int represents the number of sets
+     * @param rest   The int represents the time taken to rest
      * @param muscle The String represents the muscle group
      */
     public Exercise(String name, int sets, int rest, String muscle) {
@@ -23,14 +23,16 @@ public abstract class Exercise implements Serializable {
         this.muscleGroup = muscle;
     }
 
-
+    // empty constructor necessary for firebase
+    public Exercise() {
+    }
 
     /**
      * Creates an Exercise object given another.
+     *
      * @param other - the other exercise
      */
-    public Exercise(Exercise other)
-    {
+    public Exercise(Exercise other) {
         this.name = other.name;
         this.numSets = other.numSets;
         this.numRest = other.numRest;
@@ -39,6 +41,7 @@ public abstract class Exercise implements Serializable {
 
     /**
      * Creates an Exercise object given the name.
+     *
      * @param name - name of the exercise
      */
     public Exercise(String name) {
@@ -51,6 +54,7 @@ public abstract class Exercise implements Serializable {
 
     /**
      * returns the name of the exercise
+     *
      * @return the string name
      */
     public String getName() {
@@ -59,6 +63,7 @@ public abstract class Exercise implements Serializable {
 
     /**
      * return the number of sets
+     *
      * @return the int numSets
      */
     public int getNumSets() {
@@ -67,6 +72,7 @@ public abstract class Exercise implements Serializable {
 
     /**
      * return the time taken for rest
+     *
      * @return the int numRest
      */
 
@@ -76,6 +82,7 @@ public abstract class Exercise implements Serializable {
 
     /**
      * return what the muscle group the user is working on
+     *
      * @return the string muscleGroup
      */
     public String getMuscleGroup() {

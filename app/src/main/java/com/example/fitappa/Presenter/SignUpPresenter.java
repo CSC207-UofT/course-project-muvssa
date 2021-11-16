@@ -1,5 +1,6 @@
 package com.example.fitappa.Presenter;
 
+import android.util.Log;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.SignUpInputBoundary;
 
@@ -9,8 +10,9 @@ public class SignUpPresenter {
 
     /**
      * Constructor for creating the sign up section
+     *
      * @param signUpInputBoundary represents the user's input when signing up as type SignUpInputBoundary
-     * @param view represents the view of the sign up section as type View
+     * @param view                represents the view of the sign up section as type View
      */
     public SignUpPresenter(SignUpInputBoundary signUpInputBoundary, View view) {
         this.view = view;
@@ -19,7 +21,8 @@ public class SignUpPresenter {
 
     /**
      * After the user signs up this opens the profile page
-     * @param email String of the user's email
+     *
+     * @param email    String of the user's email
      * @param username String of the user's username
      * @param password String of the user's password
      */
