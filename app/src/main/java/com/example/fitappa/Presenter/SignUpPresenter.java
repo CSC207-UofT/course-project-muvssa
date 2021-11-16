@@ -1,6 +1,5 @@
 package com.example.fitappa.Presenter;
 
-import android.util.Log;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.SignUpInputBoundary;
 
