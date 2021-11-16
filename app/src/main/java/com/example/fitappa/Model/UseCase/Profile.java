@@ -29,8 +29,8 @@ public class Profile implements Serializable {
         this.routines.add(new Routine("My routine", "A new routine"));
         this.routines.add(new Routine("My routine2", "A new routine"));
 
-        this.user = new User("Hello", "world123", "helloworld@gmail.com");
-        this.followManager.getFollowers().put("follower", followManager);
+        //this.user = new User("Hello", "world123", "helloworld@gmail.com");
+        //this.followManager.getFollowers().put("follower", followManager);
 
 
     }
