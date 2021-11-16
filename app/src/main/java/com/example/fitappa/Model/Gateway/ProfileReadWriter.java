@@ -38,6 +38,7 @@ public class ProfileReadWriter implements ReadWriter {
                             } else {
                                 // make profile null if it doesn't match anything in database
                                 useCase.updateProfile(null);
+
                             }
                         }
                     }
