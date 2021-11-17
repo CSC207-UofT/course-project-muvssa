@@ -1,5 +1,6 @@
 package com.example.fitappa.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -9,7 +10,7 @@ import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 
-public class LoginActivity extends AppCompatActivity implements OpensHome {
+public class LoginActivity extends AppCompatActivity implements OpensHome, Auth.HasContext {
     private EditText passwordField;
     private EditText emailField;
     private Auth auth;
@@ -19,7 +20,7 @@ public class LoginActivity extends AppCompatActivity implements OpensHome {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.auth = new Auth(this);
+        this.auth = new Auth(this, this);
 
         passwordField = findViewById(R.id.PasswordField);
         emailField = findViewById(R.id.EmailField);
@@ -39,5 +40,10 @@ public class LoginActivity extends AppCompatActivity implements OpensHome {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile", profile);
         startActivity(intent);
+    }
+
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
     }
 }

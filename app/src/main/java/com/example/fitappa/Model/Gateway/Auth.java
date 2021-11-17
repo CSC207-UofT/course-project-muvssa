@@ -1,7 +1,9 @@
 package com.example.fitappa.Model.Gateway;
 
+import android.content.Context;
 import android.util.Log;
 import android.widget.EditText;
+import android.widget.Toast;
 import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.View.OpensHome;
@@ -14,6 +16,7 @@ import java.util.regex.Pattern;
 public class Auth implements Authenticator {
     private final FirebaseAuth mAuth;
     private final OpensHome view;
+    private HasContext context;
 
     /**
      * Constructor that takes a view and initializes a FirebaseAuth
@@ -23,6 +26,16 @@ public class Auth implements Authenticator {
     public Auth(OpensHome view) {
         this.mAuth = FirebaseAuth.getInstance();
         this.view = view;
+    }
+
+    /**
+     * Constructor that takes a view and context
+     * @param view      View that will be used to go home
+     * @param context   Context that will be used to display message on screen
+     */
+    public Auth(OpensHome view, HasContext context) {
+        this(view);
+        this.context = context;
     }
 
     /**
@@ -72,7 +85,10 @@ public class Auth implements Authenticator {
                                 Profile profile = documentSnapshot.toObject(Profile.class);
                                 updateUI(profile);
                             });
-                });
+                })
+                .addOnFailureListener(e -> Toast.makeText(context.getContext(),
+                        "Error. Incorrect email or password. \nPlease try again.",
+                        Toast.LENGTH_LONG).show());
     }
 
     /**
@@ -149,5 +165,10 @@ public class Auth implements Authenticator {
         }
 
         signUp(email, username, password);
+    }
+
+    // Dependency Inversion
+    public interface HasContext {
+        Context getContext();
     }
 }
