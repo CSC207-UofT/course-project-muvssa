@@ -18,8 +18,8 @@ public class ProfileTest extends TestCase {
 
 
     public void setUp() throws Exception {
-        profile = new Profile("Johnny", "johnny123", "johnnyappleseed@gmail.com");
-        profile2 = new Profile("Hello", "world123", "helloworld@gmail.com");
+        profile = new Profile("johnnyappleseed@gmail.com", "Johnny", "johnny123");
+        profile2 = new Profile("helloworld@gmail.com", "Hello", "world123");
         super.setUp();
     }
 

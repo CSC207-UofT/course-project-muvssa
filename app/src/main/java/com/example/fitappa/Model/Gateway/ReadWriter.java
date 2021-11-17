@@ -1,7 +1,5 @@
 package com.example.fitappa.Model.Gateway;
 
-import com.example.fitappa.Model.UseCase.LoginInputBoundary;
-
 public interface ReadWriter {
     /**
      * Save object into some database
@@ -15,7 +13,6 @@ public interface ReadWriter {
      *
      * @param email    email of profile to search for
      * @param password password of profile to search for
-     * @param useCase  use case class to pass profile to when found
      */
-    void read(String email, String password, LoginInputBoundary useCase);
+    void read(String email, String password);
 }

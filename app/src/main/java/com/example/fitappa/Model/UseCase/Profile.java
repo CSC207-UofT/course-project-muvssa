@@ -2,8 +2,6 @@ package com.example.fitappa.Model.UseCase;
 
 
 import com.example.fitappa.Model.Entity.User;
-import com.example.fitappa.Model.Gateway.ProfileReadWriter;
-import com.example.fitappa.Model.Gateway.ReadWriter;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,11 +16,11 @@ public class Profile implements Serializable {
     /**
      * Creates the main profile for one user
      *
+     * @param email    this is the User's email
      * @param name     this is the User's username
      * @param password this is the User's password
-     * @param email    this is the User's email
      */
-    public Profile(String name, String password, String email) {
+    public Profile(String email, String name, String password) {
         this.user = new User(name, password, email);
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
@@ -34,12 +32,6 @@ public class Profile implements Serializable {
 
     // empty constructor necessary for Firebase
     public Profile() {
-    }
-
-    public Profile(String username, String password, String email, ArrayList<Routine> routines) {
-        this.user = new User(username, password, email);
-        this.routines = routines;
-        this.followManager = new FollowManager(user);
     }
 
     public List<Routine> getRoutines() {
@@ -62,14 +54,6 @@ public class Profile implements Serializable {
      */
     public FollowManager getFollowManager() {
         return followManager;
-    }
-
-    /**
-     * Save the current Profile object into the database
-     */
-    public void saveData() {
-        ReadWriter rw = new ProfileReadWriter();
-        rw.save(this);
     }
 
     public void addRoutine(Routine r) {
