@@ -18,8 +18,8 @@ public class ProfileTest extends TestCase {
 
 
     public void setUp() throws Exception {
-        profile = new Profile("Johnny", "johnny123", "johnnyappleseed@gmail.com");
-        profile2 = new Profile("Hello", "world123", "helloworld@gmail.com");
+        profile = new Profile("johnnyappleseed@gmail.com", "Johnny", "johnny123");
+        profile2 = new Profile("helloworld@gmail.com", "Hello", "world123");
         super.setUp();
     }
 
@@ -27,8 +27,8 @@ public class ProfileTest extends TestCase {
     }
 
     public void testGetUser() {
-        user = new User("Johnny", "johnny123", "johnnyappleseed@gmail.com");
-        user2 = new User("Hello", "world123", "helloworld@gmail.com");
+        user = new User("johnnyappleseed@gmail.com", "Johnny", "johnny123");
+        user2 = new User("helloworld@gmail.com", "Hello", "world123");
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()
         assertEquals(user.getUsername(), profile.getUser().getUsername());

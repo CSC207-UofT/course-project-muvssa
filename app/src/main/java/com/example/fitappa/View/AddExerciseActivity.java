@@ -28,7 +28,6 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
         AddExercisePresenter presenter = new AddExercisePresenter(this);
 
-
         presenter.init();
 
     }

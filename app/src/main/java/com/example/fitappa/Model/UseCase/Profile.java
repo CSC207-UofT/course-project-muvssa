@@ -2,8 +2,9 @@ package com.example.fitappa.Model.UseCase;
 
 
 import com.example.fitappa.Model.Entity.User;
-import com.example.fitappa.Model.Gateway.ProfileReadWriter;
-import com.example.fitappa.Model.Gateway.ReadWriter;
+import com.example.fitappa.Model.Gateway.Database;
+import com.example.fitappa.Model.Gateway.FirebaseDB;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,12 +19,21 @@ public class Profile implements Serializable {
     /**
      * Creates the main profile for one user
      *
+     * @param email    this is the User's email
      * @param name     this is the User's username
      * @param password this is the User's password
-     * @param email    this is the User's email
      */
-    public Profile(String name, String password, String email) {
-        this.user = new User(name, password, email);
+    public Profile(String email, String name, String password) {
+        this(new User(email, name, password));
+    }
+
+    /**
+     * Creates the main profile for one user
+     *
+     * @param user User object representing one user
+     */
+    public Profile(User user) {
+        this.user = user;
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
 
@@ -34,12 +44,6 @@ public class Profile implements Serializable {
 
     // empty constructor necessary for Firebase
     public Profile() {
-    }
-
-    public Profile(String username, String password, String email, ArrayList<Routine> routines) {
-        this.user = new User(username, password, email);
-        this.routines = routines;
-        this.followManager = new FollowManager(user);
     }
 
     public List<Routine> getRoutines() {
@@ -56,20 +60,21 @@ public class Profile implements Serializable {
     }
 
     /**
-     * gets who the User is following and who is following them
+     * Save this profile to a database
+     */
+    public void saveData() {
+        Database database = new FirebaseDB();
+        database.save(this);
+        FirebaseAuth.getInstance().signOut();
+    }
+
+    /**
+     * Gets who the User is following and who is following them
      *
      * @return returns a HashMap of people User is following
      */
     public FollowManager getFollowManager() {
         return followManager;
-    }
-
-    /**
-     * Save the current Profile object into the database
-     */
-    public void saveData() {
-        ReadWriter rw = new ProfileReadWriter();
-        rw.save(this);
     }
 
     public void addRoutine(Routine r) {
