@@ -4,6 +4,7 @@ package com.example.fitappa.Model.UseCase;
 import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.Gateway.Database;
 import com.example.fitappa.Model.Gateway.FirebaseDB;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -64,6 +65,7 @@ public class Profile implements Serializable {
     public void saveData() {
         Database database = new FirebaseDB();
         database.save(this);
+        FirebaseAuth.getInstance().signOut();
     }
 
     /**

@@ -31,7 +31,6 @@ public class HomeActivity extends AppCompatActivity {
 
         logoutBtn.setOnClickListener(v -> {
             profile.saveData();
-            profile = null;
             goBackToLogin();
         });
 
