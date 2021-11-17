@@ -2,6 +2,8 @@ package com.example.fitappa.Model.UseCase;
 
 
 import com.example.fitappa.Model.Entity.User;
+import com.example.fitappa.Model.Gateway.Database;
+import com.example.fitappa.Model.Gateway.FirebaseDB;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,7 +23,16 @@ public class Profile implements Serializable {
      * @param password this is the User's password
      */
     public Profile(String email, String name, String password) {
-        this.user = new User(name, password, email);
+        this(new User(email, name, password));
+    }
+
+    /**
+     * Creates the main profile for one user
+     *
+     * @param user User object representing one user
+     */
+    public Profile(User user) {
+        this.user = user;
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
 
@@ -48,7 +59,15 @@ public class Profile implements Serializable {
     }
 
     /**
-     * gets who the User is following and who is following them
+     * Save this profile to a database
+     */
+    public void saveData() {
+        Database database = new FirebaseDB();
+        database.save(this);
+    }
+
+    /**
+     * Gets who the User is following and who is following them
      *
      * @return returns a HashMap of people User is following
      */

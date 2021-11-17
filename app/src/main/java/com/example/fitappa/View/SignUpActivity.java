@@ -8,39 +8,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
-import com.google.firebase.auth.FirebaseAuth;
 
-import java.util.Objects;
-
-
-public class SignUpActivity extends AppCompatActivity implements GoesHome {
-    private EditText user;
-    private EditText pass;
-    private EditText mail;
+public class SignUpActivity extends AppCompatActivity implements OpensHome {
+    private EditText usernameText;
+    private EditText passwordText;
+    private EditText emailText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
-        user = findViewById(R.id.userName1);
-        pass = findViewById(R.id.password);
-        mail = findViewById(R.id.email);
+        usernameText = findViewById(R.id.userName1);
+        passwordText = findViewById(R.id.password);
+        emailText = findViewById(R.id.email);
         Button enter = findViewById(R.id.submit);
 
-        Auth auth = new Auth(mAuth, this);
+        Auth auth = new Auth(this);
 
-        enter.setOnClickListener(v -> {
-            if (auth.verifyCredentials(mail, user, pass))
-            {
-                auth.signUp(
-                        Objects.requireNonNull(mail.getText()).toString(),
-                        Objects.requireNonNull(user.getText()).toString(),
-                        Objects.requireNonNull(pass.getText()).toString());
-            }
-        });
+        enter.setOnClickListener(v -> auth.runSignUp(emailText, usernameText, passwordText));
 
 
     }

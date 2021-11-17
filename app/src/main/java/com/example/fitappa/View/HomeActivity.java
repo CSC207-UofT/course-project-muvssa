@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         openProfileBtn.setOnClickListener(v -> openProfile());
 
         logoutBtn.setOnClickListener(v -> {
-            // TODO: Save data here
+            profile.saveData();
             profile = null;
             goBackToLogin();
         });
