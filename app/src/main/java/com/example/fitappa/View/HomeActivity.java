@@ -45,20 +45,20 @@ public class HomeActivity extends AppCompatActivity {
         FirebaseAuth.getInstance().signOut();
     }
 
-    public void openRoutines() {
+    private void openRoutines() {
         Intent routines = new Intent(this, ViewRoutinesActivity.class);
         routines.putExtra("my_Profile", this.profile);
         startActivity(routines);
     }
 
-    public void openProfile() {
+    private void openProfile() {
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("persons_Profile", profile);
         intent.putExtra("my_Profile", profile);
         startActivity(intent);
     }
 
-    public void goBackToMain() {
+    private void goBackToMain() {
         Intent main = new Intent(this, MainActivity.class);
         startActivity(main);
     }

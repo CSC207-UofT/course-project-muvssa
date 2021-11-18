@@ -16,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        // TODO: refactor and make this if statement be a method call in a gateway
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
@@ -52,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(loginIntent);
     }
 
-    public void openHome(Profile profile) {
+    private void openHome(Profile profile) {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile", profile);
         startActivity(intent);

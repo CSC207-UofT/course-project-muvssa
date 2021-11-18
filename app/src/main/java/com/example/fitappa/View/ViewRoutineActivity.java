@@ -38,9 +38,9 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         // Listeners
         addWorkoutBtn.setOnClickListener(view -> openAddWorkout());
 
-
     }
 
+    @Override
     public void updateRoutineView(Workout workout) {
         Button button = new Button(this);
         button.setText(workout.getName());
@@ -49,7 +49,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     }
 
-    public void initializeRoutineView(List<Workout> workouts) {
+    private void initializeRoutineView(List<Workout> workouts) {
         for (Workout w : workouts) {
             updateRoutineView(w);
         }
@@ -60,6 +60,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         startActivityForResult(createWorkoutIntent, 1);
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
@@ -72,6 +73,4 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         workout.putExtra("workoutObj", w);
         startActivity(workout);
     }
-
-
 }

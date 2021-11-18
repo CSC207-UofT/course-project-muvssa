@@ -30,10 +30,6 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
     }
 
     @Override
-    public void onStart() {
-        super.onStart();
-    }
-
     public void openHome(Profile profile) {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile", profile);
