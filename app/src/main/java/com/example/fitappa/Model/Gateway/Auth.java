@@ -1,7 +1,6 @@
 package com.example.fitappa.Model.Gateway;
 
 import android.content.Context;
-import android.util.Log;
 import android.widget.EditText;
 import android.widget.Toast;
 import com.example.fitappa.Model.Entity.User;
@@ -30,8 +29,9 @@ public class Auth implements Authenticator {
 
     /**
      * Constructor that takes a view and context
-     * @param view      View that will be used to go home
-     * @param context   Context that will be used to display message on screen
+     *
+     * @param view    View that will be used to go home
+     * @param context Context that will be used to display message on screen
      */
     public Auth(OpensHome view, HasContext context) {
         this(view);
@@ -53,7 +53,6 @@ public class Auth implements Authenticator {
                     assert firebaseUser != null;
 
                     // Create a user with the firebase unique ID assigned to their login
-                    Log.d("test123", "Signup: uid = '" + firebaseUser.getUid() + "'");
                     User user = new User(email, username, password, firebaseUser.getUid());
                     // Create a profile with the user
                     Profile profile = new Profile(user);
