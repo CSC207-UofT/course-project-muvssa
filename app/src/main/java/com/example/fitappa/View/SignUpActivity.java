@@ -9,7 +9,7 @@ import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 
-public class SignUpActivity extends AppCompatActivity implements OpensHome {
+public class SignUpActivity extends AppCompatActivity implements Auth.View {
     private EditText usernameText;
     private EditText passwordText;
     private EditText emailText;

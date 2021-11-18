@@ -4,13 +4,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends AppCompatActivity implements OpensHome {
+public class MainActivity extends AppCompatActivity implements Auth.View {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

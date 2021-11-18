@@ -10,7 +10,7 @@ import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 
-public class LoginActivity extends AppCompatActivity implements OpensHome, Auth.HasContext {
+public class LoginActivity extends AppCompatActivity implements Auth.View, Auth.HasContext {
     private EditText passwordField;
     private EditText emailField;
     private Auth auth;

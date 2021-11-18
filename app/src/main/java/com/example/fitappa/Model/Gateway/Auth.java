@@ -5,7 +5,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.UseCase.Profile;
-import com.example.fitappa.View.OpensHome;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -14,7 +13,7 @@ import java.util.regex.Pattern;
 
 public class Auth implements Authenticator {
     private final FirebaseAuth mAuth;
-    private final OpensHome view;
+    private final View view;
     private HasContext context;
 
     /**
@@ -22,7 +21,7 @@ public class Auth implements Authenticator {
      *
      * @param view OpensHome view to be used when ready to go home
      */
-    public Auth(OpensHome view) {
+    public Auth(View view) {
         this.mAuth = FirebaseAuth.getInstance();
         this.view = view;
     }
@@ -33,7 +32,7 @@ public class Auth implements Authenticator {
      * @param view    View that will be used to go home
      * @param context Context that will be used to display message on screen
      */
-    public Auth(OpensHome view, HasContext context) {
+    public Auth(View view, HasContext context) {
         this(view);
         this.context = context;
     }
@@ -170,4 +169,9 @@ public class Auth implements Authenticator {
     public interface HasContext {
         Context getContext();
     }
+
+    public interface View {
+        void openHome(Profile profile);
+    }
+
 }
