@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
 public class Auth implements Authenticator {
     private final FirebaseAuth mAuth;
     private final View view;
-    private HasContext context;
 
     /**
      * Constructor that takes a view and initializes a FirebaseAuth
@@ -24,17 +23,6 @@ public class Auth implements Authenticator {
     public Auth(View view) {
         this.mAuth = FirebaseAuth.getInstance();
         this.view = view;
-    }
-
-    /**
-     * Constructor that takes a view and context
-     *
-     * @param view    View that will be used to go home
-     * @param context Context that will be used to display message on screen
-     */
-    public Auth(View view, HasContext context) {
-        this(view);
-        this.context = context;
     }
 
     /**
@@ -58,7 +46,10 @@ public class Auth implements Authenticator {
 
                     // Update the view with the new profile
                     updateUI(profile);
-                });
+                })
+                .addOnFailureListener(e -> Toast.makeText(view.getContext(),
+                        "Error. Email already in use. \nPlease try again.",
+                        Toast.LENGTH_LONG).show());
     }
 
     /**
@@ -84,7 +75,7 @@ public class Auth implements Authenticator {
                                 updateUI(profile);
                             });
                 })
-                .addOnFailureListener(e -> Toast.makeText(context.getContext(),
+                .addOnFailureListener(e -> Toast.makeText(view.getContext(),
                         "Error. Incorrect email or password. \nPlease try again.",
                         Toast.LENGTH_LONG).show());
     }
@@ -165,13 +156,10 @@ public class Auth implements Authenticator {
         signUp(email, username, password);
     }
 
-    // Dependency Inversion
-    public interface HasContext {
-        Context getContext();
-    }
-
     public interface View {
         void openHome(Profile profile);
+
+        Context getContext();
     }
 
 }

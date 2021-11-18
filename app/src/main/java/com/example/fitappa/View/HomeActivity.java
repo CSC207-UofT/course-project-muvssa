@@ -6,6 +6,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class HomeActivity extends AppCompatActivity {
     private Profile profile;
@@ -21,7 +22,7 @@ public class HomeActivity extends AppCompatActivity {
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
 
         if (profile == null) {
-            goBackToLogin();
+            goBackToMain();
         }
 
         // Listeners
@@ -31,9 +32,17 @@ public class HomeActivity extends AppCompatActivity {
 
         logoutBtn.setOnClickListener(v -> {
             profile.saveData();
-            goBackToLogin();
+            signOut();
+            goBackToMain();
         });
 
+    }
+
+    /**
+     * Sign out the current Firebase user
+     */
+    private void signOut() {
+        FirebaseAuth.getInstance().signOut();
     }
 
     public void openRoutines() {
@@ -49,9 +58,9 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void goBackToLogin() {
-        Intent login = new Intent(this, LoginActivity.class);
-        startActivity(login);
+    public void goBackToMain() {
+        Intent main = new Intent(this, MainActivity.class);
+        startActivity(main);
     }
 
 }

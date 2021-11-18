@@ -10,7 +10,7 @@ import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 
-public class LoginActivity extends AppCompatActivity implements Auth.View, Auth.HasContext {
+public class LoginActivity extends AppCompatActivity implements Auth.View {
     private EditText passwordField;
     private EditText emailField;
     private Auth auth;
@@ -20,15 +20,13 @@ public class LoginActivity extends AppCompatActivity implements Auth.View, Auth.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        this.auth = new Auth(this, this);
+        this.auth = new Auth(this);
 
         passwordField = findViewById(R.id.PasswordField);
         emailField = findViewById(R.id.EmailField);
         TextView loginBtn = findViewById(R.id.LogInBtn);
 
-        loginBtn.setOnClickListener(v ->
-                auth.runLogin(emailField, passwordField)
-        );
+        loginBtn.setOnClickListener(v -> auth.runLogin(emailField, passwordField));
     }
 
     @Override

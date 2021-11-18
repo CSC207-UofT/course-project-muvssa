@@ -4,14 +4,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class MainActivity extends AppCompatActivity implements Auth.View {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements Auth.View {
             return;
         }
 
-
         setContentView(R.layout.activity_main);
         Button signUpBtn = findViewById(R.id.SignUp);
         Button loginBtn = findViewById(R.id.SignIn);
@@ -54,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements Auth.View {
         startActivity(loginIntent);
     }
 
-    @Override
     public void openHome(Profile profile) {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile", profile);
