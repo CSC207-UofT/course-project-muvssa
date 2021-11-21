@@ -21,8 +21,6 @@ public class MainActivity extends AppCompatActivity {
 
         // TODO: refactor and make this if statement be a method call in a gateway
         // Get firebase user
-
-        FirebaseAuth.getInstance().signOut();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             // Check if a firebase authenticated user already exists (previously logged in)
