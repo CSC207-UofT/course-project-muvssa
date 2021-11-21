@@ -39,10 +39,11 @@ public class Auth implements Authenticator {
                     FirebaseUser firebaseUser = authResult.getUser();
                     assert firebaseUser != null;
 
+                    Saveable gateway = new FirebaseGateway();
                     // Create a user with the firebase unique ID assigned to their login
                     User user = new User(email, username, password, firebaseUser.getUid());
                     // Create a profile with the user
-                    Profile profile = new Profile(user);
+                    Profile profile = new Profile(user, gateway);
 
                     // Update the view with the new profile
                     updateUI(profile);

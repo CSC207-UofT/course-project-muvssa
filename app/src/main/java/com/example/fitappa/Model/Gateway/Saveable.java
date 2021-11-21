@@ -1,6 +1,6 @@
 package com.example.fitappa.Model.Gateway;
 
-public interface Database {
+public interface Saveable {
     /**
      * Save object into some database
      *

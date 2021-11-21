@@ -3,14 +3,14 @@ package com.example.fitappa.Model.Gateway;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class FirebaseDB implements Database {
+public class FirebaseGateway implements Saveable {
 
     private final FirebaseFirestore database;
 
     /**
      * Constructor that initializes the Firestore database
      */
-    public FirebaseDB() {
+    public FirebaseGateway() {
         database = FirebaseFirestore.getInstance();
     }
 
