@@ -1,5 +1,6 @@
 package com.example.fitappa.View;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -27,13 +28,17 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
         Auth auth = new Auth(this);
 
         enter.setOnClickListener(v -> auth.runSignUp(emailText, usernameText, passwordText));
-
-
     }
 
+    @Override
     public void openHome(Profile profile) {
         Intent intent = new Intent(this, HomeActivity.class);
         intent.putExtra("profile", profile);
         startActivity(intent);
+    }
+
+    @Override
+    public Context getContext() {
+        return getApplicationContext();
     }
 }

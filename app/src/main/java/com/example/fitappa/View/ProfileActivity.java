@@ -71,6 +71,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         startActivity(intent);
     }
 
+    @Override
     public void home() {
         Intent intent = new Intent(this, ProfileActivity.class);
         intent.putExtra("my_Profile", this.myProfile);
@@ -80,7 +81,6 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
 
     private void followPress() {
         profileController.setFollow(this.profile);
-
     }
 
 

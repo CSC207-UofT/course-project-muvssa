@@ -1,10 +1,9 @@
 package com.example.fitappa.Model.UseCase;
 
 
+import android.util.Log;
 import com.example.fitappa.Model.Entity.User;
-import com.example.fitappa.Model.Gateway.Database;
-import com.example.fitappa.Model.Gateway.FirebaseDB;
-import com.google.firebase.auth.FirebaseAuth;
+import com.example.fitappa.Model.Gateway.Saveable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -15,31 +14,18 @@ public class Profile implements Serializable {
     private User user;
     private FollowManager followManager;
     private List<Routine> routines;
-
-    /**
-     * Creates the main profile for one user
-     *
-     * @param email    this is the User's email
-     * @param name     this is the User's username
-     * @param password this is the User's password
-     */
-    public Profile(String email, String name, String password) {
-        this(new User(email, name, password));
-    }
+    private Saveable gateway;
 
     /**
      * Creates the main profile for one user
      *
      * @param user User object representing one user
      */
-    public Profile(User user) {
+    public Profile(User user, Saveable gateway) {
         this.user = user;
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
-
-        // Temporary Hardcode (for testing purposes)
-        this.routines.add(new Routine("My routine", "A new routine"));
-        this.routines.add(new Routine("My routine2", "A new routine"));
+        this.gateway = gateway;
     }
 
     // empty constructor necessary for Firebase
@@ -60,12 +46,10 @@ public class Profile implements Serializable {
     }
 
     /**
-     * Save this profile to a database
+     * Save this profile to a database through the gateway
      */
     public void saveData() {
-        Database database = new FirebaseDB();
-        database.save(this);
-        FirebaseAuth.getInstance().signOut();
+        gateway.save(this);
     }
 
     /**

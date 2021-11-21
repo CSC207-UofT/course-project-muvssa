@@ -52,7 +52,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     }
 
-    public void initializeRoutinesView(List<Routine> routines) {
+    private void initializeRoutinesView(List<Routine> routines) {
         for (Routine r : routines) {
             updateRoutinesView(r);
         }
@@ -63,6 +63,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         startActivityForResult(createRoutinesIntent, 1);
     }
 
+    @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
@@ -70,7 +71,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         }
     }
 
-    public void openViewRoutine(Routine r) {
+    private void openViewRoutine(Routine r) {
         Intent routine = new Intent(this, ViewRoutineActivity.class);
         routine.putExtra("routineObj", r);
         startActivity(routine);

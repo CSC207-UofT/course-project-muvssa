@@ -32,15 +32,6 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
 
     }
 
-    public void updateExerciseLayout(Exercise e) {
-        Button button = new Button(this);
-        button.setText(e.getName());
-        button.setOnClickListener(view -> goBackToWorkout(e.getName()));
-
-        exerciseLayout.addView(button);
-
-    }
-
     @Override
     public void loadExercise(ArrayList<Exercise> e) {
         for (Exercise i : e) {
@@ -48,13 +39,19 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         }
     }
 
-    public void goBackToWorkout(String e) {
+    private void updateExerciseLayout(Exercise e) {
+        Button button = new Button(this);
+        button.setText(e.getName());
+        button.setOnClickListener(view -> goBackToWorkout(e.getName()));
+
+        exerciseLayout.addView(button);
+    }
+
+    private void goBackToWorkout(String e) {
         Intent w = new Intent(this, ViewWorkoutActivity.class);
         w.putExtra("workoutObj", this.workout);
         w.putExtra("exerciseName", e);
         setResult(RESULT_OK, w);
         finish();
     }
-
-
 }

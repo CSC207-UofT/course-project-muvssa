@@ -24,8 +24,7 @@ public class AddRoutineActivity extends AppCompatActivity {
         submitBtn.setOnClickListener(v -> goBackToWorkouts(routineName.getText().toString()));
     }
 
-
-    public void goBackToWorkouts(String routineName) {
+    private void goBackToWorkouts(String routineName) {
         Intent workout = new Intent(this, ViewRoutinesActivity.class);
         workout.putExtra("routineName", routineName);
         setResult(RESULT_OK, workout);

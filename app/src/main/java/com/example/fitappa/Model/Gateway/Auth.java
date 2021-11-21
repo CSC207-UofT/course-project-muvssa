@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
 public class Auth implements Authenticator {
     private final FirebaseAuth mAuth;
     private final View view;
-    private HasContext context;
 
     /**
      * Constructor that takes a view and initializes a FirebaseAuth
@@ -24,17 +23,6 @@ public class Auth implements Authenticator {
     public Auth(View view) {
         this.mAuth = FirebaseAuth.getInstance();
         this.view = view;
-    }
-
-    /**
-     * Constructor that takes a view and context
-     *
-     * @param view    View that will be used to go home
-     * @param context Context that will be used to display message on screen
-     */
-    public Auth(View view, HasContext context) {
-        this(view);
-        this.context = context;
     }
 
     /**
@@ -51,14 +39,18 @@ public class Auth implements Authenticator {
                     FirebaseUser firebaseUser = authResult.getUser();
                     assert firebaseUser != null;
 
+                    Saveable gateway = new FirebaseGateway();
                     // Create a user with the firebase unique ID assigned to their login
                     User user = new User(email, username, password, firebaseUser.getUid());
                     // Create a profile with the user
-                    Profile profile = new Profile(user);
+                    Profile profile = new Profile(user, gateway);
 
                     // Update the view with the new profile
                     updateUI(profile);
-                });
+                })
+                .addOnFailureListener(e -> Toast.makeText(view.getContext(),
+                        "Error. Email already in use. \nPlease try again.",
+                        Toast.LENGTH_LONG).show());
     }
 
     /**
@@ -84,7 +76,7 @@ public class Auth implements Authenticator {
                                 updateUI(profile);
                             });
                 })
-                .addOnFailureListener(e -> Toast.makeText(context.getContext(),
+                .addOnFailureListener(e -> Toast.makeText(view.getContext(),
                         "Error. Incorrect email or password. \nPlease try again.",
                         Toast.LENGTH_LONG).show());
     }
@@ -165,13 +157,10 @@ public class Auth implements Authenticator {
         signUp(email, username, password);
     }
 
-    // Dependency Inversion
-    public interface HasContext {
-        Context getContext();
-    }
-
     public interface View {
         void openHome(Profile profile);
+
+        Context getContext();
     }
 
 }
