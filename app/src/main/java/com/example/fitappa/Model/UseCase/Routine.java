@@ -113,7 +113,9 @@ public class Routine implements Serializable {
         if (!(o instanceof Routine))
             return false;
         Routine routine = (Routine) o;
-        return name.equals(routine.name) && description.equals(routine.description) &&
-                workouts.equals(routine.workouts);
+        // erroring as when you want to update a specfic routine it could have diffrent workouts
+        //return name.equals(routine.name) && description.equals(routine.description) &&
+        //        workouts.equals(routine.workouts);
+        return name.equals(routine.name);
     }
 }

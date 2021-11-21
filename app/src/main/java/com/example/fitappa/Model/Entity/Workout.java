@@ -1,6 +1,7 @@
 package com.example.fitappa.Model.Entity;
 
 import android.os.Build;
+import com.example.fitappa.Model.UseCase.Routine;
 
 import java.io.Serializable;
 import java.time.Duration;
@@ -176,6 +177,18 @@ public class Workout implements Serializable {
         } else {
             return null; // TODO: Increase Min API Level from 16 to 24
         }
+    }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o)
+            return true;
+        if (!(o instanceof Workout))
+            return false;
+        Workout workout = (Workout) o;
+        // erroring as when you want to update a specfic routine it could have diffrent workouts
+        //return name.equals(routine.name) && description.equals(routine.description) &&
+        //        workouts.equals(routine.workouts);
+        return name.equals(workout.getName());
     }
 
 

@@ -15,6 +15,7 @@ import java.util.List;
 public class ViewRoutinesActivity extends AppCompatActivity implements ViewRoutinesPresenter.View {
     private ViewRoutinesPresenter presenter;
     private LinearLayout routinesLayout;
+    private Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,9 +26,10 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         // Load the elements
         routinesLayout = findViewById(R.id.routinesLayout);
         Button createRoutineBtn = findViewById(R.id.CreateRoutineBtn);
+        Button back = findViewById(R.id.backButton);
 
         // Get the profile
-        Profile profile = (Profile) getIntent().getSerializableExtra("my_Profile");
+        this.profile = (Profile) getIntent().getSerializableExtra("my_Profile");
 
         // We must initialize the Presenter in the View.
         this.presenter = new ViewRoutinesPresenter(this, profile);
@@ -37,6 +39,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
         // Listeners
         createRoutineBtn.setOnClickListener(view -> openAddRoutine());
+        back.setOnClickListener(view -> back());
 
     }
 
@@ -50,6 +53,12 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
         routinesLayout.addView(button);
 
+    }
+    @Override
+    public void back() {
+        Intent intent = new Intent(this, HomeActivity.class);
+        intent.putExtra("profile", profile);
+        startActivity(intent);
     }
 
     private void initializeRoutinesView(List<Routine> routines) {
@@ -74,6 +83,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
     private void openViewRoutine(Routine r) {
         Intent routine = new Intent(this, ViewRoutineActivity.class);
         routine.putExtra("routineObj", r);
+        routine.putExtra("profile", this.profile);
         startActivity(routine);
     }
 

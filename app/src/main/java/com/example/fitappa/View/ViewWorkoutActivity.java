@@ -8,6 +8,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Model.Entity.Exercise;
 import com.example.fitappa.Model.Entity.Workout;
+import com.example.fitappa.Model.UseCase.Profile;
+import com.example.fitappa.Model.UseCase.Routine;
 import com.example.fitappa.Presenter.ViewWorkoutPresenter;
 import com.example.fitappa.R;
 
@@ -15,6 +17,8 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     private ViewWorkoutPresenter presenter;
     private LinearLayout exerciseLayout;
     private Workout workout;
+    private Routine routine;
+    private Profile profile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,15 +26,19 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         setContentView(R.layout.activity_view_workout);
 
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
+        Button back = findViewById(R.id.backButton3);
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
         TextView workoutLabel = findViewById(R.id.WorkoutLabel);
         this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
-        this.presenter = new ViewWorkoutPresenter(this, workout);
+        this.routine = (Routine) getIntent().getSerializableExtra("routineObj");
+        this.profile = (Profile) getIntent().getSerializableExtra("profile");
+        this.presenter = new ViewWorkoutPresenter(this, workout, routine);
 
         String t = "Exercises in " + workout.getName();
         workoutLabel.setText(t);
 
         addExerciseBtn.setOnClickListener(view -> openAddExercise());
+        back.setOnClickListener(view -> presenter.updateWorkoutRoutine());
 
 
     }
@@ -39,6 +47,12 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         Intent addExerciseIntent = new Intent(this, AddExerciseActivity.class);
         addExerciseIntent.putExtra("workoutObj", this.workout);
         startActivityForResult(addExerciseIntent, 1);
+    }
+    public void back() {
+        Intent intent = new Intent(this, ViewRoutineActivity.class);
+        intent.putExtra("routineObj", this.routine);
+        intent.putExtra("profile", this.profile);
+        startActivity(intent);
     }
 
     @Override

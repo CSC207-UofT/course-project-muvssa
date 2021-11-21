@@ -10,15 +10,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.Optional;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+
         // TODO: refactor and make this if statement be a method call in a gateway
         // Get firebase user
-        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        /*FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             // Check if a firebase authenticated user already exists (previously logged in)
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -31,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
                         openHome(profile);
                     });
             return;
-        }
-
+        }*/
         setContentView(R.layout.activity_main);
+
         Button signUpBtn = findViewById(R.id.SignUp);
         Button loginBtn = findViewById(R.id.SignIn);
 
