@@ -1,7 +1,6 @@
 package com.example.fitappa.Model.UseCase;
 
 
-import android.util.Log;
 import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.Gateway.Saveable;
 
@@ -61,7 +60,21 @@ public class Profile implements Serializable {
         return followManager;
     }
 
+    /**
+     * Adds a routine to the list
+     *
+     * @param r a routine to be added
+     */
     public void addRoutine(Routine r) {
         this.routines.add(r);
+    }
+
+    /**
+     * replaces the current routine list
+     *
+     * @param routines a list of routine objects
+     */
+    public void setRoutines(List<Routine> routines){
+        this.routines = routines;
     }
 }
