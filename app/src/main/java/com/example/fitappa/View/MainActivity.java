@@ -22,7 +22,8 @@ public class MainActivity extends AppCompatActivity {
         // TODO: refactor and make this if statement be a method call in a gateway
         // Get firebase user
 
-        /*FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        FirebaseAuth.getInstance().signOut();
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
             // Check if a firebase authenticated user already exists (previously logged in)
             FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                         openHome(profile);
                     });
             return;
-        }*/
+        }
         setContentView(R.layout.activity_main);
 
         Button signUpBtn = findViewById(R.id.SignUp);
