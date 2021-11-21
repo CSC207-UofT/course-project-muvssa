@@ -3,16 +3,9 @@ package com.example.fitappa.Model.Gateway;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class FirebaseGateway implements Saveable {
+import java.io.Serializable;
 
-    private final FirebaseFirestore database;
-
-    /**
-     * Constructor that initializes the Firestore database
-     */
-    public FirebaseGateway() {
-        database = FirebaseFirestore.getInstance();
-    }
+public class FirebaseGateway implements Saveable, Serializable {
 
     /**
      * Save object into some database
@@ -22,6 +15,7 @@ public class FirebaseGateway implements Saveable {
     @Override
     public void save(Object o) {
         Profile profile = (Profile) o;
-        database.collection("users").document(profile.getUser().getUniqueID()).set(profile);
+        FirebaseFirestore database = FirebaseFirestore.getInstance();
+        database.collection("users").document(profile.getUser().getUniqueID()).set(o);
     }
 }

@@ -16,16 +16,23 @@ public class ProfileTest extends TestCase {
     FollowManager userf;
     FollowManager user2f;
     FollowManager user3f;
-    Routine routine;
+    Routine routine1;
+    Routine routine2;
 
 
     public void setUp() throws Exception {
+        this.routine1 = new Routine("My routine", "A new routine");
+        this.routine2 = new Routine("My routine2", "A new routine");
+
         Saveable gateway = new FirebaseGateway();
         this.user1 = new User("johnnyappleseed@gmail.com", "Johnny", "johnny123");
         this.profile1 = new Profile(user1, gateway);
+        profile1.addRoutine(routine1);
 
         this.user2 = new User("helloworld@gmail.com", "Hello", "world123");
         this.profile2 = new Profile(user2, gateway);
+        profile2.addRoutine(routine2);
+
         super.setUp();
     }
 
@@ -42,8 +49,8 @@ public class ProfileTest extends TestCase {
 
     public void testGetProfileFollow() {
         user3f = new FollowManager(profile1.getUser());
-        assertNotSame(user3f, profile1.getFollowManager()); //shows same data types are being compared
-        //shows the getter works
+        assertNotSame(user3f, profile1.getFollowManager()); // shows same data types are being compared
+        // shows the getter works
         userf = profile1.getFollowManager();
         userf.getFollowers().put("Username1", user2f);
         userf.getFollowing().put("Username2", user2f);
@@ -56,18 +63,18 @@ public class ProfileTest extends TestCase {
     }
 
     public void testGetRoutines() {
-        //shows that it matches the elements of the
+        // shows that it matches the elements of the
         // hard coded routines
-        assertEquals("My routine", profile1.getRoutines().get(0).getName());
-        assertEquals("My routine2", profile2.getRoutines().get(1).getName());
+        assertEquals(routine1, profile1.getRoutines().get(0));
+        assertEquals(routine2, profile2.getRoutines().get(0));
     }
 
     public void testAddRoutine() {
-        //shows that the element has been added by looking at
-        //size and matching name
+        // shows that the element has been added by looking at
+        // size and matching name
         profile2.addRoutine(new Routine("My routine3", "My new routine"));
-        assertEquals("My routine3", profile2.getRoutines().get(2).getName());
-        assertEquals(3, profile2.getRoutines().size());
+        assertEquals("My routine3", profile2.getRoutines().get(1).getName());
+        assertEquals(2, profile2.getRoutines().size());
 
     }
 }

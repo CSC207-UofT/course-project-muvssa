@@ -1,6 +1,7 @@
 package com.example.fitappa.Model.UseCase;
 
 
+import android.util.Log;
 import com.example.fitappa.Model.Entity.User;
 import com.example.fitappa.Model.Gateway.Saveable;
 
@@ -25,10 +26,6 @@ public class Profile implements Serializable {
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
         this.gateway = gateway;
-
-        // Temporary Hardcode (for testing purposes)
-        this.routines.add(new Routine("My routine", "A new routine"));
-        this.routines.add(new Routine("My routine2", "A new routine"));
     }
 
     // empty constructor necessary for Firebase
@@ -49,7 +46,7 @@ public class Profile implements Serializable {
     }
 
     /**
-     * Save this profile to a gateway
+     * Save this profile to a database through the gateway
      */
     public void saveData() {
         gateway.save(this);

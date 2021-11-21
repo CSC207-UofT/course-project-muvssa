@@ -28,8 +28,6 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
         Auth auth = new Auth(this);
 
         enter.setOnClickListener(v -> auth.runSignUp(emailText, usernameText, passwordText));
-
-
     }
 
     @Override
