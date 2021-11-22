@@ -15,6 +15,11 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
     private EditText passwordText;
     private EditText emailText;
 
+    /**
+     * This method is called when the activity starts.
+     *
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,13 +35,20 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
         enter.setOnClickListener(v -> auth.runSignUp(emailText, usernameText, passwordText));
     }
 
+
+    /**
+     * This method opens the HomeActivity View while passing in the profile
+     *
+     * @param profile represents the Profile that was created
+     */
     @Override
     public void openHome(Profile profile) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("profile", profile);
-        startActivity(intent);
+        Intent home = new Intent(this, DashboardActivity.class);
+        home.putExtra("profile", profile);
+        startActivity(home);
     }
 
+    // TODO: Whoever created this method, add the javadocs
     @Override
     public Context getContext() {
         return getApplicationContext();

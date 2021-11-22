@@ -45,7 +45,7 @@ public class ViewWorkoutPresenter {
         int pos = workouts.indexOf(workout);
         workouts.set(pos, workout);
         routine.setWorkouts((ArrayList<Workout>) workouts);
-        view.back();
+        view.goBackToViewRoutine();
 
     }
 
@@ -53,7 +53,7 @@ public class ViewWorkoutPresenter {
     // Dependency Inversion
     public interface View {
         void updateExerciseLayout(Exercise e);
-        void back();
+        void goBackToViewRoutine();
     }
 
 }

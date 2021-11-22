@@ -45,12 +45,12 @@ public class ViewRoutinePresenter {
         int pos = routines.indexOf(routine);
         routines.set(pos, routine);
         profile.setRoutines(routines);
-        view.back();
+        view.goBackToViewRoutines();
 
     }
 
     public interface View {
         void updateRoutineView(Workout workout);
-        void back();
+        void goBackToViewRoutines();
     }
 }

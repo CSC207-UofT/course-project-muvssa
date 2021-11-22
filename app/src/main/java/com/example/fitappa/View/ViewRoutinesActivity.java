@@ -17,6 +17,11 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
     private LinearLayout routinesLayout;
     private Profile profile;
 
+    /**
+     * This method is called when the activity starts.
+     *
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Default Android Stuff
@@ -39,11 +44,16 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
         // Listeners
         createRoutineBtn.setOnClickListener(view -> openAddRoutine());
-        back.setOnClickListener(view -> back());
+        back.setOnClickListener(view -> openHome());
 
     }
 
 
+    /**
+     * This method updates the RoutineView with the given routine
+     *
+     * @param routine represents the given routine
+     */
     @Override
     public void updateRoutinesView(Routine routine) {
         Button button = new Button(this);
@@ -52,26 +62,45 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         button.setOnClickListener(view -> openViewRoutine(routine));
 
         routinesLayout.addView(button);
-
     }
+
+    /**
+     * This method opens the HomeActivity
+     */
     @Override
-    public void back() {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("profile", profile);
-        startActivity(intent);
+    public void openHome() {
+        Intent home = new Intent(this, DashboardActivity.class);
+        home.putExtra("profile", profile);
+        startActivity(home);
     }
 
+    /**
+     * This method initializes the RoutinesView with the given List of Routine
+     *
+     * @param routines represents List of Routine
+     */
     private void initializeRoutinesView(List<Routine> routines) {
         for (Routine r : routines) {
             updateRoutinesView(r);
         }
     }
 
+
+    /**
+     * This method opens the AddRoutineActivity View
+     */
     private void openAddRoutine() {
         Intent createRoutinesIntent = new Intent(this, AddRoutineActivity.class);
         startActivityForResult(createRoutinesIntent, 1);
     }
 
+    /**
+     * This method retrieves data from AddRoutineActivity view.
+     *
+     * @param requestCode represents the integer identification for the data
+     * @param resultCode  represents the result of the retrieve
+     * @param data        represents the data that is retrieved
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -80,11 +109,16 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         }
     }
 
-    private void openViewRoutine(Routine r) {
-        Intent routine = new Intent(this, ViewRoutineActivity.class);
-        routine.putExtra("routineObj", r);
-        routine.putExtra("profile", this.profile);
-        startActivity(routine);
+    /**
+     * This method opens the ViewRoutineActivity view
+     *
+     * @param routine represents the Routine to view
+     */
+    private void openViewRoutine(Routine routine) {
+        Intent viewRoutine = new Intent(this, ViewRoutineActivity.class);
+        viewRoutine.putExtra("routineObj", routine);
+        viewRoutine.putExtra("profile", this.profile);
+        startActivity(viewRoutine);
     }
 
 }

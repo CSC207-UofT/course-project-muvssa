@@ -19,6 +19,11 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
     private Profile profile;
     private Routine routine;
 
+    /**
+     * This method is called when the activity starts.
+     *
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,6 +54,11 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     }
 
+    /**
+     * This method updates RoutineView by adding a Workout
+     *
+     * @param workout represents the Workout that must be added to RoutinesView
+     */
     @Override
     public void updateRoutineView(Workout workout) {
         Button button = new Button(this);
@@ -57,24 +67,42 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         routineLayout.addView(button);
 
     }
-    public void back() {
-        Intent intent = new Intent(this, ViewRoutinesActivity.class);
-        // put routine into the profile send back the profile
-        intent.putExtra("my_Profile", this.profile);
-        startActivity(intent);
+
+    /**
+     * This method opens ViewRoutines Activity
+     */
+    public void goBackToViewRoutines() {
+        Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
+        viewRoutines.putExtra("my_Profile", this.profile);
+        startActivity(viewRoutines);
     }
 
+    /**
+     * This method initializes the RoutineView with the user's workouts.
+     *
+     * @param workouts represents the user's workouts
+     */
     private void initializeRoutineView(List<Workout> workouts) {
         for (Workout w : workouts) {
             updateRoutineView(w);
         }
     }
 
+    /**
+     * Opens the AddWorkoutActivity view
+     */
     private void openAddWorkout() {
-        Intent createWorkoutIntent = new Intent(this, AddWorkoutActivity.class);
-        startActivityForResult(createWorkoutIntent, 1);
+        Intent addWorkout = new Intent(this, AddWorkoutActivity.class);
+        startActivityForResult(addWorkout, 1);
     }
 
+    /**
+     * This method retrieves data from AddWorkoutActivity view.
+     *
+     * @param requestCode represents the integer identification for the data
+     * @param resultCode  represents the result of the retrieve
+     * @param data        represents the data that is retrieved
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -83,11 +111,16 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         }
     }
 
-    private void openViewWorkout(Workout w) {
-        Intent workout = new Intent(this, ViewWorkoutActivity.class);
-        workout.putExtra("routineObj", this.routine);
-        workout.putExtra("workoutObj", w);
-        workout.putExtra("profile", this.profile);
-        startActivity(workout);
+    /**
+     * This method opens the ViewWorkoutActivity view
+     *
+     * @param workout represents the Workout to open
+     */
+    private void openViewWorkout(Workout workout) {
+        Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
+        viewWorkout.putExtra("routineObj", this.routine);
+        viewWorkout.putExtra("workoutObj", workout);
+        viewWorkout.putExtra("profile", this.profile);
+        startActivity(viewWorkout);
     }
 }

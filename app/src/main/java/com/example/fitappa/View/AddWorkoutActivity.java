@@ -11,6 +11,11 @@ import com.example.fitappa.R;
 public class AddWorkoutActivity extends AppCompatActivity {
     private EditText workoutNameField;
 
+    /**
+     * This method is called when the activity starts.
+     *
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,10 +29,16 @@ public class AddWorkoutActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * This method opens the ViewRoutinesActivity and passes back
+     * workoutName to it.
+     *
+     * @param workoutName the name of the workout that was created
+     */
     private void goBackToRoutine(String workoutName) {
-        Intent routine = new Intent(this, ViewRoutinesActivity.class);
-        routine.putExtra("workoutName", workoutName);
-        setResult(RESULT_OK, routine);
+        Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
+        viewRoutines.putExtra("workoutName", workoutName);
+        setResult(RESULT_OK, viewRoutines);
         finish();
     }
 
