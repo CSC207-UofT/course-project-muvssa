@@ -22,6 +22,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -68,9 +69,10 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
 
     /**
      * This method retrieves data from AddExerciseActivity view.
+     *
      * @param requestCode represents the integer identification for the data
-     * @param resultCode represents the result of the retrieve
-     * @param data represents the data that is retrieved
+     * @param resultCode  represents the result of the retrieve
+     * @param data        represents the data that is retrieved
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -82,6 +84,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
 
     /**
      * This method updates ExerciseLayout with the given Exercise
+     *
      * @param exercise represents the given Exercise
      */
     @Override

@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitAppA">
-        <activity android:name=".View.HomeActivity"></activity>
+        <activity android:name=".View.DashboardActivity"></activity>
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.ViewWorkoutActivity" />
         <activity android:name=".View.ViewRoutineActivity" />
@@ -31,7 +31,7 @@
             android:name=".View.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".View.ProfileActivity"
+            android:name=".View.ViewProfileActivity"
             android:exported="true" />
     </application>
 

@@ -8,11 +8,12 @@ import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class HomeActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
     private Profile profile;
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -32,9 +33,7 @@ public class HomeActivity extends AppCompatActivity {
         openProfileBtn.setOnClickListener(v -> openProfile());
 
         logoutBtn.setOnClickListener(v -> {
-            profile.saveData();
             signOut();
-            goBackToMain();
         });
 
     }
@@ -52,7 +51,12 @@ public class HomeActivity extends AppCompatActivity {
      * Sign out the current Firebase user
      */
     private void signOut() {
+        // Remote
         FirebaseAuth.getInstance().signOut();
+
+        // Local
+        profile.saveData();
+        goBackToMain();
     }
 
     /**
@@ -68,7 +72,7 @@ public class HomeActivity extends AppCompatActivity {
      * This method opens the ProfileActivity View
      */
     private void openProfile() {
-        Intent profile = new Intent(this, ProfileActivity.class);
+        Intent profile = new Intent(this, ViewProfileActivity.class);
         profile.putExtra("persons_Profile", this.profile);
         profile.putExtra("my_Profile", this.profile);
         startActivity(profile);

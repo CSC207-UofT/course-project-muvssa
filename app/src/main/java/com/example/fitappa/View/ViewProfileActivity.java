@@ -13,7 +13,7 @@ import com.example.fitappa.R;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ProfileActivity extends AppCompatActivity implements Observer, ProfilePresenter.View {
+public class ViewProfileActivity extends AppCompatActivity implements Observer, ProfilePresenter.View {
     private Profile myProfile;
     private Profile profile;
     private TextView followerNumber;
@@ -21,6 +21,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -65,10 +66,11 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         followButton.setOnClickListener(v -> followPress());
 
     }
+
     // TODO: Whoever created this method, add the javadocs
     @Override
     public void searched(Profile searchedProfile) {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, ViewProfileActivity.class);
         intent.putExtra("my_Profile", this.myProfile);
         this.profile = searchedProfile;
         intent.putExtra("persons_Profile", this.profile);
@@ -78,7 +80,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
     // TODO: Whoever created this method, add the javadocs
     @Override
     public void home() {
-        Intent home = new Intent(this, ProfileActivity.class);
+        Intent home = new Intent(this, ViewProfileActivity.class);
         home.putExtra("my_Profile", this.myProfile);
         home.putExtra("persons_Profile", this.myProfile);
         startActivity(home);

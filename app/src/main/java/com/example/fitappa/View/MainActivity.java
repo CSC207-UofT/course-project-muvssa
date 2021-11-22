@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -21,9 +22,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
 
+        checkAuth();
+        setContentView(R.layout.activity_main);
 
-        // TODO: refactor and make this if statement be a method call in a gateway
-        // TODO: Turn this into a private method - Abdullah
+        Button signUpBtn = findViewById(R.id.SignUp);
+        Button loginBtn = findViewById(R.id.SignIn);
+
+        //Define and attach click listener
+        signUpBtn.setOnClickListener(v -> openSignUpPage());
+
+        loginBtn.setOnClickListener(v -> openLogInPage());
+    }
+
+    /**
+     * This method checks if the user was already logged in. If so, continue.
+     */
+    private void checkAuth() {
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
@@ -36,17 +50,7 @@ public class MainActivity extends AppCompatActivity {
                         Profile profile = documentSnapshot.toObject(Profile.class);
                         openHome(profile);
                     });
-            return; // Unnecessary
         }
-        setContentView(R.layout.activity_main);
-
-        Button signUpBtn = findViewById(R.id.SignUp);
-        Button loginBtn = findViewById(R.id.SignIn);
-
-        //Define and attach click listener
-        signUpBtn.setOnClickListener(v -> openSignUpPage());
-
-        loginBtn.setOnClickListener(v -> openLogInPage());
     }
 
     /**
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
      * This method opens the HomeActivity View
      */
     private void openHome(Profile profile) {
-        Intent home = new Intent(this, HomeActivity.class);
+        Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
     }

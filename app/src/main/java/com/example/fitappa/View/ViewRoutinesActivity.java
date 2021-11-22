@@ -19,6 +19,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -50,6 +51,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     /**
      * This method updates the RoutineView with the given routine
+     *
      * @param routine represents the given routine
      */
     @Override
@@ -67,13 +69,14 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
      */
     @Override
     public void openHome() {
-        Intent home = new Intent(this, HomeActivity.class);
+        Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
     }
 
     /**
      * This method initializes the RoutinesView with the given List of Routine
+     *
      * @param routines represents List of Routine
      */
     private void initializeRoutinesView(List<Routine> routines) {
@@ -93,9 +96,10 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     /**
      * This method retrieves data from AddRoutineActivity view.
+     *
      * @param requestCode represents the integer identification for the data
-     * @param resultCode represents the result of the retrieve
-     * @param data represents the data that is retrieved
+     * @param resultCode  represents the result of the retrieve
+     * @param data        represents the data that is retrieved
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -107,6 +111,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
     /**
      * This method opens the ViewRoutineActivity view
+     *
      * @param routine represents the Routine to view
      */
     private void openViewRoutine(Routine routine) {

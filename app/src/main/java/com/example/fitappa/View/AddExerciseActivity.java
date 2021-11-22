@@ -20,6 +20,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -38,6 +39,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
     /**
      * This method loads all the Workout's exercises and updates it in the
      * ExerciseLayout view component.
+     *
      * @param exercises represents the Exercise objects stored in the Workout
      */
     @Override
@@ -50,6 +52,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
     /**
      * This method updates the ExerciseLayout view component on AddExerciseActivity
      * by adding the Exercise, e, to the layout.
+     *
      * @param exercise represents the Exercise object to add to the ExerciseLayout
      */
     private void updateExerciseLayout(Exercise exercise) {
@@ -61,8 +64,9 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
     }
 
     /**
-     * This method opens the ViewWorkoutActivity view. 
-     * @param exerciseName represents the name of the exercise. 
+     * This method opens the ViewWorkoutActivity view.
+     *
+     * @param exerciseName represents the name of the exercise.
      */
     private void goBackToWorkout(String exerciseName) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);

@@ -17,6 +17,7 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -37,11 +38,12 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
 
     /**
      * This method opens the HomeActivity View while passing in the profile
+     *
      * @param profile represents the Profile that was created
      */
     @Override
     public void openHome(Profile profile) {
-        Intent home = new Intent(this, HomeActivity.class);
+        Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
     }

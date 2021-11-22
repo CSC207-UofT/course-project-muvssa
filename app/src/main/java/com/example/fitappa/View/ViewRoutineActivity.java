@@ -21,6 +21,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -55,6 +56,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method updates RoutineView by adding a Workout
+     *
      * @param workout represents the Workout that must be added to RoutinesView
      */
     @Override
@@ -77,6 +79,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method initializes the RoutineView with the user's workouts.
+     *
      * @param workouts represents the user's workouts
      */
     private void initializeRoutineView(List<Workout> workouts) {
@@ -95,9 +98,10 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method retrieves data from AddWorkoutActivity view.
+     *
      * @param requestCode represents the integer identification for the data
-     * @param resultCode represents the result of the retrieve
-     * @param data represents the data that is retrieved
+     * @param resultCode  represents the result of the retrieve
+     * @param data        represents the data that is retrieved
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -109,6 +113,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method opens the ViewWorkoutActivity view
+     *
      * @param workout represents the Workout to open
      */
     private void openViewWorkout(Workout workout) {

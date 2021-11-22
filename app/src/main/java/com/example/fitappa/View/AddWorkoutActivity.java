@@ -13,6 +13,7 @@ public class AddWorkoutActivity extends AppCompatActivity {
 
     /**
      * This method is called when the activity starts.
+     *
      * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
      */
     @Override
@@ -31,6 +32,7 @@ public class AddWorkoutActivity extends AppCompatActivity {
     /**
      * This method opens the ViewRoutinesActivity and passes back
      * workoutName to it.
+     *
      * @param workoutName the name of the workout that was created
      */
     private void goBackToRoutine(String workoutName) {
