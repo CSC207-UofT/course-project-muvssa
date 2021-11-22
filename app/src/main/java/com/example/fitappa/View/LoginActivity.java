@@ -15,6 +15,10 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
     private EditText emailField;
     private Auth auth;
 
+    /**
+     * This method is called when the activity starts.
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,13 +33,18 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
         loginBtn.setOnClickListener(v -> auth.runLogin(emailField, passwordField));
     }
 
+    /**
+     * This method opens the HomeActivity while passing in the profile.
+     * @param profile represents the Profile of the authenticated user
+     */
     @Override
     public void openHome(Profile profile) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("profile", profile);
-        startActivity(intent);
+        Intent home = new Intent(this, HomeActivity.class);
+        home.putExtra("profile", profile);
+        startActivity(home);
     }
 
+    // TODO: Create javadoc for this (Whoever created this method)
     @Override
     public Context getContext() {
         return getApplicationContext();

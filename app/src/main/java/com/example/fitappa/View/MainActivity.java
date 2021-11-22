@@ -10,16 +10,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.Optional;
-
 public class MainActivity extends AppCompatActivity {
 
+    /**
+     * This method is called when the activity starts.
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
 
+
         // TODO: refactor and make this if statement be a method call in a gateway
+        // TODO: Turn this into a private method - Abdullah
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         if (firebaseUser != null) {
@@ -30,10 +34,9 @@ public class MainActivity extends AppCompatActivity {
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         Profile profile = documentSnapshot.toObject(Profile.class);
-                        // Go to home page
                         openHome(profile);
                     });
-            return;
+            return; // Unnecessary
         }
         setContentView(R.layout.activity_main);
 
@@ -46,19 +49,28 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(v -> openLogInPage());
     }
 
+    /**
+     * This method opens the SignUpActivity View
+     */
     private void openSignUpPage() {
-        Intent signUpIntent = new Intent(this, SignUpActivity.class);
-        startActivity(signUpIntent);
+        Intent signUp = new Intent(this, SignUpActivity.class);
+        startActivity(signUp);
     }
 
+    /**
+     * This method opens the LoginActivity View
+     */
     private void openLogInPage() {
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        startActivity(loginIntent);
+        Intent login = new Intent(this, LoginActivity.class);
+        startActivity(login);
     }
 
+    /**
+     * This method opens the HomeActivity View
+     */
     private void openHome(Profile profile) {
-        Intent intent = new Intent(this, HomeActivity.class);
-        intent.putExtra("profile", profile);
-        startActivity(intent);
+        Intent home = new Intent(this, HomeActivity.class);
+        home.putExtra("profile", profile);
+        startActivity(home);
     }
 }

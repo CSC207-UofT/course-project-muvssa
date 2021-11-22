@@ -34,7 +34,7 @@ public class ViewRoutinesPresenter {
     public interface View {
         void updateRoutinesView(Routine routine);
 
-        void back();
+        void openHome();
     }
 
 }

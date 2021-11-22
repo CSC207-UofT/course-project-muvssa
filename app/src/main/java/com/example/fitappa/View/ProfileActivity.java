@@ -19,6 +19,10 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
     private TextView followerNumber;
     private ProfileController profileController;
 
+    /**
+     * This method is called when the activity starts.
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +65,7 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         followButton.setOnClickListener(v -> followPress());
 
     }
-
+    // TODO: Whoever created this method, add the javadocs
     @Override
     public void searched(Profile searchedProfile) {
         Intent intent = new Intent(this, ProfileActivity.class);
@@ -71,19 +75,21 @@ public class ProfileActivity extends AppCompatActivity implements Observer, Prof
         startActivity(intent);
     }
 
+    // TODO: Whoever created this method, add the javadocs
     @Override
     public void home() {
-        Intent intent = new Intent(this, ProfileActivity.class);
-        intent.putExtra("my_Profile", this.myProfile);
-        intent.putExtra("persons_Profile", this.myProfile);
-        startActivity(intent);
+        Intent home = new Intent(this, ProfileActivity.class);
+        home.putExtra("my_Profile", this.myProfile);
+        home.putExtra("persons_Profile", this.myProfile);
+        startActivity(home);
     }
 
+    // TODO: Whoever created this method, add the javadocs
     private void followPress() {
         profileController.setFollow(this.profile);
     }
 
-
+    // TODO: Whoever created this method, add the javadocs
     @Override
     public void update(Observable o, Object arg) {
         this.myProfile = this.profileController.getFollow1();

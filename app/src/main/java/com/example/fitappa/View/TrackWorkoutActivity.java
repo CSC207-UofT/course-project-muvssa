@@ -7,6 +7,10 @@ import com.example.fitappa.R;
 
 public class TrackWorkoutActivity extends AppCompatActivity {
 
+    /**
+     * This method is called when the activity starts.
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -20,6 +20,10 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     private Routine routine;
     private Profile profile;
 
+    /**
+     * This method is called when the activity starts.
+     * @param savedInstanceState contains the data it was most recently supplied with by onSaveInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,18 +47,31 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
 
     }
 
+    /**
+     * This method opens the AddExerciseActivity view.
+     */
     private void openAddExercise() {
-        Intent addExerciseIntent = new Intent(this, AddExerciseActivity.class);
-        addExerciseIntent.putExtra("workoutObj", this.workout);
-        startActivityForResult(addExerciseIntent, 1);
-    }
-    public void back() {
-        Intent intent = new Intent(this, ViewRoutineActivity.class);
-        intent.putExtra("routineObj", this.routine);
-        intent.putExtra("profile", this.profile);
-        startActivity(intent);
+        Intent addExercise = new Intent(this, AddExerciseActivity.class);
+        addExercise.putExtra("workoutObj", this.workout);
+        startActivityForResult(addExercise, 1);
     }
 
+    /**
+     * This method opens the ViewRoutineActivity view.
+     */
+    public void goBackToViewRoutine() {
+        Intent viewRoutine = new Intent(this, ViewRoutineActivity.class);
+        viewRoutine.putExtra("routineObj", this.routine);
+        viewRoutine.putExtra("profile", this.profile);
+        startActivity(viewRoutine);
+    }
+
+    /**
+     * This method retrieves data from AddExerciseActivity view.
+     * @param requestCode represents the integer identification for the data
+     * @param resultCode represents the result of the retrieve
+     * @param data represents the data that is retrieved
+     */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -63,11 +80,14 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         }
     }
 
-
+    /**
+     * This method updates ExerciseLayout with the given Exercise
+     * @param exercise represents the given Exercise
+     */
     @Override
-    public void updateExerciseLayout(Exercise e) {
+    public void updateExerciseLayout(Exercise exercise) {
         Button button = new Button(this);
-        button.setText(e.getName());
+        button.setText(exercise.getName());
         exerciseLayout.addView(button);
     }
 }
