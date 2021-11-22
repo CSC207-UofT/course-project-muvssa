@@ -3,7 +3,8 @@
 FitApp is an android app that will serve as a fitness tracker with a social media
 component for fitness enthusiasts who want to monitor and share their fitness experience.
 
-### Note for build
+
+### NOTE when building (Ignore if using Android Studio)
 
 Intellij may not automatically generate the `local.properties` file, which is required to run the program.
 
