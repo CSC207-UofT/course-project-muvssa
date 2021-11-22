@@ -32,9 +32,7 @@ public class DashboardActivity extends AppCompatActivity {
         openRoutinesBtn.setOnClickListener(v -> openRoutines());
         openProfileBtn.setOnClickListener(v -> openProfile());
 
-        logoutBtn.setOnClickListener(v -> {
-            signOut();
-        });
+        logoutBtn.setOnClickListener(v -> signOut());
 
     }
 
