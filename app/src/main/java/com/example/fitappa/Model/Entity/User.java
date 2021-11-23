@@ -19,6 +19,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    /**
+     * Constructor for a User that take an email and password as well as a unique identifier necessary
+     * for database.
+     *
+     * @param email    The String email that is connected to the account
+     * @param username The String username referring to the account
+     * @param uniqueID The String unique identifier used to store the user in database and retrieve their info
+     */
     public User(String email, String username, String uniqueID) {
         this(email, username);
         this.uniqueID = uniqueID;
