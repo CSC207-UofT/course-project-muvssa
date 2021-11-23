@@ -24,6 +24,7 @@ public abstract class Exercise implements Serializable {
     }
 
     // empty constructor necessary for firebase
+    @SuppressWarnings("unused")
     public Exercise() {
     }
 

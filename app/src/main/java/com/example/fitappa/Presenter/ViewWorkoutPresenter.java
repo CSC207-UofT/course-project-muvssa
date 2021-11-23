@@ -9,9 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ViewWorkoutPresenter {
-    View view;
-    Workout workout;
-    Routine routine;
+    private final View view;
+    private final Workout workout;
+    private final Routine routine;
 
     /**
      * View of the workouts
@@ -36,11 +36,11 @@ public class ViewWorkoutPresenter {
         workout.addExercise(e);
         view.updateExerciseLayout(e);
     }
+
     /**
      * Updates profile with the new routine and sends you back
-     *
      */
-    public void updateWorkoutRoutine(){
+    public void updateWorkoutRoutine() {
         List<Workout> workouts = routine.getWorkouts();
         int pos = workouts.indexOf(workout);
         workouts.set(pos, workout);
@@ -53,6 +53,7 @@ public class ViewWorkoutPresenter {
     // Dependency Inversion
     public interface View {
         void updateExerciseLayout(Exercise e);
+
         void goBackToViewRoutine();
     }
 

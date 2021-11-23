@@ -26,31 +26,29 @@ public class Auth implements Authenticator {
     }
 
     /**
-     * Sign up given credentials using Firebase
+     * Verify that the input is valid, and set an error message if invalid.
+     * If input is valid, call login on verified input fields.
      *
-     * @param email    email to sign up with
-     * @param username username to create new profile
-     * @param password password to sign up with
+     * @param emailText    Text representing the email that the user entered
+     * @param passwordText Text representing the password that the user entered
      */
-    @Override
-    public void signUp(String email, String username, String password) {
-        mAuth.createUserWithEmailAndPassword(email, password)
-                .addOnSuccessListener(authResult -> {
-                    FirebaseUser firebaseUser = authResult.getUser();
-                    assert firebaseUser != null;
+    public void runLogin(EditText emailText, EditText passwordText) {
+        // Convert EditText to String
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
 
-                    Saveable gateway = new FirebaseGateway();
-                    // Create a user with the firebase unique ID assigned to their login
-                    User user = new User(email, username, password, firebaseUser.getUid());
-                    // Create a profile with the user
-                    Profile profile = new Profile(user, gateway);
+        // Set error if email or password are empty
+        if (email.isEmpty()) {
+            emailText.setError("Please fill out username");
+            emailText.requestFocus();
+            return;
+        } else if (password.isEmpty()) {
+            passwordText.setError("Please fill out password");
+            passwordText.requestFocus();
+            return;
+        }
 
-                    // Update the view with the new profile
-                    updateUI(profile);
-                })
-                .addOnFailureListener(e -> Toast.makeText(view.getContext(),
-                        "Error. Email already in use. \nPlease try again.",
-                        Toast.LENGTH_LONG).show());
+        login(email, password);
     }
 
     /**
@@ -82,35 +80,6 @@ public class Auth implements Authenticator {
     }
 
     /**
-     * Update UI given a profile
-     *
-     * @param profile profile to update UI with
-     */
-    @Override
-    public void updateUI(Profile profile) {
-        view.openHome(profile);
-    }
-
-    public void runLogin(EditText emailText, EditText passwordText) {
-        // Convert EditText to String
-        String email = emailText.getText().toString();
-        String password = passwordText.getText().toString();
-
-        // Set error if email or password are empty
-        if (email.isEmpty()) {
-            emailText.setError("Please fill out username");
-            emailText.requestFocus();
-            return;
-        } else if (password.isEmpty()) {
-            passwordText.setError("Please fill out password");
-            passwordText.requestFocus();
-            return;
-        }
-
-        login(email, password);
-    }
-
-    /**
      * Make sure email, username, and password are valid entries
      *
      * @param emailText    email address for user
@@ -128,6 +97,7 @@ public class Auth implements Authenticator {
         String emailRegex = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
         Pattern pat = Pattern.compile(emailRegex);
 
+        // Display error if username, password, or email are invalid
         if (username.isEmpty()) {
             usernameText.setError("Please fill out username");
             usernameText.requestFocus();
@@ -157,10 +127,65 @@ public class Auth implements Authenticator {
         signUp(email, username, password);
     }
 
+    /**
+     * Sign up given credentials using Firebase
+     *
+     * @param email    email to sign up with
+     * @param username username to create new profile
+     * @param password password to sign up with
+     */
+    @Override
+    public void signUp(String email, String username, String password) {
+        mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener(authResult -> {
+                    FirebaseUser firebaseUser = authResult.getUser();
+                    assert firebaseUser != null;
+
+                    Saveable gateway = new FirebaseGateway();
+                    // Create a user with the firebase unique ID assigned to their login
+                    User user = new User(email, username, firebaseUser.getUid());
+                    // Create a profile with the user
+                    Profile profile = new Profile(user, gateway);
+
+                    // Update the view with the new profile
+                    updateUI(profile);
+                })
+                .addOnFailureListener(e -> Toast.makeText(view.getContext(),
+                        "Error. Email already in use. \nPlease try again.",
+                        Toast.LENGTH_LONG).show());
+    }
+
+    /**
+     * Update UI given a profile
+     *
+     * @param profile profile to update UI with
+     */
+    @Override
+    public void updateUI(Profile profile) {
+        view.openHome(profile);
+    }
+
+    /**
+     * Dependency Inversion
+     * <p>
+     * Interface to be implemented by the Activity that deals with Login and Signup
+     */
     public interface View {
+
+        /**
+         * This method opens the HomeActivity while passing in the profile.
+         *
+         * @param profile represents the Profile of the authenticated user
+         */
         void openHome(Profile profile);
 
+        /**
+         * Return the application context to be used to display 'Toast' text to user.
+         *
+         * @return Context instance for an activity
+         */
         Context getContext();
+
     }
 
 }

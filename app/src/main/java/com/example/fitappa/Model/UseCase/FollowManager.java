@@ -25,7 +25,7 @@ public class FollowManager implements Serializable {
     // Constructor necessary for firebase
     @SuppressWarnings("unused")
     public FollowManager() {
-        user = new User("", "", "");
+        user = new User();
         followers = new HashMap<>();
         following = new HashMap<>();
     }
