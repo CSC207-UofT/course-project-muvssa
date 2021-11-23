@@ -8,17 +8,22 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Model.Entity.Exercise;
 import com.example.fitappa.Model.Entity.Workout;
+import com.example.fitappa.Model.Gateway.ExerciseRepository;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.Model.UseCase.Routine;
 import com.example.fitappa.Presenter.ViewWorkoutPresenter;
 import com.example.fitappa.R;
 
-public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkoutPresenter.View {
+import java.io.Serializable;
+import java.util.List;
+
+public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkoutPresenter.View, ExerciseRepository.View {
     private ViewWorkoutPresenter presenter;
     private LinearLayout exerciseLayout;
     private Workout workout;
     private Routine routine;
     private Profile profile;
+    private List<Exercise> exercises;
 
     /**
      * This method is called when the activity starts.
@@ -45,6 +50,19 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         addExerciseBtn.setOnClickListener(view -> openAddExercise());
         back.setOnClickListener(view -> presenter.updateWorkoutRoutine());
 
+    }
+
+    /**
+     * Executes after onCreate() completes and retrieves the exercises from the repository in order
+     * to be displayed if the user goes to the AddExerciseActivity
+     */
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // Get the exercises from repository and fill the exercises field
+        ExerciseRepository exerciseRepository = new ExerciseRepository(this);
+        exerciseRepository.retrieveExercises();
 
     }
 
@@ -54,6 +72,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     private void openAddExercise() {
         Intent addExercise = new Intent(this, AddExerciseActivity.class);
         addExercise.putExtra("workoutObj", this.workout);
+        addExercise.putExtra("exercises", (Serializable) this.exercises);
         startActivityForResult(addExercise, 1);
     }
 
@@ -92,5 +111,16 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         Button button = new Button(this);
         button.setText(exercise.getName());
         exerciseLayout.addView(button);
+    }
+
+    /**
+     * This method loads all the Workout's exercises and updates it in the
+     * ExerciseLayout view component.
+     *
+     * @param exercises represents the Exercise objects stored in the Workout
+     */
+    @Override
+    public void loadExercise(List<Exercise> exercises) {
+        this.exercises = exercises;
     }
 }

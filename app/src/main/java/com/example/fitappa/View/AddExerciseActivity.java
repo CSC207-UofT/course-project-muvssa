@@ -7,16 +7,16 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Model.Entity.Exercise;
 import com.example.fitappa.Model.Entity.Workout;
-import com.example.fitappa.Presenter.AddExercisePresenter;
 import com.example.fitappa.R;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
-public class AddExerciseActivity extends AppCompatActivity implements AddExercisePresenter.View {
+public class AddExerciseActivity extends AppCompatActivity {
 
     private LinearLayout exerciseLayout;
     private Workout workout;
+    private List<Exercise> exercises;
 
     /**
      * This method is called when the activity starts.
@@ -29,29 +29,26 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         setContentView(R.layout.activity_add_exercise);
 
         this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
-        this.exerciseLayout = findViewById(R.id.ExerciseLayout);
-        /* Make this a class variable once the conditions are met */
-        AddExercisePresenter presenter = new AddExercisePresenter(this);
-        presenter.init();
+        this.exercises = (List<Exercise>) getIntent().getSerializableExtra("exercises");
 
+        this.exerciseLayout = findViewById(R.id.ExerciseLayout);
+
+        displayExercises();
     }
 
     /**
-     * This method loads all the Workout's exercises and updates it in the
+     * This method displays all the exercises and updates it in the
      * ExerciseLayout view component.
-     *
-     * @param exercises represents the Exercise objects stored in the Workout
      */
-    @Override
-    public void loadExercise(ArrayList<Exercise> exercises) {
-        for (Exercise exercise : exercises) {
+    private void displayExercises() {
+        for (Exercise exercise : this.exercises) {
             updateExerciseLayout(exercise);
         }
     }
 
     /**
      * This method updates the ExerciseLayout view component on AddExerciseActivity
-     * by adding the Exercise, e, to the layout.
+     * by adding the Exercise to the layout.
      *
      * @param exercise represents the Exercise object to add to the ExerciseLayout
      */
