@@ -25,25 +25,21 @@ public class ProfileTest extends TestCase {
         this.routine2 = new Routine("My routine2", "A new routine");
 
         Saveable gateway = new FirebaseGateway();
-        this.user1 = new User("johnnyappleseed@gmail.com", "Johnny", "johnny123");
+        this.user1 = new User("johnnyappleseed@gmail.com", "Johnny");
         this.profile1 = new Profile(user1, gateway);
         profile1.addRoutine(routine1);
 
-        this.user2 = new User("helloworld@gmail.com", "Hello", "world123");
+        this.user2 = new User("helloworld@gmail.com", "Hello");
         this.profile2 = new Profile(user2, gateway);
         profile2.addRoutine(routine2);
 
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetUser() {
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()
         assertEquals(user1.getUsername(), profile1.getUser().getUsername());
-        assertNotSame(user2.getPassword(), profile1.getUser().getPassword());
         assertEquals(user2.getEmail(), profile2.getUser().getEmail());
     }
 

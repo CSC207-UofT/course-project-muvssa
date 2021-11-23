@@ -18,9 +18,6 @@ public class WorkoutTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testTestGetName() {
         assertEquals("chest", workout.getName()); //name matches string, getter is good
     }

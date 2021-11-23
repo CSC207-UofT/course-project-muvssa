@@ -5,7 +5,6 @@ import java.io.Serializable;
 public class User implements Serializable {
 
     private String username;
-    private String password;
     private String email;
     private String uniqueID;
 
@@ -14,16 +13,22 @@ public class User implements Serializable {
      *
      * @param email    The String email that is connected to the account
      * @param username The String username referring to the account
-     * @param password The String password used to log in to the account
      */
-    public User(String email, String username, String password) {
+    public User(String email, String username) {
         this.username = username;
-        this.password = password;
         this.email = email;
     }
 
-    public User(String email, String username, String password, String uniqueID) {
-        this(email, username, password);
+    /**
+     * Constructor for a User that take an email and password as well as a unique identifier necessary
+     * for database.
+     *
+     * @param email    The String email that is connected to the account
+     * @param username The String username referring to the account
+     * @param uniqueID The String unique identifier used to store the user in database and retrieve their info
+     */
+    public User(String email, String username, String uniqueID) {
+        this(email, username);
         this.uniqueID = uniqueID;
     }
 
@@ -39,24 +44,6 @@ public class User implements Serializable {
      */
     public String getUsername() {
         return username;
-    }
-
-    /**
-     * return a User's password
-     *
-     * @return return the String password
-     */
-    public String getPassword() {
-        return password;
-    }
-
-    /**
-     * Change a User's password
-     *
-     * @param password the new String password
-     */
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     /**

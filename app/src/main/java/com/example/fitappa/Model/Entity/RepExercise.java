@@ -31,8 +31,8 @@ public class RepExercise extends Exercise implements Serializable {
         this.numReps = 0;
     }
 
-    public String getNumReps() {
-        return String.valueOf(numReps);
+    public int getNumReps() {
+        return numReps;
     }
 
 

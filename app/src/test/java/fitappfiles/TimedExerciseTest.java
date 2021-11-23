@@ -13,9 +13,6 @@ public class TimedExerciseTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetSet_time() {
         assertEquals(2, x.getSet_time());
         assertEquals(4, y.getSet_time());

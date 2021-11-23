@@ -46,7 +46,11 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
         startActivity(home);
     }
 
-    // TODO: Create javadoc for this (Whoever created this method)
+    /**
+     * Return the application context to be used to display 'Toast' text to user.
+     *
+     * @return Context instance for an activity
+     */
     @Override
     public Context getContext() {
         return getApplicationContext();

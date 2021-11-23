@@ -23,9 +23,6 @@ public class ExerciseTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testTestGetName() {
         assertEquals("skipping", x.getName());
         assertEquals("running", y.getName());

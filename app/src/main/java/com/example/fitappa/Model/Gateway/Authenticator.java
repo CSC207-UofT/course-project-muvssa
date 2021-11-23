@@ -2,7 +2,7 @@ package com.example.fitappa.Model.Gateway;
 
 import com.example.fitappa.Model.UseCase.Profile;
 
-public interface Authenticator {
+interface Authenticator {
     /**
      * Update UI given a profile
      *

@@ -24,9 +24,6 @@ public class WorkoutTrackerTest extends TestCase {
 
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetTotalVolume() {
         assertEquals(0.0, tracker.getTotalVolume());
     }
