@@ -12,9 +12,6 @@ public class UserTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetUsername() {
         assertEquals("damnsana", user_1.getUsername());
     }

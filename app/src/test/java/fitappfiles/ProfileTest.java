@@ -36,9 +36,6 @@ public class ProfileTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetUser() {
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()

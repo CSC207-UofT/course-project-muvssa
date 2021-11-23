@@ -9,9 +9,6 @@ public class FollowManagerTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetFollowing() {
     }
 

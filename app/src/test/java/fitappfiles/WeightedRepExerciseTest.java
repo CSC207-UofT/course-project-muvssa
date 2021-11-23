@@ -14,9 +14,6 @@ public class WeightedRepExerciseTest extends TestCase {
         super.setUp();
     }
 
-    public void tearDown() throws Exception {
-    }
-
     public void testGetWeight() {
         assertEquals(76.8, x.getWeight());
         assertEquals(23.56, y.getWeight());
