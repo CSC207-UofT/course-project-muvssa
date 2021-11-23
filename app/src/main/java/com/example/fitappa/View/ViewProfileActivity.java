@@ -97,7 +97,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         this.myProfile = this.profileController.getFollow1();
         this.profile = this.profileController.getFollow2();
         if (!myProfile.getUser().getUsername().equals(profile.getUser().getUsername())) {
-            followerNumber.setText(profile.getFollowManager().followerCount());
+            followerNumber.setText(profile.getFollowManager().getFollowerCount());
         }
     }
 }

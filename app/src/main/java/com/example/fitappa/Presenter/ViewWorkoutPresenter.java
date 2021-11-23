@@ -38,7 +38,7 @@ public class ViewWorkoutPresenter {
     }
 
     /**
-     * Updates profile with the new routine and sends you back
+     * Updates profile with the new routine and sends you back to ViewRoutineActivity
      */
     public void updateWorkoutRoutine() {
         List<Workout> workouts = routine.getWorkouts();

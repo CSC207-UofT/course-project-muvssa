@@ -14,8 +14,8 @@ public class RepExerciseTest extends TestCase {
     }
 
     public void testGetNumReps() {
-        assertEquals("3", x.getNumReps());
-        assertEquals("3", stretching.getNumReps());
+        assertEquals(3, x.getNumReps());
+        assertEquals(3, stretching.getNumReps());
     }
 
     public void testGetVolume() {

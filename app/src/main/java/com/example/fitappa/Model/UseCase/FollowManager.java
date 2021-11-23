@@ -69,13 +69,21 @@ public class FollowManager implements Serializable {
 
     }
 
-    public String followerCount() {
-        return String.valueOf(this.followers.size());
-
+    /**
+     * Get the number of followers for this instance
+     *
+     * @return integer representing the amount of followers
+     */
+    public int getFollowerCount() {
+        return this.followers.size();
     }
 
-    public String followingCount() {
-        return String.valueOf(this.following.size());
-
+    /**
+     * Get the number of people this instance is following
+     *
+     * @return integer representing the amount of people this instance is following
+     */
+    public int getFollowingCount() {
+        return this.following.size();
     }
 }
