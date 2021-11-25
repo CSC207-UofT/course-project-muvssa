@@ -35,7 +35,7 @@ public class WorkoutTracker implements Serializable {
         double sum = 0;
 
         for (Workout workout : this.workoutHistory) {
-            sum += workout.getDuration().toMinutes();
+            sum += workout.calculateDuration().toMinutes();
         }
 
         return sum / this.workoutHistory.size();
