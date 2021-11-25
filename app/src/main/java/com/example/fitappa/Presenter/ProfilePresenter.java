@@ -26,7 +26,7 @@ public class ProfilePresenter {
      * @return returns a boolean value of whether the username of a user is the same as the current user's username
      */
     public boolean isMyProfile() {
-        return profile.getUser().getUsername().equals(currentProfile.getUser().getUsername());
+        return profile.retrieveUsername().equals(currentProfile.retrieveUsername());
     }
 
     /**
@@ -35,7 +35,7 @@ public class ProfilePresenter {
      * @return the username of a user as type Profile
      */
     public String getUsername() {
-        return currentProfile.getUser().getUsername();
+        return currentProfile.retrieveUsername();
     }
 
     /**
@@ -44,7 +44,7 @@ public class ProfilePresenter {
      * @return the number of people that are following the user as type Profile
      */
     public String getFollow() {
-        return String.valueOf(currentProfile.getFollowManager().getFollowerCount());
+        return String.valueOf(currentProfile.getFollowManager().followerCount());
     }
 
     /**
@@ -53,7 +53,7 @@ public class ProfilePresenter {
      * @return the number of people that the user is following as type Profile
      */
     public String getFollowing() {
-        return String.valueOf(currentProfile.getFollowManager().getFollowingCount());
+        return String.valueOf(currentProfile.getFollowManager().followingCount());
     }
 
 

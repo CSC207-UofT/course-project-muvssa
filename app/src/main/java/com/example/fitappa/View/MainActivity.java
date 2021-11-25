@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.fitappa.Model.Gateway.FirebaseGateway;
+import com.example.fitappa.Model.Gateway.Saveable;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
 
         checkAuth();
         setContentView(R.layout.activity_main);
@@ -50,7 +51,16 @@ public class MainActivity extends AppCompatActivity {
                     .document(firebaseUser.getUid())
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
+                        // TODO: Similar code to Auth.login()
                         Profile profile = documentSnapshot.toObject(Profile.class);
+
+                        // if profile isn't null, add a gateway to it
+                        if (profile != null) {
+                            Saveable gateway = new FirebaseGateway();
+                            profile.setGateway(gateway);
+                        }
+
+                        // Pass new profile into the view
                         openHome(profile);
                     });
         }

@@ -24,13 +24,12 @@ public class ProfileTest extends TestCase {
         this.routine1 = new Routine("My routine", "A new routine");
         this.routine2 = new Routine("My routine2", "A new routine");
 
-        Saveable gateway = new FirebaseGateway();
         this.user1 = new User("johnnyappleseed@gmail.com", "Johnny");
-        this.profile1 = new Profile(user1, gateway);
+        this.profile1 = new Profile(user1);
         profile1.addRoutine(routine1);
 
         this.user2 = new User("helloworld@gmail.com", "Hello");
-        this.profile2 = new Profile(user2, gateway);
+        this.profile2 = new Profile(user2);
         profile2.addRoutine(routine2);
 
         super.setUp();
@@ -39,12 +38,12 @@ public class ProfileTest extends TestCase {
     public void testGetUser() {
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()
-        assertEquals(user1.getUsername(), profile1.getUser().getUsername());
-        assertEquals(user2.getEmail(), profile2.getUser().getEmail());
+        assertEquals(user1.getUsername(), profile1.retrieveUsername());
+        assertEquals(user2.getEmail(), profile2.retrieveEmail());
     }
 
     public void testGetProfileFollow() {
-        user3f = new FollowManager(profile1.getUser());
+        user3f = new FollowManager(user1);
         assertNotSame(user3f, profile1.getFollowManager()); // shows same data types are being compared
         // shows the getter works
         userf = profile1.getFollowManager();
