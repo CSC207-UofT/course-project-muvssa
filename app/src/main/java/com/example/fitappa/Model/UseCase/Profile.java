@@ -36,12 +36,39 @@ public class Profile implements Serializable {
     }
 
     /**
-     * gets the User who owns the profile
+     * replaces the current routine list
      *
-     * @return a User class
+     * @param routines a list of routine objects
      */
-    public User getUser() {
-        return user;
+    public void setRoutines(List<Routine> routines) {
+        this.routines = routines;
+    }
+
+    /**
+     * Get the username of the user for this profile
+     *
+     * @return String representing the user's username
+     */
+    public String getUsername() {
+        return this.user.getUsername();
+    }
+
+    /**
+     * Get the email of the user for this profile
+     *
+     * @return String representing the user's email
+     */
+    public String getEmail() {
+        return this.user.getEmail();
+    }
+
+    /**
+     * Get the unique ID of the user for this profile
+     *
+     * @return String representing the user's unique identifier
+     */
+    public String getUniqueID() {
+        return this.user.getUniqueID();
     }
 
     /**
@@ -67,14 +94,5 @@ public class Profile implements Serializable {
      */
     public void addRoutine(Routine r) {
         this.routines.add(r);
-    }
-
-    /**
-     * replaces the current routine list
-     *
-     * @param routines a list of routine objects
-     */
-    public void setRoutines(List<Routine> routines){
-        this.routines = routines;
     }
 }

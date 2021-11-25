@@ -26,7 +26,7 @@ public class ProfilePresenter {
      * @return returns a boolean value of whether the username of a user is the same as the current user's username
      */
     public boolean isMyProfile() {
-        return profile.getUser().getUsername().equals(currentProfile.getUser().getUsername());
+        return profile.getUsername().equals(currentProfile.getUsername());
     }
 
     /**
@@ -35,7 +35,7 @@ public class ProfilePresenter {
      * @return the username of a user as type Profile
      */
     public String getUsername() {
-        return currentProfile.getUser().getUsername();
+        return currentProfile.getUsername();
     }
 
     /**

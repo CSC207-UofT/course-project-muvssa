@@ -39,12 +39,12 @@ public class ProfileTest extends TestCase {
     public void testGetUser() {
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()
-        assertEquals(user1.getUsername(), profile1.getUser().getUsername());
-        assertEquals(user2.getEmail(), profile2.getUser().getEmail());
+        assertEquals(user1.getUsername(), profile1.getUsername());
+        assertEquals(user2.getEmail(), profile2.getEmail());
     }
 
     public void testGetProfileFollow() {
-        user3f = new FollowManager(profile1.getUser());
+        user3f = new FollowManager(user1);
         assertNotSame(user3f, profile1.getFollowManager()); // shows same data types are being compared
         // shows the getter works
         userf = profile1.getFollowManager();
