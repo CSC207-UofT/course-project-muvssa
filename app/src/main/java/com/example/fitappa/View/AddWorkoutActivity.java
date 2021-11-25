@@ -7,6 +7,8 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
 
+import java.util.Objects;
+
 
 public class AddWorkoutActivity extends AppCompatActivity {
     private EditText workoutNameField;
@@ -20,6 +22,7 @@ public class AddWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_workout);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Workout");
 
         // Initialize UI
         Button addWorkoutBtn = findViewById(R.id.CreateWorkoutBtn2);

@@ -8,8 +8,8 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.FitAppA">
-        <activity android:name=".View.DashboardActivity"></activity>
+        android:theme="@style/Theme.AppCompat">
+        <activity android:name=".View.DashboardActivity" />
         <activity android:name=".View.LoginActivity" />
         <activity android:name=".View.ViewWorkoutActivity" />
         <activity android:name=".View.ViewRoutineActivity" />

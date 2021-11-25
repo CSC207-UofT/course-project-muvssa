@@ -34,6 +34,8 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
+        getSupportActionBar().setTitle("View Workout");
+
 
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
         Button back = findViewById(R.id.backButton3);

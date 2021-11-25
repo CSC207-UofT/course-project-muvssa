@@ -10,6 +10,7 @@ import com.example.fitappa.Presenter.ProfileController;
 import com.example.fitappa.Presenter.ProfilePresenter;
 import com.example.fitappa.R;
 
+import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
@@ -28,6 +29,9 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profiles);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Profile");
+
+
         Intent retrieveIntent = getIntent();
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");

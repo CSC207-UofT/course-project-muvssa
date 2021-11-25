@@ -10,6 +10,7 @@ import com.example.fitappa.Model.Entity.Workout;
 import com.example.fitappa.R;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class AddExerciseActivity extends AppCompatActivity {
@@ -27,6 +28,7 @@ public class AddExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Exercise");
 
         this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
         this.exercises = (List<Exercise>) getIntent().getSerializableExtra("exercises");
