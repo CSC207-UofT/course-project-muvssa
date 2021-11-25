@@ -1,6 +1,8 @@
 package com.example.fitappa.Model.Gateway;
 
 import com.example.fitappa.Model.Entity.Exercise;
+import com.example.fitappa.Model.Entity.RepExercise;
+import com.example.fitappa.Model.Entity.TimedExercise;
 import com.example.fitappa.Model.Entity.WeightedRepExercise;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -25,6 +27,7 @@ public class ExerciseRepository {
      * Retrieves all exercises from remote database and sets the exercises field to them.
      */
     public void retrieveExercises() {
+        // Get the instance of firebase
         FirebaseFirestore mAuth = FirebaseFirestore.getInstance();
 
         mAuth.collection("exercises")
@@ -33,13 +36,89 @@ public class ExerciseRepository {
                     // Initialize arraylist of empty exercises
                     List<Exercise> exercises = new ArrayList<>();
                     for (DocumentSnapshot document : queryDocumentSnapshots) {
-                        Exercise exercise = new WeightedRepExercise((String) document.get("name"));
+                        // Create exercise object to be retrieved
+                        Exercise exercise = getExerciseFromDocument(document);
+
                         // Add each retrieved exercise to list
                         exercises.add(exercise);
                     }
+
                     // Pass list of exercises to view to load
                     view.loadExercise(exercises);
                 });
+    }
+
+    /**
+     * Create an Exercise object given a DocumentSnapshot from firebase. Do this by checking the type
+     * of each document and creating an appropriate Exercise object.
+     *
+     * @param document DocumentSnapshot retrieved from firebase
+     * @return Exercise object created from fields inside document
+     */
+    private Exercise getExerciseFromDocument(DocumentSnapshot document) {
+        // Create exercise object to be initialized
+        Exercise exercise;
+
+        // Get Exercise universal parameters
+        String name = (String) document.get("name");
+        int numSets = objectToInt(document.get("numSets"));
+        int numRest = objectToInt(document.get("numRest"));
+        String muscleGroup = (String) document.get("muscleGroup");
+
+        // Check to see what type of Exercise this is
+        if (document.contains("weight")) {
+            // Get variables needed for WeightedRepExercise object
+            int numReps = objectToInt(document.get("numReps"));
+            double weight = objectToDouble(document.get("weight"));
+            exercise = new WeightedRepExercise(name, numSets, numRest, muscleGroup, numReps, weight);
+        } else if (document.contains("numReps")) {
+            // Get variables needed for RepExercise object
+            int numReps = objectToInt(document.get("numReps"));
+            exercise = new RepExercise(name, numSets, numRest, muscleGroup, numReps);
+        } else {
+            // Get variables needed for TimedExercise object
+            int setTime = objectToInt(document.get("setTime"));
+            exercise = new TimedExercise(name, numSets, numRest, muscleGroup, setTime);
+        }
+
+        return exercise;
+    }
+
+    /**
+     * Return an int given an Object
+     * <p>
+     * Strictly used for firebase data retrieval.
+     * <p>
+     * Precondition: Object passed in must be of type Long
+     *
+     * @param o Object which will be converted
+     * @return int converted from the given Object o
+     */
+    private int objectToInt(Object o) {
+        if (o != null) {
+            Long l = (Long) o;
+            return l.intValue();
+        }
+
+        return 0;
+    }
+
+    /**
+     * Return a double given an Object
+     * <p>
+     * Strictly used for firebase data retrieval.
+     * <p>
+     * Precondition: Object passed in must be of type double
+     *
+     * @param o Object which will be converted
+     * @return double converted from the given Object o
+     */
+    private double objectToDouble(Object o) {
+        if (o != null) {
+            return (double) o;
+        }
+
+        return 0;
     }
 
     /**
