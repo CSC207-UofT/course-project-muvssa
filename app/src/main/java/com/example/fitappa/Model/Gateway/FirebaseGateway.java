@@ -17,7 +17,7 @@ public class FirebaseGateway implements Saveable, Serializable {
         Profile profile = (Profile) o;
         FirebaseFirestore database = FirebaseFirestore.getInstance();
         database.collection("users")
-                .document(profile.getUniqueID())
+                .document(profile.retrieveUniqueID())
                 .set(o);
     }
 }

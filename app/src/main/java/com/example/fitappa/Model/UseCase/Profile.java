@@ -22,11 +22,10 @@ public class Profile implements Serializable {
      *
      * @param user User object representing one user
      */
-    public Profile(User user, Saveable gateway) {
+    public Profile(User user) {
         this.user = user;
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
-        this.gateway = gateway;
         this.defaultExercises = new DefaultExercises();
     }
 
@@ -34,6 +33,11 @@ public class Profile implements Serializable {
     public Profile() {
     }
 
+    /**
+     * Get the list of routines for this profile
+     *
+     * @return List of Routine of this profile
+     */
     public List<Routine> getRoutines() {
         return this.routines;
     }
@@ -57,11 +61,30 @@ public class Profile implements Serializable {
     }
 
     /**
+     * Set the gateway for this profile so that it can be saved
+     *
+     * @param gateway Saveable interface representing a gateway with a save method
+     */
+    public void setGateway(Saveable gateway) {
+        this.gateway = gateway;
+    }
+
+    /**
+     * Necessary method for Firebase
+     * Gets the current user of this profile instance
+     *
+     * @return User for this profile
+     */
+    public User getUser() {
+        return user;
+    }
+
+    /**
      * Get the username of the user for this profile
      *
      * @return String representing the user's username
      */
-    public String getUsername() {
+    public String retrieveUsername() {
         return this.user.getUsername();
     }
 
@@ -70,7 +93,7 @@ public class Profile implements Serializable {
      *
      * @return String representing the user's email
      */
-    public String getEmail() {
+    public String retrieveEmail() {
         return this.user.getEmail();
     }
 
@@ -79,7 +102,7 @@ public class Profile implements Serializable {
      *
      * @return String representing the user's unique identifier
      */
-    public String getUniqueID() {
+    public String retrieveUniqueID() {
         return this.user.getUniqueID();
     }
 

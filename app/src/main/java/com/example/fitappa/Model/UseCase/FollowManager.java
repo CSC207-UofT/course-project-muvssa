@@ -74,7 +74,7 @@ public class FollowManager implements Serializable {
      *
      * @return integer representing the amount of followers
      */
-    public int getFollowerCount() {
+    public int followerCount() {
         return this.followers.size();
     }
 
@@ -83,7 +83,7 @@ public class FollowManager implements Serializable {
      *
      * @return integer representing the amount of people this instance is following
      */
-    public int getFollowingCount() {
+    public int followingCount() {
         return this.following.size();
     }
 }

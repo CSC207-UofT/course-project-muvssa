@@ -70,7 +70,16 @@ public class Auth implements Authenticator {
                             .document(uniqueID)
                             .get()
                             .addOnSuccessListener(documentSnapshot -> {
+                                // Retrieve the profile from Firebase document
                                 Profile profile = documentSnapshot.toObject(Profile.class);
+
+                                // Set the gateway since it's not being retrieved by Firebase
+                                if (profile != null) {
+                                    Saveable gateway = new FirebaseGateway();
+                                    profile.setGateway(gateway);
+                                }
+
+                                // Pass the new profile into the view
                                 updateUI(profile);
                             });
                 })
@@ -139,13 +148,20 @@ public class Auth implements Authenticator {
         mAuth.createUserWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     FirebaseUser firebaseUser = authResult.getUser();
-                    assert firebaseUser != null;
 
-                    Saveable gateway = new FirebaseGateway();
+                    // return if a user was not made
+                    if (firebaseUser == null)
+                        return;
+
                     // Create a user with the firebase unique ID assigned to their login
                     User user = new User(email, username, firebaseUser.getUid());
                     // Create a profile with the user
-                    Profile profile = new Profile(user, gateway);
+                    Profile profile = new Profile(user);
+                    Saveable gateway = new FirebaseGateway();
+                    profile.setGateway(gateway);
+
+                    // Save the data of the profile to the database
+                    profile.saveData();
 
                     // Update the view with the new profile
                     updateUI(profile);
