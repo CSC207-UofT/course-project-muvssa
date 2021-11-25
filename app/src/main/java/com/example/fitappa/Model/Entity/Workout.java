@@ -170,7 +170,7 @@ public class Workout implements Serializable {
      *
      * @return The workout's duration
      */
-    public Duration getDuration() {
+    public Duration calculateDuration() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             return Duration.between(this.startTime, this.endTime);
         } else {
