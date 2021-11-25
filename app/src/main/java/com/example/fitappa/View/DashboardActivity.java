@@ -8,6 +8,8 @@ import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.Objects;
+
 public class DashboardActivity extends AppCompatActivity {
     private Profile profile;
 
@@ -20,6 +22,8 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
+
 
         Button logoutBtn = findViewById(R.id.LogoutBtn);
         Button openRoutinesBtn = findViewById(R.id.GoToRoutinesBtn);

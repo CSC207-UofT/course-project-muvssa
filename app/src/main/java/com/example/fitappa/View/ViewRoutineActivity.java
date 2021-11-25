@@ -12,6 +12,7 @@ import com.example.fitappa.Presenter.ViewRoutinePresenter;
 import com.example.fitappa.R;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutinePresenter.View {
     private LinearLayout routineLayout;
@@ -28,6 +29,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_routine);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("View Routine");
 
         // Retrieve UI
         this.routineLayout = findViewById(R.id.RoutineLayout);

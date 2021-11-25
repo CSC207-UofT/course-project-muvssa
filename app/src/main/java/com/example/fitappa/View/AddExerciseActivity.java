@@ -11,6 +11,7 @@ import com.example.fitappa.Presenter.AddExercisePresenter;
 import com.example.fitappa.R;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 
 public class AddExerciseActivity extends AppCompatActivity implements AddExercisePresenter.View {
@@ -27,6 +28,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Exercise");
 
         this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);

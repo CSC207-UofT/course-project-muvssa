@@ -7,6 +7,8 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
 
+import java.util.Objects;
+
 public class AddRoutineActivity extends AppCompatActivity {
     Button submitBtn;
     EditText routineName;
@@ -20,6 +22,7 @@ public class AddRoutineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_routine);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Routine");
 
         // Initialize elements
         this.submitBtn = findViewById(R.id.SaveRoutineBtn);

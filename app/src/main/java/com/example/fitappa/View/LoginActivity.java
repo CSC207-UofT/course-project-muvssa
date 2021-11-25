@@ -10,6 +10,8 @@ import com.example.fitappa.Model.Gateway.Auth;
 import com.example.fitappa.Model.UseCase.Profile;
 import com.example.fitappa.R;
 
+import java.util.Objects;
+
 public class LoginActivity extends AppCompatActivity implements Auth.View {
     private EditText passwordField;
     private EditText emailField;
@@ -24,6 +26,7 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         this.auth = new Auth(this);
 
