@@ -11,6 +11,7 @@ import com.example.fitappa.Presenter.ViewRoutinesPresenter;
 import com.example.fitappa.R;
 
 import java.util.List;
+import java.util.Objects;
 
 public class ViewRoutinesActivity extends AppCompatActivity implements ViewRoutinesPresenter.View {
     private ViewRoutinesPresenter presenter;
@@ -27,6 +28,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         // Default Android Stuff
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_routines);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("View Routines");
 
         // Load the elements
         routinesLayout = findViewById(R.id.routinesLayout);

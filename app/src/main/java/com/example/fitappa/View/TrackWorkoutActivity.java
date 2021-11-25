@@ -4,6 +4,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
 
+import java.util.Objects;
+
 
 public class TrackWorkoutActivity extends AppCompatActivity {
 
@@ -16,5 +18,6 @@ public class TrackWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_track_workout);
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Start Workout");
     }
 }
