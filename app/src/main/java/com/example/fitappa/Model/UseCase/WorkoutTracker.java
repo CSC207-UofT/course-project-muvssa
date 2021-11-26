@@ -23,7 +23,7 @@ public class WorkoutTracker implements Serializable {
     public double getTotalVolume() {
         double volume = 0;
         for (Workout workout : this.workoutHistory) {
-            volume += workout.getTotalVolume();
+            volume += workout.calculateTotalVolume();
         }
         return volume;
     }

@@ -70,10 +70,10 @@ public class WorkoutTest extends TestCase {
 
     public void testGetTotalVolume() {
         workout.addExercise(ex);
-        assertEquals(125.0, workout.getTotalVolume()); //gets the volume of the one exercise object
+        assertEquals(125.0, workout.calculateTotalVolume()); //gets the volume of the one exercise object
         ex = new RepExercise("pull ups", 2, 2, "biceps", 10);
         workout.addExercise(ex); //adds a new exercise
-        assertEquals(145.0, workout.getTotalVolume()); //adds the volume of the new exercise object (2*10 = 20)
+        assertEquals(145.0, workout.calculateTotalVolume()); //adds the volume of the new exercise object (2*10 = 20)
         // to attain the correct total volume
 
     }
