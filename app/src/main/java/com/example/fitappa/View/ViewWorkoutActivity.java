@@ -99,7 +99,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            presenter.addExercise(data.getStringExtra("exerciseName"));
+            presenter.addExercise((Exercise) data.getSerializableExtra("exercise"));
         }
     }
 

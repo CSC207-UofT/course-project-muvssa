@@ -57,7 +57,7 @@ public class AddExerciseActivity extends AppCompatActivity {
     private void updateExerciseLayout(Exercise exercise) {
         Button button = new Button(this);
         button.setText(exercise.getName());
-        button.setOnClickListener(view -> goBackToWorkout(exercise.getName()));
+        button.setOnClickListener(view -> goBackToWorkout(exercise));
 
         exerciseLayout.addView(button);
     }
@@ -65,12 +65,12 @@ public class AddExerciseActivity extends AppCompatActivity {
     /**
      * This method opens the ViewWorkoutActivity view.
      *
-     * @param exerciseName represents the name of the exercise.
+     * @param exercise represents the exercise to be returned to ViewWorkoutActivity
      */
-    private void goBackToWorkout(String exerciseName) {
+    private void goBackToWorkout(Exercise exercise) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
         viewWorkout.putExtra("workoutObj", this.workout);
-        viewWorkout.putExtra("exerciseName", exerciseName);
+        viewWorkout.putExtra("exercise", exercise);
         setResult(RESULT_OK, viewWorkout);
         finish();
     }
