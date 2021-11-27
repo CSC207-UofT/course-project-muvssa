@@ -1,0 +1,65 @@
+package com.example.fitappa.Profile;
+
+class ProfilePresenter {
+    private final Profile currentProfile;
+    private final Profile profile;
+    private final View view;
+
+    /**
+     * Constructor for ProfilePresenter class
+     *
+     * @param view        type view that represents the profile
+     * @param myProfile   type Profile that represents the user's profile
+     * @param thisProfile type Profile that represents another profile
+     */
+    public ProfilePresenter(View view, Profile myProfile, Profile thisProfile) {
+        this.view = view;
+        this.profile = myProfile;
+        this.currentProfile = thisProfile;
+    }
+
+    /**
+     * Determines if a profile belongs to the user
+     *
+     * @return returns a boolean value of whether the username of a user is the same as the current user's username
+     */
+    boolean isMyProfile() {
+        return profile.retrieveUsername().equals(currentProfile.retrieveUsername());
+    }
+
+    /**
+     * Gets the username from the user's profile
+     *
+     * @return the username of a user as type Profile
+     */
+    String getUsername() {
+        return currentProfile.retrieveUsername();
+    }
+
+    /**
+     * Gets the amount of people that are following the user
+     *
+     * @return the number of people that are following the user as type Profile
+     */
+    String getFollow() {
+        return String.valueOf(currentProfile.getFollowManager().followerCount());
+    }
+
+    /**
+     * Gets the amount of people that the user is following
+     *
+     * @return the number of people that the user is following as type Profile
+     */
+    String getFollowing() {
+        return String.valueOf(currentProfile.getFollowManager().followingCount());
+    }
+
+
+    interface View {
+        void searched(Profile searchedProfile);
+
+        void home();
+
+    }
+
+}

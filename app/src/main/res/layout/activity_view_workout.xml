@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.ViewWorkoutActivity">
+    tools:context=".Workout.ViewWorkoutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -12,9 +12,10 @@
         android:orientation="vertical">
 
         <Button
-                android:text="@string/backButton3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/backButton3"/>
+            android:id="@+id/backButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/backButton3" />
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
