@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.ViewRoutinesActivity;
 import com.google.firebase.auth.FirebaseAuth;
@@ -45,7 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
      */
     private void checkAuth() {
         if (this.profile == null) {
-            finish();
+            goBackToMain();
         }
     }
 
@@ -58,8 +59,7 @@ public class DashboardActivity extends AppCompatActivity {
 
         // Local
         profile.saveData();
-//        goBackToMain();
-        finish();
+        goBackToMain();
     }
 
 
@@ -82,12 +82,12 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(profile);
     }
 
-//    /**
-//     * This method opens the MainActivity View
-//     */
-//    private void goBackToMain() {
-//        Intent main = new Intent(this, MainActivity.class);
-//        startActivity(main);
-//    }
+    /**
+     * This method opens the MainActivity View
+     */
+    private void goBackToMain() {
+        Intent main = new Intent(this, MainActivity.class);
+        startActivity(main);
+    }
 
 }
