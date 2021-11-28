@@ -58,19 +58,23 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         TextView followingNumber = findViewById(R.id.followingNumber);
         followingNumber.setText(presenter.getFollowing());
 
-//        TextView submit = findViewById(R.id.submitSearch);
-//        TextView search = findViewById(R.id.searchText);
-//
-//        submit.setOnClickListener(v -> presenter.searching(search.getText().toString()));
+        TextView submit = findViewById(R.id.submitSearch);
+        TextView search = findViewById(R.id.searchText);
 
-        returnHome.setOnClickListener(v -> home());
+        submit.setOnClickListener(v -> presenter.searchForProfileWithUsername(search.getText().toString()));
+
+        returnHome.setOnClickListener(v -> backToCurrentProfilesViewProfile());
         followButton.setOnClickListener(v -> followPress());
 
     }
 
-    // TODO: Whoever created this method, add the javadocs
+    /**
+     * Open profile page to view for a profile that was searched for
+     *
+     * @param searchedProfile Profile that was searched for
+     */
     @Override
-    public void searched(Profile searchedProfile) {
+    public void openProfileFor(Profile searchedProfile) {
         Intent intent = new Intent(this, ViewProfileActivity.class);
         intent.putExtra("my_Profile", this.myProfile);
         this.profile = searchedProfile;
@@ -78,9 +82,20 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         startActivity(intent);
     }
 
-    // TODO: Whoever created this method, add the javadocs
+    /**
+     * This method executes when the program cannot find the user that was searched for from the database
+     */
     @Override
-    public void home() {
+    public void profileNotFound() {
+        // TODO: Implement
+    }
+
+    /**
+     * When the user goes back from viewing a searched profile, update the view profile activity to show
+     * current profile's information
+     */
+    @Override
+    public void backToCurrentProfilesViewProfile() {
         Intent home = new Intent(this, ViewProfileActivity.class);
         home.putExtra("my_Profile", this.myProfile);
         home.putExtra("persons_Profile", this.myProfile);
