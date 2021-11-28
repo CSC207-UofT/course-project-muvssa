@@ -4,20 +4,24 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.TrackWorkoutActivity">
+    tools:context=".Workout.TrackWorkoutActivity">
 
     <EditText
-            android:layout_width="299dp"
-            android:layout_height="47dp"
-            android:inputType="textPersonName"
-            android:text="Set      Previous              LBS         REPS"
-            android:ems="10"
-            android:id="@+id/editTextTextPersonName13"
-            android:textAppearance="@style/TextAppearance.AppCompat.Body2" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="31dp" android:layout_marginTop="10dp"
-            app:layout_constraintTop_toBottomOf="@+id/routineLabel7"
-            app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9" android:layout_marginEnd="81dp"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="-650dp"/>
+        android:id="@+id/editTextTextPersonName13"
+        android:layout_width="299dp"
+        android:layout_height="47dp"
+        android:layout_marginStart="31dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="81dp"
+        android:layout_marginBottom="-650dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Set      Previous              LBS         REPS"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPersonName9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/routineLabel7" />
     <TextView
             android:id="@+id/routineLabel4"
             android:layout_width="match_parent"
