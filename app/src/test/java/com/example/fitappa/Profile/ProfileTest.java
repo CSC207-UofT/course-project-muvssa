@@ -19,11 +19,11 @@ public class ProfileTest extends TestCase {
         this.routine1 = new Routine("My routine", "A new routine");
         this.routine2 = new Routine("My routine2", "A new routine");
 
-        this.user1 = new User("johnnyappleseed@gmail.com", "Johnny");
+        this.user1 = new User("johnnyappleseed@gmail.com", "Johnny", "");
         this.profile1 = new Profile(user1.getEmail(), user1.getUsername(), "someUniqueID");
         profile1.addRoutine(routine1);
 
-        this.user2 = new User("helloworld@gmail.com", "Hello");
+        this.user2 = new User("helloworld@gmail.com", "Hello", "");
         this.profile2 = new Profile(user2.getEmail(), user2.getUsername(), "someUniqueID");
         profile2.addRoutine(routine2);
 
