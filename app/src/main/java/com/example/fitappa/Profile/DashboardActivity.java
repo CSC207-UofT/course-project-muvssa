@@ -46,6 +46,7 @@ public class DashboardActivity extends AppCompatActivity {
      */
     private void checkAuth() {
         if (this.profile == null) {
+            FirebaseAuth.getInstance().signOut();
             goBackToMain();
         }
     }

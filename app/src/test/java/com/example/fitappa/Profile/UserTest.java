@@ -6,7 +6,7 @@ public class UserTest extends TestCase {
     User user_1;
 
     public void setUp() throws Exception {
-        user_1 = new User("abcd", "damnsana");
+        user_1 = new User("abcd", "damnsana", "");
 
         super.setUp();
     }

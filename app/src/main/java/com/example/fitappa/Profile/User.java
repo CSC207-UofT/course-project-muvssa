@@ -9,17 +9,6 @@ class User implements Serializable {
     private String uniqueID;
 
     /**
-     * Constructor for a User class, takes in all necessary variables needed to make a User
-     *
-     * @param email    The String email that is connected to the account
-     * @param username The String username referring to the account
-     */
-    User(String email, String username) {
-        this.username = username;
-        this.email = email;
-    }
-
-    /**
      * Constructor for a User that take an email and password as well as a unique identifier necessary
      * for database.
      *
@@ -28,7 +17,8 @@ class User implements Serializable {
      * @param uniqueID The String unique identifier used to store the user in database and retrieve their info
      */
     User(String email, String username, String uniqueID) {
-        this(email, username);
+        this.username = username;
+        this.email = email;
         this.uniqueID = uniqueID;
     }
 
