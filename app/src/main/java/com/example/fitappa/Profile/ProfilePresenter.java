@@ -1,6 +1,6 @@
 package com.example.fitappa.Profile;
 
-class ProfilePresenter {
+class ProfilePresenter implements UpdatesViewProfile {
     private final Profile currentProfile;
     private final Profile profile;
     private final View view;
@@ -54,11 +54,55 @@ class ProfilePresenter {
         return String.valueOf(currentProfile.getFollowManager().followingCount());
     }
 
+    /**
+     * Search for a profile inside the database that matches the given username
+     *
+     * @param username String username to be searched for
+     */
+    void searchForProfileWithUsername(String username) {
+        if (username.equals(profile.retrieveUsername())) {
+            view.profileNotFound();
+        }
+        GetsProfile gateway = new ProfileReader(this);
+        gateway.retrieveProfile(username);
+    }
+
+    /**
+     * If a non-empty profile was passed in, then a profile was successfully found,
+     * so open the view profile page for it.
+     * If the profile passed in was null, then the profile wasn't found,
+     * so update UI accordingly
+     *
+     * @param profile Profile that represents the profile found from the search, or null if the profile wasn't found
+     */
+    @Override
+    public void updateViewProfileWith(Profile profile) {
+        if (profile != null) {
+            view.openProfileFor(profile);
+        } else {
+            view.profileNotFound();
+        }
+    }
+
 
     interface View {
-        void searched(Profile searchedProfile);
+        /**
+         * Open profile page to view for a profile that was searched for
+         *
+         * @param searchedProfile Profile that was searched for
+         */
+        void openProfileFor(Profile searchedProfile);
 
-        void home();
+        /**
+         * This method executes when the program cannot find the user that was searched for from the database
+         */
+        void profileNotFound();
+
+        /**
+         * When the user goes back from viewing a searched profile, update the view profile activity to show
+         * current profile's information
+         */
+        void backToCurrentProfilesViewProfile();
 
     }
 
