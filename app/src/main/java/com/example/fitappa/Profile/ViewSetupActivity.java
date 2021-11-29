@@ -10,12 +10,11 @@ import com.example.fitappa.R;
 
 /**
  * This class is a view class meant to open the activity_setup
- *
+ * <p>
  * The method in the class moves the information to DashboardActivity
  *
  * @author Souren
  * @since 0.1
- *
  */
 
 
@@ -48,14 +47,16 @@ public class ViewSetupActivity extends AppCompatActivity implements SetupPresent
         Button enter = findViewById(R.id.submit);
 
         enter.setOnClickListener(v -> presenter.setUp(weightText.toString(), heightText.toString(),
-                firstNameText.toString(),lastNameText.toString()));
+                firstNameText.toString(), lastNameText.toString()));
     }
 
     /**
      * Goes to the DashboardActivity
+     *
      * @param profile puts in a persons profile
      */
-    public void goToHome(Profile profile){
+    @Override
+    public void goToHome(Profile profile) {
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
