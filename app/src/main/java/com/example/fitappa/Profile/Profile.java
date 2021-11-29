@@ -16,6 +16,7 @@ public class Profile implements Serializable {
     private List<Routine> routines;
     private Saveable gateway;
     private DefaultExercises defaultExercises;
+    private SetupInformation setupInformation;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -29,6 +30,7 @@ public class Profile implements Serializable {
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
         this.defaultExercises = new DefaultExercises();
+        this.setupInformation = new SetupInformation();
     }
 
     // empty constructor necessary for Firebase
@@ -132,5 +134,21 @@ public class Profile implements Serializable {
      */
     public void saveData() {
         gateway.save(this);
+    }
+    /**
+     * Gets the User's extra information created after logging in
+     *
+     * @return returns a SetupInformation class of the users extra information
+     */
+    public SetupInformation getSetupInformation(){
+        return setupInformation;
+    }
+    /**
+     * Adds a SetupInformation to profile
+     *
+     * @param setupInformation a SetupInformation class
+     */
+    public void setSetupInformation(SetupInformation setupInformation){
+        this.setupInformation = setupInformation;
     }
 }

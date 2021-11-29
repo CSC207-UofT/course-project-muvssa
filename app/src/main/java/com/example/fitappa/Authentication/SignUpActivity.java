@@ -8,7 +8,9 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.ViewSetupActivity;
 import com.example.fitappa.R;
+import com.google.firebase.firestore.core.SyncEngine;
 
 import java.util.Objects;
 
@@ -40,15 +42,15 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
 
 
     /**
-     * This method opens the HomeActivity View while passing in the profile
+     * This method opens the SetUpActivity View while passing in the profile
      *
      * @param profile represents the Profile that was created
      */
     @Override
     public void openHome(Profile profile) {
-        Intent home = new Intent(this, DashboardActivity.class);
-        home.putExtra("profile", profile);
-        startActivity(home);
+        Intent setup = new Intent(this, ViewSetupActivity.class);
+        setup.putExtra("profile", profile);
+        startActivity(setup);
     }
 
     /**
