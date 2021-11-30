@@ -51,7 +51,12 @@ public class MainActivity extends AppCompatActivity {
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         // TODO: Similar code to Auth.login()
-                        Profile profile = documentSnapshot.toObject(Profile.class);
+                        Profile profile = null;
+                        try {
+                            profile = documentSnapshot.toObject(Profile.class);
+                        } catch (RuntimeException ignored) {
+
+                        }
 
                         // if profile isn't null, add a gateway to it
                         if (profile != null) {
