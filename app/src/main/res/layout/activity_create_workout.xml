@@ -76,7 +76,7 @@
                     android:id="@+id/CreateWorkoutBtn2"
                     android:layout_width="157dp"
                     android:layout_height="49dp"
-                    android:text="Add Workout" android:backgroundTint="#046b99"/>
+                    android:text="Add Workout" android:backgroundTint="#046b99" android:textStyle="bold"/>
 
             <Space
                 android:layout_width="wrap_content"
