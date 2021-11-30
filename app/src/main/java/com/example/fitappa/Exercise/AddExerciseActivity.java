@@ -42,6 +42,9 @@ public class AddExerciseActivity extends AppCompatActivity {
         displayExercises();
     }
 
+    /**
+     * Go to Create New Exercise Activity
+     */
     private void goToAddNewExercise() {
         Intent addNewExercise = new Intent(this, CreateNewExerciseActivity.class);
         startActivity(addNewExercise);
