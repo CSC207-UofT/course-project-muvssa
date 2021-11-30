@@ -32,35 +32,43 @@
                 <Button
                         android:text="Squat (Barbell)"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button9"/>
+                        android:layout_height="wrap_content" android:id="@+id/button9"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Reverse Fly (Dumbbell)"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button10"/>
+                        android:layout_height="wrap_content" android:id="@+id/button10"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Leg Press"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button11"/>
+                        android:layout_height="wrap_content" android:id="@+id/button11"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Romanian Deadlift (Barbell)"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button13"/>
+                        android:layout_height="wrap_content" android:id="@+id/button13"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Deadlift"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button14"/>
+                        android:layout_height="wrap_content" android:id="@+id/button14"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Reverse Fly (Cable)"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button15"/>
+                        android:layout_height="wrap_content" android:id="@+id/button15"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Pull Up"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button16"/>
+                        android:layout_height="wrap_content" android:id="@+id/button16"
+                        android:backgroundTint="#046b99"/>
                 <Button
                         android:text="Push Up"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content" android:id="@+id/button17"/>
+                        android:layout_height="wrap_content" android:id="@+id/button17"
+                        android:backgroundTint="#046b99"/>
             </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"

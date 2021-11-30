@@ -20,9 +20,9 @@
             android:text="Name" />
 
         <Button
-            android:id="@+id/SaveRoutineBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Save" />
+                android:id="@+id/SaveRoutineBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Save" android:backgroundTint="#046b99"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

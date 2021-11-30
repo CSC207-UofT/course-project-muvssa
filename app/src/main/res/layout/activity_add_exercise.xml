@@ -32,7 +32,8 @@
                 <Button
                         android:text="create exercise"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/createExercise"/>
+                        android:layout_height="wrap_content" android:id="@+id/createExercise"
+                        android:backgroundTint="#046b99"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
