@@ -6,11 +6,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
-import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.ViewSetupActivity;
 import com.example.fitappa.R;
-import com.google.firebase.firestore.core.SyncEngine;
 
 import java.util.Objects;
 
@@ -47,7 +45,7 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
      * @param profile represents the Profile that was created
      */
     @Override
-    public void openHome(Profile profile) {
+    public void openActivityWith(Profile profile) {
         Intent setup = new Intent(this, ViewSetupActivity.class);
         setup.putExtra("profile", profile);
         startActivity(setup);
@@ -56,10 +54,10 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
     /**
      * Return the application context to be used to display 'Toast' text to user.
      *
-     * @return Context instance for an activity
+     * @return Context instance for an activity taken from AppCompactActivity parent class
      */
     @Override
     public Context getContext() {
-        return getApplicationContext();
+        return super.getApplicationContext();
     }
 }

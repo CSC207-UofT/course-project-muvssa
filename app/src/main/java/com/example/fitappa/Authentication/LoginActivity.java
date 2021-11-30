@@ -38,12 +38,12 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
     }
 
     /**
-     * This method opens the HomeActivity while passing in the profile.
+     * This method opens the DashboardActivity while passing in the profile.
      *
      * @param profile represents the Profile of the authenticated user
      */
     @Override
-    public void openHome(Profile profile) {
+    public void openActivityWith(Profile profile) {
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);

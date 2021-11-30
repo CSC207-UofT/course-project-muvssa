@@ -62,9 +62,10 @@ class ProfilePresenter implements UpdatesViewProfile {
     void searchForProfileWithUsername(String username) {
         if (username.equals(profile.retrieveUsername())) {
             view.profileNotFound();
+        } else {
+            ProfileReader gateway = new ProfileReader(this);
+            gateway.retrieveProfile(username);
         }
-        GetsProfile gateway = new ProfileReader(this);
-        gateway.retrieveProfile(username);
     }
 
     /**
