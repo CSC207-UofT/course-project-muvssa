@@ -46,25 +46,25 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/GoToRoutinesBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Routines" />
+                    android:id="@+id/GoToRoutinesBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Routines" android:backgroundTint="#046b99"/>
 
             <Button
-                android:id="@+id/startWorkoutNav"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Start" />
+                    android:id="@+id/startWorkoutNav"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Start" android:backgroundTint="#046b99"/>
 
             <Button
-                android:id="@+id/GoToProfilesBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Profiles" />
+                    android:id="@+id/GoToProfilesBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Profiles" android:backgroundTint="#046b99"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -79,9 +79,9 @@
             android:layout_weight="1" />
 
         <Button
-            android:id="@+id/LogoutBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Logout" />
+                android:id="@+id/LogoutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Logout" android:backgroundTint="#046b99"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

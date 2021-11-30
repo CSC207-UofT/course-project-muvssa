@@ -87,10 +87,10 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/submit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sign Up" />
+                    android:id="@+id/submit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Sign Up" android:backgroundTint="#046b99"/>
 
             <Space
                 android:layout_width="wrap_content"

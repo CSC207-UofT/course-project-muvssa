@@ -37,10 +37,10 @@
                 android:inputType="textPassword" />
 
             <Button
-                android:id="@+id/LogInBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Sign In" />
+                    android:id="@+id/LogInBtn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Sign In" android:backgroundTint="#046b99"/>
         </LinearLayout>
 
     </LinearLayout>

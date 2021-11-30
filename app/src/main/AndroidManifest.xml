@@ -20,6 +20,7 @@
         <activity android:name=".Routine.ViewRoutinesActivity" />
         <activity android:name=".Profile.ViewSetupActivity" />
         <activity android:name=".WorkoutTracker.StartWorkoutActivity" />
+        <activity android:name=".Exercise.CreateNewExerciseActivity" />
 
         <activity
             android:name=".Authentication.MainActivity"
