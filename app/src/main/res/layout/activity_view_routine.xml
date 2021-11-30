@@ -12,12 +12,12 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/backButton2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/backButton"
-            app:layout_constraintTop_toTopOf="parent" />
+                android:id="@+id/backButton2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/backButton"
+                app:layout_constraintTop_toTopOf="parent" android:backgroundTint="#046b99"/>
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
@@ -39,11 +39,11 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/AddWorkoutBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Add Workout"
-                    app:backgroundTint="@color/purple_700" />
+                        android:id="@+id/AddWorkoutBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add Workout"
+                        app:backgroundTint="#046b99" android:backgroundTint="#046b99"/>
             </LinearLayout>
 
             <Space

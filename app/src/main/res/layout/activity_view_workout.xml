@@ -12,10 +12,10 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/backButton3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/backButton3" />
+                android:id="@+id/backButton3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/backButton3" android:backgroundTint="#046b99"/>
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
@@ -37,11 +37,11 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/AddExerciseBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Add Exercise"
-                    app:backgroundTint="@color/purple_700" />
+                        android:id="@+id/AddExerciseBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Add Exercise"
+                        app:backgroundTint="#046b99"/>
             </LinearLayout>
 
             <Space
