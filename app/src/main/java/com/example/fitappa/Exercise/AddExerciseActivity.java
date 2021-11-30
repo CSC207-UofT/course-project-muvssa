@@ -38,6 +38,7 @@ public class AddExerciseActivity extends AppCompatActivity {
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
         addExerciseBtn.setOnClickListener(v -> goToAddNewExercise());
+
         displayExercises();
     }
 
