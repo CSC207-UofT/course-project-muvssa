@@ -7,8 +7,8 @@
     tools:context=".Authentication.MainActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
         <Button
                 android:id="@+id/SignUp"
@@ -37,22 +37,27 @@
                 android:layout_marginStart="219dp" android:backgroundTint="#046b99" android:textStyle="bold"
                 app:layout_constraintHorizontal_bias="0.0"/>
         <TextView
-                android:text="Muvssa Fitness Tracker"
-                android:layout_width="258dp"
-                android:layout_height="27dp" android:id="@+id/textView6"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="44dp"
-                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="76dp"
-                android:layout_marginEnd="77dp" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/SignIn"/>
-
+                android:text="Be Savage, Not Average"
+                android:layout_width="205dp"
+                android:layout_height="39dp" android:id="@+id/textView6"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="190dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/SignIn" android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"/>
         <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" app:srcCompat="@drawable/main" android:id="@+id/imageView13"
+                android:layout_width="412dp"
+                android:layout_height="693dp" app:srcCompat="@drawable/main_pic" android:id="@+id/imageView12"
+                app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@+id/imageView13"
+                app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"/>
+        <ImageView
+                android:layout_width="166dp"
+                android:layout_height="143dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView13"
                 app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
-                android:layout_marginTop="72dp" android:layout_marginBottom="14dp"
-                app:layout_constraintBottom_toTopOf="@+id/SignIn" app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
+                android:layout_marginTop="16dp" app:layout_constraintEnd_toStartOf="@+id/imageView12"
+                app:layout_constraintBottom_toTopOf="@+id/imageView12" android:layout_marginBottom="-90dp"
+                android:layout_marginEnd="-250dp" app:layout_constraintHorizontal_bias="0.0"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </RelativeLayout>
