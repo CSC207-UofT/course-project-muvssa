@@ -20,14 +20,16 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Name:"
-                    android:layout_width="1dp"
+                    android:layout_width="322dp"
                     android:layout_height="wrap_content" android:id="@+id/textView8" android:layout_weight="1"/>
-            <TextView
-                android:text="Name"
-                android:layout_width="wrap_content"
-                android:id="@+id/exerciseName"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
+            <EditText
+                    android:layout_width="142dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Name"
+                    android:ems="10"
+                    android:id="@+id/editTextTextPersonName5"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold"/>
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -35,15 +37,17 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Sets:"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content" android:id="@+id/textView10" android:layout_weight="1"/>
+                    android:layout_width="201dp"
+                    android:layout_height="29dp" android:id="@+id/textView10" android:layout_weight="1"/>
+            <EditText
+                    android:layout_width="172dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Number of sets"
+                    android:ems="10"
+                    android:id="@+id/editTextTextPersonName6"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold"/>
 
-            <TextView
-                android:text="Number of sets"
-                android:layout_width="wrap_content"
-                android:id="@+id/numberOfSets"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -52,14 +56,16 @@
             <TextView
                     android:text="Rest:"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView12" android:layout_weight="1"/>
+                    android:layout_height="49dp" android:id="@+id/textView12" android:layout_weight="1"/>
+            <EditText
+                    android:layout_width="160dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Time for rest"
+                    android:ems="10"
+                    android:id="@+id/editTextTextPersonName14"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold"/>
 
-            <TextView
-                android:text="Time for rest"
-                android:layout_width="wrap_content"
-                android:id="@+id/timeForRest"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
                 android:orientation="horizontal"
@@ -67,15 +73,17 @@
                 android:layout_height="wrap_content">
             <TextView
                     android:text="Muscle Group:"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" android:id="@+id/textView14" android:layout_weight="1"/>
+                    android:layout_width="13dp"
+                    android:layout_height="55dp" android:id="@+id/textView14" android:layout_weight="1"/>
+            <EditText
+                    android:layout_width="247dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="Name of muscle group"
+                    android:ems="10"
+                    android:id="@+id/editTextTextPersonName17"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold"/>
 
-            <TextView
-                android:text="Name of muscle group"
-                android:layout_width="wrap_content"
-                android:id="@+id/muscleGroup"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
         <LinearLayout
                 android:orientation="vertical"
@@ -83,10 +91,10 @@
                 android:layout_height="match_parent">
 
             <Button
-                android:text="Save "
-                android:layout_width="match_parent"
-                android:id="@+id/save_button"
-                android:layout_height="wrap_content" />
+                    android:text="Save "
+                    android:layout_width="match_parent"
+                    android:id="@+id/save_button"
+                    android:layout_height="wrap_content"/>
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
