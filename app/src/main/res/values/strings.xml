@@ -27,4 +27,10 @@
     <string name="lastName">last name</string>
     <string name="NoWorkoutInRoutine">"Sorry, there are no workouts in this routine. "</string>
     <string name="StartWorkout">Start</string>
+    <string name="weightSetting">Weight is:</string>
+    <string name="weightChangeInput">Type to change weight</string>
+    <string name="settingButton">Go to Setttings</string>
+    <string name="heightSetting">height is</string>
+    <string name="firstNameSetting">first name is</string>
+    <string name="lastNameSetting">last Name Is</string>
 </resources>

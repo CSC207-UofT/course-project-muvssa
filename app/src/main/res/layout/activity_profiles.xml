@@ -13,6 +13,11 @@
                 android:text="@string/returnHome"
                 android:layout_width="207dp"
                 android:layout_height="37dp" android:id="@+id/returnHome" android:backgroundTint="#046b99"/>
+        <Button
+                android:text="@string/settingButton"
+                android:layout_width="210dp"
+                android:layout_height="38dp" android:id="@+id/settingButton"
+                android:backgroundTint="#046b99"/>
         <EditText
                 android:layout_width="272dp"
                 android:layout_height="62dp"
