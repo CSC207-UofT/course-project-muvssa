@@ -38,7 +38,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method checks if the user was already logged in. If so, continue.
+     * This method checks if the user was already logged in. If they are already logged, go to DashboardActivity,
+     * if not, continue.
      */
     private void checkAuth() {
         // Get firebase user

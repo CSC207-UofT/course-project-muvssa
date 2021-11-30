@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 class Auth implements Authenticator {
     private final FirebaseAuth mAuth;
     private final View view;
+    private final Saveable gateway;
 
     /**
      * Constructor that takes a view and initializes a FirebaseAuth
@@ -22,6 +23,7 @@ class Auth implements Authenticator {
     Auth(View view) {
         this.mAuth = FirebaseAuth.getInstance();
         this.view = view;
+        gateway = new FirebaseGateway();
     }
 
     /**
@@ -61,8 +63,7 @@ class Auth implements Authenticator {
         mAuth.signInWithEmailAndPassword(email, password)
                 .addOnSuccessListener(authResult -> {
                     FirebaseUser firebaseUser = authResult.getUser();
-                    assert firebaseUser != null;
-                    String uniqueID = firebaseUser.getUid();
+                    String uniqueID = firebaseUser != null ? firebaseUser.getUid() : "";
 
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     db.collection("users")
@@ -70,11 +71,15 @@ class Auth implements Authenticator {
                             .get()
                             .addOnSuccessListener(documentSnapshot -> {
                                 // Retrieve the profile from Firebase document
-                                Profile profile = documentSnapshot.toObject(Profile.class);
+                                Profile profile = null;
+                                try {
+                                    profile = documentSnapshot.toObject(Profile.class);
+                                } catch (RuntimeException ignored) {
+
+                                }
 
                                 // Set the gateway since it's not being retrieved by Firebase
                                 if (profile != null) {
-                                    Saveable gateway = new FirebaseGateway();
                                     profile.setGateway(gateway);
                                 }
 
@@ -154,7 +159,6 @@ class Auth implements Authenticator {
 
                     // Create a profile with the user's info
                     Profile profile = new Profile(email, username, firebaseUser.getUid());
-                    Saveable gateway = new FirebaseGateway();
                     profile.setGateway(gateway);
 
                     // Save the data of the profile to the database
