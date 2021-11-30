@@ -21,8 +21,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SignIn" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="219dp" android:backgroundTint="#046b99" android:textStyle="bold"/>
-
+                android:layout_marginStart="219dp" android:backgroundTint="#046b99"
+                app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
         <Button
                 android:id="@+id/SignIn"
                 android:layout_width="167dp"
@@ -34,7 +34,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="219dp" android:backgroundTint="#046b99" android:textStyle="bold"/>
+                android:layout_marginStart="219dp" android:backgroundTint="#046b99" android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0"/>
         <TextView
                 android:text="Muvssa Fitness Tracker"
                 android:layout_width="258dp"
