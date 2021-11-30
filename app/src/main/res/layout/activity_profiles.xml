@@ -9,11 +9,10 @@
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <TextView
+        <Button
                 android:text="@string/returnHome"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/returnHome"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold"/>
+                android:layout_width="207dp"
+                android:layout_height="37dp" android:id="@+id/returnHome"/>
         <EditText
                 android:layout_width="272dp"
                 android:layout_height="62dp"
@@ -86,6 +85,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/followButton"/>
             </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
         </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
