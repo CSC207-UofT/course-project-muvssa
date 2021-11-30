@@ -13,7 +13,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
 
     /**
      * This method is called when the activity starts.
@@ -51,22 +51,8 @@ public class MainActivity extends AppCompatActivity {
                     .document(firebaseUser.getUid())
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
-                        // TODO: Similar code to Auth.login()
-                        Profile profile = null;
-                        try {
-                            profile = documentSnapshot.toObject(Profile.class);
-                        } catch (RuntimeException ignored) {
-
-                        }
-
-                        // if profile isn't null, add a gateway to it
-                        if (profile != null) {
-                            Saveable gateway = new FirebaseGateway();
-                            profile.setGateway(gateway);
-                        }
-
-                        // Pass new profile into the view
-                        openHome(profile);
+                        ProcessFirebase processFirebase = new ProcessFirebase(this);
+                        processFirebase.updateViewWithProfileFrom(documentSnapshot);
                     });
         }
     }
@@ -88,9 +74,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * This method opens the HomeActivity View
+     * This method opens the DashboardActivity View and passes in a Profile
      */
-    private void openHome(Profile profile) {
+    @Override
+    public void openActivityWith(Profile profile) {
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);

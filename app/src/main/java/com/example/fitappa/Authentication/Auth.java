@@ -70,21 +70,8 @@ class Auth implements Authenticator {
                             .document(uniqueID)
                             .get()
                             .addOnSuccessListener(documentSnapshot -> {
-                                // Retrieve the profile from Firebase document
-                                Profile profile = null;
-                                try {
-                                    profile = documentSnapshot.toObject(Profile.class);
-                                } catch (RuntimeException ignored) {
-
-                                }
-
-                                // Set the gateway since it's not being retrieved by Firebase
-                                if (profile != null) {
-                                    profile.setGateway(gateway);
-                                }
-
-                                // Pass the new profile into the view
-                                updateUI(profile);
+                                ProcessFirebase processFirebase = new ProcessFirebase(view);
+                                processFirebase.updateViewWithProfileFrom(documentSnapshot);
                             });
                 })
                 .addOnFailureListener(e -> Toast.makeText(view.getContext(),
@@ -179,7 +166,7 @@ class Auth implements Authenticator {
      */
     @Override
     public void updateUI(Profile profile) {
-        view.openHome(profile);
+        view.openActivityWith(profile);
     }
 
     /**
@@ -187,14 +174,7 @@ class Auth implements Authenticator {
      * <p>
      * Interface to be implemented by the Activity that deals with Login and Signup
      */
-    interface View {
-
-        /**
-         * This method opens the HomeActivity while passing in the profile.
-         *
-         * @param profile represents the Profile of the authenticated user
-         */
-        void openHome(Profile profile);
+    interface View extends OpensActivityWithProfile {
 
         /**
          * Return the application context to be used to display 'Toast' text to user.
