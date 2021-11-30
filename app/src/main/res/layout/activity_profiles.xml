@@ -5,70 +5,87 @@
                                                    android:layout_width="match_parent"
                                                    android:layout_height="match_parent"
                                                    android:id="@+id/userNameUpdate">
-    <TextView
-            android:text="@string/user_Name"
-            android:layout_width="266dp"
-            android:layout_height="wrap_content" android:id="@+id/userNameProfile"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="43dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="114dp" android:layout_marginLeft="43dp" android:textSize="24sp"/>
-    <TextView
-            android:text="@string/welcomeText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="45dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="89dp" android:layout_marginLeft="45dp" android:id="@+id/textView"/>
-    <TextView
-            android:text="@string/followersNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="55dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="308dp" android:layout_marginLeft="55dp" android:id="@+id/followerNumber"/>
-    <TextView
-            android:text="@string/followersText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="43dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="275dp" android:layout_marginLeft="43dp" android:id="@+id/textView3"/>
-    <TextView
-            android:text="@string/followingText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="126dp"
-            android:layout_marginTop="281dp" android:layout_marginRight="126dp" android:id="@+id/textView4"/>
-    <TextView
-            android:text="@string/followingNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="125dp"
-            android:layout_marginTop="307dp" android:layout_marginRight="125dp" android:id="@+id/followingNumber"/>
-    <TextView
-            android:text="@string/submit_Search"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true" android:layout_marginTop="75dp" android:id="@+id/submitSearch"
-            android:layout_alignParentEnd="true" android:layout_marginEnd="8dp"/>
-    <TextView
-            android:text="@string/followButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="45dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="242dp" android:layout_marginLeft="45dp" android:id="@+id/followButton"/>
-    <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="208dp"
-            android:layout_height="36dp" android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true" android:layout_alignParentTop="true" android:layout_marginEnd="6dp"
-            android:layout_marginTop="38dp" android:layout_marginRight="6dp" android:id="@+id/searchInput">
-
-        <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="208dp"
-                android:layout_height="match_parent"
-                android:hint="@string/searchText" android:id="@+id/searchText"/>
-    </com.google.android.material.textfield.TextInputLayout>
-    <TextView
-            android:text="@string/returnHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:layout_alignParentStart="true"
-            android:layout_marginStart="25dp" android:layout_alignParentLeft="true" android:layout_alignParentTop="true"
-            android:layout_marginTop="47dp" android:layout_marginLeft="25dp" android:id="@+id/returnHome"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="@string/returnHome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/returnHome"
+                android:textAppearance="@style/TextAppearance.AppCompat.Small" android:textStyle="bold"/>
+        <EditText
+                android:layout_width="272dp"
+                android:layout_height="62dp"
+                android:inputType="textPersonName"
+                android:text="@string/searchText"
+                android:ems="10"
+                android:id="@+id/searchText"/>
+        <Button
+                android:text="@string/submit_Search"
+                android:layout_width="113dp"
+                android:layout_height="36dp" android:id="@+id/submitSearch"/>
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="21dp"/>
+        <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="45dp">
+            <TextView
+                    android:text="@string/welcomeText"
+                    android:layout_width="110dp"
+                    android:layout_height="wrap_content" android:id="@+id/textView"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+            <TextView
+                    android:text="@string/user_Name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/userNameProfile" android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+        </LinearLayout>
+        <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:text="@string/followersText"
+                        android:layout_width="83dp"
+                        android:layout_height="wrap_content" android:id="@+id/textView3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                <TextView
+                        android:text="@string/followersNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/followerNumber" android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp">
+                <TextView
+                        android:text="@string/followingText"
+                        android:layout_width="4dp"
+                        android:layout_height="wrap_content" android:id="@+id/textView4" android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                <TextView
+                        android:text="@string/followingNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/followingNumber" android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <Button
+                        android:text="@string/followButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/followButton"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
 </RelativeLayout>
