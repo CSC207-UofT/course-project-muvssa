@@ -40,7 +40,7 @@ public class Workout implements Serializable {
      *
      * @param other - another workout
      */
-    Workout(Workout other) {
+    public Workout(Workout other) {
         this.name = other.name;
         this.description = other.description;
         this.startTime = null;

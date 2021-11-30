@@ -2,11 +2,13 @@ package com.example.fitappa.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.ViewRoutinesActivity;
+import com.example.fitappa.WorkoutTracker.StartWorkoutActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -22,13 +24,14 @@ public class DashboardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home);
+        setContentView(R.layout.activity_dashboard);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
 
 
         Button logoutBtn = findViewById(R.id.LogoutBtn);
         Button openRoutinesBtn = findViewById(R.id.GoToRoutinesBtn);
         Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
+        Button startWorkoutBtn = findViewById(R.id.startWorkoutNav);
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
 
         checkAuth();
@@ -36,7 +39,7 @@ public class DashboardActivity extends AppCompatActivity {
         // Listeners
         openRoutinesBtn.setOnClickListener(v -> openRoutines());
         openProfileBtn.setOnClickListener(v -> openProfile());
-
+        startWorkoutBtn.setOnClickListener(v -> openStartWorkout());
         logoutBtn.setOnClickListener(v -> signOut());
 
     }
@@ -89,6 +92,15 @@ public class DashboardActivity extends AppCompatActivity {
     private void goBackToMain() {
         Intent main = new Intent(this, MainActivity.class);
         startActivity(main);
+    }
+
+    /**
+     * This method opens the StartWorkout view
+     */
+    private void openStartWorkout() {
+        Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
+        startWorkout.putExtra("profile", this.profile);
+        startActivity(startWorkout);
     }
 
 }
