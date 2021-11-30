@@ -12,7 +12,7 @@
         <Button
                 android:text="@string/returnHome"
                 android:layout_width="207dp"
-                android:layout_height="37dp" android:id="@+id/returnHome" android:backgroundTint="#046b99"/>
+                android:layout_height="37dp" android:id="@+id/returnHome" android:backgroundTint="#112e51"/>
         <EditText
                 android:layout_width="272dp"
                 android:layout_height="62dp"
@@ -23,7 +23,8 @@
         <Button
                 android:text="@string/submit_Search"
                 android:layout_width="113dp"
-                android:layout_height="36dp" android:id="@+id/submitSearch" android:backgroundTint="#046b99"/>
+                android:layout_height="36dp" android:id="@+id/submitSearch" android:backgroundTint="#046b99"
+                android:textStyle="bold"/>
         <Space
                 android:layout_width="match_parent"
                 android:layout_height="21dp"/>
@@ -84,7 +85,7 @@
                         android:text="@string/followButton"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/followButton"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#046b99" android:textStyle="bold"/>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
