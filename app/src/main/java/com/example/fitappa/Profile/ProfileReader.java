@@ -7,7 +7,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * This class is used for retrieving a profile from the database given a username, and updating the presenter
  * with the new profile if it was found
  */
-class ProfileReader implements GetsProfile {
+class ProfileReader {
     UpdatesViewProfile presenter;
 
     /**
@@ -22,10 +22,9 @@ class ProfileReader implements GetsProfile {
     /**
      * Get a profile from the database and return it
      *
-     * @param username unique identifier from user wanted
+     * @param username username for user wanted
      */
-    @Override
-    public void retrieveProfile(String username) {
+    void retrieveProfile(String username) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
         db.collection("users")
@@ -40,7 +39,11 @@ class ProfileReader implements GetsProfile {
                         String retrievedUsername = (String) document.get("user.username");
                         if (retrievedUsername != null && retrievedUsername.equals(username)) {
                             // If username matches the given username, retrieve the Profile object
-                            profile = document.toObject(Profile.class);
+                            try {
+                                profile = document.toObject(Profile.class);
+                            } catch (RuntimeException ignored) {
+
+                            }
                         }
                     }
 
