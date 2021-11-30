@@ -36,18 +36,22 @@ public class ViewSetupActivity extends AppCompatActivity implements SetupPresent
         Intent retrieveIntent = getIntent();
         Profile profile = (Profile) retrieveIntent.getSerializableExtra("profile");
 
-        SetupInformation setupInformation = new SetupInformation();
-        SetupPresenter presenter = new SetupPresenter(this, profile, setupInformation);
+        SetupPresenter presenter = new SetupPresenter(this, profile);
 
         weightText = findViewById(R.id.weight);
         heightText = findViewById(R.id.height);
         firstNameText = findViewById(R.id.firstName);
         lastNameText = findViewById(R.id.lastName);
-
         Button enter = findViewById(R.id.submit);
 
-        enter.setOnClickListener(v -> presenter.setUp(weightText.toString(), heightText.toString(),
-                firstNameText.toString(), lastNameText.toString()));
+        enter.setOnClickListener(v ->
+                presenter.setUp(
+                        weightText.getText().toString().trim(),
+                        heightText.getText().toString().trim(),
+                        firstNameText.getText().toString().trim(),
+                        lastNameText.getText().toString().trim()
+                )
+        );
     }
 
     /**

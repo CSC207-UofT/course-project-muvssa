@@ -16,7 +16,6 @@ public class Profile implements Serializable {
     private List<Routine> routines;
     private Saveable gateway;
     private DefaultExercises defaultExercises;
-    private SetupInformation setupInformation;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -30,7 +29,6 @@ public class Profile implements Serializable {
         this.followManager = new FollowManager(this.user);
         this.routines = new ArrayList<>();
         this.defaultExercises = new DefaultExercises();
-        this.setupInformation = new SetupInformation();
     }
 
     // empty constructor necessary for Firebase
@@ -93,15 +91,6 @@ public class Profile implements Serializable {
     }
 
     /**
-     * Get the email of the user for this profile
-     *
-     * @return String representing the user's email
-     */
-    public String retrieveEmail() {
-        return this.user.getEmail();
-    }
-
-    /**
      * Get the unique ID of the user for this profile
      *
      * @return String representing the user's unique identifier
@@ -128,27 +117,25 @@ public class Profile implements Serializable {
         this.routines.add(r);
     }
 
+    /**
+     * Set the user's extra information
+     *
+     * @param weight    String weight of the user
+     * @param height    String height of the user
+     * @param firstName String first name of the user
+     * @param lastName  String last name of the user
+     */
+    public void setUserExtraInfo(String weight, String height, String firstName, String lastName) {
+        user.setFirstName(firstName);
+        user.setLastName(lastName);
+        user.setHeight(height);
+        user.setWeight(weight);
+    }
 
     /**
      * Save this profile to a database through the gateway
      */
     public void saveData() {
         gateway.save(this);
-    }
-    /**
-     * Gets the User's extra information created after logging in
-     *
-     * @return returns a SetupInformation class of the users extra information
-     */
-    public SetupInformation getSetupInformation(){
-        return setupInformation;
-    }
-    /**
-     * Adds a SetupInformation to profile
-     *
-     * @param setupInformation a SetupInformation class
-     */
-    public void setSetupInformation(SetupInformation setupInformation){
-        this.setupInformation = setupInformation;
     }
 }

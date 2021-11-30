@@ -12,36 +12,28 @@ package com.example.fitappa.Profile;
 class SetupPresenter {
     private final Profile profile;
     private final View view;
-    private final SetupInformation setupInformation;
 
     /**
      * A constructor for SetupInformation
      *
-     * @param view             the ViewSetupActivity
-     * @param profile          a users Profile
-     * @param setupInformation a users SetupInformation
+     * @param view    the ViewSetupActivity
+     * @param profile a users Profile
      */
-    public SetupPresenter(SetupPresenter.View view, Profile profile, SetupInformation setupInformation) {
+    SetupPresenter(SetupPresenter.View view, Profile profile) {
         this.view = view;
         this.profile = profile;
-        this.setupInformation = setupInformation;
     }
 
     /**
-     * Fills the SetupInformation class
+     * Adds the new profile information to the profile
      *
-     * @param w a String weight
-     * @param h a String height
-     * @param f a String first name
-     * @param l a String last name
+     * @param weight    a String weight
+     * @param height    a String height
+     * @param firstName a String first name
+     * @param lastName  a String last name
      */
-    void setUp(String w, String h, String f, String l) {
-
-        setupInformation.setWeight(w);
-        setupInformation.setHeight(h);
-        setupInformation.setFirstName(f);
-        setupInformation.setLastName(l);
-        profile.setSetupInformation(setupInformation);
+    void setUp(String weight, String height, String firstName, String lastName) {
+        profile.setUserExtraInfo(weight, height, firstName, lastName);
         view.goToHome(profile);
     }
 

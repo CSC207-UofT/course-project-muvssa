@@ -4,9 +4,13 @@ import java.io.Serializable;
 
 class User implements Serializable {
 
-    private String username;
     private String email;
+    private String username;
+    private String firstName;
+    private String lastName;
     private String uniqueID;
+    private String height;
+    private String weight;
 
     /**
      * Constructor for a User that take an email and password as well as a unique identifier necessary
@@ -54,5 +58,76 @@ class User implements Serializable {
         return email;
     }
 
+    /**
+     * Getter returns users height
+     *
+     * @return string height
+     */
+    public String getHeight() {
+        return height;
+    }
+
+    /**
+     * Sets a users height
+     *
+     * @param height a string representing a users height
+     */
+    public void setHeight(String height) {
+        this.height = height;
+    }
+
+    /**
+     * Getter returns users weight
+     *
+     * @return String weight
+     */
+    public String getWeight() {
+        return weight;
+    }
+
+    /**
+     * Sets a users weight
+     *
+     * @param weight a string representing a users weight
+     */
+    public void setWeight(String weight) {
+        this.weight = weight;
+    }
+
+    /**
+     * Getter returns users first name
+     *
+     * @return String representing user's first name
+     */
+    public String getFirstName() {
+        return firstName;
+    }
+
+    /**
+     * Sets a users first name
+     *
+     * @param firstName a string representing the users first name
+     */
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
+     * Getter returns users last name
+     *
+     * @return a String representing the user's last name
+     */
+    public String getLastName() {
+        return lastName;
+    }
+
+    /**
+     * Sets a users last name
+     *
+     * @param lastName a string representing a users last name
+     */
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
 }
