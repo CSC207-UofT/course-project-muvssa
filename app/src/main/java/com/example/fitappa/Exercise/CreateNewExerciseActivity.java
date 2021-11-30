@@ -18,7 +18,7 @@ public class CreateNewExerciseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_exercise);
+        setContentView(R.layout.activity_new_exercise);
 
 //        TextView exerciseName = findViewById(R.id.exerciseName);
     }
