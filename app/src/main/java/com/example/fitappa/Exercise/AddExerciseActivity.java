@@ -30,12 +30,20 @@ public class AddExerciseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_exercise);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Add Exercise");
 
+        Button addExerciseBtn = findViewById(R.id.createExercise);
+
         this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
         this.exercises = (List<Exercise>) getIntent().getSerializableExtra("exercises");
 
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
+        addExerciseBtn.setOnClickListener(v -> goToAddNewExercise());
         displayExercises();
+    }
+
+    private void goToAddNewExercise() {
+        Intent addNewExercise = new Intent(this, CreateNewExerciseActivity.class);
+        startActivity(addNewExercise);
     }
 
     /**
