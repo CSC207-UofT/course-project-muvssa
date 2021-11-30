@@ -7,7 +7,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
  * This class processing information received from Firebase and retrieves the profile from a DocumentSnapshot
  * object. It then calls the openDashboard method from the view and passes in the new profile.
  */
-public class ProcessFirebase {
+class ProcessFirebase {
     private final OpensActivityWithProfile view;
 
     /**
@@ -15,7 +15,7 @@ public class ProcessFirebase {
      *
      * @param view OpensActivityWithProfile interface representing a view that contains a method which opens the Dashboard
      */
-    public ProcessFirebase(OpensActivityWithProfile view) {
+    ProcessFirebase(OpensActivityWithProfile view) {
         this.view = view;
     }
 
@@ -25,7 +25,7 @@ public class ProcessFirebase {
      *
      * @param documentSnapshot DocumentSnapshot object retrieved from Firebase which contains a Profile
      */
-    public void updateViewWithProfileFrom(DocumentSnapshot documentSnapshot) {
+    void updateViewWithProfileFrom(DocumentSnapshot documentSnapshot) {
         Profile profile = null;
         try {
             profile = documentSnapshot.toObject(Profile.class);

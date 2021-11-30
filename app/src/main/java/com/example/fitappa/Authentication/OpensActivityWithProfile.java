@@ -7,7 +7,7 @@ import com.example.fitappa.Profile.Profile;
  * <p>
  * To be initialized by a class that needs to pass in a Profile and navigate to the DashboardActivity
  */
-public interface OpensActivityWithProfile {
+interface OpensActivityWithProfile {
 
     /**
      * Open the DashboardActivity and pass a profile to it

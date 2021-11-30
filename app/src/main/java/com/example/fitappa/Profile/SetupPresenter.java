@@ -14,12 +14,12 @@ class SetupPresenter {
     private final View view;
 
     /**
-     * A constructor for SetupInformation
+     * A constructor for SetupPresenter
      *
      * @param view    the ViewSetupActivity
      * @param profile a users Profile
      */
-    SetupPresenter(SetupPresenter.View view, Profile profile) {
+    SetupPresenter(View view, Profile profile) {
         this.view = view;
         this.profile = profile;
     }
