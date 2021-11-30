@@ -78,22 +78,17 @@ public class StartWorkoutActivity extends AppCompatActivity {
             routineLayout.addView(routineName);
 
             // Linear Layout Per Workout
+
+            if(routine.getWorkouts().size() == 0) {
+                TextView noWorkouts = new TextView(this);
+                noWorkouts.setText("No workouts in this routine");
+                noWorkouts.setPadding(0, 50, 0, 0);
+                routineLayout.addView(noWorkouts);
+            }
+
             for(Workout workout : routine.getWorkouts())
             {
-                LinearLayout workoutLayout = new LinearLayout(this);
-                workoutLayout.setLayoutParams(new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-                workoutLayout.setOrientation(LinearLayout.HORIZONTAL);
-                routineLayout.addView(workoutLayout);
-
-
-                TextView workoutName = new TextView(this);
-                workoutName.setText(workout.getName());
-                workoutLayout.addView(workoutName);
-
-                Button startWorkoutBtn = new Button(this);
-                startWorkoutBtn.setText("START");
-                workoutLayout.addView(startWorkoutBtn);
-
+                createWorkoutLayout(routineLayout, workout);
             }
 
 
@@ -101,6 +96,32 @@ public class StartWorkoutActivity extends AppCompatActivity {
             routineContainer.addView(routineCard);
 
         }
+
+
+
+
+    }
+
+    private void createWorkoutLayout(LinearLayout routineLayout, Workout workout) {
+        LinearLayout.LayoutParams defaultParams = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1);
+
+
+        LinearLayout workoutLayout = new LinearLayout(this);
+        workoutLayout.setLayoutParams(defaultParams);
+        workoutLayout.setOrientation(LinearLayout.HORIZONTAL);
+        routineLayout.addView(workoutLayout);
+
+        TextView workoutName = new TextView(this);
+        workoutName.setLayoutParams(defaultParams);
+        workoutName.setText(workout.getName());
+        workoutLayout.addView(workoutName);
+
+        Button startWorkoutBtn = new Button(this);
+        startWorkoutBtn.setLayoutParams(defaultParams);
+        startWorkoutBtn.setText("START");
+        workoutLayout.addView(startWorkoutBtn);
     }
 
 
