@@ -9,14 +9,14 @@ import com.google.firebase.auth.FirebaseUser;
  * This class is a gateway that deals with signing up a user with the database given an email, username, and password
  */
 class SignUpGateway {
-    private final AuthenticationPresenter presenter;
+    private final GatewayInteractor presenter;
 
     /**
-     * Constructor that takes an AuthenticationPresenter abstract class which represents a presenter for sign up
+     * Constructor that takes an GatewayInteractor abstract class which represents a presenter for sign up
      *
-     * @param presenter AuthenticationPresenter abstract class which represents a presenter for sign up
+     * @param presenter GatewayInteractor abstract class which represents a presenter for sign up
      */
-    SignUpGateway(AuthenticationPresenter presenter) {
+    SignUpGateway(GatewayInteractor presenter) {
         this.presenter = presenter;
     }
 

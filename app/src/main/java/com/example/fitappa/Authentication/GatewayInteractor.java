@@ -8,18 +8,18 @@ import com.example.fitappa.Profile.Profile;
  * The class also contains an interface which represents a view that allows this class to call its method and open
  * and activity with the profile.
  */
-public abstract class AuthenticationPresenter {
+public abstract class GatewayInteractor {
     /**
      * An interface which contains a method to open an activity given a profile and display an error given a message
      */
-    protected OpensActivityWithProfile view;
+    protected final OpensActivityWithProfile view;
 
     /**
      * Constructor that takes in an OpensActivityWithProfile interface and initializes it
      *
      * @param view OpensActivityWithProfile interface that contains methods to set error and open activity with profile
      */
-    public AuthenticationPresenter(OpensActivityWithProfile view) {
+    protected GatewayInteractor(OpensActivityWithProfile view) {
         this.view = view;
     }
 
@@ -28,7 +28,7 @@ public abstract class AuthenticationPresenter {
      *
      * @param profile Profile retrieved from database to go to next activity with
      */
-    public void updateActivity(Profile profile) {
+    protected void updateActivity(Profile profile) {
         view.openActivityWith(profile);
     }
 

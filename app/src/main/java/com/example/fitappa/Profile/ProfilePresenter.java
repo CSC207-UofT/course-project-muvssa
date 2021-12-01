@@ -1,12 +1,11 @@
 package com.example.fitappa.Profile;
 
-import com.example.fitappa.Authentication.AuthenticationPresenter;
+import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Authentication.OpensActivityWithProfile;
 
-class ProfilePresenter extends AuthenticationPresenter {
+class ProfilePresenter extends GatewayInteractor {
     private final Profile currentProfile;
     private final Profile profile;
-    private final View view;
 
     /**
      * Constructor for ProfilePresenter class
@@ -15,9 +14,8 @@ class ProfilePresenter extends AuthenticationPresenter {
      * @param myProfile   type Profile that represents the user's profile
      * @param thisProfile type Profile that represents another profile
      */
-    ProfilePresenter(View view, Profile myProfile, Profile thisProfile) {
-        super((OpensActivityWithProfile) view);
-        this.view = view;
+    ProfilePresenter(OpensActivityWithProfile view, Profile myProfile, Profile thisProfile) {
+        super(view);
         this.profile = myProfile;
         this.currentProfile = thisProfile;
     }

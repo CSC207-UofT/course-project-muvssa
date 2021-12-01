@@ -1,6 +1,6 @@
 package com.example.fitappa.Profile;
 
-import com.example.fitappa.Authentication.AuthenticationPresenter;
+import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Authentication.ProcessFirebase;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -10,14 +10,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * with the new profile if it was found
  */
 class ProfileReader {
-    AuthenticationPresenter presenter;
+    private final GatewayInteractor presenter;
 
     /**
      * Constructor that takes in an interface that allows this class to update the presenter with a retrieved profile
      *
      * @param presenter Interface that is used to update the presenter
      */
-    ProfileReader(AuthenticationPresenter presenter) {
+    ProfileReader(GatewayInteractor presenter) {
         this.presenter = presenter;
     }
 

@@ -9,14 +9,14 @@ import com.google.firebase.firestore.DocumentSnapshot;
  * object. It then calls the openDashboard method from the view and passes in the new profile.
  */
 public class ProcessFirebase {
-    private final AuthenticationPresenter presenter;
+    private final GatewayInteractor presenter;
 
     /**
      * Constructor that takes in a OpensActivityWithProfile view which contains a method that opens the DashboardActivity
      *
      * @param view OpensActivityWithProfile interface representing a view that contains a method which opens the Dashboard
      */
-    public ProcessFirebase(AuthenticationPresenter view) {
+    public ProcessFirebase(GatewayInteractor view) {
         this.presenter = view;
     }
 
@@ -31,8 +31,8 @@ public class ProcessFirebase {
 
         try {
             profile = documentSnapshot.toObject(Profile.class);
-        } catch (RuntimeException ignored) {
-
+        } catch (RuntimeException e) {
+            presenter.setError();
         }
 
         // Set the gateway since it's not being retrieved by Firebase

@@ -20,7 +20,7 @@ import java.util.Objects;
  * This activity gives the user two options, either login, or signup, and leads them to the corresponding activities.
  */
 public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
-    private AuthenticationPresenter presenter;
+    private GatewayInteractor presenter;
 
     /**
      * This method is called when the activity starts.

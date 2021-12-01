@@ -1,10 +1,10 @@
 package com.example.fitappa.Authentication;
 
 /**
- * This is a presenter for the MainActivity which is also an AuthenticationPresenter because it deals with retrieving
+ * This is a presenter for the MainActivity which is also an GatewayInteractor because it deals with retrieving
  * information from the database and validating the user.
  */
-class MainPresenter extends AuthenticationPresenter {
+class MainPresenter extends GatewayInteractor {
 
     /**
      * Constructor that takes in an OpensActivityWithProfile interface that represents an Activity and initializes

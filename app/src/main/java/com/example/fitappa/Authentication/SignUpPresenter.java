@@ -6,10 +6,10 @@ import java.util.regex.Pattern;
 
 /**
  * This is a presenter for the SignupActivity.
- * This class is an authentication presenter since it authenticates the user given some credentials.
+ * This class is a gateway interactor since it interacts with a gateway and retrieves data from a database
  * It also determines what error message to display to the user.
  */
-class SignUpPresenter extends AuthenticationPresenter {
+class SignUpPresenter extends GatewayInteractor {
     private final SignUpGateway gateway;
 
     /**

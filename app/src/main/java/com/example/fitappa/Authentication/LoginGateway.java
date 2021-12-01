@@ -9,14 +9,14 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * as credentials.
  */
 class LoginGateway {
-    private final AuthenticationPresenter presenter;
+    private final GatewayInteractor presenter;
 
     /**
-     * Constructor that takes in an AuthenticationPresenter abstract class and initializes it
+     * Constructor that takes in an GatewayInteractor abstract class and initializes it
      *
-     * @param presenter AuthenticationPresenter abstract class to be used to access presenter methods
+     * @param presenter GatewayInteractor abstract class to be used to access presenter methods
      */
-    LoginGateway(AuthenticationPresenter presenter) {
+    LoginGateway(GatewayInteractor presenter) {
         this.presenter = presenter;
     }
 
