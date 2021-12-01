@@ -12,10 +12,10 @@
         android:orientation="vertical">
 
         <Button
-            android:id="@+id/backButton"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/backButton1" />
+                android:id="@+id/backButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/backButton1" android:backgroundTint="#112e51" android:textStyle="bold"/>
 
         <LinearLayout
             android:id="@+id/linearLayout"
@@ -38,10 +38,10 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/CreateRoutineBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Create Routine" />
+                        android:id="@+id/CreateRoutineBtn"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Create Routine" android:textStyle="bold" android:backgroundTint="#046b99"/>
 
             </LinearLayout>
 

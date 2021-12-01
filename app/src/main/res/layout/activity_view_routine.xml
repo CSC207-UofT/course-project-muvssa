@@ -17,7 +17,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/backButton"
-                app:layout_constraintTop_toTopOf="parent" android:backgroundTint="#046b99"/>
+                app:layout_constraintTop_toTopOf="parent" android:backgroundTint="#112e51" android:textStyle="bold"/>
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"
@@ -43,7 +43,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Add Workout"
-                        app:backgroundTint="#046b99" android:backgroundTint="#046b99"/>
+                        app:backgroundTint="#046b99" android:backgroundTint="#046b99" android:textStyle="bold"/>
             </LinearLayout>
 
             <Space

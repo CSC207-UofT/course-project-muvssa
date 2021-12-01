@@ -15,7 +15,7 @@
                 android:id="@+id/backButton3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/backButton3" android:backgroundTint="#046b99"/>
+                android:text="@string/backButton3" android:backgroundTint="#112e51" android:textStyle="bold"/>
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="409dp"

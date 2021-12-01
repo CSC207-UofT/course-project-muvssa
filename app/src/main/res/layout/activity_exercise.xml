@@ -33,42 +33,42 @@
                         android:text="Squat (Barbell)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button9"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textStyle="bold" android:textColor="#040303"/>
                 <Button
                         android:text="Reverse Fly (Dumbbell)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button10"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textStyle="bold" android:textColor="#100F0F"/>
                 <Button
                         android:text="Leg Press"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button11"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textColor="#0C0C0C" android:textStyle="bold"/>
                 <Button
                         android:text="Romanian Deadlift (Barbell)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button13"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textColor="#070707" android:textStyle="bold"/>
                 <Button
                         android:text="Deadlift"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button14"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textColor="#070707" android:textStyle="bold"/>
                 <Button
                         android:text="Reverse Fly (Cable)"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button15"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textColor="#050505" android:textStyle="bold"/>
                 <Button
                         android:text="Pull Up"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button16"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textStyle="bold" android:textColor="#090808"/>
                 <Button
                         android:text="Push Up"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" android:id="@+id/button17"
-                        android:backgroundTint="#046b99"/>
+                        android:backgroundTint="#02bfe7" android:textColor="#070707" android:textStyle="bold"/>
             </LinearLayout>
             <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
@@ -76,13 +76,13 @@
 
                 <Button
                         android:text="Add Exercise"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" android:id="@+id/button23"
+                        android:layout_width="225dp"
+                        android:layout_height="46dp" android:id="@+id/button23"
                         app:layout_constraintStart_toStartOf="parent"
                         android:layout_marginStart="146dp" app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="60dp" android:layout_marginEnd="148dp"
                         app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginBottom="68dp"/>
+                        android:layout_marginBottom="68dp" android:textStyle="bold" android:backgroundTint="#046b99"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>

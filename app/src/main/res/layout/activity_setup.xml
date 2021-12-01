@@ -7,6 +7,14 @@
     android:layout_height="match_parent"
     android:padding="15dp">
 
+    <ImageView
+            android:layout_width="360dp"
+            android:layout_height="122dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="75dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="45dp" android:layout_marginBottom="201dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3" android:layout_marginEnd="46dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
@@ -88,9 +96,9 @@
 
             <Button
                     android:id="@+id/submit"
-                    android:layout_width="wrap_content"
+                    android:layout_width="182dp"
                     android:layout_height="wrap_content"
-                    android:text="Sign Up" android:backgroundTint="#046b99"/>
+                    android:text="Sign Up" android:backgroundTint="#046b99" android:textStyle="bold"/>
 
             <Space
                 android:layout_width="wrap_content"

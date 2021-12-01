@@ -32,7 +32,7 @@
                         app:layout_constraintEnd_toStartOf="@+id/editTextTextPersonName2"
                         app:layout_constraintTop_toTopOf="parent"
                         android:layout_marginTop="20dp" app:layout_constraintBottom_toBottomOf="parent"
-                        android:layout_marginBottom="655dp"/>
+                        android:layout_marginBottom="655dp" app:layout_constraintVertical_bias="1.0"/>
                 <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -43,7 +43,8 @@
                         android:layout_marginStart="21dp" app:layout_constraintStart_toEndOf="@+id/textView11"
                         app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="3dp"
                         android:layout_marginEnd="132dp" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="646dp"/>
+                        app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="646dp"
+                        app:layout_constraintVertical_bias="1.0"/>
                 <TextView
                         android:text="Sets:"
                         android:layout_width="wrap_content"
@@ -64,7 +65,8 @@
                         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
                         app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="600dp"
                         android:layout_marginStart="34dp" app:layout_constraintStart_toEndOf="@+id/textView13"
-                        android:layout_marginEnd="130dp" app:layout_constraintEnd_toEndOf="parent"/>
+                        android:layout_marginEnd="130dp" app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"/>
                 <TextView
                         android:text="Rest:"
                         android:layout_width="wrap_content"
@@ -117,7 +119,8 @@
                         app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="154dp"
                         app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="428dp"
                         android:layout_marginEnd="165dp" app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.387" app:layout_constraintVertical_bias="1.0"/>
+                        app:layout_constraintHorizontal_bias="0.47" app:layout_constraintVertical_bias="1.0"
+                        android:textStyle="bold" android:backgroundTint="#046b99"/>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

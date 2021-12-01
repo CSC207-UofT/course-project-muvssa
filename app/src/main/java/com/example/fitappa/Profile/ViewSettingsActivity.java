@@ -77,10 +77,10 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
     @SuppressLint("SetTextI18n")
     @Override
     public void update() {
-        weightText.setText("Your weight is:" + presenter.getSettingWeight());
-        heightText.setText("Your height is:" + presenter.getSettingHeight());
-        firstText.setText("Your first name is:" + presenter.getSettingFirstName());
-        lastText.setText("Your last name is:" + presenter.getSettingLastName());
+        weightText.setText("Your weight is: " + presenter.getSettingWeight());
+        heightText.setText("Your height is: " + presenter.getSettingHeight());
+        firstText.setText("Your first name is: " + presenter.getSettingFirstName());
+        lastText.setText("Your last name is: " + presenter.getSettingLastName());
     }
 
     /**

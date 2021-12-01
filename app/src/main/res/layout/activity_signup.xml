@@ -49,28 +49,28 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <EditText
-            android:id="@+id/userName1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="@string/user_Name"
-            android:inputType="textPersonName" />
+                android:id="@+id/userName1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="@string/user_Name"
+                android:inputType="textPersonName" android:textAlignment="viewStart" android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="password"
-            android:inputType="textPassword" />
+                android:id="@+id/password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="password"
+                android:inputType="textPassword" android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="email"
-            android:inputType="textEmailAddress" />
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="email"
+                android:inputType="textEmailAddress" android:textStyle="bold"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,9 +84,9 @@
 
             <Button
                     android:id="@+id/submit"
-                    android:layout_width="wrap_content"
+                    android:layout_width="175dp"
                     android:layout_height="wrap_content"
-                    android:text="Sign Up" android:backgroundTint="#046b99"/>
+                    android:text="Sign Up" android:backgroundTint="#046b99" android:textStyle="bold"/>
 
             <Space
                 android:layout_width="wrap_content"
@@ -96,5 +96,13 @@
         </LinearLayout>
 
     </LinearLayout>
+    <ImageView
+            android:layout_width="360dp"
+            android:layout_height="122dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="75dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="45dp" android:layout_marginBottom="201dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3" android:layout_marginEnd="46dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
