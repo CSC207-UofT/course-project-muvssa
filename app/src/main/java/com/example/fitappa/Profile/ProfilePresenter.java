@@ -105,6 +105,11 @@ class ProfilePresenter implements UpdatesViewProfile {
          */
         void backToCurrentProfilesViewProfile();
 
+        /**
+         * Brings a user to his settings
+         */
+        void toSettings();
+
     }
 
 }

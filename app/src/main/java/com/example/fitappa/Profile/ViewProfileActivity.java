@@ -61,10 +61,14 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         TextView submit = findViewById(R.id.submitSearch);
         TextView search = findViewById(R.id.searchText);
 
+        TextView settingsButton = findViewById(R.id.settingButton);
+
+
         submit.setOnClickListener(v -> presenter.searchForProfileWithUsername(search.getText().toString()));
 
         returnHome.setOnClickListener(v -> backToCurrentProfilesViewProfile());
         followButton.setOnClickListener(v -> followPress());
+        settingsButton.setOnClickListener(v -> toSettings());
 
     }
 
@@ -102,12 +106,29 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         startActivity(home);
     }
 
-    // TODO: Whoever created this method, add the javadocs
+    /**
+     * brings a user to their settings
+     */
+    @Override
+    public void toSettings() {
+        Intent setting = new Intent(this, ViewSettingsActivity.class);
+        setting.putExtra("my_Profile", this.myProfile);
+        startActivity(setting);
+    }
+
+    /**
+     * Upon the follow button being pressed it sends this profile to profile controller
+     */
     private void followPress() {
         profileController.setFollow(this.profile);
     }
 
-    // TODO: Whoever created this method, add the javadocs
+    /**
+     * An observer observable interaction viewing if the follow button is pressed and updating the follow count
+     *
+     * @param o   Observable would be ProfileController
+     * @param arg would check for any updates
+     */
     @Override
     public void update(Observable o, Object arg) {
         this.myProfile = this.profileController.getFollow1();
