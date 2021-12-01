@@ -11,7 +11,7 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile {
+public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile, ShowsErrorMessage {
     private EditText passwordField;
     private EditText emailField;
     private LoginPresenter presenter;
@@ -46,5 +46,10 @@ public class LoginActivity extends AppCompatActivity implements OpensActivityWit
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
+    }
+
+    @Override
+    public void showErrorMessage(String message) {
+
     }
 }

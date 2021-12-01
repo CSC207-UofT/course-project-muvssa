@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.ViewSetupActivity;
@@ -11,7 +12,7 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {
+public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile, ShowsErrorMessage {
     private EditText usernameText;
     private EditText passwordText;
     private EditText emailText;
@@ -37,6 +38,10 @@ public class SignUpActivity extends AppCompatActivity implements OpensActivityWi
         enter.setOnClickListener(v -> presenter.runSignUp(emailText, usernameText, passwordText));
     }
 
+    @Override
+    public void showErrorMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+    }
 
     /**
      * This method opens the SetUpActivity View while passing in the profile

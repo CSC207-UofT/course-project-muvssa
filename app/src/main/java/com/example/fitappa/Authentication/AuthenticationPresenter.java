@@ -2,10 +2,10 @@ package com.example.fitappa.Authentication;
 
 import com.example.fitappa.Profile.Profile;
 
-abstract class ActivityUpdater {
+abstract class AuthenticationPresenter {
     protected OpensActivityWithProfile view;
 
-    public ActivityUpdater(OpensActivityWithProfile view) {
+    AuthenticationPresenter(OpensActivityWithProfile view) {
         this.view = view;
     }
 

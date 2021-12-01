@@ -4,7 +4,7 @@ import android.widget.EditText;
 
 import java.util.regex.Pattern;
 
-class SignUpPresenter extends ActivityUpdater {
+class SignUpPresenter extends AuthenticationPresenter {
     private final SignUpGateway gateway;
 
     SignUpPresenter(OpensActivityWithProfile view) {

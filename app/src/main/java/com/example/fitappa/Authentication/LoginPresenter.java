@@ -2,7 +2,7 @@ package com.example.fitappa.Authentication;
 
 import android.widget.EditText;
 
-class LoginPresenter extends ActivityUpdater {
+class LoginPresenter extends AuthenticationPresenter {
     private final LoginGateway gateway;
 
     LoginPresenter(OpensActivityWithProfile view) {
@@ -27,7 +27,12 @@ class LoginPresenter extends ActivityUpdater {
             return;
         }
 
-        gateway.authenticateLogin(email, password);
+        gateway.login(email, password);
+    }
+
+    @Override
+    public void setError() {
+
     }
 
 }

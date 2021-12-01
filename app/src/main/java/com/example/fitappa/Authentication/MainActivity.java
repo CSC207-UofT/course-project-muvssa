@@ -14,7 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
-    private ActivityUpdater presenter;
+    private AuthenticationPresenter presenter;
 
     /**
      * This method is called when the activity starts.

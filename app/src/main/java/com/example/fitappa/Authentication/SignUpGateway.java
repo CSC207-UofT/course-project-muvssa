@@ -5,9 +5,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 class SignUpGateway {
-    ActivityUpdater presenter;
+    AuthenticationPresenter presenter;
 
-    SignUpGateway(ActivityUpdater presenter) {
+    SignUpGateway(AuthenticationPresenter presenter) {
         this.presenter = presenter;
     }
 
