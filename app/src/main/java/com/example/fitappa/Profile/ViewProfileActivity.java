@@ -125,7 +125,8 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
 
     /**
      * An observer observable interaction viewing if the follow button is pressed and updating the follow count
-     * @param o Observable would be ProfileController
+     *
+     * @param o   Observable would be ProfileController
      * @param arg would check for any updates
      */
     @Override

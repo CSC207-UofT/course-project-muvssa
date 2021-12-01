@@ -134,33 +134,37 @@ public class Profile implements Serializable {
 
     /**
      * gets a string of the users weight
+     *
      * @return returns string of their weight
      */
-    public String getUserWeight(){
+    public String getUserWeight() {
         return user.getWeight();
     }
 
     /**
      * gets a string of the users height
+     *
      * @return returns string of their height
      */
-    public String getUserHeight(){
+    public String getUserHeight() {
         return user.getHeight();
     }
 
     /**
      * gets a string of the users first name
+     *
      * @return returns string of their first name
      */
-    public String getUserFirstName(){
+    public String getUserFirstName() {
         return user.getFirstName();
     }
 
     /**
      * gets a string of the users last name
+     *
      * @return returns string of their last name
      */
-    public String getUserLastName(){
+    public String getUserLastName() {
         return user.getLastName();
     }
 

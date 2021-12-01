@@ -26,6 +26,7 @@ class SettingPresenter {
 
     /**
      * retrieve user's weight
+     *
      * @return string of their weight
      */
     String retrieveWeight() {
@@ -34,6 +35,7 @@ class SettingPresenter {
 
     /**
      * retrieve user's height
+     *
      * @return string of their height
      */
     String retrieveHeight() {
@@ -42,6 +44,7 @@ class SettingPresenter {
 
     /**
      * retrieve a user's first name
+     *
      * @return string of their first name
      */
     String retrieveFirstName() {
@@ -50,6 +53,7 @@ class SettingPresenter {
 
     /**
      * retrieve a user's last name
+     *
      * @return string of their last name
      */
     String retrieveLastName() {
@@ -59,25 +63,26 @@ class SettingPresenter {
     /**
      * Will change a users extra information like weight, height, first name, and last name. It will also not change
      * anything if the user hasn't made any edits.
+     *
      * @param w user inputted string weight
      * @param h user inputted string height
      * @param f user inputted string first name
      * @param l user inputted string last name
      */
-    void changeSettings(String w,String h, String f, String l){
-        if(w.equals("")){
+    void changeSettings(String w, String h, String f, String l) {
+        if (w.equals("")) {
             w = profile.getUserWeight();
         }
-        if (h.equals("")){
+        if (h.equals("")) {
             h = profile.getUserHeight();
         }
-        if(f.equals("")){
+        if (f.equals("")) {
             f = profile.getUserFirstName();
         }
-        if(l.equals("")){
+        if (l.equals("")) {
             l = profile.getUserLastName();
         }
-        profile.setUserExtraInfo(w,h,f,l);
+        profile.setUserExtraInfo(w, h, f, l);
         view.update();
     }
 
