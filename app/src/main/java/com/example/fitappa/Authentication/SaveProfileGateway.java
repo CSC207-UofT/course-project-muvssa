@@ -18,9 +18,11 @@ class SaveProfileGateway implements Saveable, Serializable {
      */
     @Override
     public void save(Object o) {
+        DatabaseConstants constants = new DatabaseConstants();
         Profile profile = (Profile) o;
         FirebaseFirestore database = FirebaseFirestore.getInstance();
-        database.collection("users")
+
+        database.collection(constants.getUsersCollection())
                 .document(profile.retrieveUniqueID())
                 .set(o);
     }

@@ -51,18 +51,24 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
      * if not, continue.
      */
     private void checkAuth() {
+        // initialize constants
+        DatabaseConstants constants = new DatabaseConstants();
+
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
         if (firebaseUser != null) {
             // Check if a firebase authenticated user already exists (previously logged in)
             FirebaseFirestore db = FirebaseFirestore.getInstance();
-            db.collection("users")
+
+            db.collection(constants.getUsersCollection())
                     .document(firebaseUser.getUid())
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
                         ProcessFirebase processFirebase = new ProcessFirebase(presenter);
                         processFirebase.updateViewWithProfileFrom(documentSnapshot);
                     })
+                    // set error if fail to retrieve profile
                     .addOnFailureListener(e -> presenter.setError());
         }
     }

@@ -1,5 +1,6 @@
 package com.example.fitappa.Profile;
 
+import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Authentication.ProcessFirebase;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -28,14 +29,15 @@ class ProfileReader {
      */
     void retrieveProfile(String username) {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DatabaseConstants constants = new DatabaseConstants();
 
-        db.collection("users")
+        db.collection(constants.getUsersCollection())
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     // Loop through all the profiles to search for the username
                     for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
                         // Get the username for this profile
-                        String retrievedUsername = (String) document.get("user.username");
+                        String retrievedUsername = (String) document.get(constants.getUsernameDocument());
                         if (retrievedUsername != null && retrievedUsername.equals(username)) {
                             ProcessFirebase gateway = new ProcessFirebase(presenter);
                             gateway.updateViewWithProfileFrom(document);

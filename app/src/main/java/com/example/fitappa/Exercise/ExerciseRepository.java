@@ -1,5 +1,6 @@
 package com.example.fitappa.Exercise;
 
+import com.example.fitappa.Authentication.DatabaseConstants;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -23,10 +24,11 @@ public class ExerciseRepository {
      * Retrieves all exercises from remote database and sets the exercises field to them.
      */
     public void retrieveExercises() {
+        DatabaseConstants constants = new DatabaseConstants();
         // Get the instance of firebase
         FirebaseFirestore mAuth = FirebaseFirestore.getInstance();
 
-        mAuth.collection("exercises")
+        mAuth.collection(constants.getExercisesCollection())
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     // Initialize arraylist of empty exercises

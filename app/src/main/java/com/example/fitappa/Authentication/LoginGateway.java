@@ -10,6 +10,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
  */
 class LoginGateway {
     private final GatewayInteractor presenter;
+    private final DatabaseConstants constants;
 
     /**
      * Constructor that takes in an GatewayInteractor abstract class and initializes it
@@ -18,6 +19,7 @@ class LoginGateway {
      */
     LoginGateway(GatewayInteractor presenter) {
         this.presenter = presenter;
+        constants = new DatabaseConstants();
     }
 
     /**
@@ -35,7 +37,7 @@ class LoginGateway {
                     String uniqueID = firebaseUser != null ? firebaseUser.getUid() : "";
 
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    db.collection("users")
+                    db.collection(constants.getUsersCollection())
                             .document(uniqueID)
                             .get()
                             .addOnSuccessListener(documentSnapshot -> {
