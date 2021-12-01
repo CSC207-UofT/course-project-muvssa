@@ -8,15 +8,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
  * object. It then calls the openDashboard method from the view and passes in the new profile.
  */
 class ProcessFirebase {
-    private final OpensActivityWithProfile view;
+    private final ActivityUpdater presenter;
 
     /**
      * Constructor that takes in a OpensActivityWithProfile view which contains a method that opens the DashboardActivity
      *
      * @param view OpensActivityWithProfile interface representing a view that contains a method which opens the Dashboard
      */
-    ProcessFirebase(OpensActivityWithProfile view) {
-        this.view = view;
+    ProcessFirebase(ActivityUpdater view) {
+        this.presenter = view;
     }
 
     /**
@@ -39,6 +39,6 @@ class ProcessFirebase {
             profile.setGateway(gateway);
         }
 
-        view.openActivityWith(profile);
+        presenter.updateUI(profile);
     }
 }

@@ -1,6 +1,5 @@
 package com.example.fitappa.Authentication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
@@ -12,7 +11,7 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class SignUpActivity extends AppCompatActivity implements Auth.View {
+public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText usernameText;
     private EditText passwordText;
     private EditText emailText;
@@ -33,9 +32,9 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
         emailText = findViewById(R.id.email);
         Button enter = findViewById(R.id.submit);
 
-        Authenticator auth = new Auth(this);
+        SignUpPresenter presenter = new SignUpPresenter(this);
 
-        enter.setOnClickListener(v -> auth.signUp(emailText, usernameText, passwordText));
+        enter.setOnClickListener(v -> presenter.runSignUp(emailText, usernameText, passwordText));
     }
 
 
@@ -49,15 +48,5 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
         Intent setup = new Intent(this, ViewSetupActivity.class);
         setup.putExtra("profile", profile);
         startActivity(setup);
-    }
-
-    /**
-     * Return the application context to be used to display 'Toast' text to user.
-     *
-     * @return Context instance for an activity taken from AppCompactActivity parent class
-     */
-    @Override
-    public Context getContext() {
-        return super.getApplicationContext();
     }
 }

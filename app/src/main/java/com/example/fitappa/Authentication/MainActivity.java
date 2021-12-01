@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
+    private ActivityUpdater presenter;
 
     /**
      * This method is called when the activity starts.
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();
+
+        presenter = new MainPresenter(this);
 
         checkAuth();
         setContentView(R.layout.activity_main);
@@ -51,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
                     .document(firebaseUser.getUid())
                     .get()
                     .addOnSuccessListener(documentSnapshot -> {
-                        ProcessFirebase processFirebase = new ProcessFirebase(this);
+                        ProcessFirebase processFirebase = new ProcessFirebase(presenter);
                         processFirebase.updateViewWithProfileFrom(documentSnapshot);
                     });
         }

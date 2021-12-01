@@ -1,6 +1,5 @@
 package com.example.fitappa.Authentication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
@@ -12,10 +11,10 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity implements Auth.View {
+public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText passwordField;
     private EditText emailField;
-    private Authenticator auth;
+    private LoginPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -28,13 +27,13 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
         setContentView(R.layout.activity_login);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        this.auth = new Auth(this);
+        presenter = new LoginPresenter(this);
 
         passwordField = findViewById(R.id.PasswordField);
         emailField = findViewById(R.id.EmailField);
         TextView loginBtn = findViewById(R.id.LogInBtn);
 
-        loginBtn.setOnClickListener(v -> auth.login(emailField, passwordField));
+        loginBtn.setOnClickListener(v -> presenter.runLogin(emailField, passwordField));
     }
 
     /**
@@ -47,15 +46,5 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
-    }
-
-    /**
-     * Return the application context to be used to display 'Toast' text to user.
-     *
-     * @return Context instance for an activity
-     */
-    @Override
-    public Context getContext() {
-        return getApplicationContext();
     }
 }
