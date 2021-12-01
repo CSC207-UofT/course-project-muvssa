@@ -71,6 +71,7 @@ public class Routine implements Serializable, Iterable<Workout> {
      *
      * @return list of workouts for the Routine
      */
+    // TODO: Remove this since unnecessary now with iterator
     public List<Workout> getWorkouts() {
         return workouts;
     }
