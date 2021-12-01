@@ -3,7 +3,6 @@ package com.example.fitappa.Profile;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
@@ -49,19 +48,19 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
 
         weightText = findViewById(R.id.weightSetting);
         weightInput = findViewById(R.id.weightChangeInput);
-        weightText.setText("Your weight is:" + presenter.retrieveWeight());
+        weightText.setText("Your weight is: " + presenter.getSettingWeight());
 
         heightText = findViewById(R.id.heightSetting);
         heightInput = findViewById(R.id.heightChangeInput);
-        heightText.setText("Your height is:" + presenter.retrieveHeight());
+        heightText.setText("Your height is: " + presenter.getSettingHeight());
 
         firstText = findViewById(R.id.firstNameSetting);
         firstInput = findViewById(R.id.firstChangeInput);
-        firstText.setText("Your first name is:" + presenter.retrieveFirstName());
+        firstText.setText("Your first name is: " + presenter.getSettingFirstName());
 
         lastText = findViewById(R.id.lastNameSetting);
         lastInput = findViewById(R.id.lastChangeInput);
-        lastText.setText("Your last name is:" + presenter.retrieveLastName());
+        lastText.setText("Your last name is: " + presenter.getSettingLastName());
 
         TextView submit = findViewById(R.id.submitSettings);
         TextView back = findViewById(R.id.back);
@@ -78,10 +77,10 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
     @SuppressLint("SetTextI18n")
     @Override
     public void update() {
-        weightText.setText("Your weight is:" + presenter.retrieveWeight());
-        heightText.setText("Your height is:" + presenter.retrieveHeight());
-        firstText.setText("Your first name is:" + presenter.retrieveFirstName());
-        lastText.setText("Your last name is:" + presenter.retrieveLastName());
+        weightText.setText("Your weight is:" + presenter.getSettingWeight());
+        heightText.setText("Your height is:" + presenter.getSettingHeight());
+        firstText.setText("Your first name is:" + presenter.getSettingFirstName());
+        lastText.setText("Your last name is:" + presenter.getSettingLastName());
     }
 
     /**

@@ -28,7 +28,7 @@ class SettingPresenter {
      * retrieve user's weight
      * @return string of their weight
      */
-    String retrieveWeight() {
+    String getSettingWeight() {
         return profile.getUserWeight();
     }
 
@@ -36,7 +36,7 @@ class SettingPresenter {
      * retrieve user's height
      * @return string of their height
      */
-    String retrieveHeight() {
+    String getSettingHeight() {
         return profile.getUserHeight();
     }
 
@@ -44,7 +44,7 @@ class SettingPresenter {
      * retrieve a user's first name
      * @return string of their first name
      */
-    String retrieveFirstName() {
+    String getSettingFirstName() {
         return profile.getUserFirstName();
     }
 
@@ -52,7 +52,7 @@ class SettingPresenter {
      * retrieve a user's last name
      * @return string of their last name
      */
-    String retrieveLastName() {
+    String getSettingLastName() {
         return profile.getUserLastName();
     }
 
