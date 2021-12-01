@@ -21,6 +21,7 @@
         <activity android:name=".Profile.ViewSetupActivity" />
         <activity android:name=".WorkoutTracker.StartWorkoutActivity" />
         <activity android:name=".Exercise.CreateNewExerciseActivity" />
+        <activity android:name=".Profile.ViewSettingsActivity" />
 
         <activity
             android:name=".Authentication.MainActivity"
