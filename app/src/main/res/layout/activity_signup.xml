@@ -96,5 +96,13 @@
         </LinearLayout>
 
     </LinearLayout>
+    <ImageView
+            android:layout_width="360dp"
+            android:layout_height="122dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView11"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="75dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="45dp" android:layout_marginBottom="201dp"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3" android:layout_marginEnd="46dp"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
