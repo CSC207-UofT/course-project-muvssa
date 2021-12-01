@@ -60,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Profiles" android:backgroundTint="#02bfe7" android:textColor="#050505"
+                    android:text="Profile" android:backgroundTint="#02bfe7" android:textColor="#050505"
                     android:textStyle="bold"/>
 
             <Space
