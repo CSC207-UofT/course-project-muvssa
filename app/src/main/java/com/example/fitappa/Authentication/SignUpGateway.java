@@ -1,12 +1,21 @@
 package com.example.fitappa.Authentication;
 
 import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * This class is a gateway that deals with signing up a user with the database given an email, username, and password
+ */
 class SignUpGateway {
-    AuthenticationPresenter presenter;
+    private final AuthenticationPresenter presenter;
 
+    /**
+     * Constructor that takes an AuthenticationPresenter abstract class which represents a presenter for sign up
+     *
+     * @param presenter AuthenticationPresenter abstract class which represents a presenter for sign up
+     */
     SignUpGateway(AuthenticationPresenter presenter) {
         this.presenter = presenter;
     }
@@ -30,14 +39,14 @@ class SignUpGateway {
 
                     // Create a profile with the user's info
                     Profile profile = new Profile(email, username, firebaseUser.getUid());
-                    Saveable gateway = new FirebaseGateway();
+                    Saveable gateway = new SaveProfileGateway();
                     profile.setGateway(gateway);
 
                     // Save the data of the profile to the database
                     profile.saveData();
 
                     // Update the presenter with the new profile
-                    presenter.updateUI(profile);
+                    presenter.updateActivity(profile);
                 })
                 .addOnFailureListener(e -> presenter.setError());
     }

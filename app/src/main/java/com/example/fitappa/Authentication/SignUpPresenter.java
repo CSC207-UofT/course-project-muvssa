@@ -4,9 +4,19 @@ import android.widget.EditText;
 
 import java.util.regex.Pattern;
 
+/**
+ * This is a presenter for the SignupActivity.
+ * This class is an authentication presenter since it authenticates the user given some credentials.
+ * It also determines what error message to display to the user.
+ */
 class SignUpPresenter extends AuthenticationPresenter {
     private final SignUpGateway gateway;
 
+    /**
+     * Constructor that takes an OpensActivityWithProfile interface and initializes it
+     *
+     * @param view OpensActivityWithProfile interface which is implemented by an Activity
+     */
     SignUpPresenter(OpensActivityWithProfile view) {
         super(view);
         this.gateway = new SignUpGateway(this);
@@ -19,7 +29,7 @@ class SignUpPresenter extends AuthenticationPresenter {
      * @param usernameText username for user
      * @param passwordText password for user
      */
-    void runSignUp(EditText emailText, EditText usernameText, EditText passwordText) {
+    void trySignUp(EditText emailText, EditText usernameText, EditText passwordText) {
 
         // convert EditText variables to string
         String email = emailText.getText().toString();
@@ -58,5 +68,13 @@ class SignUpPresenter extends AuthenticationPresenter {
         }
 
         gateway.signUp(email, username, password);
+    }
+
+    /**
+     * Set an error when the database fails to retrieve the profile
+     */
+    @Override
+    public void setError() {
+        view.showErrorMessage("Email already in use. \nPlease try again");
     }
 }

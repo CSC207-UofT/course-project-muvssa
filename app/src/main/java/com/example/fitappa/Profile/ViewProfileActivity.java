@@ -3,19 +3,22 @@ package com.example.fitappa.Profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.fitappa.Authentication.OpensActivityWithProfile;
 import com.example.fitappa.R;
 
 import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ViewProfileActivity extends AppCompatActivity implements Observer, ProfilePresenter.View {
+public class ViewProfileActivity extends AppCompatActivity implements Observer, ProfilePresenter.View, OpensActivityWithProfile {
     private Profile myProfile;
     private Profile profile;
     private TextView followerNumber;
     private ProfileController profileController;
+    private EditText searchText;
 
     /**
      * This method is called when the activity starts.
@@ -59,12 +62,12 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         followingNumber.setText(presenter.getFollowing());
 
         TextView submit = findViewById(R.id.submitSearch);
-        TextView search = findViewById(R.id.searchText);
+        searchText = findViewById(R.id.searchText);
 
         TextView settingsButton = findViewById(R.id.settingButton);
 
 
-        submit.setOnClickListener(v -> presenter.searchForProfileWithUsername(search.getText().toString()));
+        submit.setOnClickListener(v -> presenter.searchForProfileWithUsername(searchText.getText().toString()));
 
         returnHome.setOnClickListener(v -> backToCurrentProfilesViewProfile());
         followButton.setOnClickListener(v -> followPress());
@@ -78,7 +81,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
      * @param searchedProfile Profile that was searched for
      */
     @Override
-    public void openProfileFor(Profile searchedProfile) {
+    public void openActivityWith(Profile searchedProfile) {
         Intent intent = new Intent(this, ViewProfileActivity.class);
         intent.putExtra("my_Profile", this.myProfile);
         this.profile = searchedProfile;
@@ -87,11 +90,14 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
     }
 
     /**
-     * This method executes when the program cannot find the user that was searched for from the database
+     * Display an error message given a message
+     *
+     * @param message String message to be displayed as error on call
      */
     @Override
-    public void profileNotFound() {
-        // TODO: Implement
+    public void showErrorMessage(String message) {
+        searchText.setError("Username does not exist");
+        searchText.requestFocus();
     }
 
     /**
@@ -133,7 +139,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
     public void update(Observable o, Object arg) {
         this.myProfile = this.profileController.getFollow1();
         this.profile = this.profileController.getFollow2();
-        if (!myProfile.retrieveUsername().equals(profile.retrieveUsername())) {
+        if (!myProfile.getUsername().equals(profile.getUsername())) {
             followerNumber.setText(profile.getFollowManager().followerCount());
         }
     }

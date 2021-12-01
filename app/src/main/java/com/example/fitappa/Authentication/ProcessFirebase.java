@@ -1,13 +1,14 @@
 package com.example.fitappa.Authentication;
 
 import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.DocumentSnapshot;
 
 /**
- * This class processing information received from Firebase and retrieves the profile from a DocumentSnapshot
+ * This class processes information received from Firebase and retrieves the profile from a DocumentSnapshot
  * object. It then calls the openDashboard method from the view and passes in the new profile.
  */
-class ProcessFirebase {
+public class ProcessFirebase {
     private final AuthenticationPresenter presenter;
 
     /**
@@ -15,7 +16,7 @@ class ProcessFirebase {
      *
      * @param view OpensActivityWithProfile interface representing a view that contains a method which opens the Dashboard
      */
-    ProcessFirebase(AuthenticationPresenter view) {
+    public ProcessFirebase(AuthenticationPresenter view) {
         this.presenter = view;
     }
 
@@ -25,7 +26,7 @@ class ProcessFirebase {
      *
      * @param documentSnapshot DocumentSnapshot object retrieved from Firebase which contains a Profile
      */
-    void updateViewWithProfileFrom(DocumentSnapshot documentSnapshot) {
+    public void updateViewWithProfileFrom(DocumentSnapshot documentSnapshot) {
         Profile profile = null;
 
         try {
@@ -36,10 +37,10 @@ class ProcessFirebase {
 
         // Set the gateway since it's not being retrieved by Firebase
         if (profile != null) {
-            Saveable gateway = new FirebaseGateway();
+            Saveable gateway = new SaveProfileGateway();
             profile.setGateway(gateway);
         }
 
-        presenter.updateUI(profile);
+        presenter.updateActivity(profile);
     }
 }

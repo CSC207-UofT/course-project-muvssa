@@ -12,7 +12,10 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile, ShowsErrorMessage {
+/**
+ * This activity is activated when the user selects signup from the MainActivity and wants to sign up with a new account
+ */
+public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText usernameText;
     private EditText passwordText;
     private EditText emailText;
@@ -35,12 +38,7 @@ public class SignUpActivity extends AppCompatActivity implements OpensActivityWi
 
         SignUpPresenter presenter = new SignUpPresenter(this);
 
-        enter.setOnClickListener(v -> presenter.runSignUp(emailText, usernameText, passwordText));
-    }
-
-    @Override
-    public void showErrorMessage(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+        enter.setOnClickListener(v -> presenter.trySignUp(emailText, usernameText, passwordText));
     }
 
     /**
@@ -53,5 +51,15 @@ public class SignUpActivity extends AppCompatActivity implements OpensActivityWi
         Intent setup = new Intent(this, ViewSetupActivity.class);
         setup.putExtra("profile", profile);
         startActivity(setup);
+    }
+
+    /**
+     * Display an error message given a message
+     *
+     * @param message String message to be displayed as error on call
+     */
+    @Override
+    public void showErrorMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

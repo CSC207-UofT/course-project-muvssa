@@ -3,6 +3,7 @@ package com.example.fitappa.Authentication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
@@ -13,6 +14,11 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
+/**
+ * This is the MainActivity, and is the first activity that is shown when the user starts the program.
+ * <p>
+ * This activity gives the user two options, either login, or signup, and leads them to the corresponding activities.
+ */
 public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private AuthenticationPresenter presenter;
 
@@ -56,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
                     .addOnSuccessListener(documentSnapshot -> {
                         ProcessFirebase processFirebase = new ProcessFirebase(presenter);
                         processFirebase.updateViewWithProfileFrom(documentSnapshot);
-                    });
+                    })
+                    .addOnFailureListener(e -> presenter.setError());
         }
     }
 
@@ -84,5 +91,15 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);
+    }
+
+    /**
+     * Display an error message given a message
+     *
+     * @param message String message to be displayed as error on call
+     */
+    @Override
+    public void showErrorMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
@@ -11,7 +12,10 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile, ShowsErrorMessage {
+/**
+ * This activity is activated when the user selects login from the MainActivity and wants to log in to an account
+ */
+public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText passwordField;
     private EditText emailField;
     private LoginPresenter presenter;
@@ -33,7 +37,7 @@ public class LoginActivity extends AppCompatActivity implements OpensActivityWit
         emailField = findViewById(R.id.EmailField);
         TextView loginBtn = findViewById(R.id.LogInBtn);
 
-        loginBtn.setOnClickListener(v -> presenter.runLogin(emailField, passwordField));
+        loginBtn.setOnClickListener(v -> presenter.tryLogin(emailField, passwordField));
     }
 
     /**
@@ -48,8 +52,13 @@ public class LoginActivity extends AppCompatActivity implements OpensActivityWit
         startActivity(home);
     }
 
+    /**
+     * Display an error message given a message
+     *
+     * @param message String message to be displayed as error on call
+     */
     @Override
     public void showErrorMessage(String message) {
-
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

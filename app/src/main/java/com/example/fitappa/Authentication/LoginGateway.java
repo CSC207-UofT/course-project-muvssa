@@ -4,9 +4,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+/**
+ * This class is a gateway that accesses the database and signs in the user given their email and password
+ * as credentials.
+ */
 class LoginGateway {
     private final AuthenticationPresenter presenter;
 
+    /**
+     * Constructor that takes in an AuthenticationPresenter abstract class and initializes it
+     *
+     * @param presenter AuthenticationPresenter abstract class to be used to access presenter methods
+     */
     LoginGateway(AuthenticationPresenter presenter) {
         this.presenter = presenter;
     }
