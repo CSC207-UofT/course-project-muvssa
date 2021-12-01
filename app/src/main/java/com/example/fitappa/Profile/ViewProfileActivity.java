@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
-public class ViewProfileActivity extends AppCompatActivity implements Observer, ProfilePresenter.View, OpensActivityWithProfile {
+public class ViewProfileActivity extends AppCompatActivity implements Observer, OpensActivityWithProfile {
     private Profile myProfile;
     private Profile profile;
     private TextView followerNumber;
@@ -96,7 +96,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
      */
     @Override
     public void showErrorMessage(String message) {
-        searchText.setError("Username does not exist");
+        searchText.setError(message);
         searchText.requestFocus();
     }
 
@@ -104,8 +104,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
      * When the user goes back from viewing a searched profile, update the view profile activity to show
      * current profile's information
      */
-    @Override
-    public void backToCurrentProfilesViewProfile() {
+    private void backToCurrentProfilesViewProfile() {
         Intent home = new Intent(this, ViewProfileActivity.class);
         home.putExtra("my_Profile", this.myProfile);
         home.putExtra("persons_Profile", this.myProfile);
@@ -115,8 +114,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
     /**
      * brings a user to their settings
      */
-    @Override
-    public void toSettings() {
+    private void toSettings() {
         Intent setting = new Intent(this, ViewSettingsActivity.class);
         setting.putExtra("my_Profile", this.myProfile);
         startActivity(setting);

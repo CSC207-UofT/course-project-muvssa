@@ -92,23 +92,7 @@ class ProfilePresenter extends GatewayInteractor {
      */
     @Override
     public void setError() {
-        super.view.showErrorMessage("Profile not found. Please enter a correct username");
-    }
-
-
-    interface View {
-
-        /**
-         * When the user goes back from viewing a searched profile, update the view profile activity to show
-         * current profile's information
-         */
-        void backToCurrentProfilesViewProfile();
-
-        /**
-         * Brings a user to his settings
-         */
-        void toSettings();
-
+        super.view.showErrorMessage("Username not found");
     }
 
 }
