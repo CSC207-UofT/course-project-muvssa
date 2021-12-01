@@ -1,12 +1,15 @@
 package com.example.fitappa.Routine;
 
+import androidx.annotation.NonNull;
 import com.example.fitappa.Workout.Workout;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.NoSuchElementException;
 
-public class Routine implements Serializable {
+public class Routine implements Serializable, Iterable<Workout> {
     private String name;
     private String description;
     private List<Workout> workouts;
@@ -117,5 +120,76 @@ public class Routine implements Serializable {
         //return name.equals(routine.name) && description.equals(routine.description) &&
         //        workouts.equals(routine.workouts);
         return name.equals(routine.name);
+    }
+
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @NonNull
+    @Override
+    public Iterator<Workout> iterator() {
+        return new RoutineIterator();
+    }
+
+    /**
+     * Routine Iterator which allows this class to iterate over workouts
+     */
+    private class RoutineIterator implements Iterator<Workout> {
+        private int current = 0;
+
+        /**
+         * Returns {@code true} if the iteration has more elements.
+         * (In other words, returns {@code true} if {@link #next} would
+         * return an element rather than throwing an exception.)
+         *
+         * @return {@code true} if the iteration has more elements
+         */
+        @Override
+        public boolean hasNext() {
+            return current < workouts.size();
+        }
+
+        /**
+         * Returns the next element in the iteration.
+         *
+         * @return the next element in the iteration
+         * @throws NoSuchElementException if the iteration has no more elements
+         */
+        @Override
+        public Workout next() {
+            Workout workout;
+
+            try {
+                workout = workouts.get(current);
+            } catch (IndexOutOfBoundsException e) {
+                throw new NoSuchElementException();
+            }
+            current += 1;
+            return workout;
+        }
+
+        /**
+         * Removes from the underlying collection the last element returned
+         * by this iterator (optional operation).  This method can be called
+         * only once per call to {@link #next}.  The behavior of an iterator
+         * is unspecified if the underlying collection is modified while the
+         * iteration is in progress in any way other than by calling this
+         * method.
+         *
+         * @throws UnsupportedOperationException if the {@code remove}
+         *                                       operation is not supported by this iterator
+         * @throws IllegalStateException         if the {@code next} method has not
+         *                                       yet been called, or the {@code remove} method has already
+         *                                       been called after the last call to the {@code next}
+         *                                       method
+         * @implSpec The default implementation throws an instance of
+         * {@link UnsupportedOperationException} and performs no other action.
+         */
+        @Override
+        public void remove() {
+            workouts.remove(current - 1);
+        }
     }
 }

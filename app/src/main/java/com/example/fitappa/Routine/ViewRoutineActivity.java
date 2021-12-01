@@ -11,7 +11,6 @@ import com.example.fitappa.Workout.AddWorkoutActivity;
 import com.example.fitappa.Workout.ViewWorkoutActivity;
 import com.example.fitappa.Workout.Workout;
 
-import java.util.List;
 import java.util.Objects;
 
 public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutinePresenter.View {
@@ -46,7 +45,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         this.presenter = new ViewRoutinePresenter(this, routine, profile);
 
         // Initialize view
-        initializeRoutineView(routine.getWorkouts());
+        initializeRoutineView();
 
         // Listeners
         addWorkoutBtn.setOnClickListener(view -> openAddWorkout());
@@ -80,11 +79,9 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method initializes the RoutineView with the user's workouts.
-     *
-     * @param workouts represents the user's workouts
      */
-    private void initializeRoutineView(List<Workout> workouts) {
-        for (Workout w : workouts) {
+    private void initializeRoutineView() {
+        for (Workout w : routine) {
             updateRoutineView(w);
         }
     }
