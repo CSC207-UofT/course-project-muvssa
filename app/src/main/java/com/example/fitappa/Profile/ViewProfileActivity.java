@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Authentication.OpensActivityWithProfile;
 import com.example.fitappa.R;
 
@@ -45,11 +47,8 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         TextView followButton = findViewById(R.id.followButton);
         followButton.setVisibility(View.INVISIBLE);
 
-        TextView returnHome = findViewById(R.id.returnHome);
-        returnHome.setVisibility(View.INVISIBLE);
         if (!presenter.isMyProfile()) {
             followButton.setVisibility(View.VISIBLE);
-            returnHome.setVisibility(View.VISIBLE);
         }
 
         TextView user = findViewById(R.id.userNameProfile);
@@ -69,10 +68,18 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
 
         submit.setOnClickListener(v -> presenter.searchForProfileWithUsername(searchText.getText().toString()));
 
-        returnHome.setOnClickListener(v -> backToCurrentProfilesViewProfile());
         followButton.setOnClickListener(v -> followPress());
         settingsButton.setOnClickListener(v -> toSettings());
 
+    }
+
+    /**
+     * Activated when Android back button is pressed. Return to current Profile view.
+     */
+    @Override
+    public void onBackPressed() {
+        backToCurrentProfilesViewProfile();
+        super.onBackPressed();
     }
 
     /**

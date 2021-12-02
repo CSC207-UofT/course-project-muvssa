@@ -92,10 +92,5 @@ class SettingPresenter {
          * Display the changes the user made to their settings
          */
         void update();
-
-        /**
-         * return to profile after changes made
-         */
-        void toProfile();
     }
 }
