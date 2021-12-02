@@ -1,5 +1,9 @@
 package com.example.fitappa.Exercise.Exercise;
 
+import com.example.fitappa.Exercise.Set.Set;
+import com.example.fitappa.Exercise.Set.TimedSet;
+import com.example.fitappa.Exercise.Set.WeightedSet;
+
 import java.io.Serializable;
 
 public class ExerciseTemplate implements Serializable {
@@ -41,13 +45,13 @@ public class ExerciseTemplate implements Serializable {
      * Factory Design Pattern for Exercise objects.
      * @return the appropriate Exercise object based on this.category
      */
-    public Exercise create() {
+    public Exercise<?> create() {
         if (this.category.equals("REP"))
-            return new RepExercise(this.name);
+            return new Exercise<Set>(this.name);
         else if (this.category.equals("WEIGHTED"))
-            return new WeightedRepExercise(this.name);
+            return new Exercise<WeightedSet>(this.name);
         else
-            return new TimedExercise(this.name);
+            return new Exercise<TimedSet>(this.name);
     }
 
     /**

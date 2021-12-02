@@ -67,10 +67,16 @@ public class TrackWorkoutsTest extends TestCase {
         tracker.addSet(0, 10);
         tracker.addSet(0, 12);
 
-        /*
-         * What happens when the wrong Set is given?
-         */
-        tracker.addSet(1, 10);
+        tracker.addSet(1, 10, 100);
+        tracker.addSet(1, 10, 200);
+
+        tracker.addSet(2, 60.0);
+
+        tracker.end();
+        assertFalse(tracker.isTracking());
+
+
+        assertEquals(3000.0, tracker.volume());
 
     }
 
