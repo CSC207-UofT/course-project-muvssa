@@ -1,6 +1,6 @@
 package com.example.fitappa.Exercise.Exercise;
 
-import com.example.fitappa.Exercise.Set.Set;
+import com.example.fitappa.Exercise.Set.RepSet;
 import com.example.fitappa.Exercise.Set.TimedSet;
 import com.example.fitappa.Exercise.Set.WeightedSet;
 
@@ -47,7 +47,7 @@ public class ExerciseTemplate implements Serializable {
      */
     public Exercise<?> create() {
         if (this.category.equals("REP"))
-            return new Exercise<Set>(this.name);
+            return new Exercise<RepSet>(this.name);
         else if (this.category.equals("WEIGHTED"))
             return new Exercise<WeightedSet>(this.name);
         else

@@ -1,8 +1,8 @@
 package com.example.fitappa.Exercise.Set;
 
-public class WeightedSet extends Set implements Settable {
+public class WeightedSet extends RepSet implements Settable {
 
-    private double weight;
+    private final double weight;
 
     /**
      * Creates a WeightedSet with the given weight and numReps = 0.
@@ -13,10 +13,9 @@ public class WeightedSet extends Set implements Settable {
         this.weight = weight;
     }
 
-
     /**
-     * TODO: javadoc
-     * @return
+     * The volume of a weighted set is weight * number of reps
+     * @return the volume of this set
      */
     @Override
     public double volume() {

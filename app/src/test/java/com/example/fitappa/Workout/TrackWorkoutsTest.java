@@ -1,9 +1,7 @@
 package com.example.fitappa.Workout;
 
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
-import com.example.fitappa.Exercise.Set.Set;
 import com.example.fitappa.Exercise.Set.SetFactory;
-import com.example.fitappa.Exercise.Set.Settable;
 
 import junit.framework.TestCase;
 
@@ -13,7 +11,7 @@ public class TrackWorkoutsTest extends TestCase {
     ExerciseTemplate exerciseTemplate;
     SetFactory setFactory;
 
-    public void setUp() throws Exception {
+    public void setUp() {
         this.workoutTemplate = new WorkoutTemplate("My workout");
         this.exerciseTemplate = new ExerciseTemplate("My exercise",5, "REP");
         this.workoutTemplate.addExercise(exerciseTemplate);

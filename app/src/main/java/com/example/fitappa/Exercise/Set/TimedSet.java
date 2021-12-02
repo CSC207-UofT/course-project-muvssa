@@ -5,35 +5,20 @@ package com.example.fitappa.Exercise.Set;
  * It uses time (in seconds) as its measure
  */
 public class TimedSet implements Settable {
-    private double time;
+    private final double time;
 
-
-    /**
-     * Starts an empty set that uses time as its measure.
-     */
-    public TimedSet() {
-        this.time = 0;
-    }
 
     /**
      * Builds a completed set that uses time as its measure
-     * @param time
+     * @param time the time taken to complete the set
      */
     public TimedSet(double time) {
         this.time = time;
     }
 
     /**
-     * TODO: Javadoc
-     * @param time
-     */
-    public void completeSet(double time) {
-        this.time = time;
-    }
-
-    /**
-     * TODO: Javadoc
-     * @return
+     * This method return the time it took to finish this set
+     * @return the time taken to complete the set
      */
     public double getTime() {
         return this.time;

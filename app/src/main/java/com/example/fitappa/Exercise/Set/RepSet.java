@@ -6,14 +6,14 @@ package com.example.fitappa.Exercise.Set;
  * skipping ropes, jumping jacks, and etc. Exercises where there is
  * not much work being done.
  */
-public class Set implements Settable {
+public class RepSet implements Settable {
     protected double numReps;
 
     /**
      * This method creates a Set object
-     * @param numReps
+     * @param numReps represents the number of reps
      */
-    public Set(double numReps) {
+    public RepSet(double numReps) {
         // numReps must be 0 for all newly created sets
         this.numReps = numReps;
     }
@@ -38,7 +38,7 @@ public class Set implements Settable {
     /**
      * Volume is quantitative measure of the work done.
      * In the case of a general set, the volume is always 0
-     * @return
+     * @return 0
      */
     public double volume() {
         return 0;
