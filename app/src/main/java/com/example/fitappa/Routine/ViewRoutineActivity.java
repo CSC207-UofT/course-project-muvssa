@@ -9,8 +9,9 @@ import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.AddWorkoutActivity;
 import com.example.fitappa.Workout.ViewWorkoutActivity;
-import com.example.fitappa.Workout.Workout;
+import com.example.fitappa.Workout.WorkoutTemplate;
 
+import java.util.List;
 import java.util.Objects;
 
 public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutinePresenter.View {
@@ -45,7 +46,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         this.presenter = new ViewRoutinePresenter(this, routine, profile);
 
         // Initialize view
-        initializeRoutineView();
+        initializeRoutineView(routine.getWorkouts());
 
         // Listeners
         addWorkoutBtn.setOnClickListener(view -> openAddWorkout());
@@ -57,13 +58,13 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
     /**
      * This method updates RoutineView by adding a Workout
      *
-     * @param workout represents the Workout that must be added to RoutinesView
+     * @param workoutTemplate represents the Workout that must be added to RoutinesView
      */
     @Override
-    public void updateRoutineView(Workout workout) {
+    public void updateRoutineView(WorkoutTemplate workoutTemplate) {
         Button button = new Button(this);
-        button.setText(workout.getName());
-        button.setOnClickListener(view -> openViewWorkout(workout));
+        button.setText(workoutTemplate.getName());
+        button.setOnClickListener(view -> openViewWorkout(workoutTemplate));
         routineLayout.addView(button);
 
     }
@@ -79,9 +80,11 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
 
     /**
      * This method initializes the RoutineView with the user's workouts.
+     *
+     * @param workoutTemplates represents the user's workouts
      */
-    private void initializeRoutineView() {
-        for (Workout w : routine) {
+    private void initializeRoutineView(List<WorkoutTemplate> workoutTemplates) {
+        for (WorkoutTemplate w : workoutTemplates) {
             updateRoutineView(w);
         }
     }
@@ -112,12 +115,12 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
     /**
      * This method opens the ViewWorkoutActivity view
      *
-     * @param workout represents the Workout to open
+     * @param workoutTemplate represents the Workout to open
      */
-    private void openViewWorkout(Workout workout) {
+    private void openViewWorkout(WorkoutTemplate workoutTemplate) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
         viewWorkout.putExtra("routineObj", this.routine);
-        viewWorkout.putExtra("workoutObj", workout);
+        viewWorkout.putExtra("workoutObj", workoutTemplate);
         viewWorkout.putExtra("profile", this.profile);
         startActivity(viewWorkout);
     }

@@ -1,28 +1,20 @@
 package com.example.fitappa.Exercise;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TimedExercise extends Exercise implements Serializable {
 
-    private final int setTime;
+    private List<TimedSet> sets;
 
-    public TimedExercise(String name, int sets, int rest, String muscle, int set_time) {
-        super(name, sets, rest, muscle);
-        this.setTime = set_time;
+    public TimedExercise(String name) {
+        super(name);
+        this.sets = new ArrayList<TimedSet>();
     }
-
-    public TimedExercise(TimedExercise other) {
-        super(other);
-        this.setTime = 0;
-    }
-
-    public int getSetTime() {
-        return setTime;
-    }
-
 
     @Override
-    public double getVolume() {
-        return super.numSets * this.setTime;
+    public double volume() {
+        return 0;
     }
 }

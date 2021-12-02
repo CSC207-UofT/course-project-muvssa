@@ -1,7 +1,7 @@
 package com.example.fitappa.Routine;
 
 import androidx.annotation.NonNull;
-import com.example.fitappa.Workout.Workout;
+import com.example.fitappa.Workout.WorkoutTemplate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,10 +9,10 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public class Routine implements Serializable, Iterable<Workout> {
+public class Routine implements Serializable, Iterable<WorkoutTemplate> {
     private String name;
     private String description;
-    private List<Workout> workouts;
+    private List<WorkoutTemplate> workoutTemplates;
 
     // Empty constructor necessary for Firebase
     @SuppressWarnings("unused")
@@ -27,7 +27,7 @@ public class Routine implements Serializable, Iterable<Workout> {
     public Routine(String name, String description) {
         this.name = name;
         this.description = description;
-        this.workouts = new ArrayList<>();
+        this.workoutTemplates = new ArrayList<>();
     }
 
     /**
@@ -72,26 +72,26 @@ public class Routine implements Serializable, Iterable<Workout> {
      * @return list of workouts for the Routine
      */
     // TODO: Remove this since unnecessary now with iterator
-    public List<Workout> getWorkouts() {
-        return workouts;
+    public List<WorkoutTemplate> getWorkouts() {
+        return workoutTemplates;
     }
 
     /**
      * Sets the Routine's workouts to new ones given
      *
-     * @param workouts list of new workouts
+     * @param workoutTemplates list of new workouts
      */
-    public void setWorkouts(ArrayList<Workout> workouts) {
-        this.workouts = workouts;
+    public void setWorkouts(ArrayList<WorkoutTemplate> workoutTemplates) {
+        this.workoutTemplates = workoutTemplates;
     }
 
     /**
      * Add a workout to the Routine
      *
-     * @param workout new workout to be added
+     * @param workoutTemplate new workout to be added
      */
-    public void addWorkout(Workout workout) {
-        this.workouts.add(workout);
+    public void addWorkout(WorkoutTemplate workoutTemplate) {
+        this.workoutTemplates.add(workoutTemplate);
     }
 
     /**
@@ -100,14 +100,14 @@ public class Routine implements Serializable, Iterable<Workout> {
      * @param name name of the workout to be removed from Routine's workouts
      */
     public void removeWorkout(String name) {
-        this.workouts.removeIf(workout -> workout.getName().equals(name));
+        this.workoutTemplates.removeIf(workout -> workout.getName().equals(name));
     }
 
     /**
      * Remove every single workout from the Routine
      */
     public void removeAllWorkouts() {
-        this.workouts.clear();
+        this.workoutTemplates.clear();
     }
 
     @Override
@@ -130,14 +130,14 @@ public class Routine implements Serializable, Iterable<Workout> {
      */
     @NonNull
     @Override
-    public Iterator<Workout> iterator() {
+    public Iterator<WorkoutTemplate> iterator() {
         return new RoutineIterator();
     }
 
     /**
      * Routine Iterator which allows this class to iterate over workouts
      */
-    private class RoutineIterator implements Iterator<Workout> {
+    private class RoutineIterator implements Iterator<WorkoutTemplate> {
         private int current = 0;
 
         /**
@@ -149,7 +149,7 @@ public class Routine implements Serializable, Iterable<Workout> {
          */
         @Override
         public boolean hasNext() {
-            return current < workouts.size();
+            return current < workoutTemplates.size();
         }
 
         /**
@@ -159,11 +159,11 @@ public class Routine implements Serializable, Iterable<Workout> {
          * @throws NoSuchElementException if the iteration has no more elements
          */
         @Override
-        public Workout next() {
-            Workout workout;
+        public WorkoutTemplate next() {
+            WorkoutTemplate workout;
 
             try {
-                workout = workouts.get(current);
+                workout = workoutTemplates.get(current);
             } catch (IndexOutOfBoundsException e) {
                 throw new NoSuchElementException();
             }
@@ -190,7 +190,7 @@ public class Routine implements Serializable, Iterable<Workout> {
          */
         @Override
         public void remove() {
-            workouts.remove(current - 1);
+            workoutTemplates.remove(current - 1);
         }
     }
 }

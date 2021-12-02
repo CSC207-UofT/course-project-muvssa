@@ -7,7 +7,7 @@ import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.ViewWorkoutActivity;
-import com.example.fitappa.Workout.Workout;
+import com.example.fitappa.Workout.WorkoutTemplate;
 
 import java.util.List;
 import java.util.Objects;
@@ -16,8 +16,8 @@ import java.util.Objects;
 public class AddExerciseActivity extends AppCompatActivity {
 
     private LinearLayout exerciseLayout;
-    private Workout workout;
-    private List<Exercise> exercises;
+    private WorkoutTemplate workoutTemplate;
+    private List<ExerciseTemplate> exerciseTemplates;
 
     /**
      * This method is called when the activity starts.
@@ -32,8 +32,8 @@ public class AddExerciseActivity extends AppCompatActivity {
 
         Button addExerciseBtn = findViewById(R.id.createExercise);
 
-        this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
-        this.exercises = (List<Exercise>) getIntent().getSerializableExtra("exercises");
+        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
+        this.exerciseTemplates = (List<ExerciseTemplate>) getIntent().getSerializableExtra("exercises");
 
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
@@ -55,8 +55,8 @@ public class AddExerciseActivity extends AppCompatActivity {
      * ExerciseLayout view component.
      */
     private void displayExercises() {
-        for (Exercise exercise : this.exercises) {
-            updateExerciseLayout(exercise);
+        for (ExerciseTemplate exerciseTemplate : this.exerciseTemplates) {
+            updateExerciseLayout(exerciseTemplate);
         }
     }
 
@@ -64,12 +64,12 @@ public class AddExerciseActivity extends AppCompatActivity {
      * This method updates the ExerciseLayout view component on AddExerciseActivity
      * by adding the Exercise to the layout.
      *
-     * @param exercise represents the Exercise object to add to the ExerciseLayout
+     * @param exerciseTemplate represents the Exercise object to add to the ExerciseLayout
      */
-    private void updateExerciseLayout(Exercise exercise) {
+    private void updateExerciseLayout(ExerciseTemplate exerciseTemplate) {
         Button button = new Button(this);
-        button.setText(exercise.getName());
-        button.setOnClickListener(view -> goBackToWorkout(exercise));
+        button.setText(exerciseTemplate.getName());
+        button.setOnClickListener(view -> goBackToWorkout(exerciseTemplate));
 
         exerciseLayout.addView(button);
     }
@@ -77,12 +77,12 @@ public class AddExerciseActivity extends AppCompatActivity {
     /**
      * This method opens the ViewWorkoutActivity view.
      *
-     * @param exercise represents the exercise to be returned to ViewWorkoutActivity
+     * @param exerciseTemplate represents the exercise to be returned to ViewWorkoutActivity
      */
-    private void goBackToWorkout(Exercise exercise) {
+    private void goBackToWorkout(ExerciseTemplate exerciseTemplate) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
-        viewWorkout.putExtra("workoutObj", this.workout);
-        viewWorkout.putExtra("exercise", exercise);
+        viewWorkout.putExtra("workoutObj", this.workoutTemplate);
+        viewWorkout.putExtra("exercise", exerciseTemplate);
         setResult(RESULT_OK, viewWorkout);
         finish();
     }

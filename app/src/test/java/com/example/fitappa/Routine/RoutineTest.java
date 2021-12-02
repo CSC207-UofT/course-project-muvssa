@@ -1,16 +1,16 @@
 package com.example.fitappa.Routine;
 
-import com.example.fitappa.Workout.Workout;
+import com.example.fitappa.Workout.WorkoutTemplate;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;
 
 public class RoutineTest extends TestCase {
     Routine x;
-    Workout workout;
+    WorkoutTemplate workoutTemplate;
 
     public void setUp() throws Exception {
-        workout = new Workout("chest", "easy");
+        workoutTemplate = new WorkoutTemplate("chest");
         x = new Routine("sundays", "hard");
         super.setUp();
     }
@@ -34,16 +34,16 @@ public class RoutineTest extends TestCase {
     }
 
     public void testGetWorkouts() {
-        x.addWorkout(workout);
-        assertTrue(x.getWorkouts().contains(workout));
+        x.addWorkout(workoutTemplate);
+        assertTrue(x.getWorkouts().contains(workoutTemplate));
     }
 
     public void testSetWorkouts() {
-        Workout workout1 = new Workout("legs", "hard");
-        ArrayList<Workout> workouts = new ArrayList<>();
-        workouts.add(workout);
-        workouts.add(workout1);
-        x.setWorkouts(workouts);
+        WorkoutTemplate workoutTemplate1 = new WorkoutTemplate("legs");
+        ArrayList<WorkoutTemplate> workoutTemplates = new ArrayList<>();
+        workoutTemplates.add(workoutTemplate);
+        workoutTemplates.add(workoutTemplate1);
+        x.setWorkouts(workoutTemplates);
         assertEquals(2, x.getWorkouts().size());
     }
 
@@ -51,14 +51,14 @@ public class RoutineTest extends TestCase {
     }
 
     public void testRemoveWorkout() {
-        x.addWorkout(workout);
+        x.addWorkout(workoutTemplate);
         assertEquals(1, x.getWorkouts().size());
-        x.removeWorkout(workout.getName());
+        x.removeWorkout(workoutTemplate.getName());
         assertEquals(0, x.getWorkouts().size());
     }
 
     public void testRemoveAllWorkouts() {
-        x.addWorkout(workout);
+        x.addWorkout(workoutTemplate);
         assertEquals(1, x.getWorkouts().size());
         x.removeAllWorkouts();
         assertEquals(0, x.getWorkouts().size());

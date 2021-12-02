@@ -1,44 +1,32 @@
 package com.example.fitappa.Exercise;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RepExercise extends Exercise implements Serializable {
 
-    private final int numReps;
+    private List<Set> sets;
 
-    public RepExercise(String name, int sets, int rest, String muscle, int numReps) {
-        super(name, sets, rest, muscle);
-        this.numReps = numReps;
-    }
-
-    /**
-     * Creates a RepExercise Object given another
-     *
-     * @param other another rep exercise
-     */
-    public RepExercise(RepExercise other) {
-        super(other);
-        this.numReps = 0;
-    }
-
-    /**
-     * Creates a RepExercise object given the name
-     *
-     * @param name name of the rep exercise
-     */
     public RepExercise(String name) {
         super(name);
-        this.numReps = 0;
+        this.sets = new ArrayList<Set>();
     }
 
-    public int getNumReps() {
-        return numReps;
+    public void addSet(Set set) {
+        this.sets.add(set);
     }
 
+    public int numSets() {
+        int count = 0;
+        for (Set s : sets) {
+            count++;
+        }
+        return count;
+    }
 
     @Override
-    public double getVolume() {
-        return this.numReps * super.numSets;
+    public double volume() {
+        return 0;
     }
 }
-

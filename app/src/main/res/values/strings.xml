@@ -15,7 +15,7 @@
     <string name="submit_Search">Submit</string>
     <string name="followButton">Follow!</string>
     <string name="returnHome">Return to my Profile</string>
-    <string name="goToWorkout">See your workouts</string>
+    <string name="goToWorkout">See your workoutTemplates</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="backButton1">Back and Save</string>
@@ -25,7 +25,7 @@
     <string name="height">height</string>
     <string name="firstName">first name</string>
     <string name="lastName">last name</string>
-    <string name="NoWorkoutInRoutine">"Sorry, there are no workouts in this routine. "</string>
+    <string name="NoWorkoutInRoutine">"Sorry, there are no workoutTemplates in this routine. "</string>
     <string name="StartWorkout">Start</string>
     <string name="weightSetting">Weight is:</string>
     <string name="weightChangeInput">Type to change weight</string>
