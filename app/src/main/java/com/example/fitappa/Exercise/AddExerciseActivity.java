@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.ViewWorkoutActivity;
 import com.example.fitappa.Workout.Workout;
@@ -37,7 +39,7 @@ public class AddExerciseActivity extends AppCompatActivity {
 
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
-        addExerciseBtn.setOnClickListener(v -> goToAddNewExercise());
+        addExerciseBtn.setOnClickListener(v -> openCreateNewExercise());
 
         displayExercises();
     }
@@ -45,7 +47,7 @@ public class AddExerciseActivity extends AppCompatActivity {
     /**
      * Go to Create New Exercise Activity
      */
-    private void goToAddNewExercise() {
+    private void openCreateNewExercise() {
         Intent addNewExercise = new Intent(this, CreateNewExerciseActivity.class);
         startActivity(addNewExercise);
     }
