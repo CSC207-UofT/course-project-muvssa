@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
@@ -47,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements OpensActivityWit
      */
     @Override
     public void openActivityWith(Profile profile) {
+        finish();
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);

@@ -3,7 +3,9 @@ package com.example.fitappa.Profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.ViewRoutinesActivity;
@@ -89,6 +91,7 @@ public class DashboardActivity extends AppCompatActivity {
      * This method opens the MainActivity View
      */
     private void goBackToMain() {
+        finish();
         Intent main = new Intent(this, MainActivity.class);
         startActivity(main);
     }

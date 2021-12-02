@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.R;
 
 
@@ -19,7 +21,7 @@ import com.example.fitappa.R;
  */
 
 
-public class ViewSettingsActivity extends AppCompatActivity implements SettingPresenter.View {
+public class SettingsActivity extends AppCompatActivity implements SettingsPresenter.View {
     private TextView weightText;
     private EditText weightInput;
     private TextView heightText;
@@ -29,7 +31,7 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
     private TextView lastText;
     private EditText lastInput;
     private Profile myProfile;
-    private SettingPresenter presenter;
+    private SettingsPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -43,7 +45,7 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
         setContentView(R.layout.activity_settings);
         Intent retrieveIntent = getIntent();
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
-        presenter = new SettingPresenter(this, myProfile);
+        presenter = new SettingsPresenter(this, myProfile);
 
 
         weightText = findViewById(R.id.weightSetting);
@@ -63,31 +65,36 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
         lastText.setText("Your last name is: " + presenter.getSettingLastName());
 
         TextView submit = findViewById(R.id.submitSettings);
-        TextView back = findViewById(R.id.back);
 
         submit.setOnClickListener(v -> presenter.changeSettings(weightInput.getText().toString(),
                 heightInput.getText().toString(), firstInput.getText().toString(), lastInput.getText().toString()));
-        back.setOnClickListener(v -> toProfile());
 
+    }
+
+    /**
+     * Activate when Android back button is pressed. Return to ProfileActivity.
+     */
+    @Override
+    public void onBackPressed() {
+        toProfile();
+        super.onBackPressed();
     }
 
     /**
      * Display the changes the user made to their settings
      */
-    @SuppressLint("SetTextI18n")
     @Override
     public void update() {
-        weightText.setText("Your weight is: " + presenter.getSettingWeight());
-        heightText.setText("Your height is: " + presenter.getSettingHeight());
-        firstText.setText("Your first name is: " + presenter.getSettingFirstName());
-        lastText.setText("Your last name is: " + presenter.getSettingLastName());
+        weightText.setText(String.format("Your weight is: %s", presenter.getSettingWeight()));
+        heightText.setText(String.format("Your height is: %s", presenter.getSettingHeight()));
+        firstText.setText(String.format("Your first name is: %s", presenter.getSettingFirstName()));
+        lastText.setText(String.format("Your last name is: %s", presenter.getSettingLastName()));
     }
 
     /**
      * return to profile after changes made
      */
-    @Override
-    public void toProfile() {
+    private void toProfile() {
         Intent home = new Intent(this, ViewProfileActivity.class);
         home.putExtra("my_Profile", myProfile);
         home.putExtra("persons_Profile", myProfile);

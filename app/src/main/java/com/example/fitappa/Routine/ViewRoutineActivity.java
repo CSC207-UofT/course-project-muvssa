@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.AddWorkoutActivity;
@@ -33,7 +35,6 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         // Retrieve UI
         this.routineLayout = findViewById(R.id.RoutineLayout);
         Button addWorkoutBtn = findViewById(R.id.AddWorkoutBtn);
-        Button back = findViewById(R.id.backButton2);
 
         // retrieve routine
         this.routine = (Routine) getIntent().getSerializableExtra("routineObj");
@@ -50,8 +51,16 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
         // Listeners
         addWorkoutBtn.setOnClickListener(view -> openAddWorkout());
 
-        back.setOnClickListener(view -> presenter.updateProfileRoutine());
+    }
 
+    /**
+     * This method is called when the user pressed the default android back button. This method saves the profile's
+     * routine data before going back to the previous activity
+     */
+    @Override
+    public void onBackPressed() {
+        presenter.updateProfileRoutine();
+        super.onBackPressed();
     }
 
     /**
@@ -71,6 +80,7 @@ public class ViewRoutineActivity extends AppCompatActivity implements ViewRoutin
     /**
      * This method opens ViewRoutines Activity
      */
+    @Override
     public void goBackToViewRoutines() {
         Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
         viewRoutines.putExtra("my_Profile", this.profile);
