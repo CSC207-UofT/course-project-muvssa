@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TrackWorkouts implements Serializable {
-    private final List<WorkoutTemplate> workoutTemplateHistory;
+    private final List<Workout> workouts;
     private Workout currWorkout;
 
     /**
      * Creates a workout tracker with an empty history
      */
     public TrackWorkouts() {
-        this.workoutTemplateHistory = new ArrayList<>();
+        this.workouts = new ArrayList<Workout>();
     }
 
     /**
@@ -43,13 +43,15 @@ public class TrackWorkouts implements Serializable {
      * @param workoutTemplate - The workout that is to be started
      * @return True iff the workout was successfully started
      */
-    public boolean startWorkout(WorkoutTemplate workoutTemplate) {
-        /*if (this.currWorkout == null) {
-            this.currWorkout= new WorkoutTemplate(workoutTemplate);
-            return true;
-        }*/
-
-        return false;
-
+    public boolean track(WorkoutTemplate workoutTemplate) {
+        if(this.isTracking()) return false;
+        this.currWorkout = workoutTemplate.createWorkout();
+        return true;
     }
+
+    public boolean isTracking() {
+        return this.currWorkout != null;
+    }
+
+
 }

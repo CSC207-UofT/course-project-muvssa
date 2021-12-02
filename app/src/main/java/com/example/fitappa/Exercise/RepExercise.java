@@ -26,6 +26,11 @@ public class RepExercise extends Exercise implements Serializable {
     }
 
     @Override
+    public void addEmptySet() {
+        this.sets.add(new Set(0));
+    }
+
+    @Override
     public double volume() {
         return 0;
     }

@@ -47,4 +47,7 @@ public abstract class Exercise implements Serializable {
     public abstract double volume();
 
 
+    public abstract void addEmptySet();
+
+
 }

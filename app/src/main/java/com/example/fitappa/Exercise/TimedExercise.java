@@ -17,4 +17,9 @@ public class TimedExercise extends Exercise implements Serializable {
     public double volume() {
         return 0;
     }
+
+    @Override
+    public void addEmptySet() {
+        return;
+    }
 }
