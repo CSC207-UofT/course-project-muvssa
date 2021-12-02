@@ -1,5 +1,8 @@
 package com.example.fitappa.Exercise;
 
+import com.example.fitappa.Exercise.Exercise.RepExercise;
+import com.example.fitappa.Exercise.Set.Set;
+
 import junit.framework.TestCase;
 
 public class RepExerciseTest extends TestCase {

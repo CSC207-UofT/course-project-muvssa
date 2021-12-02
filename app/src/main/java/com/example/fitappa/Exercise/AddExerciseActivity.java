@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.ViewWorkoutActivity;
 import com.example.fitappa.Workout.WorkoutTemplate;

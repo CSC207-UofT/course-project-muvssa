@@ -1,4 +1,4 @@
-package com.example.fitappa.Exercise;
+package com.example.fitappa.Exercise.Set;
 
 /**
  * A Set represents set of an exercise repetitions in a workout.

@@ -1,4 +1,4 @@
-package com.example.fitappa.Exercise;
+package com.example.fitappa.Exercise.Set;
 
 /**
  * A TimedSet is another way to track progress through an exercises.
@@ -13,6 +13,14 @@ public class TimedSet implements Settable {
      */
     public TimedSet() {
         this.time = 0;
+    }
+
+    /**
+     * Builds a completed set that uses time as its measure
+     * @param time
+     */
+    public TimedSet(double time) {
+        this.time = time;
     }
 
     /**

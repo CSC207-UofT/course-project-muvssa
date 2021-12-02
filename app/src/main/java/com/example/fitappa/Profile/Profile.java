@@ -1,7 +1,7 @@
 package com.example.fitappa.Profile;
 
 
-import com.example.fitappa.Exercise.DefaultExercises;
+import com.example.fitappa.Exercise.Exercise.DefaultExercises;
 import com.example.fitappa.Routine.Routine;
 
 import java.io.Serializable;

@@ -1,7 +1,7 @@
 package com.example.fitappa.Workout;
 
-import com.example.fitappa.Exercise.Set;
-import com.example.fitappa.Exercise.Settable;
+import com.example.fitappa.Exercise.Set.SetFactory;
+import com.example.fitappa.Exercise.Set.Settable;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,12 +10,14 @@ import java.util.List;
 public class TrackWorkouts implements Serializable {
     private final List<Workout> workouts;
     private Workout currWorkout;
+    private SetFactory setFactory;
 
     /**
      * Creates a workout tracker with an empty history
      */
     public TrackWorkouts() {
         this.workouts = new ArrayList<Workout>();
+        this.setFactory = new SetFactory();
     }
 
     /**
@@ -64,9 +66,37 @@ public class TrackWorkouts implements Serializable {
         return this.currWorkout != null;
     }
 
-    public void addSet(int i, Settable s) {
-        this.currWorkout.addSet(i, s);
+    /**
+     * Precondition: 1) 0 <= i < this.currWorkout.length(),
+     *               2) the exercise at position <i> is of type RepExericse
+     * @param i represents the position of the exercise
+     * @param numReps represents the number of reps to add in the set
+     */
+    public void addSet(int i, int numReps) {
+        this.currWorkout.addSet(i, (Settable) setFactory.buildSet(numReps));
     }
+
+    /**
+     * Precondition: 1) 0 <= i < this.currWorkout.length(),
+     *               2) the exercise at position <i> is of type WeightedExericse
+     * @param i represents the position of the exercise
+     * @param numReps represents the number of reps to add in the set
+     * @param weight represents the weight to add in the set
+     */
+    public void addSet(int i, int numReps, double weight) {
+        this.currWorkout.addSet(i, (Settable) setFactory.buildSet(numReps, weight));
+    }
+
+    /**
+     * Precondition: 1) 0 <= i < this.currWorkout.length(),
+     *               2) the exercise at position <i> is of type TimedExericse
+     * @param i represents the position of the exercise
+     * @param time represents the time in seconds to add to the set
+     */
+    public void addSet(int i, double time) {
+        this.currWorkout.addSet(i, (Settable) setFactory.buildSet(time));
+    }
+
 
     public void end() {
         this.currWorkout.finish();

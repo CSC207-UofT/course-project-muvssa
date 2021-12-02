@@ -1,5 +1,7 @@
 package com.example.fitappa.Exercise;
 
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
+
 import junit.framework.TestCase;
 
 public class ExerciseTemplateTest extends TestCase {

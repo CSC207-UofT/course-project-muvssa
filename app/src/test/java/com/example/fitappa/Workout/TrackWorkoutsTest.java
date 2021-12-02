@@ -1,10 +1,9 @@
 package com.example.fitappa.Workout;
 
-import com.example.fitappa.Exercise.Exercise;
-import com.example.fitappa.Exercise.ExerciseTemplate;
-import com.example.fitappa.Exercise.RepExercise;
-import com.example.fitappa.Exercise.Set;
-import com.example.fitappa.Exercise.Settable;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
+import com.example.fitappa.Exercise.Set.Set;
+import com.example.fitappa.Exercise.Set.SetFactory;
+import com.example.fitappa.Exercise.Set.Settable;
 
 import junit.framework.TestCase;
 
@@ -12,11 +11,13 @@ public class TrackWorkoutsTest extends TestCase {
 
     WorkoutTemplate workoutTemplate;
     ExerciseTemplate exerciseTemplate;
+    SetFactory setFactory;
 
     public void setUp() throws Exception {
         this.workoutTemplate = new WorkoutTemplate("My workout");
         this.exerciseTemplate = new ExerciseTemplate("My exercise",5, "REP");
         this.workoutTemplate.addExercise(exerciseTemplate);
+        this.setFactory = new SetFactory();
     }
 
     public void testInitialState() {
@@ -31,10 +32,10 @@ public class TrackWorkoutsTest extends TestCase {
         assertTrue(tracker.isTracking());
 
         // Test tracking the workout
-        tracker.addSet(0, (Settable) new Set(10));
-        tracker.addSet(0, (Settable) new Set(8));
-        tracker.addSet(0, (Settable) new Set(6));
-        tracker.addSet(0, (Settable) new Set(4));
+        tracker.addSet(0, 10);
+        tracker.addSet(0, 10);
+        tracker.addSet(0, 8);
+        tracker.addSet(0, 6);
 
         tracker.end();
 
@@ -46,9 +47,30 @@ public class TrackWorkoutsTest extends TestCase {
 
     public void testMultipleExerciseWorkout() {
 
+        // A workout with all 3 types of exercises
+        this.workoutTemplate.addExercise(
+                new ExerciseTemplate("Bench Press", 3, "WEIGHTED"));
+        this.workoutTemplate.addExercise(
+                new ExerciseTemplate("Plank", 2, "TIMED"));
 
-        this.workoutTemplate.addExercise(new ExerciseTemplate("Bench Press", 3, "WEIGHTED"));
-        this.workoutTemplate.addExercise(new ExerciseTemplate("Plank", 2, "TIMED"));
+        /*
+         * Exercise 1: My Exercise
+         * Exercise 2: Bench Press
+         * Exercise 3: Plank
+         */
+        TrackWorkouts tracker = new TrackWorkouts();
+        tracker.track(this.workoutTemplate);
+
+        assertTrue(tracker.isTracking());
+
+        tracker.addSet(0, 10);
+        tracker.addSet(0, 10);
+        tracker.addSet(0, 12);
+
+        /*
+         * What happens when the wrong Set is given?
+         */
+        tracker.addSet(1, 10);
 
     }
 

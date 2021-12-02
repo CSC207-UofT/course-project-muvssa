@@ -1,4 +1,4 @@
-package com.example.fitappa.Exercise;
+package com.example.fitappa.Exercise.Exercise;
 
 import java.io.Serializable;
 import java.util.ArrayList;

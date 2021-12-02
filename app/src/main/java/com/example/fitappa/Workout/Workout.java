@@ -1,9 +1,8 @@
 package com.example.fitappa.Workout;
 
-import com.example.fitappa.Exercise.Exercise;
-import com.example.fitappa.Exercise.ExerciseTemplate;
-import com.example.fitappa.Exercise.Set;
-import com.example.fitappa.Exercise.Settable;
+import com.example.fitappa.Exercise.Exercise.Exercise;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
+import com.example.fitappa.Exercise.Set.Settable;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;

@@ -1,6 +1,6 @@
 package com.example.fitappa.Workout;
 
-import com.example.fitappa.Exercise.ExerciseTemplate;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Routine.Routine;
 
 import java.util.ArrayList;

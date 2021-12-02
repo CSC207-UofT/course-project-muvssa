@@ -1,4 +1,4 @@
-package com.example.fitappa.Exercise;
+package com.example.fitappa.Exercise.Set;
 
 public class WeightedSet extends Set implements Settable {
 
