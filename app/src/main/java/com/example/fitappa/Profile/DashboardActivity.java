@@ -7,7 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.ViewRoutinesActivity;
-import com.example.fitappa.WorkoutTracker.StartWorkoutActivity;
+import com.example.fitappa.Workout.StartWorkoutActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;

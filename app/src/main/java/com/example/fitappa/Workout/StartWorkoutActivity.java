@@ -1,4 +1,4 @@
-package com.example.fitappa.WorkoutTracker;
+package com.example.fitappa.Workout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
