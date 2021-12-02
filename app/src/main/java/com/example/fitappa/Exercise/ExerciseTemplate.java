@@ -6,7 +6,7 @@ public class ExerciseTemplate implements Serializable {
     protected String name;
     protected int numSets;
     /* These values must be constant later
-    * Accepted values: Rep, WeightedRep, Timed
+    * Accepted values: REP, WEIGHTED, TIMED
     * */
     protected String category;
 
@@ -37,14 +37,17 @@ public class ExerciseTemplate implements Serializable {
         this.numSets = 0;
     }
 
+    /**
+     * Factory Design Pattern for Exercise objects.
+     * @return the appropriate Exercise object based on this.category
+     */
     public Exercise create() {
-        if (this.category == "REP") {
-            RepExercise e = new RepExercise(this.name);
-            return e;
-        }
-        else {
-            return null;
-        }
+        if (this.category.equals("REP"))
+            return new RepExercise(this.name);
+        else if (this.category.equals("WEIGHTED"))
+            return new WeightedRepExercise(this.name);
+        else
+            return new TimedExercise(this.name);
     }
 
     /**

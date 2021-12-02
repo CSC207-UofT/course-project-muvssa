@@ -44,6 +44,14 @@ public class TrackWorkoutsTest extends TestCase {
 
     }
 
+    public void testMultipleExerciseWorkout() {
+
+
+        this.workoutTemplate.addExercise(new ExerciseTemplate("Bench Press", 3, "WEIGHTED"));
+        this.workoutTemplate.addExercise(new ExerciseTemplate("Plank", 2, "TIMED"));
+
+    }
+
 
 
 }

@@ -56,6 +56,10 @@ public class TrackWorkouts implements Serializable {
         return true;
     }
 
+    /**
+     * This method returns if a workout is being tracked
+     * @return true iff this.currWorkout != null
+     */
     public boolean isTracking() {
         return this.currWorkout != null;
     }
