@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
@@ -32,7 +34,6 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
         // Load the elements
         routinesLayout = findViewById(R.id.routinesLayout);
         Button createRoutineBtn = findViewById(R.id.CreateRoutineBtn);
-        Button back = findViewById(R.id.backButton);
 
         // Get the profile
         this.profile = (Profile) getIntent().getSerializableExtra("my_Profile");
@@ -45,10 +46,18 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
 
         // Listeners
         createRoutineBtn.setOnClickListener(view -> openAddRoutine());
-        back.setOnClickListener(view -> openHome());
 
     }
 
+    /**
+     * Activates when default Android back button is pressed. Takes user back to the
+     * Dashboard Activity and passes a profile object as well
+     */
+    @Override
+    public void onBackPressed() {
+        backToDashboard();
+        super.onBackPressed();
+    }
 
     /**
      * This method updates the RoutineView with the given routine
@@ -68,8 +77,7 @@ public class ViewRoutinesActivity extends AppCompatActivity implements ViewRouti
     /**
      * This method opens the HomeActivity
      */
-    @Override
-    public void openHome() {
+    private void backToDashboard() {
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);

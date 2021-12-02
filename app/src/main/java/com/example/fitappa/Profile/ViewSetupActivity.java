@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.R;
 
 
@@ -60,7 +62,8 @@ public class ViewSetupActivity extends AppCompatActivity implements SetupPresent
      * @param profile puts in a persons profile
      */
     @Override
-    public void goToHome(Profile profile) {
+    public void goToDashboard(Profile profile) {
+        finish();
         Intent home = new Intent(this, DashboardActivity.class);
         home.putExtra("profile", profile);
         startActivity(home);

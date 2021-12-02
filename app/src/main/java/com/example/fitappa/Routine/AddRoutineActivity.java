@@ -4,14 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.R;
 
 import java.util.Objects;
 
 public class AddRoutineActivity extends AppCompatActivity {
-    Button submitBtn;
-    EditText routineName;
+    private EditText routineName;
 
     /**
      * This method is called when the activity starts.
@@ -25,7 +26,7 @@ public class AddRoutineActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setTitle("Add Routine");
 
         // Initialize elements
-        this.submitBtn = findViewById(R.id.SaveRoutineBtn);
+        Button submitBtn = findViewById(R.id.SaveRoutineBtn);
         this.routineName = findViewById(R.id.RoutineNameField);
 
 

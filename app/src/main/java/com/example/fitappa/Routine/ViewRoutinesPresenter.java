@@ -32,8 +32,6 @@ class ViewRoutinesPresenter {
     // Dependency Inversion
     interface View {
         void updateRoutinesView(Routine routine);
-
-        void openHome();
     }
 
 }
