@@ -5,8 +5,11 @@ package com.example.fitappa.Exercise.Set;
  * This is a general set and should be used for exercises like
  * skipping ropes, jumping jacks, and etc. Exercises where there is
  * not much work being done.
+ *
+ * @author abdullah
+ * @version 0.1
  */
-public class RepSet implements Settable {
+public class RepSet implements Set {
     protected double numReps;
 
     /**

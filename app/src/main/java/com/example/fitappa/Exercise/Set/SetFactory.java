@@ -3,6 +3,9 @@ package com.example.fitappa.Exercise.Set;
 /**
  * This class incorporates the factory method
  * and returns appropriate sets given the information
+ *
+ * @author abdullah
+ * @version 0.1
  */
 public class SetFactory {
 

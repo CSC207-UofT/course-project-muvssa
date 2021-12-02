@@ -1,11 +1,20 @@
 package com.example.fitappa.Exercise.Exercise;
-
 import com.example.fitappa.Exercise.Set.RepSet;
 import com.example.fitappa.Exercise.Set.TimedSet;
 import com.example.fitappa.Exercise.Set.WeightedSet;
 
 import java.io.Serializable;
 
+/**
+ *
+ * This class stores a template of an exercise.
+ *
+ * The template can create an Exercise object using the
+ * factory design pattern.
+ *
+ * @author abdullah
+ * @version 0.1
+ */
 public class ExerciseTemplate implements Serializable {
     protected String name;
     protected int numSets;
@@ -26,7 +35,9 @@ public class ExerciseTemplate implements Serializable {
         this.category = category;
     }
 
-    // empty constructor necessary for firebase
+    /**
+     * Empty constructor needed by firebase
+     */
     @SuppressWarnings("unused")
     public ExerciseTemplate() {
     }

@@ -1,6 +1,14 @@
 package com.example.fitappa.Exercise.Set;
 
-public interface Settable {
+/**
+ * This interface represents a set.
+ * Completing several reps of a specific exercise in a row is called a set.
+ * Thus, a set generally represents a measure of "reps" for an exercise.
+ *
+ * @author abdullah
+ * @version 0.1
+ */
+public interface Set {
 
     /**
      * The volume of a set is defined to be the work completed during the set.

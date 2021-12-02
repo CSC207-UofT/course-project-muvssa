@@ -7,6 +7,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class serves as a gateway between database & ExerciseTemplates
+ *
+ * @author Uthman, Abdullah
+ * @version 0.1
+ */
 public class ExerciseRepository {
     private final View view;
 

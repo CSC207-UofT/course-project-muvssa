@@ -4,7 +4,7 @@ package com.example.fitappa.Exercise.Set;
  * A TimedSet is another way to track progress through an exercises.
  * It uses time (in seconds) as its measure
  */
-public class TimedSet implements Settable {
+public class TimedSet implements Set {
     private final double time;
 
 
