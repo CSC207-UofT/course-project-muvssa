@@ -122,7 +122,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
      * brings a user to their settings
      */
     private void toSettings() {
-        Intent setting = new Intent(this, ViewSettingsActivity.class);
+        Intent setting = new Intent(this, SettingsActivity.class);
         setting.putExtra("my_Profile", this.myProfile);
         startActivity(setting);
     }

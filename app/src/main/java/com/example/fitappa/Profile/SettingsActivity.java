@@ -21,7 +21,7 @@ import com.example.fitappa.R;
  */
 
 
-public class ViewSettingsActivity extends AppCompatActivity implements SettingPresenter.View {
+public class SettingsActivity extends AppCompatActivity implements SettingsPresenter.View {
     private TextView weightText;
     private EditText weightInput;
     private TextView heightText;
@@ -31,7 +31,7 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
     private TextView lastText;
     private EditText lastInput;
     private Profile myProfile;
-    private SettingPresenter presenter;
+    private SettingsPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -45,7 +45,7 @@ public class ViewSettingsActivity extends AppCompatActivity implements SettingPr
         setContentView(R.layout.activity_settings);
         Intent retrieveIntent = getIntent();
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
-        presenter = new SettingPresenter(this, myProfile);
+        presenter = new SettingsPresenter(this, myProfile);
 
 
         weightText = findViewById(R.id.weightSetting);

@@ -9,7 +9,7 @@ package com.example.fitappa.Profile;
  * @since 0.1
  */
 
-class SettingPresenter {
+class SettingsPresenter {
     private final Profile profile;
     private final View view;
 
@@ -19,7 +19,7 @@ class SettingPresenter {
      * @param view    the ViewSettingActivity
      * @param profile a users Profile
      */
-    SettingPresenter(View view, Profile profile) {
+    SettingsPresenter(View view, Profile profile) {
         this.view = view;
         this.profile = profile;
     }

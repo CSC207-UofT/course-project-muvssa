@@ -18,10 +18,10 @@
         <activity android:name=".Workout.AddWorkoutActivity" />
         <activity android:name=".Exercise.AddExerciseActivity" />
         <activity android:name=".Routine.ViewRoutinesActivity" />
-        <activity android:name=".Profile.ViewSetupActivity" />
+        <activity android:name=".Profile.SetupActivity" />
         <activity android:name=".WorkoutTracker.StartWorkoutActivity" />
         <activity android:name=".Exercise.CreateNewExerciseActivity" />
-        <activity android:name=".Profile.ViewSettingsActivity" />
+        <activity android:name=".Profile.SettingsActivity" />
 
         <activity
             android:name=".Authentication.MainActivity"

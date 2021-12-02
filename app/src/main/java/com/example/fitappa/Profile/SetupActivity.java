@@ -20,7 +20,7 @@ import com.example.fitappa.R;
  */
 
 
-public class ViewSetupActivity extends AppCompatActivity implements SetupPresenter.View {
+public class SetupActivity extends AppCompatActivity implements SetupPresenter.View {
     private EditText weightText;
     private EditText heightText;
     private EditText firstNameText;

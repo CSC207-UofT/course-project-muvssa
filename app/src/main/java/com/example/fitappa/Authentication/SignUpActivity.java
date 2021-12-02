@@ -5,9 +5,11 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Profile.Profile;
-import com.example.fitappa.Profile.ViewSetupActivity;
+import com.example.fitappa.Profile.SetupActivity;
 import com.example.fitappa.R;
 
 import java.util.Objects;
@@ -48,7 +50,7 @@ public class SignUpActivity extends AppCompatActivity implements OpensActivityWi
      */
     @Override
     public void openActivityWith(Profile profile) {
-        Intent setup = new Intent(this, ViewSetupActivity.class);
+        Intent setup = new Intent(this, SetupActivity.class);
         setup.putExtra("profile", profile);
         startActivity(setup);
     }
