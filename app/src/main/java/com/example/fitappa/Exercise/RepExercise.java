@@ -13,8 +13,8 @@ public class RepExercise extends Exercise implements Serializable {
         this.sets = new ArrayList<Set>();
     }
 
-    public void addSet(Set set) {
-        this.sets.add(set);
+    public void addSet(Settable s) {
+        this.sets.add((Set) s);
     }
 
     public int numSets() {
@@ -25,10 +25,6 @@ public class RepExercise extends Exercise implements Serializable {
         return count;
     }
 
-    @Override
-    public void addEmptySet() {
-        this.sets.add(new Set(0));
-    }
 
     @Override
     public double volume() {

@@ -19,7 +19,9 @@ public class TimedExercise extends Exercise implements Serializable {
     }
 
     @Override
-    public void addEmptySet() {
+    public void addSet(Settable s) {
         return;
     }
+
+
 }

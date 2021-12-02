@@ -1,14 +1,17 @@
 package com.example.fitappa.Workout;
 
+import com.example.fitappa.Exercise.Exercise;
 import com.example.fitappa.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Set;
+import com.example.fitappa.Exercise.Settable;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Workout {
     private String name;
-    private List<ExerciseTemplate> exerciseTemplates;
+    private List<Exercise> exercises;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
@@ -19,7 +22,10 @@ public class Workout {
      */
     public Workout(String name, List<ExerciseTemplate> exerciseTemplates) {
         this.name = name;
-        this.exerciseTemplates = exerciseTemplates;
+        this.exercises = new ArrayList<Exercise>();
+        for(ExerciseTemplate exerciseTemplate : exerciseTemplates) {
+            this.exercises.add(exerciseTemplate.create());
+        }
         // The creation of the workout indicates the workout has started
         this.startTime = LocalDateTime.now();
     }
@@ -46,7 +52,7 @@ public class Workout {
      * @param exerciseTemplate represents the exercise to add
      */
     public void addExercise(ExerciseTemplate exerciseTemplate) {
-        this.exerciseTemplates.add(exerciseTemplate);
+        this.exercises.add(exerciseTemplate.create());
     }
 
 
@@ -55,13 +61,12 @@ public class Workout {
      *
      * Precondition: 0 <= pos < exercises.size()
      *
-     * @param pos represents
+     * @param i represents
      * @param s
      * @return
      */
-    public boolean addSet(int pos, Set s) {
-        //exercises[pos].addSet(s);
-        return false;
+    public void addSet(int i, Settable s) {
+        this.exercises.get(i).addSet(s);
     }
 
 
@@ -73,5 +78,17 @@ public class Workout {
      */
     public boolean isFinished() {
         return !(endTime == null);
+    }
+
+    public double volume() {
+        double vol = 0;
+        for(Exercise e : exercises) {
+            vol += e.volume();
+        }
+        return vol;
+    }
+
+    public void finish() {
+        this.endTime = LocalDateTime.now();
     }
 }

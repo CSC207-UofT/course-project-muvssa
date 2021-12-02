@@ -37,17 +37,9 @@ public class ExerciseTemplate implements Serializable {
         this.numSets = 0;
     }
 
-
-    private void addSets(Exercise e) {
-        for (int i = 0; i < this.numSets; i++) {
-            e.addEmptySet();
-        }
-    }
-
     public Exercise create() {
         if (this.category == "REP") {
             RepExercise e = new RepExercise(this.name);
-            addSets(e);
             return e;
         }
         else {

@@ -13,5 +13,4 @@ public class WeightedRepExercise extends RepExercise implements Serializable {
         this.sets = new ArrayList<WeightedSet>();
     }
 
-
 }
