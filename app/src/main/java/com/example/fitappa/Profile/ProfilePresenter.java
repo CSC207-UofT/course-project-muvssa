@@ -1,9 +1,11 @@
 package com.example.fitappa.Profile;
 
-class ProfilePresenter implements UpdatesViewProfile {
+import com.example.fitappa.Authentication.GatewayInteractor;
+import com.example.fitappa.Authentication.OpensActivityWithProfile;
+
+class ProfilePresenter extends GatewayInteractor {
     private final Profile currentProfile;
     private final Profile profile;
-    private final View view;
 
     /**
      * Constructor for ProfilePresenter class
@@ -12,8 +14,8 @@ class ProfilePresenter implements UpdatesViewProfile {
      * @param myProfile   type Profile that represents the user's profile
      * @param thisProfile type Profile that represents another profile
      */
-    public ProfilePresenter(View view, Profile myProfile, Profile thisProfile) {
-        this.view = view;
+    ProfilePresenter(OpensActivityWithProfile view, Profile myProfile, Profile thisProfile) {
+        super(view);
         this.profile = myProfile;
         this.currentProfile = thisProfile;
     }
@@ -24,7 +26,7 @@ class ProfilePresenter implements UpdatesViewProfile {
      * @return returns a boolean value of whether the username of a user is the same as the current user's username
      */
     boolean isMyProfile() {
-        return profile.retrieveUsername().equals(currentProfile.retrieveUsername());
+        return profile.getUsername().equals(currentProfile.getUsername());
     }
 
     /**
@@ -33,7 +35,7 @@ class ProfilePresenter implements UpdatesViewProfile {
      * @return the username of a user as type Profile
      */
     String getUsername() {
-        return currentProfile.retrieveUsername();
+        return currentProfile.getUsername();
     }
 
     /**
@@ -60,8 +62,8 @@ class ProfilePresenter implements UpdatesViewProfile {
      * @param username String username to be searched for
      */
     void searchForProfileWithUsername(String username) {
-        if (username.equals(profile.retrieveUsername())) {
-            view.profileNotFound();
+        if (username.equals(profile.getUsername())) {
+            super.view.showErrorMessage("You cannot search for yourself!");
         } else {
             ProfileReader gateway = new ProfileReader(this);
             gateway.retrieveProfile(username);
@@ -77,39 +79,20 @@ class ProfilePresenter implements UpdatesViewProfile {
      * @param profile Profile that represents the profile found from the search, or null if the profile wasn't found
      */
     @Override
-    public void updateViewProfileWith(Profile profile) {
+    public void updateActivity(Profile profile) {
         if (profile != null) {
-            view.openProfileFor(profile);
+            super.view.openActivityWith(profile);
         } else {
-            view.profileNotFound();
+            setError();
         }
     }
 
-
-    interface View {
-        /**
-         * Open profile page to view for a profile that was searched for
-         *
-         * @param searchedProfile Profile that was searched for
-         */
-        void openProfileFor(Profile searchedProfile);
-
-        /**
-         * This method executes when the program cannot find the user that was searched for from the database
-         */
-        void profileNotFound();
-
-        /**
-         * When the user goes back from viewing a searched profile, update the view profile activity to show
-         * current profile's information
-         */
-        void backToCurrentProfilesViewProfile();
-
-        /**
-         * Brings a user to his settings
-         */
-        void toSettings();
-
+    /**
+     * Set an error when the database fails to retrieve the profile
+     */
+    @Override
+    public void setError() {
+        super.view.showErrorMessage("Username not found");
     }
 
 }

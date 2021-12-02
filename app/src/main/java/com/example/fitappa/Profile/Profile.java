@@ -1,7 +1,6 @@
 package com.example.fitappa.Profile;
 
 
-import com.example.fitappa.Authentication.Saveable;
 import com.example.fitappa.Exercise.DefaultExercises;
 import com.example.fitappa.Routine.Routine;
 
@@ -9,6 +8,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is the central storage for all relevant entities and use cases for the third and fourth layers of
+ * clean architecture. It contains a User, FollowManager, list of Routines, Saveable gateway, and DefaultExercises.
+ * <p>
+ * It implements Serializable so that it may be saved into a database or used to start a new intent and pass its data.
+ */
 public class Profile implements Serializable {
 
     private User user;
@@ -86,7 +91,7 @@ public class Profile implements Serializable {
      *
      * @return String representing the user's username
      */
-    public String retrieveUsername() {
+    String getUsername() {
         return this.user.getUsername();
     }
 

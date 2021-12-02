@@ -1,10 +1,10 @@
 package com.example.fitappa.Authentication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
@@ -12,10 +12,13 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class LoginActivity extends AppCompatActivity implements Auth.View {
+/**
+ * This activity is activated when the user selects login from the MainActivity and wants to log in to an account
+ */
+public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText passwordField;
     private EditText emailField;
-    private Authenticator auth;
+    private LoginPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -28,13 +31,13 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
         setContentView(R.layout.activity_login);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        this.auth = new Auth(this);
+        presenter = new LoginPresenter(this);
 
         passwordField = findViewById(R.id.PasswordField);
         emailField = findViewById(R.id.EmailField);
         TextView loginBtn = findViewById(R.id.LogInBtn);
 
-        loginBtn.setOnClickListener(v -> auth.login(emailField, passwordField));
+        loginBtn.setOnClickListener(v -> presenter.tryLogin(emailField, passwordField));
     }
 
     /**
@@ -50,12 +53,12 @@ public class LoginActivity extends AppCompatActivity implements Auth.View {
     }
 
     /**
-     * Return the application context to be used to display 'Toast' text to user.
+     * Display an error message given a message
      *
-     * @return Context instance for an activity
+     * @param message String message to be displayed as error on call
      */
     @Override
-    public Context getContext() {
-        return getApplicationContext();
+    public void showErrorMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

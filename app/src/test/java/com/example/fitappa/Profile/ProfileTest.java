@@ -33,7 +33,7 @@ public class ProfileTest extends TestCase {
     public void testGetUser() {
         // sees if usernames and other elements of user matches that of the
         // user returned by getUser()
-        assertEquals(user1.getUsername(), profile1.retrieveUsername());
+        assertEquals(user1.getUsername(), profile1.getUsername());
     }
 
     public void testGetProfileFollow() {

@@ -83,6 +83,7 @@ class SettingPresenter {
             l = profile.getUserLastName();
         }
         profile.setUserExtraInfo(w, h, f, l);
+        profile.saveData();
         view.update();
     }
 

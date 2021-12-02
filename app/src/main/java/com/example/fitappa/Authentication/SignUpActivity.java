@@ -1,10 +1,10 @@
 package com.example.fitappa.Authentication;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.ViewSetupActivity;
@@ -12,7 +12,10 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
-public class SignUpActivity extends AppCompatActivity implements Auth.View {
+/**
+ * This activity is activated when the user selects signup from the MainActivity and wants to sign up with a new account
+ */
+public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText usernameText;
     private EditText passwordText;
     private EditText emailText;
@@ -33,11 +36,10 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
         emailText = findViewById(R.id.email);
         Button enter = findViewById(R.id.submit);
 
-        Authenticator auth = new Auth(this);
+        SignUpPresenter presenter = new SignUpPresenter(this);
 
-        enter.setOnClickListener(v -> auth.signUp(emailText, usernameText, passwordText));
+        enter.setOnClickListener(v -> presenter.trySignUp(emailText, usernameText, passwordText));
     }
-
 
     /**
      * This method opens the SetUpActivity View while passing in the profile
@@ -52,12 +54,12 @@ public class SignUpActivity extends AppCompatActivity implements Auth.View {
     }
 
     /**
-     * Return the application context to be used to display 'Toast' text to user.
+     * Display an error message given a message
      *
-     * @return Context instance for an activity taken from AppCompactActivity parent class
+     * @param message String message to be displayed as error on call
      */
     @Override
-    public Context getContext() {
-        return super.getApplicationContext();
+    public void showErrorMessage(String message) {
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

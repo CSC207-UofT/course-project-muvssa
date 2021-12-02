@@ -2,7 +2,6 @@ package com.example.fitappa.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Authentication.MainActivity;
@@ -103,4 +102,13 @@ public class DashboardActivity extends AppCompatActivity {
         startActivity(startWorkout);
     }
 
+    /**
+     * This method overrides the functionality of the android back button and does nothing so that the user
+     * cannot go back to the MainActivity or login/signup activities. The only way they can return is through
+     * the logout button.
+     */
+    @Override
+    public void onBackPressed() {
+        // Do nothing so you cannot go back from this activity
+    }
 }
