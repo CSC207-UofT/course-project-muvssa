@@ -3,7 +3,7 @@ package com.example.fitappa.Authentication;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.DocumentSnapshot;
-
+// ToDo add author, since and other doc details
 /**
  * This class processes information received from Firebase and retrieves the profile from a DocumentSnapshot
  * object. It then calls the openDashboard method from the view and passes in the new profile.

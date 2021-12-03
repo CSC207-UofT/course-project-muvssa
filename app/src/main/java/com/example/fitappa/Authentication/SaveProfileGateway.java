@@ -5,6 +5,7 @@ import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
+// ToDo add author, since and other doc details
 
 /**
  * This is a gateway class to Firebase which lets a class save an object
