@@ -9,8 +9,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.Exercise.AddExerciseActivity;
-import com.example.fitappa.Exercise.Exercise;
-import com.example.fitappa.Exercise.ExerciseRepository;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
+import com.example.fitappa.Exercise.Exercise.ExerciseRepository;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
@@ -22,10 +22,10 @@ import java.util.List;
 public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkoutPresenter.View, ExerciseRepository.View {
     private ViewWorkoutPresenter presenter;
     private LinearLayout exerciseLayout;
-    private Workout workout;
+    private WorkoutTemplate workoutTemplate;
     private Routine routine;
     private Profile profile;
-    private List<Exercise> exercises;
+    private List<ExerciseTemplate> exerciseTemplates;
 
     /**
      * This method is called when the activity starts.
@@ -42,12 +42,12 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
         TextView workoutLabel = findViewById(R.id.WorkoutLabel);
-        this.workout = (Workout) getIntent().getSerializableExtra("workoutObj");
+        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
         this.routine = (Routine) getIntent().getSerializableExtra("routineObj");
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
-        this.presenter = new ViewWorkoutPresenter(this, workout, routine);
+        this.presenter = new ViewWorkoutPresenter(this, workoutTemplate, routine);
 
-        String t = "Exercises in " + workout.getName();
+        String t = "Exercises in " + workoutTemplate.getName();
         workoutLabel.setText(t);
 
         addExerciseBtn.setOnClickListener(view -> openAddExercise());
@@ -82,8 +82,8 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     private void openAddExercise() {
         Intent addExercise = new Intent(this, AddExerciseActivity.class);
-        addExercise.putExtra("workoutObj", this.workout);
-        addExercise.putExtra("exercises", (Serializable) this.exercises);
+        addExercise.putExtra("workoutObj", this.workoutTemplate);
+        addExercise.putExtra("exercises", (Serializable) this.exerciseTemplates);
         startActivityForResult(addExercise, 1);
     }
 
@@ -110,19 +110,19 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == 1 && resultCode == RESULT_OK) {
-            presenter.addExercise((Exercise) data.getSerializableExtra("exercise"));
+            presenter.addExercise((ExerciseTemplate) data.getSerializableExtra("exercise"));
         }
     }
 
     /**
      * This method updates ExerciseLayout with the given Exercise
      *
-     * @param exercise represents the given Exercise
+     * @param exerciseTemplate represents the given Exercise
      */
     @Override
-    public void updateExerciseLayout(Exercise exercise) {
+    public void updateExerciseLayout(ExerciseTemplate exerciseTemplate) {
         Button button = new Button(this);
-        button.setText(exercise.getName());
+        button.setText(exerciseTemplate.getName());
         exerciseLayout.addView(button);
     }
 
@@ -130,10 +130,10 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      * This method loads all the Workout's exercises and updates it in the
      * ExerciseLayout view component.
      *
-     * @param exercises represents the Exercise objects stored in the Workout
+     * @param exerciseTemplates represents the Exercise objects stored in the Workout
      */
     @Override
-    public void loadExercise(List<Exercise> exercises) {
-        this.exercises = exercises;
+    public void loadExercise(List<ExerciseTemplate> exerciseTemplates) {
+        this.exerciseTemplates = exerciseTemplates;
     }
 }

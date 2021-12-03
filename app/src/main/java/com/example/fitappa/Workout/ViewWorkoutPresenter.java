@@ -1,6 +1,6 @@
 package com.example.fitappa.Workout;
 
-import com.example.fitappa.Exercise.Exercise;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Routine.Routine;
 
 import java.util.ArrayList;
@@ -8,18 +8,18 @@ import java.util.List;
 
 class ViewWorkoutPresenter {
     private final View view;
-    private final Workout workout;
+    private final WorkoutTemplate workoutTemplate;
     private final Routine routine;
 
     /**
      * View of the workouts
      *
      * @param view    represents how the user sees the workouts as type View
-     * @param workout represents the workout as type Workout
+     * @param workoutTemplate represents the workout as type Workout
      * @param routine represents the routine as type Routine
      */
-    ViewWorkoutPresenter(View view, Workout workout, Routine routine) {
-        this.workout = workout;
+    ViewWorkoutPresenter(View view, WorkoutTemplate workoutTemplate, Routine routine) {
+        this.workoutTemplate = workoutTemplate;
         this.view = view;
         this.routine = routine;
     }
@@ -27,22 +27,23 @@ class ViewWorkoutPresenter {
     /**
      * Adds an exercise to the workout and updates the view of the exercises
      *
-     * @param exercise represents the exercise to be added
+     * @param exerciseTemplate represents the exercise to be added
      */
-    void addExercise(Exercise exercise) {
-        workout.addExercise(exercise);
-        view.updateExerciseLayout(exercise);
+    void addExercise(ExerciseTemplate exerciseTemplate) {
+        workoutTemplate.addExercise(exerciseTemplate);
+        view.updateExerciseLayout(exerciseTemplate);
     }
 
     /**
      * Updates profile with the new routine and sends you back to ViewRoutineActivity
      */
     void updateWorkoutRoutine() {
-        List<Workout> workouts = routine.getWorkouts();
-        int pos = workouts.indexOf(workout);
-        workouts.set(pos, workout);
+        List<WorkoutTemplate> workoutTemplates = routine.getWorkouts();
+        int pos = workoutTemplates.indexOf(workoutTemplate);
+        workoutTemplates.set(pos, workoutTemplate);
         // TODO: Remove casting
-        routine.setWorkouts((ArrayList<Workout>) workouts);
+        routine.setWorkouts((ArrayList<WorkoutTemplate>) workoutTemplates);
+
         view.goBackToViewRoutine();
 
     }
@@ -50,7 +51,7 @@ class ViewWorkoutPresenter {
 
     // Dependency Inversion
     interface View {
-        void updateExerciseLayout(Exercise e);
+        void updateExerciseLayout(ExerciseTemplate e);
 
         void goBackToViewRoutine();
     }

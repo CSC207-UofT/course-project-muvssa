@@ -1,200 +1,108 @@
 package com.example.fitappa.Workout;
 
-import android.os.Build;
-import com.example.fitappa.Exercise.Exercise;
-import com.example.fitappa.Exercise.RepExercise;
-import com.example.fitappa.Exercise.TimedExercise;
-import com.example.fitappa.Exercise.WeightedRepExercise;
+import com.example.fitappa.Exercise.Exercise.Exercise;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
+import com.example.fitappa.Exercise.Set.Set;
 
-import java.io.Serializable;
-import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Workout implements Serializable {
+/**
+ * This class represents a workout that can be performed.
+ *
+ * @author abdullah
+ * @version 0.1
+ */
+public class Workout {
     private String name;
-    private String description;
-    private List<Exercise> exercises;
-    private LocalDateTime startTime;
+    private final List<Exercise<?>> exercises;
+    private final LocalDateTime startTime;
     private LocalDateTime endTime;
 
     /**
-     * Constructor for a workout class, takes in all necessary variables needed for a workout
-     *
-     * @param name        The String name referring to the name of the workout
-     * @param description The String represents the description of the workout
+     * Creates a new Workout
+     * @param name represents the name of the workout
+     * @param exerciseTemplates represents the list of exercises for this workout
      */
-    public Workout(String name, String description) {
+    public Workout(String name, List<ExerciseTemplate> exerciseTemplates) {
         this.name = name;
-        this.description = description;
         this.exercises = new ArrayList<>();
-    }
-
-    // Constructor necessary for Firebase
-    public Workout() {
-    }
-
-    /**
-     * Creates a workout given another workout, other.
-     *
-     * @param other - another workout
-     */
-    public Workout(Workout other) {
-        this.name = other.name;
-        this.description = other.description;
-        this.startTime = null;
-        this.endTime = null;
-
-        for (Exercise exercise : other.exercises) {
-            // inefficient code, fix it later :)
-            Exercise e;
-
-            if (exercise instanceof WeightedRepExercise) {
-                e = new WeightedRepExercise((WeightedRepExercise) exercise);
-            } else if (exercise instanceof RepExercise) {
-                e = new RepExercise((RepExercise) exercise);
-            } else if (exercise instanceof TimedExercise) {
-                e = new TimedExercise((TimedExercise) exercise);
-            } else {
-                // ignore this for now, it's a workaround. We will have an entirely different approach later.
-                e = new RepExercise("Empty Exercise");
-            }
-
-            this.exercises.add(e);
+        for(ExerciseTemplate exerciseTemplate : exerciseTemplates) {
+            this.exercises.add(exerciseTemplate.create());
         }
+        // The creation of the workout indicates the workout has started
+        this.startTime = LocalDateTime.now();
     }
 
     /**
-     * A getter method
-     * returns the name of the workout
-     *
-     * @return the string name
+     * Getter for this.name
+     * @return the name of the workout
      */
     public String getName() {
-        return name;
+        return this.name;
     }
 
     /**
-     * Change the workouts name
-     *
-     * @param name new name for workout
+     * Setter for this.name
+     * @param name the name of the workout
      */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
-     * returns when the workout is started
-     *
-     * @return the LocalDateTime for the start time
+     * Adds an exercise to the workout
+     * @param exerciseTemplate represents the exercise to add
      */
-    public LocalDateTime getStartTime() {
-        return startTime;
+    public void addExercise(ExerciseTemplate exerciseTemplate) {
+        this.exercises.add(exerciseTemplate.create());
     }
 
     /**
-     * Change the start time of the workout
+     * Adds a set to an exercise in exercises.
      *
-     * @param startTime new start time for workout
+     * Precondition: 0 <= pos < exercises.size()
+     *
+     * @param i represents
+     * @param s represents the set.
+     *
      */
-    public void setStartTime(LocalDateTime startTime) {
-        this.startTime = startTime;
+    public void addSet(int i, Set s) {
+        this.exercises.get(i).addSet(s);
+    }
+
+
+    /**
+     *
+     * A workout is defined to be "finished" if there exists a endTime
+     *
+     * @return True if the workout is finished
+     */
+    public boolean isFinished() {
+        return !(endTime == null);
     }
 
     /**
-     * returns when the workout has ended
-     *
-     * @return the LocalDateTime for the end time
+     * This method return the volume generated by all exercises in this
+     * workout
+     * @return the volume generated by all exercises in the workout
      */
-    public LocalDateTime getEndTime() {
-        return endTime;
-    }
-
-    /**
-     * Change the end time of the workout
-     *
-     * @param endTime new end time for workout
-     */
-    public void setEndTime(LocalDateTime endTime) {
-        this.endTime = endTime;
-    }
-
-    /**
-     * returns the description of the workout
-     *
-     * @return the String for the description
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Change the workouts description
-     *
-     * @param description new description for workout
-     */
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    /**
-     * Gets the exercises for this workout
-     *
-     * @return list of exercises for this workout
-     */
-    public List<Exercise> getExercises() {
-        return exercises;
-    }
-
-    /**
-     * A method used to add exercises
-     *
-     * @param exercise new exercise to be added to workout
-     */
-    public void addExercise(Exercise exercise) {
-        this.exercises.add(exercise);
-    }
-
-    /**
-     * @return The volume generated by all exercises performed in this workout
-     */
-    public double calculateTotalVolume() {
-        double volume = 0;
-
-        for (Exercise exercise : this.exercises) {
-            volume += exercise.getVolume();
+    public double volume() {
+        double vol = 0;
+        for(Exercise<?> e : exercises) {
+            vol += e.volume();
         }
-
-        return volume;
+        return vol;
     }
 
     /**
-     * A workout's duration is defined to be the total time elapsed between the start and end of the workout.
+     * This method ensures that the workout is finished.
      *
-     * @return The workout's duration
+     * A workout is finished when this.isFinished() == true
+     *
      */
-    public Duration calculateDuration() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            return Duration.between(this.startTime, this.endTime);
-        } else {
-            return null; // TODO: Increase Min API Level from 16 to 24
-        }
+    public void finish() {
+        this.endTime = LocalDateTime.now();
     }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Workout))
-            return false;
-        Workout workout = (Workout) o;
-        // erroring as when you want to update a specific routine it could have different workouts
-        // return name.equals(routine.name) && description.equals(routine.description) &&
-        //        workouts.equals(routine.workouts);
-        return name.equals(workout.getName());
-    }
-
-
 }
-

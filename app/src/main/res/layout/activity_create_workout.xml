@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="21dp"
             android:gravity="center"
-            android:text="Get started by naming your workout"
+            android:text="Get started by naming your workoutTemplate"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <LinearLayout

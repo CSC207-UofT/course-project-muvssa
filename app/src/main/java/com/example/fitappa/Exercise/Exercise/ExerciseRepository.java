@@ -1,4 +1,4 @@
-package com.example.fitappa.Exercise;
+package com.example.fitappa.Exercise.Exercise;
 
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -7,6 +7,12 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class serves as a gateway between database & ExerciseTemplates
+ *
+ * @author Uthman, Abdullah
+ * @version 0.1
+ */
 public class ExerciseRepository {
     private final View view;
 
@@ -32,17 +38,17 @@ public class ExerciseRepository {
                 .get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
                     // Initialize arraylist of empty exercises
-                    List<Exercise> exercises = new ArrayList<>();
+                    List<ExerciseTemplate> exerciseTemplates = new ArrayList<>();
                     for (DocumentSnapshot document : queryDocumentSnapshots) {
                         // Create exercise object to be retrieved
-                        Exercise exercise = getExerciseFromDocument(document);
+                        ExerciseTemplate exerciseTemplate = getExerciseFromDocument(document);
 
                         // Add each retrieved exercise to list
-                        exercises.add(exercise);
+                        exerciseTemplates.add(exerciseTemplate);
                     }
 
                     // Pass list of exercises to view to load
-                    view.loadExercise(exercises);
+                    view.loadExercise(exerciseTemplates);
                 });
     }
 
@@ -53,33 +59,34 @@ public class ExerciseRepository {
      * @param document DocumentSnapshot retrieved from firebase
      * @return Exercise object created from fields inside document
      */
-    private Exercise getExerciseFromDocument(DocumentSnapshot document) {
+    private ExerciseTemplate getExerciseFromDocument(DocumentSnapshot document) {
         // Create exercise object to be initialized
-        Exercise exercise;
+        ExerciseTemplate exerciseTemplate;
+        return new ExerciseTemplate("Name");
 
         // Get Exercise universal parameters
-        String name = (String) document.get("name");
+        /*String name = (String) document.get("name");
         int numSets = objectToInt(document.get("numSets"));
         int numRest = objectToInt(document.get("numRest"));
-        String muscleGroup = (String) document.get("muscleGroup");
+        String muscleGroup = (String) document.get("muscleGroup");*/
 
         // Check to see what type of Exercise this is
-        if (document.contains("weight")) {
+        /*if (document.contains("weight")) {
             // Get variables needed for WeightedRepExercise object
             int numReps = objectToInt(document.get("numReps"));
             double weight = objectToDouble(document.get("weight"));
-            exercise = new WeightedRepExercise(name, numSets, numRest, muscleGroup, numReps, weight);
+            exerciseTemplate = new WeightedRepExerciseTemplate(name, numSets, numRest, muscleGroup, numReps, weight);
         } else if (document.contains("numReps")) {
             // Get variables needed for RepExercise object
             int numReps = objectToInt(document.get("numReps"));
-            exercise = new RepExercise(name, numSets, numRest, muscleGroup, numReps);
+            exerciseTemplate = new RepExerciseTemplate(name, numSets, numRest, muscleGroup, numReps);
         } else {
             // Get variables needed for TimedExercise object
             int setTime = objectToInt(document.get("setTime"));
-            exercise = new TimedExercise(name, numSets, numRest, muscleGroup, setTime);
-        }
+            exerciseTemplate = new TimedExerciseTemplate(name, numSets, numRest, muscleGroup, setTime);
+        }*/
 
-        return exercise;
+       // return exerciseTemplate;
     }
 
     /**
@@ -129,8 +136,8 @@ public class ExerciseRepository {
          * This method loads all the Workout's exercises and updates it in the
          * ExerciseLayout view component.
          *
-         * @param exercises represents the Exercise objects stored in the Workout
+         * @param exerciseTemplates represents the Exercise objects stored in the Workout
          */
-        void loadExercise(List<Exercise> exercises);
+        void loadExercise(List<ExerciseTemplate> exerciseTemplates);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.fitappa.WorkoutTracker;
+package com.example.fitappa.Workout;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -6,9 +6,8 @@ import androidx.cardview.widget.CardView;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
-import com.example.fitappa.Workout.Workout;
+import com.example.fitappa.Workout.WorkoutTemplate;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class StartWorkoutActivity extends AppCompatActivity {
-    List<Routine> routineList;
+    private List<Routine> routineList;
     // TODO: Remove this dependency
     private Profile profile;
 
@@ -32,7 +31,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
 
         // Note: I will remove these when im done. Ignore for now.
         Routine r = new Routine("Your Second Routine", "");
-        r.addWorkout(new Workout("Workout 1", ""));
+        r.addWorkout(new WorkoutTemplate("Workout 1"));
         this.profile.addRoutine(r);
 
         this.routineList = profile.getRoutines();
@@ -101,9 +100,9 @@ public class StartWorkoutActivity extends AppCompatActivity {
             routineLayout.addView(noWorkouts);
         }
 
-        for(Workout workout : routine.getWorkouts())
+        for(WorkoutTemplate workoutTemplate : routine.getWorkouts())
         {
-            createWorkoutLayout(routineLayout, workout);
+            createWorkoutLayout(routineLayout, workoutTemplate);
         }
 
 
@@ -115,9 +114,9 @@ public class StartWorkoutActivity extends AppCompatActivity {
     /**
      * This method creates the Linear Layout (Workout) portion of the Routine Card.
      * @param routineLayout represents the view where the Linear Layout attaches to
-     * @param workout represents the workout for which the Linear Layout is created for.
+     * @param workoutTemplate represents the workout for which the Linear Layout is created for.
      */
-    private void createWorkoutLayout(LinearLayout routineLayout, Workout workout) {
+    private void createWorkoutLayout(LinearLayout routineLayout, WorkoutTemplate workoutTemplate) {
         // Default Params
         LinearLayout.LayoutParams defaultParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -132,7 +131,7 @@ public class StartWorkoutActivity extends AppCompatActivity {
         // Create the WorkoutName Text
         TextView workoutName = new TextView(this);
         workoutName.setLayoutParams(defaultParams);
-        workoutName.setText(workout.getName());
+        workoutName.setText(workoutTemplate.getName());
         workoutLayout.addView(workoutName);
 
         // Create the start workout button.
@@ -142,14 +141,14 @@ public class StartWorkoutActivity extends AppCompatActivity {
         workoutLayout.addView(startWorkoutBtn);
 
         // Attach an onClickListener to the button
-        startWorkoutBtn.setOnClickListener(v -> startWorkout(workout));
+        startWorkoutBtn.setOnClickListener(v -> startWorkout(workoutTemplate));
     }
 
     /**
      * Starts the given workout
-     * @param workout represents the given workout
+     * @param workoutTemplate represents the given workout
      */
-    private void startWorkout(Workout workout) {
+    private void startWorkout(WorkoutTemplate workoutTemplate) {
         //TODO: Finish this up when track workout is ready.
         Log.d("TAG", "The workout is ready to start");
     }

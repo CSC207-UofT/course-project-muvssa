@@ -1,7 +1,7 @@
 package com.example.fitappa.Routine;
 
 import com.example.fitappa.Profile.Profile;
-import com.example.fitappa.Workout.Workout;
+import com.example.fitappa.Workout.WorkoutTemplate;
 
 import java.util.List;
 
@@ -31,7 +31,7 @@ class ViewRoutinePresenter {
      */
     void addWorkout(String workoutName) {
         // TODO: Fix bug, apparently w1 is null.
-        Workout w1 = new Workout(workoutName, "test");
+        WorkoutTemplate w1 = new WorkoutTemplate(workoutName);
         this.routine.addWorkout(w1);
         view.updateRoutineView(w1);
     }
@@ -49,7 +49,7 @@ class ViewRoutinePresenter {
     }
 
     interface View {
-        void updateRoutineView(Workout workout);
+        void updateRoutineView(WorkoutTemplate workoutTemplate);
 
         void goBackToViewRoutines();
     }

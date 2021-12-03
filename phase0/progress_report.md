@@ -6,10 +6,10 @@
 Our specification aims to highlight the key functionality of our Fitness Tracker program. 
 This includes: 
 * Using the Android App platform
-* Ability to add exercises to create workouts and routines
+* Ability to add exerciseTemplates to create workoutTemplates and routines
 * Social media aspect 
   * Such as the ability to post and view others' posts
-  * Follow other people and view their workouts
+  * Follow other people and view their workoutTemplates
   * Display your routine and weekly schedule on your profile for others to view
 
 We made sure to mention who the target audience is to remind us who we are making 
@@ -24,24 +24,24 @@ To summarize the CRC Model, it is best to categorize them into their clean archi
 layer and give a brief summary:
 * Entities
   * **User**: Represents a user of the fitness tracker 
-  * **Exercise**: Represents a very general exercise. 
-  * **TimedExercise**: Represents a type of exercise that uses “time” as it’s tracking unit.
+  * **Exercise**: Represents a very general exerciseTemplate. 
+  * **TimedExercise**: Represents a type of exerciseTemplate that uses “time” as it’s tracking unit.
 (I.E: planks, skipping, jogging, etc.)
-  * **RepExercise**: Represents a type exercise that uses one repetition as a tracking unit.
+  * **RepExercise**: Represents a type exerciseTemplate that uses one repetition as a tracking unit.
 (I.E push-ups, pull-ups, etc.)
-  * **WeightedRepExercise**: Represents a type of rep-exercise that is weighted. 
+  * **WeightedRepExercise**: Represents a type of rep-exerciseTemplate that is weighted. 
 (I.E bench-press, squats, deadlifts). 
   * **Comment**: Represents a comment on a User’s post.'
 
 * Use Cases
-  * **Workout**: Represents a series of exercises done in a particular order 
-  * **Routine**: Represents a series of workouts done in a particular order 
-  * **WeeklySchedule**: Represents a user’s workout schedule for the week 
-  * **WorkoutTracker**: Tracks all of the user’s workouts and exercises. 
+  * **Workout**: Represents a series of exerciseTemplates done in a particular order 
+  * **Routine**: Represents a series of workoutTemplates done in a particular order 
+  * **WeeklySchedule**: Represents a user’s workoutTemplate schedule for the week 
+  * **WorkoutTracker**: Tracks all of the user’s workoutTemplates and exerciseTemplates. 
   * **FollowManager**: Tracks all the profiles that a profile is following and its followers
   * **Feed**: Represents a list of posts that a profile can view
-  * **Post**: Represents a social media post containing comments, likes, the workout and 
-a message about the workout.
+  * **Post**: Represents a social media post containing comments, likes, the workoutTemplate and 
+a message about the workoutTemplate.
 
 * Controllers 
   * **Profile**: Represents a user’s social profile 
@@ -69,11 +69,11 @@ specifications.
 We have yet to start working on a proper user interface to visually span our works abiding
 by clean architecture. Although, we have attained to create the necessary classes to align
 with our usage breakdown and CRC model. We have successfully created classes for profile
-set-up (entity), workouts/routines and interacting with posts (use cases). The desired
+set-up (entity), workoutTemplates/routines and interacting with posts (use cases). The desired
 functionality of this work has been verified through our testing file.
 
 We have fully formed the essential classes of our app with input capability, 
-enabling people to make a profile, create workouts etc. We have created a class, 
+enabling people to make a profile, create workoutTemplates etc. We have created a class, 
 FitApp.java, consisting of hard coded inputs to show that our skeleton program works.
 All of these classes contain documentation (as comments) to elaborate on what each and 
 every component within the class does, for easier comprehension. Some of them, like 
@@ -140,7 +140,7 @@ implement it, but in the end we all got together and tried to figure it out as a
 
 2. We are having a hard time trying to figure out the clean architecture layers each
 class represents, specifically between entity and use cases. For example, the 
-WeeklySchedule class is simply just a collection of workouts, and isn’t doing anything
+WeeklySchedule class is simply just a collection of workoutTemplates, and isn’t doing anything
 with them other than organizing them in a particular way, so it seems like an entity. 
 But at the same time, it’s organizing them to be used in a specific way and to be displayed
 by the profile, which makes it seem like it may also be a use case. __So is there a way that
@@ -159,7 +159,7 @@ following and its followers.__
 
 4. This next question is going to be similar to the context above, but there are subtle
 differences that make it important to ask it specifically. We want to know how much we
-should split our classes. For example, we have the Exercise class, and an exercise consists
+should split our classes. For example, we have the Exercise class, and an exerciseTemplate consists
 of reps and sets, which are just integer values. __We were wondering if it is worth 
 separating a rep and a set as its own class.__
 
