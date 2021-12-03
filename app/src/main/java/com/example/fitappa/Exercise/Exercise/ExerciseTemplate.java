@@ -40,6 +40,7 @@ public class ExerciseTemplate implements Serializable {
      */
     @SuppressWarnings("unused")
     public ExerciseTemplate() {
+        numSets = 0;
     }
 
     /**
@@ -83,6 +84,11 @@ public class ExerciseTemplate implements Serializable {
         return numSets;
     }
 
-
-
+    /**
+     * Necessary method for Firebase
+     */
+    @SuppressWarnings("unused")
+    public String getCategory() {
+        return category;
+    }
 }
