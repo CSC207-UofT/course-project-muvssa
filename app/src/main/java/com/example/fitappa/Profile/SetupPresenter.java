@@ -34,7 +34,7 @@ class SetupPresenter {
      */
     void setUp(String weight, String height, String firstName, String lastName) {
         profile.setUserExtraInfo(weight, height, firstName, lastName);
-        view.goToHome(profile);
+        view.goToDashboard(profile);
     }
 
     interface View {
@@ -43,6 +43,6 @@ class SetupPresenter {
          *
          * @param profile puts in a persons profile
          */
-        void goToHome(Profile profile);
+        void goToDashboard(Profile profile);
     }
 }

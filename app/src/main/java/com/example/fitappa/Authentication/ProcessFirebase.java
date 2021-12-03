@@ -35,12 +35,14 @@ public class ProcessFirebase {
             presenter.setError();
         }
 
-        // Set the gateway since it's not being retrieved by Firebase
         if (profile != null) {
+            // Set the gateway since it's not being retrieved by Firebase
             Saveable gateway = new SaveProfileGateway();
             profile.setGateway(gateway);
+
+            // Update presenter with retrieved profile
+            presenter.updateActivity(profile);
         }
 
-        presenter.updateActivity(profile);
     }
 }

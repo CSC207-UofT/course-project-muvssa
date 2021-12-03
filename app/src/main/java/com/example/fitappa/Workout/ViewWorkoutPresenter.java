@@ -41,7 +41,9 @@ class ViewWorkoutPresenter {
         List<WorkoutTemplate> workoutTemplates = routine.getWorkouts();
         int pos = workoutTemplates.indexOf(workoutTemplate);
         workoutTemplates.set(pos, workoutTemplate);
+        // TODO: Remove casting
         routine.setWorkouts((ArrayList<WorkoutTemplate>) workoutTemplates);
+
         view.goBackToViewRoutine();
 
     }

@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.Exercise.AddExerciseActivity;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Exercise.ExerciseRepository;
@@ -38,7 +40,6 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
 
 
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
-        Button back = findViewById(R.id.backButton3);
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
         TextView workoutLabel = findViewById(R.id.WorkoutLabel);
         this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
@@ -50,8 +51,16 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         workoutLabel.setText(t);
 
         addExerciseBtn.setOnClickListener(view -> openAddExercise());
-        back.setOnClickListener(view -> presenter.updateWorkoutRoutine());
 
+    }
+
+    /**
+     * Activates when the android back button is pressed. Update the routine and call
+     * goBackToViewRoutine().
+     */
+    @Override
+    public void onBackPressed() {
+        presenter.updateWorkoutRoutine();
     }
 
     /**
@@ -83,6 +92,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     public void goBackToViewRoutine() {
+        finish();
         Intent viewRoutine = new Intent(this, ViewRoutineActivity.class);
         viewRoutine.putExtra("routineObj", this.routine);
         viewRoutine.putExtra("profile", this.profile);
