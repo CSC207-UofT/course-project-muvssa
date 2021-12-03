@@ -8,6 +8,9 @@ import java.util.List;
 
 /**
  * This class represents a workout template that is created by the user
+ *
+ * @author abdullah
+ * @version 0.1
  */
 public class WorkoutTemplate implements Serializable {
     private String name;
@@ -66,6 +69,10 @@ public class WorkoutTemplate implements Serializable {
     }
 
 
+    /**
+     * This method create the performable workout
+     * @return Workout
+     */
     public Workout createWorkout() {
         return new Workout(this.name, this.exerciseTemplates);
     }
