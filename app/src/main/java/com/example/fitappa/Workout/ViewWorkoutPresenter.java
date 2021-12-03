@@ -44,7 +44,7 @@ class ViewWorkoutPresenter {
         // TODO: Remove casting
         routine.setWorkouts((ArrayList<WorkoutTemplate>) workoutTemplates);
 
-        view.goBackToViewRoutine();
+        view.goBack();
 
     }
 
@@ -53,7 +53,7 @@ class ViewWorkoutPresenter {
     interface View {
         void updateExerciseLayout(ExerciseTemplate e);
 
-        void goBackToViewRoutine();
+        void goBack();
     }
 
 }

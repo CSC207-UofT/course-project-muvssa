@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
-import com.example.fitappa.Routine.ViewRoutinesActivity;
 import com.example.fitappa.Workout.StartWorkoutActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -72,9 +71,8 @@ public class DashboardActivity extends AppCompatActivity {
      * This method opens the ViewRoutinesActivity View
      */
     private void openRoutines() {
-        Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
-        viewRoutines.putExtra("my_Profile", this.profile);
-        startActivity(viewRoutines);
+        return;
+        //TODO: delete this method
     }
 
     /**

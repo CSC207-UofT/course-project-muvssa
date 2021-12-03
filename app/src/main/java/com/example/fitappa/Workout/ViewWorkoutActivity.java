@@ -14,7 +14,6 @@ import com.example.fitappa.Exercise.Exercise.ExerciseRepository;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
-import com.example.fitappa.Routine.ViewRoutineActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -91,9 +90,9 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      * This method opens the ViewRoutineActivity view.
      */
     @Override
-    public void goBackToViewRoutine() {
+    public void goBack() {
         finish();
-        Intent viewRoutine = new Intent(this, ViewRoutineActivity.class);
+        Intent viewRoutine = new Intent(this, StartWorkoutActivity.class);
         viewRoutine.putExtra("routineObj", this.routine);
         viewRoutine.putExtra("profile", this.profile);
         startActivity(viewRoutine);

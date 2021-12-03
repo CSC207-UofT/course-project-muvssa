@@ -1,4 +1,4 @@
-package com.example.fitappa.Routine;
+package com.example.fitappa.Workout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,9 +28,7 @@ public class AddRoutineActivity extends AppCompatActivity {
         // Initialize elements
         Button submitBtn = findViewById(R.id.SaveRoutineBtn);
         this.routineName = findViewById(R.id.RoutineNameField);
-
-
-        submitBtn.setOnClickListener(v -> goBackToWorkouts(routineName.getText().toString()));
+        submitBtn.setOnClickListener(v -> goBack(routineName.getText().toString()));
     }
 
     /**
@@ -39,8 +37,8 @@ public class AddRoutineActivity extends AppCompatActivity {
      *
      * @param routineName the name of the routine that was created
      */
-    private void goBackToWorkouts(String routineName) {
-        Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
+    private void goBack(String routineName) {
+        Intent viewRoutines = new Intent(this, StartWorkoutActivity.class);
         viewRoutines.putExtra("routineName", routineName);
         setResult(RESULT_OK, viewRoutines);
         finish();
