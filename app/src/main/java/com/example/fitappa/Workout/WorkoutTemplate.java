@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class WorkoutTemplate implements Serializable {
     private String name;
-    private List<ExerciseTemplate> exerciseTemplates;
+    private final List<ExerciseTemplate> exerciseTemplates;
 
     /**
      * Constructor for a WorkoutTemplate
@@ -28,7 +28,9 @@ public class WorkoutTemplate implements Serializable {
     /**
      * Constructor for WorkoutTemplate
      */
+    @SuppressWarnings("unused")
     public WorkoutTemplate() {
+        exerciseTemplates = new ArrayList<>();
     }
 
     /**
