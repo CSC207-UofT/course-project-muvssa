@@ -21,6 +21,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
     private TextView followerNumber;
     private ProfileController profileController;
     private EditText searchText;
+    private ProfilePresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -38,7 +39,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
         this.profile = (Profile) retrieveIntent.getSerializableExtra("persons_Profile");
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
 
-        ProfilePresenter presenter = new ProfilePresenter(this, myProfile, profile);
+        presenter = new ProfilePresenter(this, myProfile, profile);
 
 
         this.profileController = new ProfileController(this.myProfile);
@@ -74,12 +75,25 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
     }
 
     /**
-     * Activated when Android back button is pressed. Return to current Profile view.
+     * Activated when Android back button is pressed. Return to current Profile view if on
+     * another profile, or back to dashboard is showing current profile
      */
     @Override
     public void onBackPressed() {
-        backToCurrentProfilesViewProfile();
-        super.onBackPressed();
+        if (presenter.isMyProfile()) {
+            backToDashboard();
+        } else {
+            backToCurrentProfilesViewProfile();
+        }
+    }
+
+    /**
+     * Go back to dashboard activity with the current profile
+     */
+    private void backToDashboard() {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        dashboard.putExtra("profile", myProfile);
+        startActivity(dashboard);
     }
 
     /**
@@ -112,6 +126,7 @@ public class ViewProfileActivity extends AppCompatActivity implements Observer, 
      * current profile's information
      */
     private void backToCurrentProfilesViewProfile() {
+        finish();
         Intent home = new Intent(this, ViewProfileActivity.class);
         home.putExtra("my_Profile", this.myProfile);
         home.putExtra("persons_Profile", this.myProfile);
