@@ -33,4 +33,13 @@
     <string name="heightSetting">height is</string>
     <string name="firstNameSetting">first name is</string>
     <string name="lastNameSetting">last Name Is</string>
+    <string name="createRoutine">Create Routine</string>
+    <string name="RoutineTitle">Routine Title</string>
+    <string name="Save">Save</string>
+    <string name="Create">Create</string>
+    <string name="AddWorkout">Add Workout To Routine</string>
+    <string name="EditWorkout">"Edit "</string>
+    <string name="DefaultWorkoutName">Workout Name</string>
+    <string name="CreateRoutine">Create A Routine</string>
+    <string name="CreateRoutineMsg">Get started by creating a new routine!</string>
 </resources>

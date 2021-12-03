@@ -14,7 +14,6 @@ import com.example.fitappa.Exercise.Exercise.ExerciseRepository;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
-import com.example.fitappa.Routine.ViewRoutineActivity;
 
 import java.io.Serializable;
 import java.util.List;
@@ -23,8 +22,6 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     private ViewWorkoutPresenter presenter;
     private LinearLayout exerciseLayout;
     private WorkoutTemplate workoutTemplate;
-    private Routine routine;
-    private Profile profile;
     private List<ExerciseTemplate> exerciseTemplates;
 
     /**
@@ -39,17 +36,18 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         getSupportActionBar().setTitle("View Workout");
 
 
-        Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
-        TextView workoutLabel = findViewById(R.id.WorkoutLabel);
         this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
-        this.routine = (Routine) getIntent().getSerializableExtra("routineObj");
-        this.profile = (Profile) getIntent().getSerializableExtra("profile");
-        this.presenter = new ViewWorkoutPresenter(this, workoutTemplate, routine);
+        this.presenter = new ViewWorkoutPresenter(this, workoutTemplate);
 
+
+        // Set Title
+        TextView workoutLabel = findViewById(R.id.WorkoutLabel);
         String t = "Exercises in " + workoutTemplate.getName();
         workoutLabel.setText(t);
 
+        // Set on click listener
+        Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
         addExerciseBtn.setOnClickListener(view -> openAddExercise());
 
     }
@@ -91,11 +89,9 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      * This method opens the ViewRoutineActivity view.
      */
     @Override
-    public void goBackToViewRoutine() {
+    public void goBack() {
         finish();
-        Intent viewRoutine = new Intent(this, ViewRoutineActivity.class);
-        viewRoutine.putExtra("routineObj", this.routine);
-        viewRoutine.putExtra("profile", this.profile);
+        Intent viewRoutine = new Intent(this, StartWorkoutActivity.class);
         startActivity(viewRoutine);
     }
 

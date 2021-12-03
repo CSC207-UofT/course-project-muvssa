@@ -16,8 +16,8 @@ public class ProfileTest extends TestCase {
 
 
     public void setUp() throws Exception {
-        this.routine1 = new Routine("My routine", "A new routine");
-        this.routine2 = new Routine("My routine2", "A new routine");
+        this.routine1 = new Routine("My routine");
+        this.routine2 = new Routine("My routine2");
 
         this.user1 = new User("johnnyappleseed@gmail.com", "Johnny", "");
         this.profile1 = new Profile(user1.getEmail(), user1.getUsername(), "someUniqueID");
@@ -61,7 +61,7 @@ public class ProfileTest extends TestCase {
     public void testAddRoutine() {
         // shows that the element has been added by looking at
         // size and matching name
-        profile2.addRoutine(new Routine("My routine3", "My new routine"));
+        profile2.addRoutine(new Routine("My routine3"));
         assertEquals("My routine3", profile2.getRoutines().get(1).getName());
         assertEquals(2, profile2.getRoutines().size());
 

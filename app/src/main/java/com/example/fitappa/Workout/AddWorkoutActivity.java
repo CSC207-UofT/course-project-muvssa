@@ -6,7 +6,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.R;
-import com.example.fitappa.Routine.ViewRoutinesActivity;
 
 import java.util.Objects;
 
@@ -29,7 +28,7 @@ public class AddWorkoutActivity extends AppCompatActivity {
         Button addWorkoutBtn = findViewById(R.id.CreateWorkoutBtn2);
         this.workoutNameField = findViewById(R.id.WorkoutNameField);
 
-        addWorkoutBtn.setOnClickListener(v -> goBackToRoutine(workoutNameField.getText().toString()));
+        addWorkoutBtn.setOnClickListener(v -> goBack(workoutNameField.getText().toString()));
 
     }
 
@@ -39,10 +38,10 @@ public class AddWorkoutActivity extends AppCompatActivity {
      *
      * @param workoutName the name of the workout that was created
      */
-    private void goBackToRoutine(String workoutName) {
-        Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
-        viewRoutines.putExtra("workoutName", workoutName);
-        setResult(RESULT_OK, viewRoutines);
+    private void goBack(String workoutName) {
+        Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
+        startWorkout.putExtra("workoutName", workoutName);
+        setResult(RESULT_OK, startWorkout);
         finish();
     }
 

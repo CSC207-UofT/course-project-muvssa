@@ -9,19 +9,16 @@ import java.util.List;
 class ViewWorkoutPresenter {
     private final View view;
     private final WorkoutTemplate workoutTemplate;
-    private final Routine routine;
 
     /**
      * View of the workouts
      *
      * @param view    represents how the user sees the workouts as type View
      * @param workoutTemplate represents the workout as type Workout
-     * @param routine represents the routine as type Routine
      */
-    ViewWorkoutPresenter(View view, WorkoutTemplate workoutTemplate, Routine routine) {
+    ViewWorkoutPresenter(View view, WorkoutTemplate workoutTemplate) {
         this.workoutTemplate = workoutTemplate;
         this.view = view;
-        this.routine = routine;
     }
 
     /**
@@ -38,13 +35,11 @@ class ViewWorkoutPresenter {
      * Updates profile with the new routine and sends you back to ViewRoutineActivity
      */
     void updateWorkoutRoutine() {
-        List<WorkoutTemplate> workoutTemplates = routine.getWorkouts();
+        /*List<WorkoutTemplate> workoutTemplates = routine.getWorkouts();
         int pos = workoutTemplates.indexOf(workoutTemplate);
-        workoutTemplates.set(pos, workoutTemplate);
-        // TODO: Remove casting
-        routine.setWorkouts((ArrayList<WorkoutTemplate>) workoutTemplates);
+        workoutTemplates.set(pos, workoutTemplate);*/
 
-        view.goBackToViewRoutine();
+        view.goBack();
 
     }
 
@@ -53,7 +48,7 @@ class ViewWorkoutPresenter {
     interface View {
         void updateExerciseLayout(ExerciseTemplate e);
 
-        void goBackToViewRoutine();
+        void goBack();
     }
 
 }

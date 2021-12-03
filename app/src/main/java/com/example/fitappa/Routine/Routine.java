@@ -11,7 +11,6 @@ import java.util.NoSuchElementException;
 
 public class Routine implements Serializable, Iterable<WorkoutTemplate> {
     private String name;
-    private String description;
     private List<WorkoutTemplate> workoutTemplates;
 
     // Empty constructor necessary for Firebase
@@ -24,9 +23,8 @@ public class Routine implements Serializable, Iterable<WorkoutTemplate> {
      *
      * @param name the name of the Routine
      */
-    public Routine(String name, String description) {
+    public Routine(String name) {
         this.name = name;
-        this.description = description;
         this.workoutTemplates = new ArrayList<>();
     }
 
@@ -46,24 +44,6 @@ public class Routine implements Serializable, Iterable<WorkoutTemplate> {
      */
     public void setName(String name) {
         this.name = name;
-    }
-
-    /**
-     * Gets the description
-     *
-     * @return description of the Routine
-     */
-    public String getDescription() {
-        return description;
-    }
-
-    /**
-     * Sets the description to a given one
-     *
-     * @param description new description for the Routine
-     */
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     /**

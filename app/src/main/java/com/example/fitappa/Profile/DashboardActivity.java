@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
-import com.example.fitappa.Routine.ViewRoutinesActivity;
 import com.example.fitappa.Workout.StartWorkoutActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -30,7 +29,6 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         Button logoutBtn = findViewById(R.id.LogoutBtn);
-        Button openRoutinesBtn = findViewById(R.id.GoToRoutinesBtn);
         Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
         Button startWorkoutBtn = findViewById(R.id.startWorkoutNav);
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
@@ -38,7 +36,6 @@ public class DashboardActivity extends AppCompatActivity {
         checkAuth();
 
         // Listeners
-        openRoutinesBtn.setOnClickListener(v -> openRoutines());
         openProfileBtn.setOnClickListener(v -> openProfile());
         startWorkoutBtn.setOnClickListener(v -> openStartWorkout());
         logoutBtn.setOnClickListener(v -> signOut());
@@ -65,16 +62,6 @@ public class DashboardActivity extends AppCompatActivity {
         // Local
         profile.saveData();
         goBackToMain();
-    }
-
-
-    /**
-     * This method opens the ViewRoutinesActivity View
-     */
-    private void openRoutines() {
-        Intent viewRoutines = new Intent(this, ViewRoutinesActivity.class);
-        viewRoutines.putExtra("my_Profile", this.profile);
-        startActivity(viewRoutines);
     }
 
     /**

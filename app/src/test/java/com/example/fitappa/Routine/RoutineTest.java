@@ -11,7 +11,7 @@ public class RoutineTest extends TestCase {
 
     public void setUp() throws Exception {
         workoutTemplate = new WorkoutTemplate("chest");
-        x = new Routine("sundays", "hard");
+        x = new Routine("sundays");
         super.setUp();
     }
 
@@ -24,14 +24,8 @@ public class RoutineTest extends TestCase {
         assertEquals("o", x.getName());
     }
 
-    public void testGetDescription() {
-        assertEquals("hard", x.getDescription());
-    }
 
-    public void testSetDescription() {
-        x.setDescription("good");
-        assertEquals("good", x.getDescription());
-    }
+
 
     public void testGetWorkouts() {
         x.addWorkout(workoutTemplate);
