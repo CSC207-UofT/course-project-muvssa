@@ -1,7 +1,7 @@
 package com.example.fitappa.Routine;
 
 import androidx.annotation.NonNull;
-import com.example.fitappa.Workout.WorkoutTemplate;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
 import java.util.ArrayList;

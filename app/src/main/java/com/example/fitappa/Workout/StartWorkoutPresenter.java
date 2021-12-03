@@ -2,6 +2,8 @@ package com.example.fitappa.Workout;
 
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Routine.Routine;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
+
 import java.util.List;
 
 /**

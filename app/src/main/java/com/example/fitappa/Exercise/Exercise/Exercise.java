@@ -16,7 +16,7 @@ import java.util.List;
  * @author abdullah
  * @version 0.1
  */
-public class Exercise<T> implements Serializable {
+public class Exercise<T> implements Serializable, IExercise {
     protected String name;
     protected List<T> sets;
 

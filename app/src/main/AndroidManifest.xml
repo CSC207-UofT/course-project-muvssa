@@ -11,10 +11,10 @@
         android:theme="@style/Theme.AppCompat">
         <activity android:name=".Profile.DashboardActivity" />
         <activity android:name=".Authentication.LoginActivity" />
-        <activity android:name=".Workout.ViewWorkoutActivity" />
-        <activity android:name=".Workout.AddRoutineActivity" />
+        <activity android:name=".Workout.CRUD.ViewWorkoutActivity" />
+        <activity android:name=".Workout.CRUD.AddRoutineActivity" />
         <activity android:name=".Workout.TrackWorkoutActivity" />
-        <activity android:name=".Workout.AddWorkoutActivity" />
+        <activity android:name=".Workout.CRUD.AddWorkoutActivity" />
         <activity android:name=".Exercise.AddExerciseActivity" />
         <activity android:name=".Workout.StartWorkoutActivity" />
         <activity android:name=".Profile.SetupActivity" />

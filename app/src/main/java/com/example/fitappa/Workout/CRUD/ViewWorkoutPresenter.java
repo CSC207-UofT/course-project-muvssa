@@ -1,10 +1,7 @@
-package com.example.fitappa.Workout;
+package com.example.fitappa.Workout.CRUD;
 
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
-import com.example.fitappa.Routine.Routine;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 class ViewWorkoutPresenter {
     private final View view;
@@ -19,6 +16,12 @@ class ViewWorkoutPresenter {
     ViewWorkoutPresenter(View view, WorkoutTemplate workoutTemplate) {
         this.workoutTemplate = workoutTemplate;
         this.view = view;
+
+        // initialize view
+        for(ExerciseTemplate e : workoutTemplate.getExercises()) {
+            view.updateExerciseLayout(e);
+        }
+
     }
 
     /**

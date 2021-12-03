@@ -1,4 +1,4 @@
-package com.example.fitappa.Workout;
+package com.example.fitappa.Workout.Core;
 
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 
@@ -68,15 +68,6 @@ public class WorkoutTemplate implements Serializable {
      */
     public void addExercise(ExerciseTemplate exerciseTemplate) {
         this.exerciseTemplates.add(exerciseTemplate);
-    }
-
-
-    /**
-     * This method create the performable workout
-     * @return Workout
-     */
-    public Workout createWorkout() {
-        return new Workout(this.name, this.exerciseTemplates);
     }
 
 

@@ -16,7 +16,6 @@
     <string name="followButton">Follow!</string>
     <string name="returnHome">Return to my Profile</string>
     <string name="goToWorkout">See your workoutTemplates</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="backButton1">Back and Save</string>
     <string name="backButton">Save and back</string>
@@ -40,6 +39,14 @@
     <string name="AddWorkout">Add Workout To Routine</string>
     <string name="EditWorkout">"Edit "</string>
     <string name="DefaultWorkoutName">Workout Name</string>
+    <string name="DefaultExerciseName">Bench Press</string>
     <string name="CreateRoutine">Create A Routine</string>
     <string name="CreateRoutineMsg">Get started by creating a new routine!</string>
+    <string name="EndWorkout">End</string>
+    <string name="CancelWorkout">Cancel</string>
+    <string name="AddSet">+ Add Set</string>
+    <string name="Set">Set</string>
+    <string name="WeightUnit">lbs</string>
+    <string name="NumReps">reps</string>
+    <string name="WorkoutObject">WORKOUTOBJ</string>
 </resources>
