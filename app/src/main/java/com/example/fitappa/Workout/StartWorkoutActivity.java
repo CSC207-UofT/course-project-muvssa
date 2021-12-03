@@ -184,12 +184,23 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         Button editWorkoutBtn = new Button(this);
         editWorkoutBtn.setLayoutParams(defaultParams);
         editWorkoutBtn.setText(getString(R.string.EditWorkout));
+        editWorkoutBtn.setOnClickListener(v -> openEditWorkout(workoutTemplate));
         innerLayout.addView(editWorkoutBtn);
 
 
         // Attach an onClickListener to the button
         startWorkoutBtn.setOnClickListener(v -> startWorkout(workoutTemplate));
 
+    }
+
+    /**
+     * opens edit workout activity
+     * @param workoutTemplate represents a workout template
+     */
+    private void openEditWorkout(WorkoutTemplate workoutTemplate) {
+        Intent editWorkout = new Intent(this, ViewWorkoutActivity.class);
+        editWorkout.putExtra("workoutObj", workoutTemplate);
+        startActivity(editWorkout);
     }
 
     /**
@@ -224,11 +235,10 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         }
 
         if (requestCode == 2 && resultCode == RESULT_OK) {
-            presenter.addWorkoutToWorkout(data.getStringExtra("workoutName"));
+            presenter.addWorkoutToRoutine(data.getStringExtra("workoutName"));
         }
 
     }
-
 
     /**
      * Opens the AddWorkoutActivity view

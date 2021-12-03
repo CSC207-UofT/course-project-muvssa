@@ -10,7 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="15dp"
+        tools:layout_editor_absoluteX="15dp"
+        tools:layout_editor_absoluteY="15dp">
 
         <TextView
             android:id="@+id/routineLabel2"
@@ -19,7 +22,7 @@
             android:layout_marginTop="36dp"
             android:layout_marginBottom="13dp"
             android:gravity="center"
-            android:text="Create Workout"
+            android:text="@string/AddWorkout"
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
@@ -58,9 +61,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
+            android:hint="@string/DefaultWorkoutName"
             android:inputType="textPersonName"
-            android:paddingTop="50dp"
-            android:text="Workout Name" />
+            android:paddingTop="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -73,10 +76,12 @@
                 android:layout_weight="1" />
 
             <Button
-                    android:id="@+id/CreateWorkoutBtn2"
-                    android:layout_width="157dp"
-                    android:layout_height="49dp"
-                    android:text="Add Workout" android:backgroundTint="#046b99" android:textStyle="bold"/>
+                android:id="@+id/CreateWorkoutBtn2"
+                android:layout_width="157dp"
+                android:layout_height="49dp"
+                android:backgroundTint="#046b99"
+                android:text="Add Workout"
+                android:textStyle="bold" />
 
             <Space
                 android:layout_width="wrap_content"

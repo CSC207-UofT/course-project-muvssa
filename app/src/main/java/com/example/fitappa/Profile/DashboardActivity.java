@@ -29,7 +29,6 @@ public class DashboardActivity extends AppCompatActivity {
 
 
         Button logoutBtn = findViewById(R.id.LogoutBtn);
-        Button openRoutinesBtn = findViewById(R.id.GoToRoutinesBtn);
         Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
         Button startWorkoutBtn = findViewById(R.id.startWorkoutNav);
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
@@ -37,7 +36,6 @@ public class DashboardActivity extends AppCompatActivity {
         checkAuth();
 
         // Listeners
-        openRoutinesBtn.setOnClickListener(v -> openRoutines());
         openProfileBtn.setOnClickListener(v -> openProfile());
         startWorkoutBtn.setOnClickListener(v -> openStartWorkout());
         logoutBtn.setOnClickListener(v -> signOut());
@@ -64,15 +62,6 @@ public class DashboardActivity extends AppCompatActivity {
         // Local
         profile.saveData();
         goBackToMain();
-    }
-
-
-    /**
-     * This method opens the ViewRoutinesActivity View
-     */
-    private void openRoutines() {
-        return;
-        //TODO: delete this method
     }
 
     /**

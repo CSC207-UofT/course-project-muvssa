@@ -4,11 +4,22 @@ import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Routine.Routine;
 import java.util.List;
 
+/**
+ * Presenter class for StartWorkoutActivity
+ *
+ * @author abdullah
+ * @version 0.1
+ */
 public class StartWorkoutPresenter {
     private final Profile profile;
     private View view;
     private Routine currRoutine;
 
+    /**
+     * Constructor for StartWorkoutPresenter
+     * @param view
+     * @param profile
+     */
     public StartWorkoutPresenter(View view, Profile profile) {
         this.profile = profile;
         this.view = view;
@@ -29,15 +40,26 @@ public class StartWorkoutPresenter {
 
     }
 
+    /**
+     * sets current routine
+     * @param r current routine
+     */
     public void setCurrentRoutine(Routine r) {
         this.currRoutine = r;
     }
 
-    public void addWorkoutToWorkout(String workoutName) {
+    /**
+     * Adds workout to routine
+     * @param workoutName represents the workout
+     */
+    public void addWorkoutToRoutine(String workoutName) {
         this.currRoutine.addWorkout(new WorkoutTemplate(workoutName));
         this.view.init(this.profile.getRoutines());
     }
 
+    /**
+     * View interface
+     */
     interface View {
         void updateRoutinesView(Routine routines);
         void init(List<Routine> routines);

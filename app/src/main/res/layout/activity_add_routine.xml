@@ -21,6 +21,25 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <TextView
+            android:id="@+id/routineLabel6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:layout_marginBottom="13dp"
+            android:gravity="center"
+            android:text="@string/CreateRoutine"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+
+        <TextView
+            android:id="@+id/routineLabel8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="21dp"
+            android:gravity="center"
+            android:text="@string/CreateRoutineMsg"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
         <EditText
             android:id="@+id/RoutineNameField"
             android:layout_width="match_parent"

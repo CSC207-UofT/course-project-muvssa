@@ -40,14 +40,6 @@
                     android:layout_weight="1"/>
 
             <Button
-                    android:id="@+id/GoToRoutinesBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Routines" android:backgroundTint="#02bfe7" android:textColor="#070707"
-                    android:textStyle="bold"/>
-
-            <Button
                     android:id="@+id/startWorkoutNav"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

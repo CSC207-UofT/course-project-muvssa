@@ -39,4 +39,7 @@
     <string name="Create">Create</string>
     <string name="AddWorkout">Add Workout To Routine</string>
     <string name="EditWorkout">"Edit "</string>
+    <string name="DefaultWorkoutName">Workout Name</string>
+    <string name="CreateRoutine">Create A Routine</string>
+    <string name="CreateRoutineMsg">Get started by creating a new routine!</string>
 </resources>
