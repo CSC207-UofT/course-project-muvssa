@@ -9,6 +9,17 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
+/**
+ * This class is a view class meant to open the activity_create_workout xml, which allows users to create Workouts
+ * and add them to Routines
+ *
+ * The method in the class allows for the creation of multiple Workouts
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.3
+ */
 
 public class AddWorkoutActivity extends AppCompatActivity {
     private EditText workoutNameField;

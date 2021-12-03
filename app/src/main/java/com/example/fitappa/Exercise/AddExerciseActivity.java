@@ -15,6 +15,18 @@ import com.example.fitappa.Workout.WorkoutTemplate;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class is a view class meant to open the activity_add_exercise xml, a GUI which allows users to add
+ * new exercises
+ *
+ * The method in the class allow the user to interact and create new exercises
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.6
+ */
+
 
 public class AddExerciseActivity extends AppCompatActivity {
 

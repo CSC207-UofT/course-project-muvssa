@@ -5,7 +5,11 @@ import com.example.fitappa.Routine.Routine;
 import java.util.List;
 
 /**
- * Presenter class for StartWorkoutActivity
+ * Presenter class for StartWorkoutActivity, send and receive information from the back end to help StartWorkoutActivity
+ *
+ * The method in the class moves the information to the back end and from it too
+ *
+ * The documentation in this class give a specification on what the methods do
  *
  * @author abdullah
  * @version 0.1

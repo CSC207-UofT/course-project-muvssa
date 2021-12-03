@@ -16,6 +16,14 @@ import java.util.Objects;
 
 /**
  * This activity is activated when the user selects signup from the MainActivity and wants to sign up with a new account
+ *
+ * The methods in this activity allow the user to input information into the program to sign up
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Souren
+ *
+ * @since 2.1
  */
 public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText usernameText;

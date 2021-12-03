@@ -13,6 +13,12 @@ import java.util.List;
  * clean architecture. It contains a User, FollowManager, list of Routines, Saveable gateway, and DefaultExercises.
  * <p>
  * It implements Serializable so that it may be saved into a database or used to start a new intent and pass its data.
+ *
+ * @author Souren
+ * @author Uthman
+ * @author Abdullah
+ *
+ * Since 2.6
  */
 public class Profile implements Serializable {
 

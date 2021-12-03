@@ -3,6 +3,19 @@ package com.example.fitappa.Profile;
 import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Authentication.OpensActivityWithProfile;
 
+/**
+ * This class is a presenter class meant to send and receive information from the back end to help
+ * ViewProfileActivity
+ *
+ * The method in the class moves the information to the back end and from it too
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Souren
+ * @author Uthman
+ * @since 1.2
+ */
+
 class ProfilePresenter extends GatewayInteractor {
     private final Profile currentProfile;
     private final Profile profile;

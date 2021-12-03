@@ -4,8 +4,12 @@ package com.example.fitappa.Exercise.Set;
  * This class incorporates the factory method
  * and returns appropriate sets given the information
  *
+ * The methods in this class implement the factory design pattern creating the different sets
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
  * @author abdullah
- * @version 0.1
+ * @since 0.1
  */
 public class SetFactory {
 

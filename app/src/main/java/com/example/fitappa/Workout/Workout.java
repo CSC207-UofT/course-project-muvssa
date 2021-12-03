@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents a workout that can be performed.
+ * This class is an entity class and represents workout that can be performed.
+ *
+ * The methods help initialize what a Workout contains
+ *
+ * The documentation in this class give a specification on what the methods do
  *
  * @author abdullah
  * @version 0.1

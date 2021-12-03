@@ -4,6 +4,17 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * This class is a UseCase class meant to facilitate a Profile class's followers
+ *
+ * The methods in the class add followers to different peoples profiles
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Souren
+ * @since 1.1
+ */
+
 class FollowManager implements Serializable {
     private final User user;
     private final Map<String, FollowManager> following;

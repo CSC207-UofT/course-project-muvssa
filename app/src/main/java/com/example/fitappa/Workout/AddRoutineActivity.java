@@ -11,6 +11,18 @@ import com.example.fitappa.R;
 
 import java.util.Objects;
 
+/**
+ * This class is a view class meant to open the activity_add_routine xml, allowing users to interact with a Routine
+ * which is a list of workouts
+ *
+ * The method in the class allow users to interact and create routines
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.4
+ */
+
 public class AddRoutineActivity extends AppCompatActivity {
     private EditText routineName;
 

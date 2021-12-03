@@ -3,6 +3,14 @@ package com.example.fitappa.Exercise.Set;
 /**
  * A TimedSet is another way to track progress through an exercises.
  * It uses time (in seconds) as its measure
+ *
+ * The methods help initialize what a timed set should be
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ *
+ * @since 0.2
  */
 public class TimedSet implements Set {
     private final double time;
