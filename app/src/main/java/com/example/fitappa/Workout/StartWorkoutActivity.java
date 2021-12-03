@@ -1,18 +1,21 @@
 package com.example.fitappa.Workout;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
-import com.example.fitappa.Profile.Profile;
-import com.example.fitappa.R;
-import com.example.fitappa.Routine.Routine;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
+import com.example.fitappa.Profile.DashboardActivity;
+import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.R;
+import com.example.fitappa.Routine.Routine;
 
 import java.util.List;
 import java.util.Objects;
@@ -55,8 +58,25 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
     }
 
     /**
+     * Activates when Android back button is pressed. Go back to dashboard and pass along the
+     * current profile object as well.
+     */
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        backToDashboard();
+    }
+
+    private void backToDashboard() {
+        Intent dashboard = new Intent(this, DashboardActivity.class);
+        dashboard.putExtra("profile", profile);
+        startActivity(dashboard);
+    }
+
+    /**
      * This method initializes the view with the user's routines and their respective workouts.
      * Thereby allowing the user to start a workout directly from this page.
+     *
      * @param routines represents the List of the user's routines.
      */
     public void init(List<Routine> routines) {
