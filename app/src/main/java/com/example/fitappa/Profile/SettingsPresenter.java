@@ -1,5 +1,7 @@
 package com.example.fitappa.Profile;
 
+import java.util.regex.Pattern;
+
 /**
  * This class is a presenter class  meant to send and receive information from the back end to help ViewSettingActivity
  *
@@ -72,16 +74,20 @@ class SettingsPresenter {
      * @param l user inputted string last name
      */
     void changeSettings(String w, String h, String f, String l) {
-        if (w.equals("")) {
+
+        String regex = "[0-9]+[.]?[0-9]*";
+        String regex2 = "^[a-zA-Z]*$";
+
+        if (w.equals("") || !Pattern.matches(regex, w)){
             w = profile.getUserWeight();
         }
-        if (h.equals("")) {
+        if (h.equals("") || !Pattern.matches(regex, h)) {
             h = profile.getUserHeight();
         }
-        if (f.equals("")) {
+        if (f.equals("") || !Pattern.matches(regex2, f)) {
             f = profile.getUserFirstName();
         }
-        if (l.equals("")) {
+        if (l.equals("") || !Pattern.matches(regex2, l)) {
             l = profile.getUserLastName();
         }
         profile.setUserExtraInfo(w, h, f, l);
@@ -94,5 +100,6 @@ class SettingsPresenter {
          * Display the changes the user made to their settings
          */
         void update();
+
     }
 }

@@ -2,9 +2,11 @@ package com.example.fitappa.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.R;
@@ -28,6 +30,7 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
     private EditText heightText;
     private EditText firstNameText;
     private EditText lastNameText;
+    private TextView errorInput;
 
     /**
      * This method is called when the activity starts.
@@ -42,6 +45,9 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
         Profile profile = (Profile) retrieveIntent.getSerializableExtra("profile");
 
         SetupPresenter presenter = new SetupPresenter(this, profile);
+
+        errorInput = findViewById(R.id.wrong);
+        errorInput.setVisibility(View.INVISIBLE);
 
         weightText = findViewById(R.id.weight);
         heightText = findViewById(R.id.height);
@@ -71,4 +77,13 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
         home.putExtra("profile", profile);
         startActivity(home);
     }
+
+    /**
+     * Display an error message if the input doesn't meet format requirements
+     */
+    @Override
+    public void wrongInput() {
+        errorInput.setVisibility(View.VISIBLE);
+    }
+
 }

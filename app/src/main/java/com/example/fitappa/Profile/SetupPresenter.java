@@ -1,5 +1,7 @@
 package com.example.fitappa.Profile;
 
+import java.util.regex.Pattern;
+
 /**
  * This class is a presenter class for ViewSetupActivity
  * <p>
@@ -33,8 +35,17 @@ class SetupPresenter {
      * @param lastName  a String last name
      */
     void setUp(String weight, String height, String firstName, String lastName) {
-        profile.setUserExtraInfo(weight, height, firstName, lastName);
-        view.goToDashboard(profile);
+        String regex = "[0-9]+[.]?[0-9]*";
+        String regex2 = "^[a-zA-Z]*$";
+        if(Pattern.matches(regex, weight) && Pattern.matches(regex, height) && Pattern.matches(regex2, firstName)
+                && Pattern.matches(regex2, lastName)){
+            profile.setUserExtraInfo(weight, height, firstName, lastName);
+            view.goToDashboard(profile);
+        }
+        else{
+            view.wrongInput();
+        }
+
     }
 
     interface View {
@@ -44,5 +55,10 @@ class SetupPresenter {
          * @param profile puts in a persons profile
          */
         void goToDashboard(Profile profile);
+
+        /**
+         * Display an error message if the input doesn't meet format requirements
+         */
+        void wrongInput();
     }
 }
