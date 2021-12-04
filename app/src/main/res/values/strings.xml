@@ -42,4 +42,5 @@
     <string name="DefaultWorkoutName">Workout Name</string>
     <string name="CreateRoutine">Create A Routine</string>
     <string name="CreateRoutineMsg">Get started by creating a new routine!</string>
+    <string name="wrong">Please input pounds for weight, cm for height, and letters for first and last name</string>
 </resources>

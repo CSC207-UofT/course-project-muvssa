@@ -3,6 +3,7 @@ package com.example.fitappa.Profile;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -49,7 +50,6 @@ public class SettingsActivity extends AppCompatActivity implements SettingsPrese
         this.myProfile = (Profile) retrieveIntent.getSerializableExtra("my_Profile");
         presenter = new SettingsPresenter(this, myProfile);
 
-
         weightText = findViewById(R.id.weightSetting);
         weightInput = findViewById(R.id.weightChangeInput);
         weightText.setText("Your weight is: " + presenter.getSettingWeight());
@@ -67,9 +67,8 @@ public class SettingsActivity extends AppCompatActivity implements SettingsPrese
         lastText.setText("Your last name is: " + presenter.getSettingLastName());
 
         TextView submit = findViewById(R.id.submitSettings);
-
-        submit.setOnClickListener(v -> presenter.changeSettings(weightInput.getText().toString(),
-                heightInput.getText().toString(), firstInput.getText().toString(), lastInput.getText().toString()));
+        submit.setOnClickListener(v -> presenter.changeSettings(weightInput,
+                heightInput, firstInput, lastInput));
 
     }
 
@@ -92,6 +91,7 @@ public class SettingsActivity extends AppCompatActivity implements SettingsPrese
         firstText.setText(String.format("Your first name is: %s", presenter.getSettingFirstName()));
         lastText.setText(String.format("Your last name is: %s", presenter.getSettingLastName()));
     }
+
 
     /**
      * return to profile after changes made
