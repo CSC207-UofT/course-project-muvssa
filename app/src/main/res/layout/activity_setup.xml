@@ -56,6 +56,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
+        <TextView
+                android:text="@string/wrong"
+                android:layout_width="match_parent"
+                android:layout_height="51dp" android:id="@+id/wrong"
+        />
         <EditText
                 android:id="@+id/weight"
                 android:layout_width="match_parent"
