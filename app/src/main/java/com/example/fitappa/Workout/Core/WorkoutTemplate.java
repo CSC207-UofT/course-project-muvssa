@@ -11,6 +11,7 @@ import java.util.List;
  *
  * @author abdullah
  * @version 0.1
+ * @layer 1
  */
 public class WorkoutTemplate implements Serializable {
     private String name;

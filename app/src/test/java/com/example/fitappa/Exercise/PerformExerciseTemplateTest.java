@@ -4,7 +4,7 @@ import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 
 import junit.framework.TestCase;
 
-public class ExerciseTemplateTest extends TestCase {
+public class PerformExerciseTemplateTest extends TestCase {
     ExerciseTemplate x;
     ExerciseTemplate y;
 

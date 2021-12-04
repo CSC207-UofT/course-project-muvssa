@@ -1,6 +1,7 @@
 package com.example.fitappa.Workout.Core;
 
-import com.example.fitappa.Exercise.Exercise.Exercise;
+import com.example.fitappa.Exercise.Exercise.CreatableExercise;
+import com.example.fitappa.Exercise.Exercise.PerformExercise;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Set.SetFactory;
 
@@ -13,10 +14,11 @@ import java.util.List;
  *
  * @author abdullah
  * @version 0.1
+ * @layer 2
  */
 public class PerformWorkout {
     private String name;
-    private final List<Exercise<?>> exercises;
+    private final List<PerformExercise<?>> exercises;
     private final SetFactory setFactory;
     private LocalDateTime startTime;
     private LocalDateTime endTime;
@@ -29,13 +31,14 @@ public class PerformWorkout {
         this.name = template.getName();
         this.exercises = new ArrayList<>();
         this.setFactory = new SetFactory();
-        for(ExerciseTemplate exerciseTemplate : template.getExercises()) {
+        // Dependency inversion to ensure no violation of clean :-)
+        for(CreatableExercise exerciseTemplate : template.getExercises()) {
             this.exercises.add(exerciseTemplate.create());
         }
     }
 
 
-    public List<Exercise<?>> getExercises() {
+    public List<PerformExercise<?>> getExercises() {
         return this.exercises;
     }
 
@@ -131,7 +134,7 @@ public class PerformWorkout {
      */
     public double volume() {
         double vol = 0;
-        for(Exercise<?> e : exercises) {
+        for(PerformExercise<?> e : exercises) {
             vol += e.volume();
         }
         return vol;

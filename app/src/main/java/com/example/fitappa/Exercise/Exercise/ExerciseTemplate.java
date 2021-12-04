@@ -14,8 +14,9 @@ import java.io.Serializable;
  *
  * @author abdullah
  * @version 0.1
+ * @layer 1.
  */
-public class ExerciseTemplate implements Serializable {
+public class ExerciseTemplate implements Serializable, CreatableExercise {
     protected String name;
     protected int numSets;
     /* These values must be constant later
@@ -36,6 +37,20 @@ public class ExerciseTemplate implements Serializable {
     }
 
     /**
+     * Factory Design Pattern for Exercise objects.
+     * Note that this method was implemented due to the CreatableExercise interface
+     * @return the appropriate Exercise object based on this.category
+     */
+    public PerformExercise<?> create() {
+        if (this.category.equals("REP"))
+            return new PerformExercise<RepSet>(this.name, this.category);
+        else if (this.category.equals("WEIGHTED"))
+            return new PerformExercise<WeightedSet>(this.name, this.category);
+        else
+            return new PerformExercise<TimedSet>(this.name, this.category);
+    }
+
+    /**
      * Empty constructor needed by firebase
      */
     @SuppressWarnings("unused")
@@ -51,19 +66,6 @@ public class ExerciseTemplate implements Serializable {
     public ExerciseTemplate(String name) {
         this.name = name;
         this.numSets = 0;
-    }
-
-    /**
-     * Factory Design Pattern for Exercise objects.
-     * @return the appropriate Exercise object based on this.category
-     */
-    public Exercise<?> create() {
-        if (this.category.equals("REP"))
-            return new Exercise<RepSet>(this.name);
-        else if (this.category.equals("WEIGHTED"))
-            return new Exercise<WeightedSet>(this.name);
-        else
-            return new Exercise<TimedSet>(this.name);
     }
 
     /**
