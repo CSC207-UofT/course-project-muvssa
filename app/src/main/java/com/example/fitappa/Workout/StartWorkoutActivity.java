@@ -40,6 +40,8 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
     private Profile profile;
     LinearLayout.LayoutParams params;
 
+
+    // TODO: Clean this mess
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_workout);
@@ -49,8 +51,8 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         // dummy data
         Routine r = new Routine("MMA routine");
         WorkoutTemplate w = new WorkoutTemplate("High Intensity");
-        ExerciseTemplate e1 = new ExerciseTemplate("Go crazy", 0, "REP");
-        ExerciseTemplate e2 = new ExerciseTemplate("Go wild", 0, "WEIGHTED");
+        ExerciseTemplate e1 = new ExerciseTemplate("Go crazy (Rep)", 0, "REP");
+        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Weight)", 0, "WEIGHTED");
         w.addExercise(e1);
         w.addExercise(e2);
         r.addWorkout(w);

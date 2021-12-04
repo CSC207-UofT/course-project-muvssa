@@ -1,6 +1,7 @@
 package com.example.fitappa.Workout;
 
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +19,9 @@ import java.util.Objects;
 
 /**
  *
- *
+ * The page responsible for tracking workouts
+ * @author abdullah
+ * @version 0.1
  * @layer 4
  */
 public class TrackWorkoutActivity extends AppCompatActivity implements TrackWorkoutPresenter.View {
@@ -36,10 +39,10 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         this.presenter = new TrackWorkoutPresenter(this, getIntent().getSerializableExtra(getString(R.string.WorkoutObject)));
     }
 
-
     /**
      *
-     * @param title
+     * Update the app's title bar
+     * @param title of the app
      */
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
@@ -48,15 +51,14 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
 
     /**
      * Update the title of this page with the workout name
-     * @param workoutTitle -
+     * @param workoutTitle title of the workout
      */
     public void updateTitle(String workoutTitle) {
         ((TextView) findViewById(R.id.WorkoutNameText)).setText(workoutTitle);
     }
 
     /**
-     *
-     * @param workout !!
+     *  Populate the layout with the exercises in workout
      */
     public void populateLayout(PerformWorkout workout) {
         LinearLayout exerciseLayout = findViewById(R.id.ExerciseContainer);
@@ -67,6 +69,11 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         }
     }
 
+    /**
+     * builds an Exercise Component
+     * @param exerciseLayout the layout to attach exercise component to
+     * @param e the exercise for which the component is created for
+     */
     private void buildExerciseComponent(LinearLayout exerciseLayout, PerformExercise<?> e) {
         CardView cardView = new CardView(this);
         cardView.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1));
@@ -84,9 +91,6 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         // Attach
         exerciseLayout.addView(cardView);
 
-        // Set
-
-
         // Button
         Button addSetBtn = new Button(this);
         addSetBtn.setLayoutParams(new LinearLayout.LayoutParams(
@@ -101,8 +105,13 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     }
 
 
-    public LinearLayout buildExerciseBody(String s) {
-        switch (s) {
+    /**
+     * Build the exercise body
+     * @param category category of the exercise
+     * @return ExerciseBody
+     */
+    private LinearLayout buildExerciseBody(String category) {
+        switch (category) {
             case "WEIGHTED":
                 return buildWeightedExerciseBody();
             case "TIMED":
@@ -112,7 +121,12 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         }
     }
 
-    public void addSetToExercise(String category, LinearLayout exerciseBody) {
+    /**
+     * This adds a Set view into the exercise's view
+     * @param category of the exercise
+     * @param exerciseBody the body to attach it to
+     */
+    private void addSetToExercise(String category, LinearLayout exerciseBody) {
         switch (category) {
             case "WEIGHTED":
                 addWeightedSetToExercise(exerciseBody);
@@ -123,21 +137,35 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         }
     }
 
+    /**
+     * Adds a set to timed exercise body
+     * @param exerciseBody the exercise body
+     */
     private void addTimedSetToExercise(LinearLayout exerciseBody) {
-        // TODO:
+        // TODO: someone do it on their free time, or else removed timed exercises from the app
         return;
     }
 
+    /**
+     *  Adds a set to weighted exercise body
+     * @param exerciseBody the exercise body
+     */
     private void addWeightedSetToExercise(LinearLayout exerciseBody) {
-        // TODO:
+        // TODO: i will do it
         return;
     }
 
+    /**
+     * Adds a set to rep exercise body
+     * @param exerciseBody the exercise body
+     */
     private void addRepSetToExercise(LinearLayout exerciseBody) {
         LinearLayout setRow = buildLinearLayout(LinearLayout.HORIZONTAL);
-        ((ViewGroup.MarginLayoutParams) setRow.getLayoutParams()).topMargin = 25;
+        ((ViewGroup.MarginLayoutParams) setRow.getLayoutParams()).topMargin = 10;
 
-        setRow.addView(buildText("1", 900/2));
+        TextView setText = buildText("1", 900/2);
+        setText.setGravity(Gravity.CENTER);
+        setRow.addView(setText);
 
         EditText rep = new EditText(this);
         rep.setWidth(900/2);
@@ -147,8 +175,10 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     }
 
 
-
-
+    /**
+     * build an exercise body for rep exercise
+     * @return LinearLayout
+     */
     private LinearLayout buildRepExerciseBody() {
 
         LinearLayout exerciseBody = buildLinearLayout(LinearLayout.VERTICAL);
@@ -158,14 +188,22 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
 
         // Title Row
         ((ViewGroup.MarginLayoutParams) titleRow.getLayoutParams()).topMargin = 25;
-        titleRow.addView(buildText("Set", 900/2));
-        //titleRow.addView(buildText(getString(R.string.WeightUnit), 300));
-        titleRow.addView(buildText("reps", 900/2));
+        TextView setText = buildText("Set", 900/2);
+        setText.setGravity(Gravity.CENTER);
+        titleRow.addView(setText);
+
+        TextView repText = buildText("reps", 900/2);
+        repText.setGravity(Gravity.CENTER);
+        titleRow.addView(repText);
 
         return exerciseBody;
 
     }
 
+    /**
+     * build an exercise body for weighted exercise
+     * @return LinearLayout
+     */
     private LinearLayout buildWeightedExerciseBody() {
         LinearLayout exerciseBody = buildLinearLayout(LinearLayout.VERTICAL);
         LinearLayout titleRow = buildLinearLayout(LinearLayout.HORIZONTAL);
@@ -178,11 +216,20 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         return exerciseBody;
     }
 
+    /**
+     * builds the body for a timed exercise
+     * @return LinearLayout
+     */
     private LinearLayout buildTimedExerciseBody() {
-        // TODO:
+        // TODO: someone do it on their free time, or else removed timed exercises from the app
         return null;
     }
 
+    /**
+     *  Helper method to create LinearLayout
+     * @param orientation (vertical or horizontal)
+     * @return LinearLayout
+     */
     private LinearLayout buildLinearLayout(int orientation) {
         LinearLayout linearLayout = new LinearLayout(this);
         linearLayout.setOrientation(orientation);
@@ -192,37 +239,13 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         return linearLayout;
     }
 
+
     /**
-     * A set component is defined as:
-     *
-     *  LinearLayout (H)
-     * 	    - TextView
-     * 	    - EditText
-     * 	    - EditText
-     *
-     * @return a set component
+     * Helper method to create TextViews
+     * @param title title of the textview
+     * @param width of the textview
+     * @return TextView
      */
-    private LinearLayout buildSetComponent() {
-        LinearLayout setComponent = new LinearLayout(this);
-        setComponent.setOrientation(LinearLayout.HORIZONTAL);
-        setComponent.setLayoutParams(new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-
-        setComponent.addView(buildText("1", 300));
-
-        EditText weight = new EditText(this);
-        weight.setWidth(300);
-        setComponent.addView(weight);
-
-        EditText reps = new EditText(this);
-        reps.setWidth(300);
-        setComponent.addView(reps);
-
-        return setComponent;
-
-    }
-
     private TextView buildText(String title, int width) {
        TextView t = new TextView(this);
        t.setText(title);

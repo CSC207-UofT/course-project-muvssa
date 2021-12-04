@@ -17,6 +17,11 @@ public class TrackWorkoutPresenter {
     private PerformWorkout performWorkout;
     private final String PAGE_TITLE = "Start Workout";
 
+    /**
+     * Constructor for TrackWorkoutPresenter
+     * @param view reps the view
+     * @param template reps the workout template
+     */
     public TrackWorkoutPresenter(View view, Serializable template) {
 
         WorkoutTemplate workoutTemplate = (WorkoutTemplate) template;
