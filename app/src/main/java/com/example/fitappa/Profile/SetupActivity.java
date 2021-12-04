@@ -11,9 +11,12 @@ import com.example.fitappa.R;
 
 
 /**
- * This class is a view class meant to open the activity_setup
- * <p>
- * The method in the class moves the information to DashboardActivity
+ * This class is a view class meant to open the activity_setup xml, and allow users to change information they previously
+ * inputted
+ *
+ * The method in the class moves the information the user inputs to DashboardActivity
+ *
+ * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
  * @since 0.1

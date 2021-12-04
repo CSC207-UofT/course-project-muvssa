@@ -2,6 +2,19 @@ package com.example.fitappa.Profile;
 
 import java.io.Serializable;
 
+/**
+ * This class is an entity class storing a lot of the User's information as Strings
+ *
+ * The method in the class involved getting and setting all the Strings
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Souren
+ * @author Uthman
+ *
+ * @since 2.9
+ */
+
 class User implements Serializable {
 
     private String email;

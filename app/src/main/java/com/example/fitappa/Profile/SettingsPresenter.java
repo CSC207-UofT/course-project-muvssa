@@ -1,9 +1,11 @@
 package com.example.fitappa.Profile;
 
 /**
- * This class is a presenter class for ViewSettingActivity
- * <p>
+ * This class is a presenter class  meant to send and receive information from the back end to help ViewSettingActivity
+ *
  * The methods in this class help move information to and from the ViewSettingActivity class
+ *
+ * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
  * @since 0.1

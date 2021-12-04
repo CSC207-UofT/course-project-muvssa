@@ -3,6 +3,14 @@ package com.example.fitappa.Exercise.Set;
 /**
  * A weighted set stores information about the number of reps,
  * the magnitude of the weight in LB.
+ *
+ * The methods help initialize what a weighted set should be
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ *
+ * @since 0.2
  */
 public class WeightedSet extends RepSet implements Set {
 

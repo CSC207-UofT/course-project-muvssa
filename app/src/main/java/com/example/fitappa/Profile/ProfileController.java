@@ -2,6 +2,18 @@ package com.example.fitappa.Profile;
 
 import java.util.Observable;
 
+/**
+ * This class is a controller class meant to open facilitate an observer observable design patter to add followers
+ * to peoples profiles.
+ *
+ * The method in the class implement an observer observable design pattern
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Souren
+ * @since 0.6
+ */
+
 class ProfileController extends Observable {
 
     // declaring a list of integer

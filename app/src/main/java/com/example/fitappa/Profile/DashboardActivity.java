@@ -13,6 +13,17 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
+/**
+ * This class is a view class meant to open the activity_dashboard xml, a hub between other pages in the app
+ *
+ * The method in the class allow the user to go to ViewProfileActivity, MainActivity, or StartWorkoutActivity
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author
+ * @since 0.6
+ */
+
 public class DashboardActivity extends AppCompatActivity {
     private Profile profile;
 

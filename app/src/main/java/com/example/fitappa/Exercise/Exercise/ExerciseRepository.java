@@ -11,6 +11,10 @@ import java.util.List;
 /**
  * This class serves as a gateway between database & ExerciseTemplates
  *
+ * The methods move the data between database and the ExerciseTemplates
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
  * @author Uthman
  * @author Abdullah
  * @version 0.1

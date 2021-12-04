@@ -9,6 +9,17 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+/**
+ * This class is a use case class meant to create a Routine object to hold a list of workouts
+ *
+ * The method in the class allow the creation and interaction with a Routine holding multiple workouts
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.7
+ */
+
 public class Routine implements Serializable, Iterable<WorkoutTemplate> {
     private String name;
     private List<WorkoutTemplate> workoutTemplates;

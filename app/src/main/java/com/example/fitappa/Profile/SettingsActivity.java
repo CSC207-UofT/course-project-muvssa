@@ -12,9 +12,11 @@ import com.example.fitappa.R;
 
 
 /**
- * This class is a view class meant to open the activity_setting
+ * This class is a view class meant to open the activity_setting xml
  * <p>
  * The method in the class updated a users extra information
+ *
+ * The documentation specifies what each method does
  *
  * @author Souren
  * @since 0.1

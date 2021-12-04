@@ -16,6 +16,13 @@ import java.util.Objects;
 
 /**
  * This activity is activated when the user selects login from the MainActivity and wants to log in to an account
+ *
+ * The class's methods allow the user to implement login info
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Uthman
+ * @since 0.2
  */
 public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private EditText passwordField;

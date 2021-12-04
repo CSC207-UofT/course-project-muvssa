@@ -19,7 +19,15 @@ import java.util.Objects;
 /**
  * This is the MainActivity, and is the first activity that is shown when the user starts the program.
  * <p>
- * This activity gives the user two options, either login, or signup, and leads them to the corresponding activities.
+ * This activity's methods gives the user two options, either login, or signup, and leads them to the corresponding
+ * activities.
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Uthman
+ * @author Souren
+ * @author Abdullah
+ * @since 0.2
  */
 public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
     private GatewayInteractor presenter;

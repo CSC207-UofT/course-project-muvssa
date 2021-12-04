@@ -5,8 +5,14 @@ import com.example.fitappa.Profile.Profile;
 /**
  * This class is an abstract class extended by presenters that update an activity after retrieving a profile
  * from the database.
- * The class also contains an interface which represents a view that allows this class to call its method and open
+ *
+ * The class's methods use an interface which represents a view that allows this class to call its method and open
  * and activity with the profile.
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Uthman
+ * @since 0.2
  */
 public abstract class GatewayInteractor {
     /**

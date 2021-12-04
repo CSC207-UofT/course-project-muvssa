@@ -18,6 +18,17 @@ import com.example.fitappa.Routine.Routine;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This class is a view class meant to open the activity_view_workout xml, a place for the user to view their Workouts
+ *
+ * The method in the class allow the user to go and view other Workouts or create more
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.3
+ */
+
 public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkoutPresenter.View, ExerciseRepository.View {
     private ViewWorkoutPresenter presenter;
     private LinearLayout exerciseLayout;

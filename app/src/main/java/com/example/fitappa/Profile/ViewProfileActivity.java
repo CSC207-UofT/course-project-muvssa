@@ -15,6 +15,21 @@ import java.util.Objects;
 import java.util.Observable;
 import java.util.Observer;
 
+/**
+ * This class is a view class meant to open the activity_profiles xml, representing a GUI of the users profile
+ *
+ * The method in the class allow a user to interact with their profile, such as following, changing settings,
+ * searching, etc
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Souren
+ * @author Uthman
+ * @author Abdullah
+ *
+ * @since 2.2
+ */
+
 public class ViewProfileActivity extends AppCompatActivity implements Observer, OpensActivityWithProfile {
     private Profile myProfile;
     private Profile profile;

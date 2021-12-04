@@ -6,6 +6,8 @@ package com.example.fitappa.Exercise.Set;
  * skipping ropes, jumping jacks, and etc. Exercises where there is
  * not much work being done.
  *
+ * The documentation in this class give a specification on what the methods do
+ *
  * @author abdullah
  * @version 0.1
  */

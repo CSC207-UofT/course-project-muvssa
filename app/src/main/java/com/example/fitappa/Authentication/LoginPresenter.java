@@ -4,8 +4,14 @@ import android.widget.EditText;
 
 /**
  * This is a presenter for the LoginActivity.
- * This class is a gateway interactor since it interacts with a gateway and retrieves data from a database
+ *
+ * The methods in this class is a gateway interactor since it interacts with a gateway and retrieves data from a database
  * It also determines what error message to display to the user.
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Uthman
+ * @since 0.2
  */
 class LoginPresenter extends GatewayInteractor {
     private final LoginGateway gateway;

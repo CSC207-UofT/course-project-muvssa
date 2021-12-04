@@ -9,8 +9,10 @@ import java.io.Serializable;
  *
  * This class stores a template of an exercise.
  *
- * The template can create an Exercise object using the
+ * The methods create a template which can create an Exercise object using the
  * factory design pattern.
+ *
+ * The documentation in this class give a specification on what the methods do
  *
  * @author abdullah
  * @version 0.1

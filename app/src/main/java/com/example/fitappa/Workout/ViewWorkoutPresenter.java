@@ -6,6 +6,17 @@ import com.example.fitappa.Routine.Routine;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This class is a presenter class  meant to send and receive information from the back end to help ViewWorkoutActivity
+ *
+ * The methods in this class help move information to and from the ViewWorkoutActivity class
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.3
+ */
+
 class ViewWorkoutPresenter {
     private final View view;
     private final WorkoutTemplate workoutTemplate;

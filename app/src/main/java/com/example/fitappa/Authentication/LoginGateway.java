@@ -7,7 +7,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * This class is a gateway that accesses the database and signs in the user given their email and password
  * as credentials.
+ *
+ * The class's methods allow users to fetch information from the database
+ *
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Uthman
+ * @since 0.2
  */
+
 class LoginGateway {
     private final GatewayInteractor presenter;
     private final DatabaseConstants constants;

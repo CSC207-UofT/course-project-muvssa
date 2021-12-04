@@ -10,8 +10,10 @@ import java.util.List;
 /**
  * Represents the Track Workout Use Case.
  *
- * Fundamentally, this class should enable you to track workouts and store
+ * The methods in this class should enable you to track workouts and store
  * them in history.
+ *
+ * The documentation in this class give a specification on what the methods do
  *
  * @author abdullah
  * @version 0.1

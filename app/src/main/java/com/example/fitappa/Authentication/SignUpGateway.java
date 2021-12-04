@@ -4,6 +4,7 @@ import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+// ToDo add author, since and other doc details
 
 /**
  * This class is a gateway that deals with signing up a user with the database given an email, username, and password
