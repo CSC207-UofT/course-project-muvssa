@@ -56,12 +56,7 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
         Button enter = findViewById(R.id.submit);
 
         enter.setOnClickListener(v ->
-                presenter.setUp(
-                        weightText.getText().toString().trim(),
-                        heightText.getText().toString().trim(),
-                        firstNameText.getText().toString().trim(),
-                        lastNameText.getText().toString().trim()
-                )
+                presenter.setUp( weightText, heightText, firstNameText, lastNameText)
         );
     }
 

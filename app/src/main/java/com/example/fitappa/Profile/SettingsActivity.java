@@ -67,9 +67,8 @@ public class SettingsActivity extends AppCompatActivity implements SettingsPrese
         lastText.setText("Your last name is: " + presenter.getSettingLastName());
 
         TextView submit = findViewById(R.id.submitSettings);
-
-        submit.setOnClickListener(v -> presenter.changeSettings(weightInput.getText().toString(),
-                heightInput.getText().toString(), firstInput.getText().toString(), lastInput.getText().toString()));
+        submit.setOnClickListener(v -> presenter.changeSettings(weightInput,
+                heightInput, firstInput, lastInput));
 
     }
 
