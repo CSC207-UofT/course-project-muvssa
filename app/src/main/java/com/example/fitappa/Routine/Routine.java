@@ -1,6 +1,7 @@
 package com.example.fitappa.Routine;
 
 import androidx.annotation.NonNull;
+
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
@@ -11,9 +12,9 @@ import java.util.NoSuchElementException;
 
 /**
  * This class is a use case class meant to create a Routine object to hold a list of workouts
- *
+ * <p>
  * The method in the class allow the creation and interaction with a Routine holding multiple workouts
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Abdullah
@@ -27,6 +28,7 @@ public class Routine implements Serializable, Iterable<WorkoutTemplate> {
     // Empty constructor necessary for Firebase
     @SuppressWarnings("unused")
     public Routine() {
+        workoutTemplates = new ArrayList<>();
     }
 
     /**
@@ -58,22 +60,21 @@ public class Routine implements Serializable, Iterable<WorkoutTemplate> {
     }
 
     /**
-     * Gets the list of workouts
-     *
-     * @return list of workouts for the Routine
-     */
-    // TODO: Remove this since unnecessary now with iterator
-    public List<WorkoutTemplate> getWorkouts() {
-        return workoutTemplates;
-    }
-
-    /**
      * Sets the Routine's workouts to new ones given
      *
      * @param workoutTemplates list of new workouts
      */
-    public void setWorkouts(ArrayList<WorkoutTemplate> workoutTemplates) {
+    public void setWorkouts(List<WorkoutTemplate> workoutTemplates) {
         this.workoutTemplates = workoutTemplates;
+    }
+
+    /**
+     * Get the size of the workouts in this routine
+     *
+     * @return integer size of the workouts in this routine
+     */
+    public int size() {
+        return workoutTemplates.size();
     }
 
     /**
@@ -92,26 +93,6 @@ public class Routine implements Serializable, Iterable<WorkoutTemplate> {
      */
     public void removeWorkout(String name) {
         this.workoutTemplates.removeIf(workout -> workout.getName().equals(name));
-    }
-
-    /**
-     * Remove every single workout from the Routine
-     */
-    public void removeAllWorkouts() {
-        this.workoutTemplates.clear();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof Routine))
-            return false;
-        Routine routine = (Routine) o;
-        // erroring as when you want to update a specfic routine it could have diffrent workouts
-        //return name.equals(routine.name) && description.equals(routine.description) &&
-        //        workouts.equals(routine.workouts);
-        return name.equals(routine.name);
     }
 
     /**

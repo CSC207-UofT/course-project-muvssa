@@ -72,20 +72,5 @@ public class WorkoutTemplate implements Serializable {
     }
 
 
-    // TODO: Whoever created this method, please add the javadocs
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof WorkoutTemplate))
-            return false;
-        WorkoutTemplate workoutTemplate = (WorkoutTemplate) o;
-        // erroring as when you want to update a specific routine it could have different workouts
-        // return name.equals(routine.name) && description.equals(routine.description) &&
-        //        workouts.equals(routine.workouts);
-        return name.equals(workoutTemplate.getName());
-    }
-
-
 }
 

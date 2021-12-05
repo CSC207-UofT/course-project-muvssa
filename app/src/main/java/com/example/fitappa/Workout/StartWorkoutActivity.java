@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.DashboardActivity;
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Workout.CRUD.AddRoutineActivity;
@@ -143,15 +141,14 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         routineLayout.addView(routineName);
 
         // Linear Layout Per Workout
-        if(routine.getWorkouts().size() == 0) {
+        if (routine.size() == 0) {
             TextView noWorkouts = new TextView(this);
             noWorkouts.setText(getString(R.string.NoWorkoutInRoutine));
             noWorkouts.setPadding(0, 50, 0, 0);
             routineLayout.addView(noWorkouts);
         }
 
-        for(WorkoutTemplate workoutTemplate : routine.getWorkouts())
-        {
+        for (WorkoutTemplate workoutTemplate : routine) {
             createWorkoutLayout(routineLayout, workoutTemplate);
         }
 
