@@ -67,7 +67,7 @@ public class RoutinesGateway implements Loadable, Saveable {
      */
     @Override
     public void save(Object o) {
-        documentReference.set(o);
+        documentReference.collection("routines").add(o);
     }
 
 
