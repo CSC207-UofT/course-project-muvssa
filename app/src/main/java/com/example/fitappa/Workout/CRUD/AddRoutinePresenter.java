@@ -5,6 +5,7 @@ import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Routine.RoutinesGateway;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AddRoutinePresenter {
@@ -24,7 +25,9 @@ public class AddRoutinePresenter {
         // TODO @uthman this is where the save routine will happen
 
         Routine routine = new Routine(name);
-        gateway.save(routine);
+        List<Routine> routines = new ArrayList<>();
+        routines.add(routine);
+        gateway.save(routines);
         view.exitPage();
     }
 

@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -51,7 +52,12 @@ public class RoutinesGateway implements Loadable, Saveable {
         documentReference
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
-                    Routines routines = documentSnapshot.get("routines", Routines.class);
+                    Routines routines = null;
+                    try {
+                        routines = documentSnapshot.get("routines", Routines.class);
+                    } catch (RuntimeException ignored) {
+
+                    }
 
                     if (routines != null) {
                         // Call presenter method and pass retrieved routines
@@ -75,7 +81,7 @@ public class RoutinesGateway implements Loadable, Saveable {
 
 
     // Defines a way to retrieve data from firebase and cast to a List<Routine>
-    private static class Routines {
+    private static class Routines implements Serializable {
         private final List<Routine> routines = new ArrayList<>();
 
         private List<Routine> getRoutines() {
