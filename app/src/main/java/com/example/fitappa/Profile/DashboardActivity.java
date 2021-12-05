@@ -24,8 +24,8 @@ import java.util.Objects;
  * @since 0.6
  */
 
-public class DashboardActivity extends AppCompatActivity {
-    private Profile profile;
+public class DashboardActivity extends AppCompatActivity implements DashboardPresenter.View {
+    private DashboardPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -36,28 +36,41 @@ public class DashboardActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Dashboard");
-
-
-        Button logoutBtn = findViewById(R.id.LogoutBtn);
-        Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
-        Button startWorkoutBtn = findViewById(R.id.startWorkoutNav);
-        this.profile = (Profile) getIntent().getSerializableExtra("profile");
-
-        checkAuth();
-
-        // Listeners
-        openProfileBtn.setOnClickListener(v -> openProfile());
-        startWorkoutBtn.setOnClickListener(v -> openStartWorkout());
-        logoutBtn.setOnClickListener(v -> signOut());
-
+        this.presenter = new DashboardPresenter(this, getIntent().getSerializableExtra("profile"));
     }
+
+    // TODO: Javadocs @Whoever hasn't done much
+
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+    @Override
+    public void setupLogoutBtn(Profile profile) {
+        Button logoutBtn = findViewById(R.id.LogoutBtn);
+        logoutBtn.setOnClickListener(v -> signOut(profile));
+    }
+
+    @Override
+    public void setupWorkoutBtn(Profile profile) {
+        Button startWorkoutBtn = findViewById(R.id.startWorkoutNav);
+        startWorkoutBtn.setOnClickListener(v -> openStartWorkout(profile));
+    }
+
+    @Override
+    public void setupProfileBtn(Profile profile) {
+        Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
+        openProfileBtn.setOnClickListener(v -> openProfile(profile));
+    }
+
 
     /**
      * This method opens the MainActivity view if the user is not logged in.
      */
-    private void checkAuth() {
-        if (this.profile == null) {
+    @Override
+    public void checkAuth(Profile profile) {
+        if (profile == null) {
             FirebaseAuth.getInstance().signOut();
             goBackToMain();
         }
@@ -66,7 +79,7 @@ public class DashboardActivity extends AppCompatActivity {
     /**
      * Sign out the current Firebase user
      */
-    private void signOut() {
+    private void signOut(Profile profile) {
         // Remote
         FirebaseAuth.getInstance().signOut();
 
@@ -78,11 +91,11 @@ public class DashboardActivity extends AppCompatActivity {
     /**
      * This method opens the ProfileActivity View
      */
-    private void openProfile() {
-        Intent profile = new Intent(this, ViewProfileActivity.class);
-        profile.putExtra("persons_Profile", this.profile);
-        profile.putExtra("my_Profile", this.profile);
-        startActivity(profile);
+    private void openProfile(Profile profile) {
+        Intent profile1 = new Intent(this, ViewProfileActivity.class);
+        profile1.putExtra("persons_Profile", profile);
+        profile1.putExtra("my_Profile", profile);
+        startActivity(profile1);
     }
 
     /**
@@ -97,9 +110,9 @@ public class DashboardActivity extends AppCompatActivity {
     /**
      * This method opens the StartWorkout view
      */
-    private void openStartWorkout() {
+    private void openStartWorkout(Profile profile) {
         Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
-        startWorkout.putExtra("profile", this.profile);
+        startWorkout.putExtra("profile", profile);
         startActivity(startWorkout);
     }
 

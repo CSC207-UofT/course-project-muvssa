@@ -36,18 +36,6 @@ public class StartWorkoutPresenter implements LoadsRoutines {
         this.view = view;
         this.routines = new ArrayList<>();
         this.gateway = new RoutinesGateway(this);
-
-        // Dummy data! Replace me with gateway call when gateway is finished
-        Routine r = new Routine("MMA routine");
-        WorkoutTemplate w = new WorkoutTemplate("High Intensity");
-        ExerciseTemplate e1 = new ExerciseTemplate("Go crazy (Rep)", 0, "REP");
-        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Rep)", 0, "REP");
-        w.addExercise(e1);
-        w.addExercise(e2);
-        r.addWorkout(w);
-        routines.add(r);
-        this.currRoutine = r;
-
         // don't remove this!
         gateway.load();
         view.updateAppBarTitle(this.PAGE_TITLE);
