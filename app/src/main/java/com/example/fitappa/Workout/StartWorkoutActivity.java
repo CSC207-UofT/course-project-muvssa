@@ -7,7 +7,6 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -250,6 +249,9 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * Opens the AddWorkoutActivity view
      */
     private void openAddWorkout(Routine r) {
+        Intent i = new Intent(this, AddWorkoutActivity.class);
+        // pass a unique name
+        i.putExtra("routine", r.getName());
         startActivity(new Intent(this, AddWorkoutActivity.class));
     }
 

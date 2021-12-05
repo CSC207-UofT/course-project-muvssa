@@ -33,7 +33,7 @@ public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutP
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_workout);
-        this.presenter = new AddWorkoutPresenter(this);
+        this.presenter = new AddWorkoutPresenter(this, getIntent().getSerializableExtra("routine"));
     }
 
 
