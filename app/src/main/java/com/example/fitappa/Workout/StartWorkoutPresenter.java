@@ -40,7 +40,7 @@ public class StartWorkoutPresenter {
         Routine r = new Routine("MMA routine");
         WorkoutTemplate w = new WorkoutTemplate("High Intensity");
         ExerciseTemplate e1 = new ExerciseTemplate("Go crazy (Rep)", 0, "REP");
-        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Weight)", 0, "WEIGHTED");
+        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Rep)", 0, "REP");
         w.addExercise(e1);
         w.addExercise(e2);
         r.addWorkout(w);

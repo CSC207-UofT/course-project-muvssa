@@ -1,6 +1,8 @@
 package com.example.fitappa.Workout;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -69,6 +71,24 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         }
     }
 
+    @Override
+    public void setupCancel() {
+        Button cancelBtn = findViewById(R.id.CancelWorkoutBtn);
+        cancelBtn.setOnClickListener(v -> exit());
+    }
+
+    @Override
+    public void setupEnd() {
+        //Button endBtn = findViewById(R.id.EndWorkoutBtn);
+        //endBtn.setOnClickListener(v -> saveWorkouts());
+        return;
+    }
+
+
+    public void exit() {
+        startActivity(new Intent(this, StartWorkoutActivity.class));
+    }
+
     /**
      * builds an Exercise Component
      * @param exerciseLayout the layout to attach exercise component to
@@ -90,6 +110,9 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
 
         // Attach
         exerciseLayout.addView(cardView);
+
+        Integer numSet = 0;
+        exerciseBody.setTag(numSet);
 
         // Button
         Button addSetBtn = new Button(this);
@@ -163,17 +186,43 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         LinearLayout setRow = buildLinearLayout(LinearLayout.HORIZONTAL);
         ((ViewGroup.MarginLayoutParams) setRow.getLayoutParams()).topMargin = 10;
 
-        TextView setText = buildText("1", 900/2);
+        Integer numSet = (Integer) exerciseBody.getTag();
+        numSet++;
+        exerciseBody.setTag(numSet);
+
+        TextView setText = buildText(numSet.toString(), 900/3);
         setText.setGravity(Gravity.CENTER);
         setRow.addView(setText);
 
         EditText rep = new EditText(this);
-        rep.setWidth(900/2);
+        rep.setInputType(InputType.TYPE_CLASS_NUMBER);
+        rep.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        rep.setGravity(Gravity.CENTER);
+        rep.setWidth(900/3);
         setRow.addView(rep);
+
+        Button finish = new Button(this);
+        finish.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        finish.setOnClickListener(v -> finishSet(setRow));
+        finish.setWidth(900/3);
+        finish.setText("Done");
+        setRow.addView(finish);
+
 
         exerciseBody.addView(setRow);
     }
 
+    private void finishSet(LinearLayout setRow) {
+
+    }
+
+    private void finishSetRep(int rep) {
+
+    }
 
     /**
      * build an exercise body for rep exercise
@@ -188,13 +237,17 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
 
         // Title Row
         ((ViewGroup.MarginLayoutParams) titleRow.getLayoutParams()).topMargin = 25;
-        TextView setText = buildText("Set", 900/2);
+        TextView setText = buildText("Set", 900/3);
         setText.setGravity(Gravity.CENTER);
         titleRow.addView(setText);
 
-        TextView repText = buildText("reps", 900/2);
+        TextView repText = buildText("reps", 900/3);
         repText.setGravity(Gravity.CENTER);
         titleRow.addView(repText);
+
+        TextView finishText = buildText("Finish", 900/3);
+        finishText.setGravity(Gravity.CENTER);
+        titleRow.addView(finishText);
 
         return exerciseBody;
 
@@ -259,6 +312,8 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
 
        return t;
     }
+
+
 
 
 }

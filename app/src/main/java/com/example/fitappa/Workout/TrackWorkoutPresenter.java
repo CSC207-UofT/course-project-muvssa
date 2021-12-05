@@ -38,6 +38,8 @@ public class TrackWorkoutPresenter {
         this.view.populateLayout(workout);
         this.view.updateTitle(workout.getName());
         this.view.updateAppBarTitle(PAGE_TITLE);
+        this.view.setupCancel();
+        this.view.setupEnd();
     }
 
     /**
@@ -55,6 +57,8 @@ public class TrackWorkoutPresenter {
         void updateAppBarTitle(String title);
         void updateTitle(String workoutTitle);
         void populateLayout(PerformWorkout workout);
-        //void addSetToExercise(String identifier);
+        void setupCancel();
+        void setupEnd();
+
     }
 }
