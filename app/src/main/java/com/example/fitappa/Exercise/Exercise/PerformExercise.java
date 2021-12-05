@@ -19,18 +19,18 @@ import java.util.UUID;
  * @version 0.1
  */
 public class PerformExercise<T> implements Serializable {
-    private String name;
-    private List<T> sets;
-    private String category;
-    private UUID identifier;
+    private final String name;
+    private final List<T> sets;
+    private final Category category;
+    private final UUID identifier;
 
     /**
      * Constructor for a Exercise class, takes in all necessary variables needed to make a
      * Exercise
      *
-     * @param name   The String name referring to the name of the exercise
+     * @param name The String name referring to the name of the exercise
      */
-    public PerformExercise(String name, String category) {
+    public PerformExercise(String name, Category category) {
         this.name = name;
         this.category = category;
         this.sets = new ArrayList<>();
@@ -49,7 +49,7 @@ public class PerformExercise<T> implements Serializable {
      * Getter for category
      * @return this.category
      */
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 

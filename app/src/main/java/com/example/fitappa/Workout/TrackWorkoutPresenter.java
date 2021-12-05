@@ -12,17 +12,18 @@ import java.io.Serializable;
  * @version 0.1
  * @layer Presenter (Third)
  */
-public class TrackWorkoutPresenter {
-    private View view;
-    private PerformWorkout performWorkout;
+class TrackWorkoutPresenter {
+    private final View view;
+    private final PerformWorkout performWorkout;
     private final String PAGE_TITLE = "Start Workout";
 
     /**
      * Constructor for TrackWorkoutPresenter
-     * @param view reps the view
+     *
+     * @param view     reps the view
      * @param template reps the workout template
      */
-    public TrackWorkoutPresenter(View view, Serializable template) {
+    TrackWorkoutPresenter(View view, Serializable template) {
 
         WorkoutTemplate workoutTemplate = (WorkoutTemplate) template;
         this.view = view;
@@ -33,9 +34,10 @@ public class TrackWorkoutPresenter {
 
     /**
      * This method initializes the view
+     *
      * @param workout represents the workout
      */
-    public void initializePage(PerformWorkout workout) {
+    void initializePage(PerformWorkout workout) {
         this.view.populateLayout(workout);
         this.view.updateTitle(workout.getName());
         this.view.updateAppBarTitle(PAGE_TITLE);
@@ -46,11 +48,11 @@ public class TrackWorkoutPresenter {
     /**
      * This method adds a set to the workout being performed
      */
-    public void addSet(String identifier, int reps) {
+    void addSet(String identifier, int reps) {
         this.performWorkout.addSet(identifier, reps);
     }
 
-    public void finishWorkout() {
+    void finishWorkout() {
         this.performWorkout.finish();
         // TODO: @uthman save the performed workout
 
@@ -64,10 +66,15 @@ public class TrackWorkoutPresenter {
      */
     interface View {
         void updateAppBarTitle(String title);
+
         void updateTitle(String workoutTitle);
+
         void populateLayout(PerformWorkout workout);
+
         void setupCancel();
+
         void setupEnd();
+
         void exit();
     }
 }
