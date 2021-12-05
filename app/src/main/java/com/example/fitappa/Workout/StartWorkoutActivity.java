@@ -242,37 +242,15 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * This method opens the AddRoutineActivity View
      */
     private void openAddRoutine() {
-        Intent createRoutinesIntent = new Intent(this, AddRoutineActivity.class);
-        startActivityForResult(createRoutinesIntent, 1);
+        startActivity(new Intent(this, AddRoutineActivity.class));
     }
 
-    /**
-     * This method retrieves data from AddRoutineActivity view.
-     *
-     * @param requestCode represents the integer identification for the data
-     * @param resultCode  represents the result of the retrieve
-     * @param data        represents the data that is retrieved
-     */
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            presenter.addRoutine(data.getStringExtra("routineName"));
-        }
-
-        if (requestCode == 2 && resultCode == RESULT_OK) {
-            presenter.addWorkoutToRoutine(data.getStringExtra("workoutName"));
-        }
-
-    }
 
     /**
      * Opens the AddWorkoutActivity view
      */
     private void openAddWorkout(Routine r) {
-        Intent addWorkout = new Intent(this, AddWorkoutActivity.class);
-        this.presenter.setCurrentRoutine(r);
-        startActivityForResult(addWorkout, 2);
+        startActivity(new Intent(this, AddWorkoutActivity.class));
     }
 
 }

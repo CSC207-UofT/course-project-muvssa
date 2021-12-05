@@ -55,20 +55,6 @@ public class StartWorkoutPresenter {
     }
 
     /**
-     * Adds a routine the the user's profile and updates the view of the routines
-     *
-     * @param name represents the name of the routine as type String
-     */
-    void addRoutine(String name) {
-        Routine r = new Routine(name);
-        this.routines.add(r);
-        view.updateRoutinesView(r);
-
-        // TODO: save to database using gateway @uthman
-
-    }
-
-    /**
      * sets current routine
      * @param r current routine
      */
@@ -82,6 +68,9 @@ public class StartWorkoutPresenter {
      */
     public void addWorkoutToRoutine(String workoutName) {
         this.currRoutine.addWorkout(new WorkoutTemplate(workoutName));
+
+        // TODO @uthman save routine here
+
         this.view.displayRoutines(this.routines);
     }
 

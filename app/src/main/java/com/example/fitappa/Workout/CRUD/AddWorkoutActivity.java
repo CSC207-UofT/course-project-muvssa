@@ -22,11 +22,8 @@ import java.util.Objects;
  * @since 0.3
  */
 
-public class AddWorkoutActivity extends AppCompatActivity {
-    private EditText workoutNameField;
-
-    // TODO: Use presenter
-
+public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutPresenter.View {
+    private AddWorkoutPresenter presenter;
     /**
      * This method is called when the activity starts.
      *
@@ -36,27 +33,28 @@ public class AddWorkoutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_workout);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Workout");
+        this.presenter = new AddWorkoutPresenter(this);
+    }
 
-        // Initialize UI
+
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+    @Override
+    public void setupAddWorkoutButton() {
         Button addWorkoutBtn = findViewById(R.id.CreateWorkoutBtn2);
-        this.workoutNameField = findViewById(R.id.WorkoutNameField);
+        EditText workoutNameField = findViewById(R.id.WorkoutNameField);
+        addWorkoutBtn.setOnClickListener(
+                v -> presenter.addWorkoutTemplate(workoutNameField.getText().toString()));
+    }
 
-        addWorkoutBtn.setOnClickListener(v -> goBack(workoutNameField.getText().toString()));
+    @Override
+    public void exitPage() {
+        startActivity(new Intent(this, StartWorkoutActivity.class));
 
     }
 
-    /**
-     * This method opens the ViewRoutinesActivity and passes back
-     * workoutName to it.
-     *
-     * @param workoutName the name of the workout that was created
-     */
-    private void goBack(String workoutName) {
-        Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
-        startWorkout.putExtra("workoutName", workoutName);
-        setResult(RESULT_OK, startWorkout);
-        finish();
-    }
 
 }
