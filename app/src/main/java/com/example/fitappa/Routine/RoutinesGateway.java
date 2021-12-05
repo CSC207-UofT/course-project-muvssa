@@ -6,11 +6,12 @@ import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.CRUD.AddRoutinePresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Gateway class for Routines that implements Loadable and Saveable so it can load and save
@@ -23,15 +24,20 @@ import java.util.List;
 public class RoutinesGateway implements Loadable, Saveable {
 
     private final AddRoutinePresenter presenter;
-    private final FirebaseUser firebaseUser;
-    private final CollectionReference collectionReference;
+    private final DocumentReference documentReference;
 
     public RoutinesGateway(AddRoutinePresenter presenter) {
-        DatabaseConstants constants = new DatabaseConstants();
         this.presenter = presenter;
-        this.firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        this.collectionReference = FirebaseFirestore.getInstance()
-                .collection(constants.getUsersCollection());
+
+        // Get firebase user
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        DatabaseConstants constants = new DatabaseConstants();
+
+        // get the document reference for the current user
+        documentReference = FirebaseFirestore.getInstance()
+                .collection(constants.getUsersCollection())
+                .document(Objects.requireNonNull(firebaseUser).getUid());
     }
 
     /**
@@ -39,18 +45,17 @@ public class RoutinesGateway implements Loadable, Saveable {
      */
     @Override
     public void load() {
-        collectionReference
-                .document(firebaseUser.getUid())
+        documentReference
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
                     Routines routines = documentSnapshot.get("routines", Routines.class);
 
                     if (routines != null) {
                         // Call presenter method and pass retrieved routines
-                        presenter.doSomethingWithRoutines(routines.getRoutines());
+                        // INSERT PRESENTER METHOD HERE
                     } else {
                         // Pass null to presenter method if there was a failure in retrieving routines
-                        presenter.doSomethingWithRoutines(null);
+                        // INSERT PRESENTER METHOD HERE
                     }
                 });
     }
@@ -62,11 +67,7 @@ public class RoutinesGateway implements Loadable, Saveable {
      */
     @Override
     public void save(Object o) {
-        CollectionReference collectionReference = FirebaseFirestore.getInstance()
-                .collection("users");
-
-        collectionReference.document(firebaseUser.getUid())
-                .set(o);
+        documentReference.set(o);
     }
 
 
