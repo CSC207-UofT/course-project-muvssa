@@ -3,7 +3,6 @@ package com.example.fitappa.Routine;
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
-import com.example.fitappa.Workout.StartWorkoutPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,14 +24,17 @@ import java.util.Objects;
 public class RoutinesGateway implements Loadable, Saveable {
 
     private final DocumentReference documentReference;
-    private StartWorkoutPresenter presenter;
+    private final LoadsRoutines presenter;
 
-    public RoutinesGateway(StartWorkoutPresenter presenter) {
-        this();
+    /**
+     * Constructor used when needing to load routines from a database and call a method
+     * from presenter to use them
+     *
+     * @param presenter StartWorkoutPresenter that allows the program to use the routines
+     */
+    public RoutinesGateway(LoadsRoutines presenter) {
         this.presenter = presenter;
-    }
 
-    public RoutinesGateway() {
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -45,7 +47,7 @@ public class RoutinesGateway implements Loadable, Saveable {
     }
 
     /**
-     * load an object from a database
+     * load in routines from the database for the current user logged in
      */
     @Override
     public void load() {
@@ -60,13 +62,13 @@ public class RoutinesGateway implements Loadable, Saveable {
                     }
 
                     if (routines != null) {
-                        presenter.doSomethingWithRoutines(routines.getRoutines());
+                        presenter.loadRoutines(routines.getRoutines());
                     }
                 });
     }
 
     /**
-     * Save object into some database
+     * Save routines into the database for the current user
      *
      * @param o object to be saved
      */
@@ -74,6 +76,7 @@ public class RoutinesGateway implements Loadable, Saveable {
     public void save(Object o) {
         // Initialize Routines object to pass in appropriate format
         Routines routines = new Routines();
+        //noinspection rawtypes
         for (Object object : (List) o) {
             routines.add((Routine) object);
         }

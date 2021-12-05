@@ -2,6 +2,7 @@ package com.example.fitappa.Workout;
 
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
+import com.example.fitappa.Routine.LoadsRoutines;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Routine.RoutinesGateway;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
@@ -19,7 +20,7 @@ import java.util.List;
  * @author abdullah
  * @version 0.1
  */
-public class StartWorkoutPresenter {
+public class StartWorkoutPresenter implements LoadsRoutines {
     private final View view;
     private final String PAGE_TITLE = "Start Workout";
     private final Loadable gateway;
@@ -53,7 +54,8 @@ public class StartWorkoutPresenter {
         view.initializeAddRoutine();
     }
 
-    public void doSomethingWithRoutines(List<Routine> routines) {
+    @Override
+    public void loadRoutines(List<Routine> routines) {
         view.displayRoutines(routines);
     }
 
