@@ -40,7 +40,6 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
     private Profile profile;
     LinearLayout.LayoutParams params;
 
-
     // TODO: Clean this mess
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
