@@ -15,9 +15,9 @@ import java.util.Objects;
 /**
  * This class is a view class meant to open the activity_add_routine xml, allowing users to interact with a Routine
  * which is a list of workouts
- *
+ * <p>
  * The method in the class allow users to interact and create routines
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Abdullah
@@ -26,6 +26,8 @@ import java.util.Objects;
 
 public class AddRoutineActivity extends AppCompatActivity implements AddRoutinePresenter.View {
     private AddRoutinePresenter presenter;
+    private EditText routineName;
+
     /**
      * This method is called when the activity starts.
      *
@@ -42,10 +44,20 @@ public class AddRoutineActivity extends AppCompatActivity implements AddRoutineP
 
     /**
      * This method opens the ViewRoutinesActivity View
-     *
      */
     public void exitPage() {
         startActivity(new Intent(this, StartWorkoutActivity.class));
+    }
+
+    /**
+     * Set an error for the routine name text field with a given error message
+     *
+     * @param message String error message to display for the routine text
+     */
+    @Override
+    public void setError(String message) {
+        routineName.setError(message);
+        routineName.requestFocus();
     }
 
     @Override
@@ -56,7 +68,7 @@ public class AddRoutineActivity extends AppCompatActivity implements AddRoutineP
     @Override
     public void setupAddRoutineButton() {
         Button submitBtn = findViewById(R.id.SaveRoutineBtn);
-        EditText routineName = findViewById(R.id.RoutineNameField);
+        routineName = findViewById(R.id.RoutineNameField);
         submitBtn.setOnClickListener(v -> presenter.addRoutine(routineName.getText().toString()));
     }
 }

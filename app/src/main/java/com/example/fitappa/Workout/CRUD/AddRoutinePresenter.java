@@ -7,13 +7,13 @@ import com.example.fitappa.Routine.RoutinesGateway;
 
 import java.util.List;
 
-public class AddRoutinePresenter implements LoadsRoutines {
+class AddRoutinePresenter implements LoadsRoutines {
     private final String PAGE_TITLE = "Add Routine";
     private final View view;
     private final RoutinesGateway gateway;
     private String name;
 
-    public AddRoutinePresenter(View view) {
+    AddRoutinePresenter(View view) {
         this.view = view;
         this.gateway = new RoutinesGateway(this);
         this.view.updateAppBarTitle(PAGE_TITLE);
@@ -21,7 +21,7 @@ public class AddRoutinePresenter implements LoadsRoutines {
     }
 
 
-    public void addRoutine(String name) {
+    void addRoutine(String name) {
         this.name = name;
         gateway.load();
     }
@@ -35,9 +35,34 @@ public class AddRoutinePresenter implements LoadsRoutines {
     @Override
     public void loadRoutines(List<Routine> routines) {
         Routine routine = new Routine(name);
-        routines.add(routine);
-        gateway.save(routines);
-        view.exitPage();
+        if (name.length() == 0) {
+            view.setError("Please enter a name");
+        } else if (routines.size() >= 3) {
+            view.setError("Unable to add routine. Please go back and remove a routine then try again");
+        } else if (!isUniqueRoutineIn(name, routines)) {
+            view.setError("Routine with the name \"" + name + "\" already exists");
+        } else {
+            routines.add(routine);
+            gateway.save(routines);
+            view.exitPage();
+        }
+
+    }
+
+    /**
+     * Checks to see if the given name represents a unique routine name in the given routines
+     * list
+     *
+     * @param name     String name of the routine to check uniqueness for
+     * @param routines List of routines to check if the routine is unique
+     * @return true iff the name represents a unique routine in the routines list
+     */
+    private boolean isUniqueRoutineIn(String name, List<Routine> routines) {
+        for (Routine routine : routines) {
+            if (routine.getName().equals(name))
+                return false;
+        }
+        return true;
     }
 
     /**
@@ -49,5 +74,12 @@ public class AddRoutinePresenter implements LoadsRoutines {
         void setupAddRoutineButton();
 
         void exitPage();
+
+        /**
+         * Set an error for the routine name text field with a given error message
+         *
+         * @param message String error message to display for the routine text
+         */
+        void setError(String message);
     }
 }
