@@ -32,13 +32,13 @@
                 android:layout_weight="1" />
 
             <Button
-                android:id="@+id/EndWorkoutBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:backgroundTint="#36973A"
-                android:text="@string/EndWorkout"
-                tools:ignore="TouchTargetSizeCheck" />
+                    android:id="@+id/EndWorkoutBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:backgroundTint="#4d0207"
+                    android:text="@string/EndWorkout"
+                    tools:ignore="TouchTargetSizeCheck"/>
         </LinearLayout>
 
         <LinearLayout
@@ -134,11 +134,11 @@
                         android:orientation="vertical">
 
                         <Button
-                            android:id="@+id/button6"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="@string/AddSet" />
+                                android:id="@+id/button6"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:text="@string/AddSet" android:backgroundTint="#754956"/>
                     </LinearLayout>
                 </LinearLayout>
 
@@ -146,11 +146,11 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/CancelWorkoutBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#8F1717"
-            android:text="@string/CancelWorkout" />
+                android:id="@+id/CancelWorkoutBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#632247"
+                android:text="@string/CancelWorkout"/>
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
