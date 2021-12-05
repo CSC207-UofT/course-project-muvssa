@@ -63,6 +63,9 @@ public class RoutinesGateway implements Loadable, Saveable {
 
                     if (routines != null) {
                         presenter.loadRoutines(routines.getRoutines());
+                    } else {
+                        // If there are no routines stored in the database, send back an empty list
+                        presenter.loadRoutines(new ArrayList<>());
                     }
                 });
     }
