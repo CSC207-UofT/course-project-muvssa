@@ -1,6 +1,7 @@
 package com.example.fitappa.Authentication;
 
 import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.SaveProfileGateway;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

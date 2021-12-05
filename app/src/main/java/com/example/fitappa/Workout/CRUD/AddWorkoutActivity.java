@@ -25,6 +25,8 @@ import java.util.Objects;
 public class AddWorkoutActivity extends AppCompatActivity {
     private EditText workoutNameField;
 
+    // TODO: Use presenter
+
     /**
      * This method is called when the activity starts.
      *

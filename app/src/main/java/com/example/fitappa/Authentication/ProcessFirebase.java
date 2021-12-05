@@ -1,6 +1,7 @@
 package com.example.fitappa.Authentication;
 
 import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.SaveProfileGateway;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.DocumentSnapshot;
 // ToDo add author, since and other doc details

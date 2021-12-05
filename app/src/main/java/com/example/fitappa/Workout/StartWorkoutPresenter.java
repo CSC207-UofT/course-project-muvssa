@@ -1,9 +1,11 @@
 package com.example.fitappa.Workout;
 
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,18 +19,38 @@ import java.util.List;
  * @version 0.1
  */
 public class StartWorkoutPresenter {
-    private final Profile profile;
     private View view;
+    private final String PAGE_TITLE = "Start Workout";
     private Routine currRoutine;
+    private List<Routine> routines;
+    private String username; // use this @uthman
+
+
+    // TODO: (For uthman), populate routines list
 
     /**
      * Constructor for StartWorkoutPresenter
      * @param view
-     * @param profile
      */
-    public StartWorkoutPresenter(View view, Profile profile) {
-        this.profile = profile;
+    public StartWorkoutPresenter(View view) {
         this.view = view;
+        this.routines = new ArrayList<>();
+
+        // Dummy data! Replace me with gateway call when gateway is finished
+        Routine r = new Routine("MMA routine");
+        WorkoutTemplate w = new WorkoutTemplate("High Intensity");
+        ExerciseTemplate e1 = new ExerciseTemplate("Go crazy (Rep)", 0, "REP");
+        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Weight)", 0, "WEIGHTED");
+        w.addExercise(e1);
+        w.addExercise(e2);
+        r.addWorkout(w);
+        routines.add(r);
+        this.currRoutine = r;
+
+        // don't remove this!
+        view.displayRoutines(this.routines);
+        view.updateAppBarTitle(this.PAGE_TITLE);
+        view.initializeAddRoutine();
 
     }
 
@@ -39,10 +61,10 @@ public class StartWorkoutPresenter {
      */
     void addRoutine(String name) {
         Routine r = new Routine(name);
-        this.profile.addRoutine(r);
+        this.routines.add(r);
         view.updateRoutinesView(r);
 
-        // TODO: save to database using gateway
+        // TODO: save to database using gateway @uthman
 
     }
 
@@ -60,7 +82,7 @@ public class StartWorkoutPresenter {
      */
     public void addWorkoutToRoutine(String workoutName) {
         this.currRoutine.addWorkout(new WorkoutTemplate(workoutName));
-        this.view.init(this.profile.getRoutines());
+        this.view.displayRoutines(this.routines);
     }
 
     /**
@@ -68,7 +90,9 @@ public class StartWorkoutPresenter {
      */
     interface View {
         void updateRoutinesView(Routine routines);
-        void init(List<Routine> routines);
+        void displayRoutines(List<Routine> routines);
+        void updateAppBarTitle(String title);
+        void initializeAddRoutine();
     }
 
 }

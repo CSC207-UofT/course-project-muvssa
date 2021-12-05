@@ -1,13 +1,10 @@
 package com.example.fitappa.Profile;
-
-
 import com.example.fitappa.Exercise.Exercise.DefaultExercises;
 import com.example.fitappa.Routine.Routine;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 /**
  * This class is the central storage for all relevant entities and use cases for the third and fourth layers of
  * clean architecture. It contains a User, FollowManager, list of Routines, Saveable gateway, and DefaultExercises.
@@ -24,9 +21,7 @@ public class Profile implements Serializable {
 
     private User user;
     private FollowManager followManager;
-    private List<Routine> routines;
     private Saveable gateway;
-    private DefaultExercises defaultExercises;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -38,39 +33,10 @@ public class Profile implements Serializable {
     public Profile(String email, String username, String uniqueID) {
         this.user = new User(email, username, uniqueID);
         this.followManager = new FollowManager(this.user);
-        this.routines = new ArrayList<>();
-        this.defaultExercises = new DefaultExercises();
     }
 
     // empty constructor necessary for Firebase
     public Profile() {
-    }
-
-    /**
-     * Get the list of routines for this profile
-     *
-     * @return List of Routine of this profile
-     */
-    public List<Routine> getRoutines() {
-        return this.routines;
-    }
-
-    /**
-     * replaces the current routine list
-     *
-     * @param routines a list of routine objects
-     */
-    public void setRoutines(List<Routine> routines) {
-        this.routines = routines;
-    }
-
-    /**
-     * Get the object containing default exercises for this profile
-     *
-     * @return DefaultExercises object containing a list of exercises
-     */
-    public DefaultExercises getDefaultExercises() {
-        return defaultExercises;
     }
 
     /**
@@ -117,15 +83,6 @@ public class Profile implements Serializable {
      */
     public FollowManager getFollowManager() {
         return followManager;
-    }
-
-    /**
-     * Adds a routine to the list
-     *
-     * @param r a routine to be added
-     */
-    public void addRoutine(Routine r) {
-        this.routines.add(r);
     }
 
     /**

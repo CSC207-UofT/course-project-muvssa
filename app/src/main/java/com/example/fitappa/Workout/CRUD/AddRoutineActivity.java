@@ -27,6 +27,8 @@ import java.util.Objects;
 public class AddRoutineActivity extends AppCompatActivity {
     private EditText routineName;
 
+    // TODO: use presenter
+
     /**
      * This method is called when the activity starts.
      *
