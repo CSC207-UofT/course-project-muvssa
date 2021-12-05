@@ -250,7 +250,8 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      */
     private void openAddWorkout(Routine r) {
         Intent i = new Intent(this, AddWorkoutActivity.class);
-        //i.putExtra("routine", r.get)
+        // pass a unique name
+        i.putExtra("routine", r.getName());
         startActivity(new Intent(this, AddWorkoutActivity.class));
     }
 

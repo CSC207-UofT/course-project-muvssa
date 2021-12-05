@@ -5,6 +5,7 @@ import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Routine.RoutinesGateway;
+import com.example.fitappa.Workout.CRUD.AddWorkoutPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -17,10 +18,14 @@ import java.util.Objects;
 
 public class WorkoutTemplatesGateway implements Loadable, Saveable {
     private final DocumentReference documentReference;
-    private final LoadsWorkoutTemplates presenter;
+    private final AddWorkoutPresenter presenter;
+    private final String routineName;
 
-    public WorkoutTemplatesGateway(LoadsWorkoutTemplates presenter)
+    public WorkoutTemplatesGateway(AddWorkoutPresenter presenter, String routineName)
     {
+
+        this.routineName = routineName;
+
         this.presenter = presenter;
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
