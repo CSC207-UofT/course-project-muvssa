@@ -10,8 +10,8 @@
 
 
     <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="322dp"
+            android:layout_height="414dp"
             android:layout_marginTop="256dp"
             android:layout_marginBottom="32dp"
             android:orientation="vertical"
@@ -42,19 +42,18 @@
 
             <Button
                     android:id="@+id/startWorkoutNav"
-                    android:layout_width="wrap_content"
+                    android:layout_width="114dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Start" android:textColor="#F6F3F5"
-                    android:textStyle="bold" android:backgroundTint="#754956"/>
-
+                    android:textStyle="normal" android:backgroundTint="#754956"/>
             <Button
                     android:id="@+id/GoToProfilesBtn"
-                    android:layout_width="wrap_content"
+                    android:layout_width="123dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Profile" android:backgroundTint="#754956" android:textColor="#FAF6F6"
-                    android:textStyle="bold"/>
+                    android:textStyle="normal"/>
             <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,14 +67,14 @@
 
         <Button
                 android:id="@+id/LogoutBtn"
-                android:layout_width="match_parent"
+                android:layout_width="340dp"
                 android:layout_height="wrap_content"
                 android:text="Logout" android:backgroundTint="#632247" android:textColor="#e1f2ee"
-                android:textStyle="bold"/>
+                android:textStyle="normal" android:textAlignment="center"/>
     </LinearLayout>
     <ImageView
-            android:layout_width="318dp"
-            android:layout_height="96dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView10"
+            android:layout_width="346dp"
+            android:layout_height="116dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView10"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="52dp" app:layout_constraintTop_toTopOf="parent"
             android:layout_marginBottom="129dp"

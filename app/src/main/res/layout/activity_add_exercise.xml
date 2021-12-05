@@ -18,7 +18,7 @@
                 android:layout_marginBottom="23dp"
                 android:gravity="center"
                 android:text=" Exercises"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"/>
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" android:textAllCaps="false"/>
 
         <LinearLayout
                 android:id="@+id/ExerciseLayout"
