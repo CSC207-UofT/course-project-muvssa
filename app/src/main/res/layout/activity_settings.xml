@@ -9,17 +9,17 @@
             android:id="@+id/submitSettings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Save Changes" android:backgroundTint="#046b99" android:layout_alignParentStart="true"
-            android:layout_marginStart="141dp" android:layout_alignParentBottom="true"
-            android:layout_marginBottom="161dp" android:layout_centerHorizontal="true"/>
+            android:text="Save Changes" android:backgroundTint="#754956" android:layout_alignParentStart="true"
+            android:layout_marginStart="145dp" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="160dp" android:layout_centerHorizontal="true"/>
     <Button
             android:id="@+id/back"
-            android:layout_width="120dp"
+            android:layout_width="219dp"
             android:layout_height="wrap_content"
-            android:text="Go Back" android:backgroundTint="#112e51"
+            android:text="Go Back" android:backgroundTint="#632247"
             android:layout_alignParentStart="true"
-            android:layout_marginStart="146dp" android:layout_alignParentBottom="true"
-            android:layout_marginBottom="97dp" android:layout_centerHorizontal="true" android:textStyle="bold"/>
+            android:layout_marginStart="103dp" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="97dp" android:layout_centerHorizontal="true"/>
     <EditText
             android:id="@+id/weightChangeInput"
             android:layout_width="wrap_content"
