@@ -23,11 +23,8 @@ public class StartWorkoutPresenter {
     private final View view;
     private final String PAGE_TITLE = "Start Workout";
     private Routine currRoutine;
-    private final List<Routine> routines;
+    private List<Routine> routines;
     private final Loadable gateway;
-
-
-    // TODO: (For uthman), populate routines list
 
     /**
      * Constructor for StartWorkoutPresenter
@@ -51,16 +48,14 @@ public class StartWorkoutPresenter {
         this.currRoutine = r;
 
         // don't remove this!
+        gateway.load();
         view.displayRoutines(this.routines);
         view.updateAppBarTitle(this.PAGE_TITLE);
         view.initializeAddRoutine();
-
-        // TODO: @Abdullah does this go here?
-        gateway.load();
     }
 
     public void doSomethingWithRoutines(List<Routine> routines) {
-        // TODO: @Abdullah refactor this method name and have it do what you need
+        this.routines = routines;
     }
 
     /**
