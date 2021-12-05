@@ -91,7 +91,10 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         }
     }
 
-    // TODO: javadoc
+    /**
+     * Update the view with routine
+     * @param routine the routine
+     */
     public void updateRoutinesView(Routine routine) {
         LinearLayout routineContainer = findViewById(R.id.RoutinesContainer);
         addRoutineCard(routineContainer, routine);

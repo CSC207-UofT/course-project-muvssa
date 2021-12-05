@@ -77,12 +77,18 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         }
     }
 
+    /**
+     * Set up the cancel button
+     */
     @Override
     public void setupCancel() {
         Button cancelBtn = findViewById(R.id.CancelWorkoutBtn);
         cancelBtn.setOnClickListener(v -> exit());
     }
 
+    /**
+     * Set up the end button
+     */
     @Override
     public void setupEnd() {
         Button endBtn = findViewById(R.id.EndWorkoutBtn);
@@ -286,30 +292,38 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     }
 
 
+    /**
+     * This method calls the correct finish Set procedure
+     * @param setRow the set it referring to
+     * @param category category of the exercise
+     * @param UID UID of the exericse
+     */
     private void finishSet(LinearLayout setRow, String category, String UID) {
         switch (category) {
             default:
-                // The Rep Count is at index 1 (EditText)
-                EditText reps = (EditText) setRow.getChildAt(1);
-
-                String numReps = reps.getText().toString();
-
-                if (numReps.equals(""))
-                    numReps = "0";
-
-                finishRepSet(Integer.parseInt(numReps), UID);
-
-                Button btn = (Button) setRow.getChildAt(2);
-                btn.setEnabled(false);
-                btn.setBackgroundColor(Color.parseColor("#008000"));
+                finishRepSet(setRow, category, UID);
         }
     }
 
-    private void finishRepSet(int rep, String UID) {
-        // TODO: remove the 2 line below
-        Log.d("TAG", ""+rep);
-        Log.d("TAG2", UID);
-        presenter.addSet(UID, rep);
+    /**
+     * This method tell the presenter to add the set & update UI
+     * @param setRow the set it referring to
+     * @param category category of the exercise
+     * @param UID UID of the exericse
+     */
+    private void finishRepSet(LinearLayout setRow, String category, String UID) {
+        // The Rep Count is at index 1 (EditText)
+        EditText reps = (EditText) setRow.getChildAt(1);
+        String numReps = reps.getText().toString();
+
+        // Safety check
+        if (numReps.equals(""))
+            numReps = "0";
+
+        Button btn = (Button) setRow.getChildAt(2);
+        btn.setEnabled(false);
+        btn.setBackgroundColor(Color.parseColor("#008000"));
+        presenter.addSet(UID, Integer.parseInt(numReps));
     }
 
 
