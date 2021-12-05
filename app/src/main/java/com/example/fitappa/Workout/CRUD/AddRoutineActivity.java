@@ -24,11 +24,8 @@ import java.util.Objects;
  * @since 0.4
  */
 
-public class AddRoutineActivity extends AppCompatActivity {
-    private EditText routineName;
-
-    // TODO: use presenter
-
+public class AddRoutineActivity extends AppCompatActivity implements AddRoutinePresenter.View {
+    private AddRoutinePresenter presenter;
     /**
      * This method is called when the activity starts.
      *
@@ -38,25 +35,28 @@ public class AddRoutineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_routine);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Routine");
+        this.presenter = new AddRoutinePresenter(this);
 
         // Initialize elements
-        Button submitBtn = findViewById(R.id.SaveRoutineBtn);
-        this.routineName = findViewById(R.id.RoutineNameField);
-        submitBtn.setOnClickListener(v -> goBack(routineName.getText().toString()));
     }
 
     /**
-     * This method opens the ViewRoutinesActivity View and passes back the
-     * name of the routine, routineName to it.
+     * This method opens the ViewRoutinesActivity View
      *
-     * @param routineName the name of the routine that was created
      */
-    private void goBack(String routineName) {
-        Intent viewRoutines = new Intent(this, StartWorkoutActivity.class);
-        viewRoutines.putExtra("routineName", routineName);
-        setResult(RESULT_OK, viewRoutines);
-        finish();
+    public void exitPage() {
+        startActivity(new Intent(this, StartWorkoutActivity.class));
     }
 
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+    @Override
+    public void setupAddRoutineButton() {
+        Button submitBtn = findViewById(R.id.SaveRoutineBtn);
+        EditText routineName = findViewById(R.id.RoutineNameField);
+        submitBtn.setOnClickListener(v -> presenter.addRoutine(routineName.getText().toString()));
+    }
 }
