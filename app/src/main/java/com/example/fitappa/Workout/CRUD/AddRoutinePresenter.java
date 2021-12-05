@@ -1,6 +1,7 @@
 package com.example.fitappa.Workout.CRUD;
 
 
+import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Routine.RoutinesGateway;
 
@@ -9,11 +10,11 @@ import java.util.List;
 public class AddRoutinePresenter {
     private final String PAGE_TITLE = "Add Routine";
     private final View view;
-    private final RoutinesGateway gateway;
+    private final Saveable gateway;
 
     public AddRoutinePresenter(View view) {
         this.view = view;
-        this.gateway = new RoutinesGateway(this);
+        this.gateway = new RoutinesGateway();
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupAddRoutineButton();
     }

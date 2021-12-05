@@ -1,8 +1,9 @@
 package com.example.fitappa.Workout;
 
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
-import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Routine.Routine;
+import com.example.fitappa.Routine.RoutinesGateway;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.util.ArrayList;
@@ -19,22 +20,24 @@ import java.util.List;
  * @version 0.1
  */
 public class StartWorkoutPresenter {
-    private View view;
+    private final View view;
     private final String PAGE_TITLE = "Start Workout";
     private Routine currRoutine;
-    private List<Routine> routines;
-    private String username; // use this @uthman
+    private final List<Routine> routines;
+    private final Loadable gateway;
 
 
     // TODO: (For uthman), populate routines list
 
     /**
      * Constructor for StartWorkoutPresenter
+     *
      * @param view
      */
     public StartWorkoutPresenter(View view) {
         this.view = view;
         this.routines = new ArrayList<>();
+        this.gateway = new RoutinesGateway(this);
 
         // Dummy data! Replace me with gateway call when gateway is finished
         Routine r = new Routine("MMA routine");
@@ -52,10 +55,17 @@ public class StartWorkoutPresenter {
         view.updateAppBarTitle(this.PAGE_TITLE);
         view.initializeAddRoutine();
 
+        // TODO: @Abdullah does this go here?
+        gateway.load();
+    }
+
+    public void doSomethingWithRoutines(List<Routine> routines) {
+        // TODO: @Abdullah refactor this method name and have it do what you need
     }
 
     /**
      * sets current routine
+     *
      * @param r current routine
      */
     public void setCurrentRoutine(Routine r) {

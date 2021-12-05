@@ -3,7 +3,7 @@ package com.example.fitappa.Routine;
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
-import com.example.fitappa.Workout.CRUD.AddRoutinePresenter;
+import com.example.fitappa.Workout.StartWorkoutPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -23,12 +23,15 @@ import java.util.Objects;
  */
 public class RoutinesGateway implements Loadable, Saveable {
 
-    private final AddRoutinePresenter presenter;
+    private StartWorkoutPresenter presenter;
     private final DocumentReference documentReference;
 
-    public RoutinesGateway(AddRoutinePresenter presenter) {
+    public RoutinesGateway(StartWorkoutPresenter presenter) {
+        this();
         this.presenter = presenter;
+    }
 
+    public RoutinesGateway() {
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -52,10 +55,10 @@ public class RoutinesGateway implements Loadable, Saveable {
 
                     if (routines != null) {
                         // Call presenter method and pass retrieved routines
-                        // INSERT PRESENTER METHOD HERE
+                        presenter.doSomethingWithRoutines(routines.getRoutines());
                     } else {
                         // Pass null to presenter method if there was a failure in retrieving routines
-                        // INSERT PRESENTER METHOD HERE
+                        presenter.doSomethingWithRoutines(null);
                     }
                 });
     }
@@ -67,7 +70,7 @@ public class RoutinesGateway implements Loadable, Saveable {
      */
     @Override
     public void save(Object o) {
-        documentReference.collection("routines").add(o);
+        documentReference.update("routines", o);
     }
 
 
