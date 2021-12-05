@@ -9,13 +9,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 /**
  * This class is used for retrieving a profile from the database given a username, and updating the presenter
  * with the new profile if it was found
- *
+ * <p>
  * The methods in this class work with the database to retrieve information
- *
+ * <p>
  * The Documentation explains the specification of each method
  *
  * @author Uthman
- * Since
+ * @since 0.3
  */
 class ProfileReader {
     private final GatewayInteractor presenter;
