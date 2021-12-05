@@ -24,16 +24,8 @@ public class AddRoutinePresenter {
         // TODO @uthman this is where the save routine will happen
 
         Routine routine = new Routine(name);
-
         gateway.save(routine);
-
         view.exitPage();
-    }
-
-    // TODO @Abdullah
-    public void doSomethingWithRoutines(List<Routine> routines) {
-        // Currently being called from gateway. Refactor and change name to whatever needs to
-        // be done.
     }
 
     /**

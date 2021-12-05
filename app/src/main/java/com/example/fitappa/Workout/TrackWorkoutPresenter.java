@@ -47,7 +47,15 @@ public class TrackWorkoutPresenter {
      * This method adds a set to the workout being performed
      */
     public void addSet(String identifier, int reps) {
-        //this.performWorkout.addSet(identifier, reps);
+        this.performWorkout.addSet(identifier, reps);
+    }
+
+    public void finishWorkout() {
+        this.performWorkout.finish();
+        // TODO: @uthman save the performed workout
+
+
+        this.view.exit();
     }
 
 
@@ -60,6 +68,6 @@ public class TrackWorkoutPresenter {
         void populateLayout(PerformWorkout workout);
         void setupCancel();
         void setupEnd();
-
+        void exit();
     }
 }

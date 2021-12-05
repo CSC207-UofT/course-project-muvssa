@@ -85,9 +85,8 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
 
     @Override
     public void setupEnd() {
-        //Button endBtn = findViewById(R.id.EndWorkoutBtn);
-        //endBtn.setOnClickListener(v -> saveWorkouts());
-        return;
+        Button endBtn = findViewById(R.id.EndWorkoutBtn);
+        endBtn.setOnClickListener(v -> presenter.finishWorkout());
     }
 
 
@@ -287,7 +286,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     }
 
 
-    private void finishSet(LinearLayout setRow, String UID, String category) {
+    private void finishSet(LinearLayout setRow, String category, String UID) {
         switch (category) {
             default:
                 // The Rep Count is at index 1 (EditText)
@@ -312,8 +311,6 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         Log.d("TAG2", UID);
         presenter.addSet(UID, rep);
     }
-
-
 
 
     /**
