@@ -1,6 +1,7 @@
 package com.example.fitappa.Workout;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -120,6 +121,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         Integer numSet = 0;
         exerciseBody.setTag(R.string.TrackWorkoutNumSet, numSet);
         exerciseBody.setTag(R.string.TrackWorkoutCategory, e.getCategory());
+        exerciseBody.setTag(R.string.TrackWorkoutUID, e.getIdentifier());
 
 
         // Button
@@ -239,7 +241,9 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         finish.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-        finish.setOnClickListener(v -> finishSet(setRow, (String) exerciseBody.getTag(R.string.TrackWorkoutCategory)));
+        finish.setOnClickListener(v -> finishSet(setRow,
+                (String) exerciseBody.getTag(R.string.TrackWorkoutCategory),
+                (String) exerciseBody.getTag(R.string.TrackWorkoutUID)));
         finish.setWidth(900/3);
         finish.setText("Done");
         setRow.addView(finish);
@@ -283,17 +287,30 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     }
 
 
-    private void finishSet(LinearLayout setRow, String category) {
+    private void finishSet(LinearLayout setRow, String UID, String category) {
         switch (category) {
             default:
                 // The Rep Count is at index 1 (EditText)
                 EditText reps = (EditText) setRow.getChildAt(1);
-                finishRepSet(Integer.parseInt(reps.getText().toString()));
+
+                String numReps = reps.getText().toString();
+
+                if (numReps.equals(""))
+                    numReps = "0";
+
+                finishRepSet(Integer.parseInt(numReps), UID);
+
+                Button btn = (Button) setRow.getChildAt(2);
+                btn.setEnabled(false);
+                btn.setBackgroundColor(Color.parseColor("#008000"));
         }
     }
 
-    private void finishRepSet(int rep) {
+    private void finishRepSet(int rep, String UID) {
+        // TODO: remove the 2 line below
         Log.d("TAG", ""+rep);
+        Log.d("TAG2", UID);
+        presenter.addSet(UID, rep);
     }
 
 

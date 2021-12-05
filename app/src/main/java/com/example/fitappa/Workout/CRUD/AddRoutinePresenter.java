@@ -7,7 +7,6 @@ public class AddRoutinePresenter {
 
     public AddRoutinePresenter(View view) {
         this.view = view;
-
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupAddRoutineButton();
     }

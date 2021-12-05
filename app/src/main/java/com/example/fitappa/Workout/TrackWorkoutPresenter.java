@@ -28,6 +28,7 @@ public class TrackWorkoutPresenter {
         this.view = view;
         this.performWorkout = new PerformWorkout(workoutTemplate);
         this.initializePage(this.performWorkout);
+        this.performWorkout.start();
     }
 
     /**
@@ -45,8 +46,8 @@ public class TrackWorkoutPresenter {
     /**
      * This method adds a set to the workout being performed
      */
-    public void addSet(String identifier) {
-
+    public void addSet(String identifier, int reps) {
+        //this.performWorkout.addSet(identifier, reps);
     }
 
 
