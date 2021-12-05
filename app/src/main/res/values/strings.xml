@@ -5,7 +5,7 @@
     <string name="back" />
     <string name="user_name">username</string>
     <string name="user_Name">username</string>
-    <string name="welcomeText">Welcome:</string>
+    <string name="welcomeText">Hey,</string>
     <string name="followersNumber">Number</string>
     <string name="followersText">Followers:</string>
     <string name="followingText">Following</string>
@@ -52,4 +52,10 @@
     <string name="TrackWorkoutNumSet">100</string>
     <string name="TrackWorkoutCategory" >200</string>
     <string name="TrackWorkoutUID">300</string>
+    <string name="LogoutButton">Logout</string>
+    <string name="Fname">First Name</string>
+    <string name="Lname">Last Name</string>
+    <string name="Height">Height (cm)</string>
+    <string name="Weight">Weight (lbs)</string>
+    <string name="password">Password</string>
 </resources>

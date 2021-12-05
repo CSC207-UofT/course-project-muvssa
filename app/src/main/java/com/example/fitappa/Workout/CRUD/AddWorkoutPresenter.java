@@ -6,7 +6,6 @@ public class AddWorkoutPresenter {
 
     public AddWorkoutPresenter(View view) {
         this.view = view;
-
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupAddWorkoutButton();
     }
