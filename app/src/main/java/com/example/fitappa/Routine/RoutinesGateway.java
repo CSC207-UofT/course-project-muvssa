@@ -24,8 +24,8 @@ import java.util.Objects;
  */
 public class RoutinesGateway implements Loadable, Saveable {
 
-    private StartWorkoutPresenter presenter;
     private final DocumentReference documentReference;
+    private StartWorkoutPresenter presenter;
 
     public RoutinesGateway(StartWorkoutPresenter presenter) {
         this();
@@ -52,7 +52,7 @@ public class RoutinesGateway implements Loadable, Saveable {
         documentReference
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
-                    Routines routines = null;
+                    Routines routines = new Routines();
                     try {
                         routines = documentSnapshot.get("routines", Routines.class);
                     } catch (RuntimeException ignored) {
@@ -60,11 +60,7 @@ public class RoutinesGateway implements Loadable, Saveable {
                     }
 
                     if (routines != null) {
-                        // Call presenter method and pass retrieved routines
                         presenter.doSomethingWithRoutines(routines.getRoutines());
-                    } else {
-                        // Pass null to presenter method if there was a failure in retrieving routines
-                        presenter.doSomethingWithRoutines(null);
                     }
                 });
     }
@@ -76,16 +72,41 @@ public class RoutinesGateway implements Loadable, Saveable {
      */
     @Override
     public void save(Object o) {
-        documentReference.update("routines", o);
+        // Initialize Routines object to pass in appropriate format
+        Routines routines = new Routines();
+        for (Object object : (List) o) {
+            routines.add((Routine) object);
+        }
+
+        documentReference.update("routines", routines);
     }
 
 
     // Defines a way to retrieve data from firebase and cast to a List<Routine>
     private static class Routines implements Serializable {
-        private final List<Routine> routines = new ArrayList<>();
+        private final List<Routine> routines;
 
-        private List<Routine> getRoutines() {
+
+        /**
+         * Constructor needed to be public for firebase to cast List into Routines
+         * Initialize list of routines to ArrayList
+         */
+        public Routines() {
+            routines = new ArrayList<>();
+        }
+
+        /**
+         * Method required to be public for Firebase.
+         * Gets the routines list from this instance.
+         *
+         * @return List of Routine
+         */
+        public List<Routine> getRoutines() {
             return routines;
+        }
+
+        private void add(Routine routine) {
+            routines.add(routine);
         }
     }
 }

@@ -11,9 +11,9 @@ import java.util.List;
 
 /**
  * Presenter class for StartWorkoutActivity, send and receive information from the back end to help StartWorkoutActivity
- *
+ * <p>
  * The method in the class moves the information to the back end and from it too
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author abdullah
@@ -22,9 +22,9 @@ import java.util.List;
 public class StartWorkoutPresenter {
     private final View view;
     private final String PAGE_TITLE = "Start Workout";
-    private Routine currRoutine;
-    private List<Routine> routines;
     private final Loadable gateway;
+    private Routine currRoutine;
+    private final List<Routine> routines;
 
     /**
      * Constructor for StartWorkoutPresenter
@@ -49,13 +49,12 @@ public class StartWorkoutPresenter {
 
         // don't remove this!
         gateway.load();
-        view.displayRoutines(this.routines);
         view.updateAppBarTitle(this.PAGE_TITLE);
         view.initializeAddRoutine();
     }
 
     public void doSomethingWithRoutines(List<Routine> routines) {
-        this.routines = routines;
+        view.displayRoutines(routines);
     }
 
     /**
@@ -69,6 +68,7 @@ public class StartWorkoutPresenter {
 
     /**
      * Adds workout to routine
+     *
      * @param workoutName represents the workout
      */
     public void addWorkoutToRoutine(String workoutName) {
@@ -84,8 +84,11 @@ public class StartWorkoutPresenter {
      */
     interface View {
         void updateRoutinesView(Routine routines);
+
         void displayRoutines(List<Routine> routines);
+
         void updateAppBarTitle(String title);
+
         void initializeAddRoutine();
     }
 
