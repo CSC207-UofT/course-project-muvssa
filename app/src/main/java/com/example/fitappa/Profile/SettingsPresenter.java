@@ -115,14 +115,15 @@ class SettingsPresenter {
 
         if (last.equals("")) {
             last = profile.getUserLastName();
-        }
-        else if(!Pattern.matches(regex2, last)){
+        } else if (!Pattern.matches(regex2, last)) {
             l.setError("please input letters");
             l.requestFocus();
             last = profile.getUserLastName();
         }
         profile.setUserExtraInfo(weight, height, first, last);
-        profile.saveData();
+
+        Saveable gateway = new SaveProfileGateway();
+        profile.saveData(gateway);
         view.update();
     }
 

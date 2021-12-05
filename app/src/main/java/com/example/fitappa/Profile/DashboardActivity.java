@@ -64,18 +64,6 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
         openProfileBtn.setOnClickListener(v -> openProfile(profile));
     }
 
-
-    /**
-     * This method opens the MainActivity view if the user is not logged in.
-     */
-    @Override
-    public void checkAuth(Profile profile) {
-        if (profile == null) {
-            FirebaseAuth.getInstance().signOut();
-            goBackToMain();
-        }
-    }
-
     /**
      * Sign out the current Firebase user
      */
@@ -84,7 +72,8 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
         FirebaseAuth.getInstance().signOut();
 
         // Local
-        profile.saveData();
+        Saveable gateway = new SaveProfileGateway();
+        profile.saveData(gateway);
         goBackToMain();
     }
 

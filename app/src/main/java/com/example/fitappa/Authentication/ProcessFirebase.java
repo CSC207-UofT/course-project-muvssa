@@ -1,10 +1,9 @@
 package com.example.fitappa.Authentication;
 
 import com.example.fitappa.Profile.Profile;
-import com.example.fitappa.Profile.SaveProfileGateway;
-import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.DocumentSnapshot;
 // ToDo add author, since and other doc details
+
 /**
  * This class processes information received from Firebase and retrieves the profile from a DocumentSnapshot
  * object. It then calls the openDashboard method from the view and passes in the new profile.
@@ -37,10 +36,6 @@ public class ProcessFirebase {
         }
 
         if (profile != null) {
-            // Set the gateway since it's not being retrieved by Firebase
-            Saveable gateway = new SaveProfileGateway();
-            profile.setGateway(gateway);
-
             // Update presenter with retrieved profile
             presenter.updateActivity(profile);
         }

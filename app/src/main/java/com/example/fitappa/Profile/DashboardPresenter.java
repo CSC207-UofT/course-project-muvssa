@@ -1,13 +1,11 @@
 package com.example.fitappa.Profile;
 
-import com.example.fitappa.Workout.Core.PerformWorkout;
-
 import java.io.Serializable;
 
 public class DashboardPresenter {
     private final String PAGE_TITLE = "Dashboard";
+    private final Profile profile;
     private View view;
-    private Profile profile;
 
     public DashboardPresenter(View view, Serializable profile) {
 
@@ -16,7 +14,6 @@ public class DashboardPresenter {
         view.setupLogoutBtn(this.profile);
         view.setupWorkoutBtn(this.profile);
         view.setupProfileBtn(this.profile);
-        view.checkAuth(this.profile);
     }
 
     /**
@@ -24,9 +21,11 @@ public class DashboardPresenter {
      */
     interface View {
         void updateAppBarTitle(String title);
+
         void setupLogoutBtn(Profile profile);
+
         void setupWorkoutBtn(Profile profile);
+
         void setupProfileBtn(Profile profile);
-        void checkAuth(Profile profile);
     }
 }

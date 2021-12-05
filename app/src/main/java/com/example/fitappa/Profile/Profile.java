@@ -1,10 +1,6 @@
 package com.example.fitappa.Profile;
-import com.example.fitappa.Exercise.Exercise.DefaultExercises;
-import com.example.fitappa.Routine.Routine;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 /**
  * This class is the central storage for all relevant entities and use cases for the third and fourth layers of
  * clean architecture. It contains a User, FollowManager, list of Routines, Saveable gateway, and DefaultExercises.
@@ -21,7 +17,6 @@ public class Profile implements Serializable {
 
     private User user;
     private FollowManager followManager;
-    private Saveable gateway;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -37,15 +32,6 @@ public class Profile implements Serializable {
 
     // empty constructor necessary for Firebase
     public Profile() {
-    }
-
-    /**
-     * Set the gateway for this profile so that it can be saved
-     *
-     * @param gateway Saveable interface representing a gateway with a save method
-     */
-    public void setGateway(Saveable gateway) {
-        this.gateway = gateway;
     }
 
     /**
@@ -135,7 +121,7 @@ public class Profile implements Serializable {
     /**
      * Save this profile to a database through the gateway
      */
-    public void saveData() {
+    public void saveData(Saveable gateway) {
         gateway.save(this);
     }
 }
