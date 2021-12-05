@@ -49,4 +49,6 @@
     <string name="NumReps">reps</string>
     <string name="WorkoutObject">WORKOUTOBJ</string>
     <string name="wrong">Please input pounds for weight, cm for height, and letters for first and last name</string>
+    <string name="TrackWorkoutNumSet">100</string>
+    <string name="TrackWorkoutCategory" >200</string>
 </resources>
