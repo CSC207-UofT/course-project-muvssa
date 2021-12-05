@@ -1,6 +1,6 @@
 package com.example.fitappa.Routine;
 
-import com.example.fitappa.Workout.WorkoutTemplate;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 import junit.framework.TestCase;
 
 import java.util.ArrayList;

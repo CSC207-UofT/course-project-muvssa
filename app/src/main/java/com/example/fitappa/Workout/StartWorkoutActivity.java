@@ -2,7 +2,6 @@ package com.example.fitappa.Workout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -12,10 +11,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
+import com.example.fitappa.Workout.CRUD.AddRoutineActivity;
+import com.example.fitappa.Workout.CRUD.AddWorkoutActivity;
+import com.example.fitappa.Workout.CRUD.ViewWorkoutActivity;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.util.List;
 import java.util.Objects;
@@ -36,12 +40,24 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
     private Profile profile;
     LinearLayout.LayoutParams params;
 
-    @Override
+
+    // TODO: Clean this mess
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_workout);
         Objects.requireNonNull(getSupportActionBar()).setTitle("Start Workout");
         this.profile = (Profile) getIntent().getSerializableExtra("profile");
+
+        // dummy data
+        Routine r = new Routine("MMA routine");
+        WorkoutTemplate w = new WorkoutTemplate("High Intensity");
+        ExerciseTemplate e1 = new ExerciseTemplate("Go crazy (Rep)", 0, "REP");
+        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Weight)", 0, "WEIGHTED");
+        w.addExercise(e1);
+        w.addExercise(e2);
+        r.addWorkout(w);
+        this.profile.addRoutine(r);
+
 
         this.presenter = new StartWorkoutPresenter(this, profile);
 
@@ -219,7 +235,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      */
     private void openEditWorkout(WorkoutTemplate workoutTemplate) {
         Intent editWorkout = new Intent(this, ViewWorkoutActivity.class);
-        editWorkout.putExtra("workoutObj", workoutTemplate);
+        editWorkout.putExtra(getString(R.string.WorkoutObject), workoutTemplate);
         startActivity(editWorkout);
     }
 
@@ -228,8 +244,9 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * @param workoutTemplate represents the given workout
      */
     private void startWorkout(WorkoutTemplate workoutTemplate) {
-        //TODO: Finish this up when track workout is ready.
-        Log.d("TAG", "The workout is ready to start");
+        Intent trackWorkout = new Intent(this, TrackWorkoutActivity.class);
+        trackWorkout.putExtra(getString(R.string.WorkoutObject), workoutTemplate);
+        startActivity(trackWorkout);
     }
 
     /**

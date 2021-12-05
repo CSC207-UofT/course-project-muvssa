@@ -1,8 +1,10 @@
 package com.example.fitappa.Exercise.Exercise;
 import com.example.fitappa.Exercise.Set.Set;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * This class represents a general exercise.
@@ -16,9 +18,11 @@ import java.util.List;
  * @author abdullah
  * @version 0.1
  */
-public class Exercise<T> implements Serializable {
-    protected String name;
-    protected List<T> sets;
+public class PerformExercise<T> implements Serializable {
+    private String name;
+    private List<T> sets;
+    private String category;
+    private UUID identifier;
 
     /**
      * Constructor for a Exercise class, takes in all necessary variables needed to make a
@@ -26,9 +30,27 @@ public class Exercise<T> implements Serializable {
      *
      * @param name   The String name referring to the name of the exercise
      */
-    public Exercise(String name) {
+    public PerformExercise(String name, String category) {
         this.name = name;
+        this.category = category;
         this.sets = new ArrayList<>();
+        this.identifier = UUID.randomUUID();
+    }
+
+    /**
+     * Get the unique identifier for this exercise
+     * @return this.identifier
+     */
+    public String getIdentifier() {
+        return this.identifier.toString();
+    }
+
+    /**
+     * Getter for category
+     * @return this.category
+     */
+    public String getCategory() {
+        return category;
     }
 
     /**

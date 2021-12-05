@@ -1,4 +1,4 @@
-package com.example.fitappa.Workout;
+package com.example.fitappa.Workout.CRUD;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,12 +11,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Exercise.AddExerciseActivity;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Exercise.ExerciseRepository;
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
-import com.example.fitappa.Routine.Routine;
+import com.example.fitappa.Workout.StartWorkoutActivity;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * This class is a view class meant to open the activity_view_workout xml, a place for the user to view their Workouts
@@ -44,11 +45,11 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
-        getSupportActionBar().setTitle("View Workout");
+        Objects.requireNonNull(getSupportActionBar()).setTitle("View Workout");
 
 
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
-        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
+        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra(getString(R.string.WorkoutObject));
         this.presenter = new ViewWorkoutPresenter(this, workoutTemplate);
 
 
@@ -56,6 +57,9 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         TextView workoutLabel = findViewById(R.id.WorkoutLabel);
         String t = "Exercises in " + workoutTemplate.getName();
         workoutLabel.setText(t);
+
+
+
 
         // Set on click listener
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);

@@ -9,8 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.R;
-import com.example.fitappa.Workout.ViewWorkoutActivity;
-import com.example.fitappa.Workout.WorkoutTemplate;
+import com.example.fitappa.Workout.CRUD.ViewWorkoutActivity;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.util.List;
 import java.util.Objects;
