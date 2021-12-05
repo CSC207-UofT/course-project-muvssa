@@ -18,7 +18,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:id="@+id/linearLayout4">
+            app:layout_constraintTop_toTopOf="parent" android:id="@+id/linearLayout4"
+            app:layout_constraintHorizontal_bias="0.448" app:layout_constraintVertical_bias="0.517">
 
         <Space
                 android:layout_width="match_parent"
@@ -44,24 +45,22 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Start" android:backgroundTint="#02bfe7" android:textColor="#020202"
-                    android:textStyle="bold"/>
+                    android:text="Start" android:textColor="#F6F3F5"
+                    android:textStyle="bold" android:backgroundTint="#754956"/>
 
             <Button
                     android:id="@+id/GoToProfilesBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Profile" android:backgroundTint="#02bfe7" android:textColor="#050505"
+                    android:text="Profile" android:backgroundTint="#754956" android:textColor="#FAF6F6"
                     android:textStyle="bold"/>
-
             <Space
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"/>
 
         </LinearLayout>
-
         <Space
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -71,7 +70,7 @@
                 android:id="@+id/LogoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Logout" android:backgroundTint="#046b99" android:textColor="#F6F2F2"
+                android:text="Logout" android:backgroundTint="#632247" android:textColor="#e1f2ee"
                 android:textStyle="bold"/>
     </LinearLayout>
     <ImageView

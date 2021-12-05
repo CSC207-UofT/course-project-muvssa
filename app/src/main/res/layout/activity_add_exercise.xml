@@ -33,7 +33,7 @@
                         android:text="create exerciseTemplate"
                         android:layout_width="158dp"
                         android:layout_height="36dp" android:id="@+id/createExercise"
-                        android:backgroundTint="#046b99" android:textStyle="bold"/>
+                        android:backgroundTint="#632247" android:textStyle="normal" android:textColor="#e1f2ee"/>
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
