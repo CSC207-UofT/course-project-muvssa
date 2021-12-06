@@ -1,13 +1,14 @@
 package com.example.fitappa.Routine;
 
 import com.example.fitappa.Authentication.DatabaseConstants;
-import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
+import com.example.fitappa.Workout.CRUD.FirebaseWorkoutGetter;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
@@ -63,7 +64,7 @@ public class RoutinesGateway implements Loadable, Saveable {
                         @SuppressWarnings("unchecked")
                         Map<String, List<Map<String, Object>>> routinesMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
 
-                        fillRoutinesWithMap(routines, routinesMap);
+                        fillRoutinesWithMap(routines, routinesMap, documentSnapshot);
 
                         // pass the retrieved routines object in List<Routine> format to the presenter
                         presenter.loadRoutines(routines.routineList());
@@ -78,22 +79,18 @@ public class RoutinesGateway implements Loadable, Saveable {
     /**
      * Fill the given routines object with Routine objects inside the routinesMap
      *
-     * @param routines    Routines object with a map of routines
-     * @param routinesMap Map of routines taken from firebase
+     * @param routines         Routines object with a map of routines
+     * @param routinesMap      Map of routines taken from firebase
+     * @param documentSnapshot
      */
-    private void fillRoutinesWithMap(Routines routines, Map<String, List<Map<String, Object>>> routinesMap) {
+    private void fillRoutinesWithMap(Routines routines, Map<String, List<Map<String, Object>>> routinesMap, DocumentSnapshot documentSnapshot) {
         // Loop through the man and add each routine to the Routines object
-        for (Object routineName : Objects.requireNonNull(routinesMap).keySet()) {
-            Routine routine = new Routine((String) routineName);
+        for (Object routineNameObject : Objects.requireNonNull(routinesMap).keySet()) {
+            String routineName = (String) routineNameObject;
+            Routine routine = new Routine(routineName);
 
-            List<Map<String, Object>> workoutTemplateMap = (List<Map<String, Object>>) routinesMap.get(routineName);
-
-            List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
-            for (Map<String, Object> map : Objects.requireNonNull(workoutTemplateMap)) {
-                @SuppressWarnings("unchecked")
-                WorkoutTemplate tempWorkoutTemplate = new WorkoutTemplate((String) map.get("name"), (List<ExerciseTemplate>) map.get("exercises"));
-                workoutTemplates.add(tempWorkoutTemplate);
-            }
+            FirebaseWorkoutGetter firebaseWorkoutGetter = new FirebaseWorkoutGetter(routineName);
+            List<WorkoutTemplate> workoutTemplates = firebaseWorkoutGetter.getWorkoutTemplates(documentSnapshot);
 
             routine.setWorkouts(workoutTemplates);
             routines.add(routine);
