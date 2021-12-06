@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.CRUD.ViewWorkoutActivity;
-import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.util.List;
 import java.util.Objects;
@@ -26,8 +25,6 @@ import java.util.Objects;
  * @author Abdullah
  * @since 0.6
  */
-
-
 public class AddExerciseActivity extends AppCompatActivity implements AddExercisePresenter.View {
     private LinearLayout exerciseLayout;
     private AddExercisePresenter presenter;
@@ -42,18 +39,9 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
         this.presenter = new AddExercisePresenter(this,
-                getIntent().getSerializableExtra("workoutObj"),
                 getIntent().getSerializableExtra("exercises"));
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
-    }
-
-    /**
-     * Go to Create New Exercise Activity
-     */
-    private void openCreateNewExercise() {
-        Intent addNewExercise = new Intent(this, CreateNewExerciseActivity.class);
-        startActivity(addNewExercise);
     }
 
     /**
@@ -75,25 +63,27 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
     private void updateExerciseLayout(ExerciseTemplate exerciseTemplate) {
         Button button = new Button(this);
         button.setText(exerciseTemplate.getName());
-        button.setOnClickListener(view -> goBackToWorkout(exerciseTemplate));
+        button.setOnClickListener(view -> addExerciseToWorkout(exerciseTemplate));
 
         exerciseLayout.addView(button);
     }
 
     /**
-     * This method opens the ViewWorkoutActivity view.
+     * This method opens the ViewWorkoutActivity view and sends the selected exercise.
      *
      * @param exerciseTemplate represents the exercise to be returned to ViewWorkoutActivity
      */
-    private void goBackToWorkout(ExerciseTemplate exerciseTemplate) {
+    private void addExerciseToWorkout(ExerciseTemplate exerciseTemplate) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
-        /*viewWorkout.putExtra("workoutObj", this.workoutTemplate);
         viewWorkout.putExtra("exercise", exerciseTemplate);
         setResult(RESULT_OK, viewWorkout);
-        finish();*/
-        startActivity(viewWorkout);
+        finish();
     }
 
+    /**
+     * Sets the app bar title
+     * @param title title of the app bar
+     */
     @Override
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
