@@ -9,20 +9,19 @@ public class WorkoutLogPresenter {
 
     public WorkoutLogPresenter(View view) {
         this.view = view;
+        this.view.updateAppBarTitle("Your workout logs");
+
 
         Loadable gateway = new LoadPerformWorkouts(this);
         gateway.load();
-
-        this.view.updateAppBarTitle("Your workout logs");
-
     }
 
     void inititalizeView(List<String> performWorkoutStrings) {
-
+        this.view.displayLog(performWorkoutStrings);
     }
 
     interface View {
-        void init();
         void updateAppBarTitle(String title);
+        void displayLog(List<String>  logs);
     }
 }
