@@ -19,7 +19,6 @@ import java.io.Serializable;
 class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
     private final View view;
     private final WorkoutTemplateGateway gateway;
-    private final String routineName;
     private WorkoutTemplate workoutTemplate; // TODO: @uthman, set the workout template once loaded
 
     /**
@@ -28,9 +27,9 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
      * @param view                represents how the user sees the workouts as type View
      * @param workoutTemplateName represents the workout as type WorkoutTemplate
      */
-    ViewWorkoutPresenter(View view, Serializable workoutTemplateName, Serializable routineName) {
+    ViewWorkoutPresenter(View view, Serializable workoutTemplateName, Serializable receivedRoutineName) {
         String workoutName = (String) workoutTemplateName;
-        this.routineName = (String) routineName;
+        String routineName = (String) receivedRoutineName;
 
         // TODO @uthman, load the workout with workoutName in the routine, routineName
 
@@ -42,7 +41,7 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
         String PAGE_TITLE = "View Your Workout";
         this.view.updateAppBarTitle(PAGE_TITLE);
 
-        gateway = new WorkoutTemplateGateway(this, workoutName, this.routineName);
+        gateway = new WorkoutTemplateGateway(this, workoutName, routineName);
         gateway.load();
     }
 

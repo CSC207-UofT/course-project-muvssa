@@ -25,11 +25,10 @@ public class WorkoutTemplateGateway implements Loadable, Saveable {
         this.routineName = routineName;
         this.workoutName = workoutName;
 
-        DatabaseConstants databaseConstants = new DatabaseConstants();
+        DatabaseConstants constants = new DatabaseConstants();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-        this.documentReference = FirebaseFirestore
-                .getInstance()
-                .collection(databaseConstants.getUsernameDocument())
+        documentReference = FirebaseFirestore.getInstance()
+                .collection(constants.getUsersCollection())
                 .document(Objects.requireNonNull(firebaseUser).getUid());
     }
 
@@ -40,11 +39,16 @@ public class WorkoutTemplateGateway implements Loadable, Saveable {
     public void load() {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
             try {
+                Log.d("test123", "try1");
                 FirebaseWorkoutGetter firebaseWorkoutGetter = new FirebaseWorkoutGetter(routineName);
+                Log.d("test123", "try2");
                 List<WorkoutTemplate> workoutTemplates = firebaseWorkoutGetter.getWorkoutTemplates(documentSnapshot);
 
+                Log.d("test123", "try3");
                 for (WorkoutTemplate workoutTemplate : workoutTemplates) {
+                    Log.d("test123", "try4");
                     if (workoutTemplate.getName().equals(workoutName)) {
+                        Log.d("test123", "try5");
                         presenter.loadWorkoutTemplate(workoutTemplate);
                     }
                 }
