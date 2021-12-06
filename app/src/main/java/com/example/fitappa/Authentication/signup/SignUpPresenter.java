@@ -1,6 +1,9 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Authentication.signup;
 
 import android.widget.EditText;
+
+import com.example.fitappa.Authentication.GatewayInteractor;
+import com.example.fitappa.Authentication.OpensActivityWithProfile;
 
 import java.util.regex.Pattern;
 

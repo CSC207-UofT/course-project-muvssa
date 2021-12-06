@@ -1,4 +1,4 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Authentication.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitappa.Authentication.OpensActivityWithProfile;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
@@ -16,9 +17,9 @@ import java.util.Objects;
 
 /**
  * This activity is activated when the user selects login from the MainActivity and wants to log in to an account
- *
+ * <p>
  * The class's methods allow the user to implement login info
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Uthman

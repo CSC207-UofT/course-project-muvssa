@@ -1,10 +1,12 @@
 package com.example.fitappa.Profile;
 
-import com.example.fitappa.Authentication.DatabaseConstants;
-import com.example.fitappa.Authentication.GatewayInteractor;
-import com.example.fitappa.Authentication.ProcessFirebase;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Map;
+import java.util.Objects;
 
 /**
  * This class is used for retrieving a profile from the database given a username, and updating the presenter
@@ -18,41 +20,44 @@ import com.google.firebase.firestore.FirebaseFirestore;
  * @since 0.3
  */
 class ProfileReader {
-    private final GatewayInteractor presenter;
+    private final ViewProfilePresenter presenter;
 
     /**
      * Constructor that takes in an interface that allows this class to update the presenter with a retrieved profile
      *
      * @param presenter Interface that is used to update the presenter
      */
-    ProfileReader(GatewayInteractor presenter) {
+    ProfileReader(ViewProfilePresenter presenter) {
         this.presenter = presenter;
     }
 
     /**
      * Get a profile from the database and return it
-     *
-     * @param username username for user wanted
      */
-    void retrieveProfile(String username) {
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DatabaseConstants constants = new DatabaseConstants();
+    void retrieveProfile() {
+        FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
+        DocumentReference documentReference = FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(Objects.requireNonNull(firebaseUser).getUid());
 
-        db.collection(constants.getUsersCollection())
+        documentReference
                 .get()
-                .addOnSuccessListener(queryDocumentSnapshots -> {
-                    // Loop through all the profiles to search for the username
-                    for (DocumentSnapshot document : queryDocumentSnapshots.getDocuments()) {
-                        // Get the username for this profile
-                        String retrievedUsername = (String) document.get(constants.getUsernameDocument());
-                        if (retrievedUsername != null && retrievedUsername.equals(username)) {
-                            ProcessFirebase gateway = new ProcessFirebase(presenter);
-                            gateway.updateViewWithProfileFrom(document);
-                            return;
-                        }
-                    }
-                    presenter.setError();
-                })
-                .addOnFailureListener(e -> presenter.setError());
+                .addOnSuccessListener(documentSnapshot -> {
+                    Map<String, String> userMap = (Map<String, String>) documentSnapshot.get("user");
+
+                    if (userMap == null) return;
+
+                    String username = (String) userMap.get("username");
+                    String email = (String) userMap.get("email");
+                    String firstName = (String) userMap.get("firstName");
+                    String lastName = (String) userMap.get("lastName");
+                    String weight = (String) userMap.get("weight");
+                    String height = (String) userMap.get("height");
+
+                    Profile profile = new Profile(email, username, firebaseUser.getUid());
+                    profile.setUserExtraInfo(weight, height, firstName, lastName);
+
+                    presenter.loadProfile(profile);
+                });
     }
 }

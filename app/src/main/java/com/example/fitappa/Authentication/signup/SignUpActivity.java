@@ -1,4 +1,4 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Authentication.signup;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitappa.Authentication.OpensActivityWithProfile;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.SetupActivity;
 import com.example.fitappa.R;
@@ -16,13 +17,12 @@ import java.util.Objects;
 
 /**
  * This activity is activated when the user selects signup from the MainActivity and wants to sign up with a new account
- *
+ * <p>
  * The methods in this activity allow the user to input information into the program to sign up
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
- *
  * @since 2.1
  */
 public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {

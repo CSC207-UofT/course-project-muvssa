@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.StartWorkoutActivity;
+import com.example.fitappa.Workout.WorkoutLogActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
@@ -47,7 +48,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     @Override
     public void setupLogoutBtn(Profile profile) {
         Button logoutBtn = findViewById(R.id.LogoutBtn);
-        logoutBtn.setOnClickListener(v -> signOut(profile));
+        logoutBtn.setOnClickListener(v -> signOut());
     }
 
     @Override
@@ -58,20 +59,27 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
 
     @Override
     public void setupProfileBtn(Profile profile) {
-        Button openProfileBtn = findViewById(R.id.GoToProfilesBtn);
+        Button openProfileBtn = findViewById(R.id.goToProfilesBtn);
         openProfileBtn.setOnClickListener(v -> openProfile(profile));
+    }
+
+    @Override
+    public void setupLogBtn() {
+        Button btn = findViewById(R.id.WorkoutLogsBtn);
+        btn.setOnClickListener(v -> openLogs());
+    }
+
+    private void openLogs() {
+        startActivity(new Intent(this, WorkoutLogActivity.class));
     }
 
     /**
      * Sign out the current Firebase user
      */
-    private void signOut(Profile profile) {
+    private void signOut() {
         // Remote
         FirebaseAuth.getInstance().signOut();
 
-        // Local
-        Saveable gateway = new SaveProfileGateway();
-        profile.saveData(gateway);
         goBackToMain();
     }
 

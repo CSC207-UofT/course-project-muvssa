@@ -1,5 +1,6 @@
 package com.example.fitappa.Workout;
 
+import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.Core.PerformWorkout;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
@@ -54,7 +55,9 @@ class TrackWorkoutPresenter {
 
     void finishWorkout() {
         this.performWorkout.finish();
-        // TODO: @uthman save the performed workout
+
+        Saveable gateway = new SavePerformWorkouts(this);
+        gateway.save(performWorkout);
 
 
         this.view.exit();

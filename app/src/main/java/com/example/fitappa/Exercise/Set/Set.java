@@ -27,4 +27,6 @@ public interface Set {
      */
     boolean isComplete();
 
+    String toString();
+
 }

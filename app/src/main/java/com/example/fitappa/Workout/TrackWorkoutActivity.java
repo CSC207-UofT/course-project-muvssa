@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -326,6 +327,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     private void addSetToExercise(Category category, LinearLayout exerciseBody) {
         if (category == Category.WEIGHTED) {
             addWeightedSetToExercise(exerciseBody);
+            return;
         }
         addRepSetToExercise(exerciseBody);
     }
@@ -365,6 +367,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         btn.setEnabled(false);
         btn.setBackgroundColor(Color.parseColor("#008000"));
         presenter.addSet(UID, Integer.parseInt(numReps));
+        Log.d("Test123", "Rep set was sent");
     }
 
     /**

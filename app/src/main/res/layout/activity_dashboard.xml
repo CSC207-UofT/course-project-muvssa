@@ -10,67 +10,74 @@
 
 
     <LinearLayout
-            android:layout_width="321dp"
-            android:layout_height="325dp"
-            android:layout_marginTop="256dp"
-            android:layout_marginBottom="32dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" android:id="@+id/linearLayout4"
-            app:layout_constraintHorizontal_bias="0.494" app:layout_constraintVertical_bias="0.0">
+        android:id="@+id/linearLayout4"
+        android:layout_width="321dp"
+        android:layout_height="325dp"
+        android:layout_marginTop="256dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <Space
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/startWorkoutNav"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-            <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
-
-            <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                android:layout_weight="1"
+                android:backgroundTint="#754956"
+                android:text="Start A Workout"
+                android:textColor="#F6F3F5"
+                android:textStyle="normal" />
 
             <Button
-                    android:id="@+id/startWorkoutNav"
-                    android:layout_width="114dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Start" android:textColor="#F6F3F5"
-                    android:textStyle="normal" android:backgroundTint="#754956"/>
+                android:id="@+id/WorkoutLogsBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#754956"
+                android:text="WORKOUT LOGS"
+                android:textColor="#FAF6F6"
+                android:textStyle="normal" />
+
             <Button
-                    android:id="@+id/GoToProfilesBtn"
-                    android:layout_width="123dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Profile" android:backgroundTint="#754956" android:textColor="#FAF6F6"
-                    android:textStyle="normal"/>
-            <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"/>
+                android:id="@+id/goToProfilesBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:backgroundTint="#754956"
+                android:text="Profile"
+                android:textColor="#FAF6F6"
+                android:textStyle="normal" />
 
         </LinearLayout>
+
         <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
 
         <Button
-                android:id="@+id/LogoutBtn"
-                android:layout_width="340dp"
-                android:layout_height="wrap_content"
-                android:text="Logout" android:backgroundTint="#632247" android:textColor="#e1f2ee"
-                android:textStyle="normal" android:textAlignment="center"/>
+            android:id="@+id/LogoutBtn"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#632247"
+            android:text="Logout"
+            android:textAlignment="center"
+            android:textColor="#e1f2ee"
+            android:textStyle="normal" />
     </LinearLayout>
     <ImageView
             android:layout_width="342dp"

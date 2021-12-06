@@ -124,6 +124,7 @@ class SettingsPresenter {
 
         Saveable gateway = new SaveProfileGateway();
         profile.saveData(gateway);
+
         view.update();
     }
 

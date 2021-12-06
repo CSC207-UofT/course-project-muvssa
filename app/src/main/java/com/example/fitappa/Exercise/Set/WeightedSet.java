@@ -33,4 +33,9 @@ public class WeightedSet extends RepSet implements Set {
     public double volume() {
         return weight * this.numReps;
     }
+
+    @Override
+    public String toString() {
+        return "Weight: " + this.weight  + "lbs | Reps: " + this.numReps + "";
+    }
 }

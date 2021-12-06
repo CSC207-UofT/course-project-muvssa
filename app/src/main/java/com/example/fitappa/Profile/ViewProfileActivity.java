@@ -2,18 +2,17 @@ package com.example.fitappa.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fitappa.Authentication.OpensActivityWithProfile;
+import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
-import java.util.Observable;
-import java.util.Observer;
 
 /**
  * This class is a view class meant to open the activity_profiles xml, representing a GUI of the users profile
@@ -32,7 +31,10 @@ import java.util.Observer;
 
 public class ViewProfileActivity extends AppCompatActivity implements ViewProfilePresenter.View {
     private ViewProfilePresenter presenter;
-
+    private EditText fnameField;
+    private EditText lnameField;
+    private EditText weightField;
+    private EditText heightField;
 
     /**
      * This method is called when the activity starts.
@@ -59,6 +61,7 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
      * Go back to dashboard activity with the current profile
      */
     private void backToDashboard() {
+        finish();
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
@@ -68,4 +71,45 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
     }
+
+    @Override
+    public void setupElements() {
+        Button saveBtn = findViewById(R.id.saveSettingsBtn);
+        saveBtn.setOnClickListener(v -> this.saveSettings());
+
+        Button logoutBtn = findViewById(R.id.LogoutButton);
+        logoutBtn.setOnClickListener(v -> presenter.logout());
+
+         this.fnameField = findViewById(R.id.FnameField);
+         this.lnameField = findViewById(R.id.LnameField);
+         this.weightField = findViewById(R.id.WeightField);
+         this.heightField = findViewById(R.id.HeightField);
+    }
+
+    private void saveSettings() {
+        presenter.saveSettings(fnameField.getText().toString(),
+                lnameField.getText().toString(),
+                weightField.getText().toString(),
+                heightField.getText().toString());
+    }
+
+
+    @Override
+    public void setup(String username, String fname, String lname, String weight, String height) {
+        TextView usernameText = findViewById(R.id.userNameProfile);
+        usernameText.setText(username);
+
+        fnameField.setText(fname);
+        lnameField.setText(lname);
+        weightField.setText(weight);
+        heightField.setText(height);
+
+    }
+
+    @Override
+    public void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, MainActivity.class));
+    }
+
 }

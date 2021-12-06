@@ -1,5 +1,6 @@
 package com.example.fitappa.Workout;
 
+import com.example.fitappa.Exercise.Exercise.Category;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Set.SetFactory;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
@@ -14,7 +15,7 @@ public class AnalyzeWorkoutsTest extends TestCase {
 
     public void setUp() {
         this.workoutTemplate = new WorkoutTemplate("My workout");
-        this.exerciseTemplate = new ExerciseTemplate("My exercise",5, "REP");
+        this.exerciseTemplate = new ExerciseTemplate("My exercise", 5, Category.REP);
         this.workoutTemplate.addExercise(exerciseTemplate);
         this.setFactory = new SetFactory();
     }
