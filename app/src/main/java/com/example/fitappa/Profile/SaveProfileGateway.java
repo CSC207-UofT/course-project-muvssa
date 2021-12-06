@@ -1,9 +1,10 @@
 package com.example.fitappa.Profile;
 
+import android.util.Log;
+
 import com.example.fitappa.Authentication.DatabaseConstants;
-import com.example.fitappa.Profile.Profile;
-import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.io.Serializable;
 // ToDo add author, since and other doc details
@@ -24,8 +25,9 @@ public class SaveProfileGateway implements Saveable, Serializable {
         Profile profile = (Profile) o;
         FirebaseFirestore database = FirebaseFirestore.getInstance();
 
+        Log.d("test123", "inside SaveProfileGateway.save");
         database.collection(constants.getUsersCollection())
                 .document(profile.retrieveUniqueID())
-                .set(o);
+                .set(profile, SetOptions.mergeFields("user"));
     }
 }
