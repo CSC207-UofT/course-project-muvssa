@@ -1,6 +1,9 @@
 package com.example.fitappa.Workout.Core;
 
+import android.util.Log;
+
 import com.example.fitappa.Authentication.DatabaseConstants;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.CRUD.AddWorkoutPresenter;
@@ -41,13 +44,26 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
             try {
 
                 Map<String, Object> data = documentSnapshot.getData();
+                Log.d("test123", "inside try1 " + (data == null));
 
-                List<WorkoutTemplate> workoutTemplates = (List<WorkoutTemplate>) Objects.requireNonNull(data).get("routines." + routineName);
+                List<Map<String, Object>> workoutTemplatesList = (List<Map<String, Object>>) Objects.requireNonNull(data).get("routines." + routineName);
+                Log.d("test123", "inside try2");
 
-                presenter.loadWorkoutTemplates(workoutTemplates != null ? workoutTemplates : new ArrayList<>());
+                List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
+                Log.d("test123", "inside try3: " + (workoutTemplates == null));
+                for (Map<String, Object> map : Objects.requireNonNull(workoutTemplatesList)) {
+                    Log.d("test123", "inside try4");
+                    WorkoutTemplate workoutTemplate = new WorkoutTemplate((String) map.get("name"), (List<ExerciseTemplate>) map.get("exercises"));
+                    Log.d("test123", "inside try5");
+                    workoutTemplates.add(workoutTemplate);
+                    Log.d("test123", "inside try6");
+                }
+                Log.d("test123", "inside try7");
+                presenter.loadWorkoutTemplates(workoutTemplates);
 
             } catch (RuntimeException e) {
-                presenter.loadWorkoutTemplates(new ArrayList<>());
+                Log.d("test123", "inside catch");
+//                presenter.loadWorkoutTemplates(new ArrayList<>());
             }
         });
     }
