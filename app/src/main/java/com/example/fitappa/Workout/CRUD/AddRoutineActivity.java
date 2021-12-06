@@ -38,8 +38,6 @@ public class AddRoutineActivity extends AppCompatActivity implements AddRoutineP
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_routine);
         this.presenter = new AddRoutinePresenter(this);
-
-        // Initialize elements
     }
 
     /**
