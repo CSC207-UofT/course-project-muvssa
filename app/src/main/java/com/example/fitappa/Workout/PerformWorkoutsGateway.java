@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,7 +31,18 @@ public class PerformWorkoutsGateway implements Loadable, Saveable {
      */
     @Override
     public void load() {
+        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            @SuppressWarnings("unchecked")
+            List<String> performedWorkoutsStrings = (List<String>) documentSnapshot.get("Performed Workouts");
 
+            List<PerformWorkout> performWorkouts = new ArrayList<>();
+            for (String performedWorkoutSting : performedWorkoutsStrings) {
+//                PerformWorkout performWorkout = new PerformWorkout(performedWorkoutSting);
+//                performWorkouts.add(performWorkout);
+            }
+
+
+        });
     }
 
     /**
@@ -41,8 +53,12 @@ public class PerformWorkoutsGateway implements Loadable, Saveable {
     @Override
     public void save(Object o) {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
-            @SuppressWarnings("unchecked")
-            List<String> performedWorkouts = (List<String>) documentSnapshot.get("Performed Workouts");
+            List<String> performedWorkouts;
+            try {
+                performedWorkouts = (List<String>) documentSnapshot.get("Performed Workouts");
+            } catch (RuntimeException e) {
+                performedWorkouts = new ArrayList<>();
+            }
 
             PerformWorkout performWorkout = (PerformWorkout) o;
             Objects.requireNonNull(performedWorkouts).add(performWorkout.toString());
