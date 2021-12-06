@@ -3,6 +3,8 @@ package com.example.fitappa.Profile;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -27,7 +29,10 @@ import java.util.Objects;
 
 public class ViewProfileActivity extends AppCompatActivity implements ViewProfilePresenter.View {
     private ViewProfilePresenter presenter;
-
+    private EditText fnameField;
+    private EditText lnameField;
+    private EditText weightField;
+    private EditText heightField;
 
     /**
      * This method is called when the activity starts.
@@ -67,15 +72,35 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
     @Override
     public void setupElements() {
         Button saveBtn = findViewById(R.id.saveSettingsBtn);
-        saveBtn.setOnClickListener(v -> presenter.saveSettings());
+        saveBtn.setOnClickListener(v -> this.saveSettings());
 
         Button logoutBtn = findViewById(R.id.LogoutBtn);
         logoutBtn.setOnClickListener(v -> presenter.logout());
+
+         this.fnameField = findViewById(R.id.FnameField);
+         this.lnameField = findViewById(R.id.LnameField);
+         this.weightField = findViewById(R.id.weight);
+         this.heightField = findViewById(R.id.height);
     }
+
+    private void saveSettings() {
+        presenter.saveSettings(fnameField.getText().toString(),
+                lnameField.getText().toString(),
+                weightField.getText().toString(),
+                heightField.getText().toString());
+    }
+
 
     @Override
     public void setup(String username, String fname, String lname, String weight, String height)
     {
+        TextView usernameText = findViewById(R.id.userNameProfile);
+        usernameText.setText(username);
+
+        fnameField.setText(fname);
+        lnameField.setText(lname);
+        weightField.setText(weight);
+        heightField.setText(height);
 
     }
 
