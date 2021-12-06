@@ -1,5 +1,7 @@
 package com.example.fitappa.Authentication.signup;
 
+import android.util.Log;
+
 import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.SaveProfileGateway;
@@ -45,6 +47,7 @@ class SignUpGateway {
 
                     // Save the data of the profile to the database
                     Saveable gateway = new SaveProfileGateway();
+                    Log.d("test123", "inside SignUpGateway");
                     profile.saveData(gateway);
 
                     // Update the presenter with the new profile

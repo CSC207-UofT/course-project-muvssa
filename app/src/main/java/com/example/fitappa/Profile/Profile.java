@@ -1,5 +1,7 @@
 package com.example.fitappa.Profile;
 
+import android.util.Log;
+
 import java.io.Serializable;
 
 /**
@@ -17,7 +19,6 @@ import java.io.Serializable;
 public class Profile implements Serializable {
 
     private User user;
-    private FollowManager followManager;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -27,20 +28,17 @@ public class Profile implements Serializable {
      * @param uniqueID Unique identifier representing the User (necessary for database query)
      */
     public Profile(String email, String username, String uniqueID) {
-        this.user = new User(email, username, uniqueID);
-        this.followManager = new FollowManager(this.user);
+        this(new User(email, username, uniqueID));
     }
 
     /**
      * Constructor for profile that takes a User and FollowManager to initialize
      * Used to retrieve data from firebase and pass in the retrieved user and followmanager
      *
-     * @param user          User object to be initialized to this profile
-     * @param followManager FollowManager object to be initialized to this profile
+     * @param user User object to be initialized to this profile
      */
-    public Profile(User user, FollowManager followManager) {
+    public Profile(User user) {
         this.user = user;
-        this.followManager = followManager;
     }
 
     // empty constructor necessary for Firebase
@@ -73,15 +71,6 @@ public class Profile implements Serializable {
      */
     public String retrieveUniqueID() {
         return this.user.getUniqueID();
-    }
-
-    /**
-     * Gets who the User is following and who is following them
-     *
-     * @return returns a HashMap of people User is following
-     */
-    public FollowManager getFollowManager() {
-        return followManager;
     }
 
     /**
@@ -139,6 +128,7 @@ public class Profile implements Serializable {
      * Save this profile to a database through the gateway
      */
     public void saveData(Saveable gateway) {
+        Log.d("test123", "inside Profile.saveData");
         gateway.save(this);
     }
 }

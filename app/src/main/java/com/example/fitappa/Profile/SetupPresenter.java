@@ -64,6 +64,10 @@ class SetupPresenter {
         if(Pattern.matches(regex, weight) && Pattern.matches(regex, height) && Pattern.matches(regex2, firstName)
                 && Pattern.matches(regex2, lastName)){
             profile.setUserExtraInfo(weight, height, firstName, lastName);
+
+            Saveable gateway = new SaveProfileGateway();
+            profile.saveData(gateway);
+
             view.goToDashboard(profile);
         }
         else{

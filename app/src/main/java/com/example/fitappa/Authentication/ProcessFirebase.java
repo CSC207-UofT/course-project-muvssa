@@ -1,6 +1,5 @@
 package com.example.fitappa.Authentication;
 
-import com.example.fitappa.Profile.FollowManager;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.User;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -33,11 +32,8 @@ public class ProcessFirebase {
             // Get the user from the database
             User retrievedUser = documentSnapshot.get("user", User.class);
 
-            // Get the FollowManager object from the database
-            FollowManager retrievedFollowerManager = documentSnapshot.get("followManager", FollowManager.class);
-
             // Construct a profile from the retrieved data
-            Profile profile = new Profile(retrievedUser, retrievedFollowerManager);
+            Profile profile = new Profile(retrievedUser);
 
             // Update the presenter with the new profile
             presenter.updateActivity(profile);

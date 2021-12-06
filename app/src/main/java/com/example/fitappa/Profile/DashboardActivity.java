@@ -48,7 +48,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     @Override
     public void setupLogoutBtn(Profile profile) {
         Button logoutBtn = findViewById(R.id.LogoutBtn);
-        logoutBtn.setOnClickListener(v -> signOut(profile));
+        logoutBtn.setOnClickListener(v -> signOut());
     }
 
     @Override
@@ -76,13 +76,10 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     /**
      * Sign out the current Firebase user
      */
-    private void signOut(Profile profile) {
+    private void signOut() {
         // Remote
         FirebaseAuth.getInstance().signOut();
 
-        // Local
-        Saveable gateway = new SaveProfileGateway();
-        profile.saveData(gateway);
         goBackToMain();
     }
 
