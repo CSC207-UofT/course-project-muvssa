@@ -1,7 +1,5 @@
 package com.example.fitappa.Routine;
 
-import android.util.Log;
-
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
@@ -62,23 +60,10 @@ public class RoutinesGateway implements Loadable, Saveable {
                 .addOnSuccessListener(documentSnapshot -> {
                     Routines routines = new Routines();
                     try {
+                        @SuppressWarnings("unchecked")
                         Map<String, List<Map<String, Object>>> routinesMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
 
-                        // Loop through the man and add each routine to the Routines object
-                        for (Object routineName : Objects.requireNonNull(routinesMap).keySet()) {
-                            Routine routine = new Routine((String) routineName);
-
-                            List<Map<String, Object>> workoutTemplateMap = (List<Map<String, Object>>) routinesMap.get(routineName);
-
-                            List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
-                            for (Map<String, Object> map : Objects.requireNonNull(workoutTemplateMap)) {
-                                WorkoutTemplate tempWorkoutTemplate = new WorkoutTemplate((String) map.get("name"), (List<ExerciseTemplate>) map.get("exercises"));
-                                workoutTemplates.add(tempWorkoutTemplate);
-                            }
-
-                            routine.setWorkouts(workoutTemplates);
-                            routines.add(routine);
-                        }
+                        fillRoutinesWithMap(routines, routinesMap);
 
                         // pass the retrieved routines object in List<Routine> format to the presenter
                         presenter.loadRoutines(routines.routineList());
@@ -88,6 +73,31 @@ public class RoutinesGateway implements Loadable, Saveable {
                         presenter.loadRoutines(new ArrayList<>());
                     }
                 });
+    }
+
+    /**
+     * Fill the given routines object with Routine objects inside the routinesMap
+     *
+     * @param routines    Routines object with a map of routines
+     * @param routinesMap Map of routines taken from firebase
+     */
+    private void fillRoutinesWithMap(Routines routines, Map<String, List<Map<String, Object>>> routinesMap) {
+        // Loop through the man and add each routine to the Routines object
+        for (Object routineName : Objects.requireNonNull(routinesMap).keySet()) {
+            Routine routine = new Routine((String) routineName);
+
+            List<Map<String, Object>> workoutTemplateMap = (List<Map<String, Object>>) routinesMap.get(routineName);
+
+            List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
+            for (Map<String, Object> map : Objects.requireNonNull(workoutTemplateMap)) {
+                @SuppressWarnings("unchecked")
+                WorkoutTemplate tempWorkoutTemplate = new WorkoutTemplate((String) map.get("name"), (List<ExerciseTemplate>) map.get("exercises"));
+                workoutTemplates.add(tempWorkoutTemplate);
+            }
+
+            routine.setWorkouts(workoutTemplates);
+            routines.add(routine);
+        }
     }
 
     /**
@@ -118,20 +128,24 @@ public class RoutinesGateway implements Loadable, Saveable {
          * Constructor needed to be public for firebase to cast List into Routines
          * Initialize list of routines to empty ArrayList
          */
-        public Routines() {
+        private Routines() {
             routines = new HashMap<>();
         }
 
         /**
-         * Method required to be public for Firebase.
          * Gets the routines list from this instance.
          *
-         * @return List of Routine
+         * @return Map from String to List of WorkoutTemplate
          */
-        public Map<String, List<WorkoutTemplate>> getRoutines() {
+        private Map<String, List<WorkoutTemplate>> getRoutines() {
             return routines;
         }
 
+        /**
+         * Convert the Map routines into a List<Routine> format and return it
+         *
+         * @return List of Routine objects
+         */
         private List<Routine> routineList() {
             List<Routine> routineList = new ArrayList<>();
             for (String name : routines.keySet()) {
@@ -143,6 +157,11 @@ public class RoutinesGateway implements Loadable, Saveable {
             return routineList;
         }
 
+        /**
+         * Add a routine to the map
+         *
+         * @param routine Routine to be added to routines map
+         */
         private void add(Routine routine) {
             routines.put(routine.getName(), routine.getWorkouts());
         }
