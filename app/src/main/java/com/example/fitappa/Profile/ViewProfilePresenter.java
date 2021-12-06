@@ -8,7 +8,6 @@ public class ViewProfilePresenter {
     public ViewProfilePresenter(View view) {
         this.view = view;
         this.view.updateAppBarTitle(PAGE_TITLE);
-        this.view.setupElements();
 
         ProfileReader gateway = new ProfileReader(this);
         gateway.retrieveProfile();
