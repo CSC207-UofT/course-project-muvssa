@@ -7,10 +7,11 @@ import com.example.fitappa.Workout.Core.WorkoutTemplatesGateway;
 import java.io.Serializable;
 import java.util.List;
 
-public class AddWorkoutPresenter {
+public class AddWorkoutPresenter implements LoadsWorkoutTemplates {
     private final String PAGE_TITLE = "Add Workout";
-    private View view;
     private final WorkoutTemplatesGateway gateway;
+    private final View view;
+    private String workoutName;
 
     public AddWorkoutPresenter(View view, Serializable routineName) {
         this.view = view;
@@ -23,9 +24,17 @@ public class AddWorkoutPresenter {
     public void addWorkoutTemplate(String name) {
         // TODO @uthman this is where the save workout template will happen
 
-        view.exitPage();
+        workoutName = name;
+        gateway.load();
     }
 
+    @Override
+    public void loadWorkoutTemplates(List<WorkoutTemplate> templates) {
+        WorkoutTemplate workoutTemplate = new WorkoutTemplate(workoutName);
+        templates.add(workoutTemplate);
+        gateway.save(templates);
+        view.exitPage();
+    }
 
 
     /**
@@ -33,7 +42,9 @@ public class AddWorkoutPresenter {
      */
     interface View {
         void updateAppBarTitle(String title);
+
         void setupAddWorkoutButton();
+
         void exitPage();
     }
 }

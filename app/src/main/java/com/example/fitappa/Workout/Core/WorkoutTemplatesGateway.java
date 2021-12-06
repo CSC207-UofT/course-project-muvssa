@@ -1,10 +1,10 @@
 package com.example.fitappa.Workout.Core;
 
+import android.util.Log;
+
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
-import com.example.fitappa.Routine.Routine;
-import com.example.fitappa.Routine.RoutinesGateway;
 import com.example.fitappa.Workout.CRUD.AddWorkoutPresenter;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -14,6 +14,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class WorkoutTemplatesGateway implements Loadable, Saveable {
@@ -21,8 +22,7 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
     private final AddWorkoutPresenter presenter;
     private final String routineName;
 
-    public WorkoutTemplatesGateway(AddWorkoutPresenter presenter, String routineName)
-    {
+    public WorkoutTemplatesGateway(AddWorkoutPresenter presenter, String routineName) {
 
         this.routineName = routineName;
 
@@ -40,20 +40,47 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
 
     @Override
     public void load() {
+        documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            try {
+//                ArrayList workoutTemplatesList = documentSnapshot.get("routines." + routineName, ArrayList.class);
 
+                Map<String, Object> data = documentSnapshot.getData();
+                if (data == null) {
+                    Log.d("test123", "data is null :(");
+                    return;
+                }
+                List<WorkoutTemplate> workoutTemplates = (List<WorkoutTemplate>) data.get("routines." + routineName);
+//                List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
+//
+//                assert workoutTemplatesList != null;
+//                for (Object object : workoutTemplatesList) {
+//                    workoutTemplates.add((WorkoutTemplate) object);
+//                }
+
+                Log.d("test123", "inside try");
+                if (workoutTemplates == null) {
+                    Log.d("test123", "workoutTemplates is null :(");
+                }
+                presenter.loadWorkoutTemplates(workoutTemplates != null ? workoutTemplates : new ArrayList<>());
+
+            } catch (RuntimeException e) {
+                Log.d("test123", "inside catch");
+                presenter.loadWorkoutTemplates(new ArrayList<>());
+            }
+        });
     }
 
     @Override
     public void save(Object o) {
         // init
-        WorkoutTemplates templates = new WorkoutTemplates();
+        List<WorkoutTemplate> templates = new ArrayList<>();
 
         //noinspection rawtypes
         for (Object object : (List) o) {
             templates.add((WorkoutTemplate) object);
         }
 
-        //documentReference.update("wo")
+        documentReference.update("routines." + routineName, templates);
     }
 
     // Defines a way to retrieve data from firebase and cast to a List<WorkoutTemplates>
