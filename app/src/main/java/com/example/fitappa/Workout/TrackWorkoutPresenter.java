@@ -64,8 +64,8 @@ class TrackWorkoutPresenter {
 
         Log.d("Test123", this.performWorkout.toString() + " hehe");
 
-        //Saveable gateway = new PerformWorkoutsGateway(this);
-        //gateway.save(performWorkout);
+        Saveable gateway = new PerformWorkoutsGateway(this);
+        gateway.save(performWorkout);
 
 
         this.view.exit();
