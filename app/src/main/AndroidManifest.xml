@@ -9,6 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
+        <activity
+            android:name=".Workout.WorkoutLogActivity"
+            android:exported="false" />
         <activity android:name=".Profile.DashboardActivity" />
         <activity android:name=".Authentication.login.LoginActivity" />
         <activity android:name=".Workout.CRUD.ViewWorkoutActivity" />
@@ -19,7 +22,6 @@
         <activity android:name=".Workout.StartWorkoutActivity" />
         <activity android:name=".Profile.SetupActivity" />
         <activity android:name=".Profile.SettingsActivity" />
-
         <activity
             android:name=".Authentication.MainActivity"
             android:exported="true">

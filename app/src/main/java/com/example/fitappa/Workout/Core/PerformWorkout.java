@@ -6,6 +6,7 @@ import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Set.SetFactory;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -162,4 +163,20 @@ public class PerformWorkout {
     public void finish() {
         this.endTime = LocalDateTime.now();
     }
+
+
+    @Override
+    public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String s = "";
+        s += this.name;
+        s += " was performed on " + this.startTime.format(formatter) + " with the following exercises: ";
+
+        for(PerformExercise e : this.exercises) {
+            s += e.getName() + " (" + e.getCategory().toString() + " ), ";
+        }
+
+        return s;
+    }
+
 }

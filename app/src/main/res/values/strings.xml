@@ -50,7 +50,7 @@
     <string name="WorkoutObject">WORKOUTOBJ</string>
     <string name="wrong">Almost there, we just need a little more information about you</string>
     <string name="TrackWorkoutNumSet">100</string>
-    <string name="TrackWorkoutCategory" >200</string>
+    <string name="TrackWorkoutCategory">200</string>
     <string name="TrackWorkoutUID">300</string>
     <string name="LogoutButton">Logout</string>
     <string name="Fname">First Name</string>
