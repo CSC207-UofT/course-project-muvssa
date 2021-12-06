@@ -1,5 +1,6 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Authentication.signup;
 
+import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.SaveProfileGateway;
 import com.example.fitappa.Profile.Saveable;

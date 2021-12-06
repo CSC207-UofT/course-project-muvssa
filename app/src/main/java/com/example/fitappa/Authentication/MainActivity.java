@@ -7,6 +7,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitappa.Authentication.login.LoginActivity;
+import com.example.fitappa.Authentication.signup.SignUpActivity;
 import com.example.fitappa.Profile.DashboardActivity;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;

@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
         <activity android:name=".Profile.DashboardActivity" />
-        <activity android:name=".Authentication.LoginActivity" />
+        <activity android:name=".Authentication.login.LoginActivity" />
         <activity android:name=".Workout.CRUD.ViewWorkoutActivity" />
         <activity android:name=".Workout.CRUD.AddRoutineActivity" />
         <activity android:name=".Workout.TrackWorkoutActivity" />
@@ -30,7 +30,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Authentication.SignUpActivity"
+            android:name=".Authentication.signup.SignUpActivity"
             android:exported="true" />
         <activity
             android:name=".Profile.ViewProfileActivity"

@@ -1,6 +1,9 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Authentication.login;
 
 import android.widget.EditText;
+
+import com.example.fitappa.Authentication.GatewayInteractor;
+import com.example.fitappa.Authentication.OpensActivityWithProfile;
 
 /**
  * This is a presenter for the LoginActivity.

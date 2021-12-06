@@ -1,5 +1,8 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Authentication.login;
 
+import com.example.fitappa.Authentication.DatabaseConstants;
+import com.example.fitappa.Authentication.GatewayInteractor;
+import com.example.fitappa.Authentication.ProcessFirebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
