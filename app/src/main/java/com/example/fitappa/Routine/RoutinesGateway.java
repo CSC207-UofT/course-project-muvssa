@@ -62,22 +62,23 @@ public class RoutinesGateway implements Loadable, Saveable {
                     Routines routines = new Routines();
                     try {
                         // Retrieve Map object from database
-                        Map<String, Object> data = documentSnapshot.getData();
-//                        Map<String, List<WorkoutTemplate>> routinesMap = (Map<String, List<WorkoutTemplate>>) documentSnapshot.get("routines");
-//
-//                        // Loop through the man and add each routine to the Routines object
-//                        for (Object routineName : routinesMap.keySet()) {
-//                            Routine routine = new Routine((String) routineName);
-//                            routine.setWorkouts((List<WorkoutTemplate>) routinesMap.get(routineName));
-//                            routines.add(routine);
-//                        }
+//                        Map<String, Object> data = documentSnapshot.getData();
+                        Map<String, List<WorkoutTemplate>> routinesMap = (Map<String, List<WorkoutTemplate>>) documentSnapshot.get("routines");
 
-                        List<Routine> routineList = (List<Routine>) data.get("routines");
+                        // Loop through the man and add each routine to the Routines object
+                        for (Object routineName : routinesMap.keySet()) {
+                            Routine routine = new Routine((String) routineName);
+                            routine.setWorkouts((List<WorkoutTemplate>) routinesMap.get(routineName));
+                            routines.add(routine);
+                        }
+
+//                        assert data != null;
+//                        List<Routine> routineList = (List<Routine>) data.get("routines");
 
                         // pass the retrieved routines object in List<Routine> format to the presenter
-                        presenter.loadRoutines(routineList);
+                        presenter.loadRoutines(routines.routineList());
 
-                    } catch (RuntimeException ignored) {
+                    } catch (RuntimeException e) {
                         // If the database fails to retrieve list of routines, pass an empty arraylist
                         Log.d("test123", "inside catch for routine gateway");
                         presenter.loadRoutines(new ArrayList<>());
