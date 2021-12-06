@@ -4,6 +4,8 @@ import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class is a presenter class  meant to send and receive information from the back end to help ViewWorkoutActivity
@@ -20,6 +22,7 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
     private final View view;
     private final WorkoutTemplateGateway gateway;
     private WorkoutTemplate workoutTemplate; // TODO: @uthman, set the workout template once loaded
+    private List<ExerciseTemplate> exercises;
 
     /**
      * View of the workouts
@@ -30,6 +33,8 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
     ViewWorkoutPresenter(View view, Serializable workoutTemplateName, Serializable receivedRoutineName) {
         String workoutName = (String) workoutTemplateName;
         String routineName = (String) receivedRoutineName;
+        this.exercises = new ArrayList<>();
+        this.exercises = new ArrayList<>();
 
         // TODO @uthman, load the workout with workoutName in the routine, routineName
 
@@ -71,6 +76,11 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
         this.workoutTemplate = workoutTemplate;
         init();
     }
+
+    public void setExercises(List<ExerciseTemplate> exerciseTemplates) {
+        this.exercises = exerciseTemplates;
+    }
+
 
     // Dependency Inversion
     interface View {

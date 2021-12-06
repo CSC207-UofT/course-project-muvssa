@@ -16,7 +16,7 @@ public class AddExercisePresenter {
      */
     public AddExercisePresenter(View view, Serializable exercises) {
         this.view = view;
-        this.exercises = (List<ExerciseTemplate>) exercises;
+        this.exercises = (List<ExerciseTemplate>) exercises; // from the db
         init();
     }
 
@@ -27,7 +27,6 @@ public class AddExercisePresenter {
     private void init() {
         String PAGE_TITLE = "Add Exercise To Workout";
         this.view.updateAppBarTitle(PAGE_TITLE);
-        this.view.displayExercises(this.exercises);
         this.view.displayExercises(this.exercises);
     }
 

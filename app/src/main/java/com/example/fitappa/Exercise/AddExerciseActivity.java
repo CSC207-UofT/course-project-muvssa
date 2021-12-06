@@ -65,6 +65,7 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
         button.setText(exerciseTemplate.getName());
         button.setOnClickListener(view -> addExerciseToWorkout(exerciseTemplate));
 
+        LinearLayout exerciseLayout = findViewById(R.id.ExerciseLayout);
         exerciseLayout.addView(button);
     }
 

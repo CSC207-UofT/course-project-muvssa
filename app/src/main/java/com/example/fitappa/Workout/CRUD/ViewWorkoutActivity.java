@@ -64,6 +64,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     protected void onStart() {
+        // TODO: refactor this to go on oncreate (then use presenter)
         super.onStart();
         // Get the exercises from repository and fill the exercises field
         ExerciseRepository exerciseRepository = new ExerciseRepository(this);
@@ -73,10 +74,9 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     /**
      * This method opens the AddExerciseActivity view.
      */
-    private void openAddExercise() {
+    private void openAddExercise(List<ExerciseTemplate> exerciseTemplates) {
         Intent addExercise = new Intent(this, AddExerciseActivity.class);
-        //addExercise.putExtra("workoutObj", this.workoutTemplate);
-        //addExercise.putExtra("exercises", (Serializable) this.exerciseTemplates);
+        addExercise.putExtra("exercises", (Serializable) exerciseTemplates);
         startActivityForResult(addExercise, 1);
     }
 
@@ -135,7 +135,8 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     @Override
     public void loadExercise(List<ExerciseTemplate> exerciseTemplates) {
         // Set on click listener
+        this.presenter.setExercises(exerciseTemplates);
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
-        addExerciseBtn.setOnClickListener(view -> openAddExercise());
+        addExerciseBtn.setOnClickListener(view -> openAddExercise(exerciseTemplates));
     }
 }
