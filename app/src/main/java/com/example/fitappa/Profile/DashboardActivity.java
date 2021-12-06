@@ -58,7 +58,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
 
     @Override
     public void setupProfileBtn(Profile profile) {
-        Button openProfileBtn = findViewById(R.id.WorkoutLogsBtn);
+        Button openProfileBtn = findViewById(R.id.goToProfilesBtn);
         openProfileBtn.setOnClickListener(v -> openProfile(profile));
     }
 
