@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout;
 
-import android.util.Log;
-
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.Core.PerformWorkout;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
@@ -53,18 +51,12 @@ class TrackWorkoutPresenter {
      */
     void addSet(String identifier, int reps) {
         this.performWorkout.addSet(identifier, reps);
-        Log.d("Test123", "123");
-
     }
 
     void finishWorkout() {
-        Log.d("Test123", "workout told to finish rn");
-
         this.performWorkout.finish();
 
-        Log.d("Test123", this.performWorkout.toString() + " hehe");
-
-        Saveable gateway = new PerformWorkoutsGateway(this);
+        Saveable gateway = new SavePerformWorkouts(this);
         gateway.save(performWorkout);
 
 
