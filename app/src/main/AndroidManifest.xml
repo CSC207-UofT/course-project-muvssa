@@ -9,9 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity
-            android:name=".Workout.WorkoutLogActivity"
-            android:exported="false" />
+        <activity android:name=".Workout.WorkoutLogActivity" />
         <activity android:name=".Profile.DashboardActivity" />
         <activity android:name=".Authentication.login.LoginActivity" />
         <activity android:name=".Workout.CRUD.ViewWorkoutActivity" />

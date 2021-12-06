@@ -12,6 +12,9 @@ public class WorkoutLogPresenter {
 
         Loadable gateway = new LoadPerformWorkouts(this);
         gateway.load();
+
+        this.view.updateAppBarTitle("Your workout logs");
+
     }
 
     void inititalizeView(List<String> performWorkoutStrings) {
@@ -19,6 +22,7 @@ public class WorkoutLogPresenter {
     }
 
     interface View {
+        void init();
         void updateAppBarTitle(String title);
     }
 }

@@ -14,6 +14,7 @@ public class DashboardPresenter {
         view.setupLogoutBtn(this.profile);
         view.setupWorkoutBtn(this.profile);
         view.setupProfileBtn(this.profile);
+        view.setupLogBtn();
     }
 
     /**
@@ -27,5 +28,7 @@ public class DashboardPresenter {
         void setupWorkoutBtn(Profile profile);
 
         void setupProfileBtn(Profile profile);
+
+        void setupLogBtn();
     }
 }
