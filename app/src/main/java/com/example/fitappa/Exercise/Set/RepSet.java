@@ -49,4 +49,9 @@ public class RepSet implements Set {
         return 0;
     }
 
+
+    @Override
+    public String toString() {
+        return "Reps: " + this.numReps + "";
+    }
 }
