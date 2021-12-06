@@ -21,8 +21,8 @@
     <string name="backButton3">Save and Back</string>
     <string name="weight">weight</string>
     <string name="height">height</string>
-    <string name="firstName">first name</string>
-    <string name="lastName">last name</string>
+    <string name="firstName">First name</string>
+    <string name="lastName">Last name</string>
     <string name="NoWorkoutInRoutine">"Sorry, there are no workouts in this routine."</string>
     <string name="StartWorkout">Start</string>
     <string name="weightSetting">Weight is:</string>
@@ -48,7 +48,7 @@
     <string name="WeightUnit">lbs</string>
     <string name="NumReps">reps</string>
     <string name="WorkoutObject">WORKOUTOBJ</string>
-    <string name="wrong">Please input pounds for weight, cm for height, and letters for first and last name</string>
+    <string name="wrong">Almost there, we just need a little more information about you</string>
     <string name="TrackWorkoutNumSet">100</string>
     <string name="TrackWorkoutCategory" >200</string>
     <string name="TrackWorkoutUID">300</string>
@@ -59,4 +59,5 @@
     <string name="Weight">Weight (lbs)</string>
     <string name="password">Password</string>
     <string name="WorkoutDoneText">Done</string>
+    <string name="ExercisesText">Select an exercise!</string>
 </resources>

@@ -225,7 +225,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
     private void openEditWorkout(WorkoutTemplate workoutTemplate, String routineName) {
         // Sends two pieces of information to ViewWorkout
         Intent editWorkout = new Intent(this, ViewWorkoutActivity.class);
-        editWorkout.putExtra("workoutName", workoutTemplate);
+        editWorkout.putExtra("workoutName", workoutTemplate.getName());
         editWorkout.putExtra("routineName", routineName);
         startActivity(editWorkout);
     }
