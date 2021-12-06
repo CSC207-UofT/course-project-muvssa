@@ -39,8 +39,6 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
         this.presenter = new DashboardPresenter(this, getIntent().getSerializableExtra("profile"));
     }
 
-    // TODO: Javadocs @Whoever hasn't done much
-
     @Override
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);

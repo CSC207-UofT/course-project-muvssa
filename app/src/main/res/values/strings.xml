@@ -58,4 +58,5 @@
     <string name="Height">Height (cm)</string>
     <string name="Weight">Weight (lbs)</string>
     <string name="password">Password</string>
+    <string name="WorkoutDoneText">Done</string>
 </resources>

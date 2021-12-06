@@ -152,9 +152,8 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      * @return ExerciseBody
      */
     private LinearLayout buildExerciseBody(Category category) {
-        if (category == Category.WEIGHTED) {
+        if (category == Category.WEIGHTED)
             return buildWeightedExerciseBody();
-        }
         return buildRepExerciseBody();
     }
 
@@ -168,18 +167,19 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         LinearLayout exerciseBody = buildLinearLayout(LinearLayout.VERTICAL);
         LinearLayout titleRow = buildLinearLayout(LinearLayout.HORIZONTAL);
         exerciseBody.addView(titleRow);
+        int width = 900 / 3;
 
         // Title Row
         ((ViewGroup.MarginLayoutParams) titleRow.getLayoutParams()).topMargin = 25;
-        TextView setText = buildText("Set", 900 / 3);
+        TextView setText = buildText("Set", width);
         setText.setGravity(Gravity.CENTER);
         titleRow.addView(setText);
 
-        TextView repText = buildText("reps", 900 / 3);
+        TextView repText = buildText("reps", width);
         repText.setGravity(Gravity.CENTER);
         titleRow.addView(repText);
 
-        TextView finishText = buildText("Finish", 900 / 3);
+        TextView finishText = buildText("Finish", width);
         finishText.setGravity(Gravity.CENTER);
         titleRow.addView(finishText);
 
@@ -196,23 +196,29 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         LinearLayout exerciseBody = buildLinearLayout(LinearLayout.VERTICAL);
         LinearLayout titleRow = buildLinearLayout(LinearLayout.HORIZONTAL);
         exerciseBody.addView(titleRow);
+        int width = 900 / 4;
+
+
         // Title Row
         ((ViewGroup.MarginLayoutParams) titleRow.getLayoutParams()).topMargin = 25;
-        titleRow.addView(buildText("Set", 900 / 3));
-        titleRow.addView(buildText(getString(R.string.WeightUnit), 900 / 3));
-        titleRow.addView(buildText("reps", 900 / 3));
+        TextView setText = buildText("Set", width);
+        setText.setGravity(Gravity.CENTER);
+        titleRow.addView(setText);
+
+        TextView weightText = buildText("weight", width);
+        weightText.setGravity(Gravity.CENTER);
+        titleRow.addView(weightText);
+
+        TextView repText = buildText("reps", width);
+        repText.setGravity(Gravity.CENTER);
+        titleRow.addView(repText);
+
+        TextView finishText = buildText("Finish", width);
+        finishText.setGravity(Gravity.CENTER);
+        titleRow.addView(finishText);
         return exerciseBody;
     }
 
-    /**
-     * builds the body for a timed exercise
-     *
-     * @return LinearLayout
-     */
-    private LinearLayout buildTimedExerciseBody() {
-        // TODO: someone do it on their free time, or else removed timed exercises from the app
-        return null;
-    }
 
 
     /*
@@ -249,28 +255,15 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         finish.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-        finish.setOnClickListener(v -> {
-            finishSet(setRow,
-                    (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
-                    (String) exerciseBody.getTag(R.string.TrackWorkoutUID));
-
-        });
+        finish.setOnClickListener(v -> finishSet(setRow,
+                (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
+                (String) exerciseBody.getTag(R.string.TrackWorkoutUID)));
         finish.setWidth(900 / 3);
-        finish.setText("Done");
+        finish.setText(getString(R.string.WorkoutDoneText));
         setRow.addView(finish);
 
 
         exerciseBody.addView(setRow);
-    }
-
-    /**
-     * Adds a set to timed exercise body
-     *
-     * @param exerciseBody the exercise body
-     */
-    private void addTimedSetToExercise(LinearLayout exerciseBody) {
-        // TODO: someone do it on their free time, or else removed timed exercises from the app
-        return;
     }
 
     /**
@@ -279,8 +272,49 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      * @param exerciseBody the exercise body
      */
     private void addWeightedSetToExercise(LinearLayout exerciseBody) {
-        // TODO: i will do it
-        return;
+        LinearLayout setRow = buildLinearLayout(LinearLayout.HORIZONTAL);
+        ((ViewGroup.MarginLayoutParams) setRow.getLayoutParams()).topMargin = 10;
+
+        Integer numSet = (Integer) exerciseBody.getTag(R.string.TrackWorkoutNumSet);
+        numSet++;
+        exerciseBody.setTag(R.string.TrackWorkoutNumSet, numSet);
+
+        TextView setText = buildText(numSet.toString(), 900 / 4);
+        setText.setGravity(Gravity.CENTER);
+        setRow.addView(setText);
+
+        EditText weight = new EditText(this);
+        weight.setInputType(InputType.TYPE_CLASS_NUMBER);
+        weight.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        weight.setGravity(Gravity.CENTER);
+        weight.setWidth(900 / 4);
+        setRow.addView(weight);
+
+
+        EditText rep = new EditText(this);
+        rep.setInputType(InputType.TYPE_CLASS_NUMBER);
+        rep.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        rep.setGravity(Gravity.CENTER);
+        rep.setWidth(900 / 3);
+        setRow.addView(rep);
+
+        Button finish = new Button(this);
+        finish.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
+        finish.setOnClickListener(v -> finishSet(setRow,
+                (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
+                (String) exerciseBody.getTag(R.string.TrackWorkoutUID)));
+        finish.setWidth(900 / 4);
+        finish.setText(getString(R.string.WorkoutDoneText));
+        setRow.addView(finish);
+
+
+        exerciseBody.addView(setRow);
     }
 
     /**
@@ -302,12 +336,13 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      *
      * @param setRow   the set it referring to
      * @param category category of the exercise
-     * @param UID      UID of the exericse
+     * @param UID      UID of the exercise
      */
     private void finishSet(LinearLayout setRow, Category category, String UID) {
-        switch (category) {
-            default:
-                finishRepSet(setRow, category, UID);
+        if (category == Category.WEIGHTED) {
+            finishWeightedSet(setRow, UID);
+        } else {
+            finishRepSet(setRow, UID);
         }
     }
 
@@ -315,10 +350,9 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      * This method tell the presenter to add the set & update UI
      *
      * @param setRow   the set it referring to
-     * @param category category of the exercise
-     * @param UID      UID of the exericse
+     * @param UID      UID of the exercise
      */
-    private void finishRepSet(LinearLayout setRow, Category category, String UID) {
+    private void finishRepSet(LinearLayout setRow, String UID) {
         // The Rep Count is at index 1 (EditText)
         EditText reps = (EditText) setRow.getChildAt(1);
         String numReps = reps.getText().toString();
@@ -332,6 +366,35 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         btn.setBackgroundColor(Color.parseColor("#008000"));
         presenter.addSet(UID, Integer.parseInt(numReps));
     }
+
+    /**
+     * This method tell the presenter to add the set & update UI
+     *
+     * @param setRow   the set it referring to
+     * @param UID      UID of the exercise
+     */
+    private void finishWeightedSet(LinearLayout setRow, String UID) {
+        // Weight is at index 1 (EditText)
+        EditText weight = (EditText) setRow.getChildAt(2);
+        String numWeight = weight.getText().toString();
+
+        // The Rep Count is at index 2 (EditText)
+        EditText reps = (EditText) setRow.getChildAt(2);
+        String numReps = reps.getText().toString();
+
+        // Safety check
+        if (numReps.equals(""))
+            numReps = "0";
+
+        if (numWeight.equals(""))
+            numWeight = "0";
+
+        Button btn = (Button) setRow.getChildAt(3);
+        btn.setEnabled(false);
+        btn.setBackgroundColor(Color.parseColor("#008000"));
+        presenter.addSet(UID, Integer.parseInt(numWeight), Integer.parseInt(numReps));
+    }
+
 
 
     /**

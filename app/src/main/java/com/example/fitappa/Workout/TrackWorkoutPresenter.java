@@ -60,6 +60,13 @@ class TrackWorkoutPresenter {
         this.view.exit();
     }
 
+    /**
+     * This method adds a set to the workout being performed
+     */
+    public void addSet(String identifier, int weight, int reps) {
+        this.performWorkout.addSet(identifier, weight, reps);
+    }
+
 
     /**
      * This is the view that this presenter will control
