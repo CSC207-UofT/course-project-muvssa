@@ -3,6 +3,9 @@ package com.example.fitappa.Workout.CRUD;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * This class is a presenter class  meant to send and receive information from the back end to help ViewWorkoutActivity
  *
@@ -17,6 +20,8 @@ import com.example.fitappa.Workout.Core.WorkoutTemplate;
 class ViewWorkoutPresenter {
     private final View view;
     private final WorkoutTemplate workoutTemplate;
+    private final String PAGE_TITLE = "View Your Workout";
+    private final String routineName;
 
     /**
      * View of the workouts
@@ -24,16 +29,26 @@ class ViewWorkoutPresenter {
      * @param view    represents how the user sees the workouts as type View
      * @param workoutTemplate represents the workout as type Workout
      */
-    ViewWorkoutPresenter(View view, WorkoutTemplate workoutTemplate) {
-        this.workoutTemplate = workoutTemplate;
+    ViewWorkoutPresenter(View view, Serializable workoutTemplate, Serializable routineName) {
+        this.workoutTemplate = (WorkoutTemplate) workoutTemplate;
+        this.routineName = (String) routineName;
+
         this.view = view;
+        this.view.updateAppBarTitle(PAGE_TITLE);
 
         // initialize view
-        for(ExerciseTemplate e : workoutTemplate.getExercises()) {
+        for(ExerciseTemplate e : this.workoutTemplate.getExercises()) {
             view.updateExerciseLayout(e);
         }
 
+        this.view.setupExerciseBtn();
+        this.view.setTitle(this.workoutTemplate.getName() + "' exercises");
+
     }
+
+
+    // TODO: @uthman,
+
 
     /**
      * Adds an exercise to the workout and updates the view of the exercises
@@ -45,24 +60,13 @@ class ViewWorkoutPresenter {
         view.updateExerciseLayout(exerciseTemplate);
     }
 
-    /**
-     * Updates profile with the new routine and sends you back to ViewRoutineActivity
-     */
-    void updateWorkoutRoutine() {
-        /*List<WorkoutTemplate> workoutTemplates = routine.getWorkouts();
-        int pos = workoutTemplates.indexOf(workoutTemplate);
-        workoutTemplates.set(pos, workoutTemplate);*/
-
-        view.goBack();
-
-    }
-
-
     // Dependency Inversion
     interface View {
+        void updateAppBarTitle(String title);
         void updateExerciseLayout(ExerciseTemplate e);
-
+        void setTitle(String name);
         void goBack();
+        void setupExerciseBtn();
     }
 
 }

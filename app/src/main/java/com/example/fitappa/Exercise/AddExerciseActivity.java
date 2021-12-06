@@ -28,11 +28,9 @@ import java.util.Objects;
  */
 
 
-public class AddExerciseActivity extends AppCompatActivity {
-
+public class AddExerciseActivity extends AppCompatActivity implements AddExercisePresenter.View {
     private LinearLayout exerciseLayout;
-    private WorkoutTemplate workoutTemplate;
-    private List<ExerciseTemplate> exerciseTemplates;
+    private AddExercisePresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -43,18 +41,11 @@ public class AddExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Exercise");
-
-        Button addExerciseBtn = findViewById(R.id.createExercise);
-
-        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
-        this.exerciseTemplates = (List<ExerciseTemplate>) getIntent().getSerializableExtra("exercises");
-
+        this.presenter = new AddExercisePresenter(this,
+                getIntent().getSerializableExtra("workoutObj"),
+                getIntent().getSerializableExtra("exercises"));
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
-        addExerciseBtn.setOnClickListener(v -> openCreateNewExercise());
-
-        displayExercises();
     }
 
     /**
@@ -69,8 +60,8 @@ public class AddExerciseActivity extends AppCompatActivity {
      * This method displays all the exercises and updates it in the
      * ExerciseLayout view component.
      */
-    private void displayExercises() {
-        for (ExerciseTemplate exerciseTemplate : this.exerciseTemplates) {
+    public void displayExercises(List<ExerciseTemplate> exerciseTemplates) {
+        for (ExerciseTemplate exerciseTemplate : exerciseTemplates) {
             updateExerciseLayout(exerciseTemplate);
         }
     }
@@ -96,9 +87,16 @@ public class AddExerciseActivity extends AppCompatActivity {
      */
     private void goBackToWorkout(ExerciseTemplate exerciseTemplate) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
-        viewWorkout.putExtra("workoutObj", this.workoutTemplate);
+        /*viewWorkout.putExtra("workoutObj", this.workoutTemplate);
         viewWorkout.putExtra("exercise", exerciseTemplate);
         setResult(RESULT_OK, viewWorkout);
-        finish();
+        finish();*/
+        startActivity(viewWorkout);
+    }
+
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+
     }
 }

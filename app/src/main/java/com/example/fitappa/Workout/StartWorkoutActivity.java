@@ -149,7 +149,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         }
 
         for (WorkoutTemplate workoutTemplate : routine) {
-            createWorkoutLayout(routineLayout, workoutTemplate);
+            createWorkoutLayout(routineLayout, workoutTemplate, routine.getName());
         }
 
         // Add a button to add workout
@@ -173,7 +173,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * @param routineLayout represents the view where the Linear Layout attaches to
      * @param workoutTemplate represents the workout for which the Linear Layout is created for.
      */
-    private void createWorkoutLayout(LinearLayout routineLayout, WorkoutTemplate workoutTemplate) {
+    private void createWorkoutLayout(LinearLayout routineLayout, WorkoutTemplate workoutTemplate, String routineName) {
         // Default Params
         LinearLayout.LayoutParams defaultParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -209,7 +209,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         Button editWorkoutBtn = new Button(this);
         editWorkoutBtn.setLayoutParams(defaultParams);
         editWorkoutBtn.setText(getString(R.string.EditWorkout));
-        editWorkoutBtn.setOnClickListener(v -> openEditWorkout(workoutTemplate));
+        editWorkoutBtn.setOnClickListener(v -> openEditWorkout(workoutTemplate, routineName));
         innerLayout.addView(editWorkoutBtn);
 
 
@@ -222,9 +222,11 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * opens edit workout activity
      * @param workoutTemplate represents a workout template
      */
-    private void openEditWorkout(WorkoutTemplate workoutTemplate) {
+    private void openEditWorkout(WorkoutTemplate workoutTemplate, String routineName) {
+        // Sends two pieces of information to ViewWorkout
         Intent editWorkout = new Intent(this, ViewWorkoutActivity.class);
         editWorkout.putExtra(getString(R.string.WorkoutObject), workoutTemplate);
+        editWorkout.putExtra("routineName", routineName);
         startActivity(editWorkout);
     }
 

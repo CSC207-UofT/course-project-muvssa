@@ -1,5 +1,7 @@
 package com.example.fitappa.Workout.CRUD;
 
+import com.example.fitappa.Exercise.Exercise.Category;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.LoadsWorkoutTemplates;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplatesGateway;
@@ -31,6 +33,10 @@ public class AddWorkoutPresenter implements LoadsWorkoutTemplates {
     @Override
     public void loadWorkoutTemplates(List<WorkoutTemplate> templates) {
         WorkoutTemplate workoutTemplate = new WorkoutTemplate(workoutName);
+        workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise", 0, Category.REP));
+        workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 1", 0, Category.REP));
+        workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 2", 0, Category.REP));
+
         templates.add(workoutTemplate);
         gateway.save(templates);
         view.exitPage();
