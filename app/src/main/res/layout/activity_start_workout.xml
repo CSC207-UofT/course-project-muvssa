@@ -18,10 +18,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <Button
-            android:id="@+id/createRoutineBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/createRoutine" />
+                android:id="@+id/createRoutineBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/createRoutine" android:backgroundTint="#632247"/>
     </LinearLayout>
 
     <LinearLayout

@@ -21,9 +21,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/SignIn" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="219dp" android:backgroundTint="#046b99"
+                android:layout_marginStart="219dp" android:backgroundTint="#632247"
                 app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"
-                android:textStyle="bold"/>
+                android:textStyle="bold" android:textColor="#E1F2EE"/>
         <Button
                 android:id="@+id/SignIn"
                 android:layout_width="167dp"
@@ -35,8 +35,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView6" app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="219dp" android:backgroundTint="#046b99" android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="0.0"/>
+                android:layout_marginStart="219dp" android:backgroundTint="#632247" android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.0" android:textColor="#E1F2EE"/>
         <TextView
                 android:text="Be Savage, Not Average"
                 android:layout_width="205dp"
@@ -46,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="190dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintBottom_toTopOf="@+id/SignIn" android:textStyle="bold"
-                app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="50dp"/>
+                app:layout_constraintHorizontal_bias="1.0" android:layout_marginTop="50dp" android:textColor="#E1F2EE"/>
         <ImageView
                 android:layout_width="408dp"
                 android:layout_height="550dp" app:srcCompat="@drawable/main_2" android:id="@+id/imageView14"

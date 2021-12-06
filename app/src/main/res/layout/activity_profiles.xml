@@ -19,6 +19,34 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <Button
+                android:text="@string/returnHome"
+                android:layout_width="207dp"
+                android:layout_height="37dp" android:id="@+id/returnHome" android:backgroundTint="#754956"/>
+        <ImageView
+                android:layout_width="89dp"
+                android:layout_height="83dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView19"/>
+        <Button
+                android:text="@string/settingButton"
+                android:layout_width="210dp"
+                android:layout_height="38dp" android:id="@+id/settingButton"
+                android:backgroundTint="#754956"/>
+        <EditText
+                android:layout_width="272dp"
+                android:layout_height="62dp"
+                android:inputType="textPersonName"
+                android:text="@string/searchText"
+                android:ems="10"
+                android:id="@+id/searchText"/>
+        <Button
+                android:text="@string/submit_Search"
+                android:layout_width="113dp"
+                android:layout_height="36dp" android:id="@+id/submitSearch" android:backgroundTint="#754956"
+        />
+        <Space
+                android:layout_width="match_parent"
+                android:layout_height="21dp"/>
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -128,6 +156,47 @@
                 android:ems="10"
                 android:inputType="numberDecimal" />
 
+                android:layout_height="match_parent">
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <TextView
+                        android:text="@string/followersText"
+                        android:layout_width="204dp"
+                        android:layout_height="wrap_content" android:id="@+id/textView3"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                <TextView
+                        android:text="@string/followersNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/followerNumber" android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="31dp">
+                <TextView
+                        android:text="@string/followingText"
+                        android:layout_width="4dp"
+                        android:layout_height="wrap_content" android:id="@+id/textView4" android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+                <TextView
+                        android:text="@string/followingNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" android:id="@+id/followingNumber" android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Body2"/>
+            </LinearLayout>
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                <Button
+                        android:text="@string/followButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" android:id="@+id/followButton"
+                        android:backgroundTint="#632247"/>
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
