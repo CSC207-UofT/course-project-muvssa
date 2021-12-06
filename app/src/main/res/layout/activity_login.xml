@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:ems="10"
                     android:hint="Email"
-                    android:inputType="textPersonName"/>
+                    android:inputType="textPersonName" android:textColor="#F6F6F6"/>
 
             <EditText
                     android:id="@+id/PasswordField"
@@ -57,7 +57,7 @@
                     android:id="@+id/LogInBtn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Sign In" android:backgroundTint="#046b99"/>
+                    android:text="Sign In" android:backgroundTint="#632247" android:textColor="#E1F2EE"/>
         </LinearLayout>
 
     </LinearLayout>

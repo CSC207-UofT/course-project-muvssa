@@ -44,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:backgroundTint="#36973A"
+                    android:backgroundTint="#4d0207"
                     android:text="@string/EndWorkout"
                     tools:ignore="TouchTargetSizeCheck" />
             </LinearLayout>
@@ -146,7 +146,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/AddSet" />
+                                android:text="@string/AddSet" android:backgroundTint="#754956"/>
                         </LinearLayout>
                     </LinearLayout>
 
@@ -157,7 +157,7 @@
                 android:id="@+id/CancelWorkoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#8F1717"
+                android:backgroundTint="#632247"
                 android:text="@string/CancelWorkout" />
 
         </LinearLayout>

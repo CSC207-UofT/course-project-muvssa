@@ -18,13 +18,25 @@
             android:layout_marginBottom="23dp"
             android:gravity="center"
             android:text="@string/ExercisesText"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Large" android:textAllCaps="false"/>
 
         <LinearLayout
                 android:id="@+id/ExerciseLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"/>
+                android:orientation="vertical">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="83dp">
+                <Button
+                        android:text="create exerciseTemplate"
+                        android:layout_width="158dp"
+                        android:layout_height="36dp" android:id="@+id/createExercise"
+                        android:backgroundTint="#632247" android:textStyle="normal" android:textColor="#e1f2ee"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

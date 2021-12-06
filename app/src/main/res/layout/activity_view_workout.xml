@@ -36,7 +36,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Add Exercise"
-                        app:backgroundTint="#046b99"/>
+                        app:backgroundTint="#632247"/>
             </LinearLayout>
 
             <Space

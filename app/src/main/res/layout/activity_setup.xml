@@ -105,7 +105,7 @@
                     android:id="@+id/submit"
                     android:layout_width="182dp"
                     android:layout_height="wrap_content"
-                    android:text="Sign Up" android:backgroundTint="#046b99" android:textStyle="bold"/>
+                    android:text="Sign Up" android:backgroundTint="#632247"/>
 
             <Space
                 android:layout_width="wrap_content"
