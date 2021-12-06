@@ -12,9 +12,6 @@ public class ViewProfilePresenter {
 
         ProfileReader gateway = new ProfileReader(this);
         gateway.retrieveProfile();
-
-        this.view.setup(profile.getUsername(), profile.getUserFirstName(), profile.getUserLastName(),
-                profile.getUserWeight(), profile.getUserHeight());
     }
 
     public void saveSettings(String firstName, String lastName, String weight, String height) {

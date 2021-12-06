@@ -81,8 +81,8 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
 
          this.fnameField = findViewById(R.id.FnameField);
          this.lnameField = findViewById(R.id.LnameField);
-         this.weightField = findViewById(R.id.weight);
-         this.heightField = findViewById(R.id.height);
+         this.weightField = findViewById(R.id.WeightField);
+         this.heightField = findViewById(R.id.HeightField);
     }
 
     private void saveSettings() {
