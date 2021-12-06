@@ -131,8 +131,7 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
         }
 
         // Create the WorkoutTemplate object and add it to the workoutTemplates list
-        WorkoutTemplate workoutTemplate = new WorkoutTemplate(workoutName, exerciseTemplates);
-        return workoutTemplate;
+        return new WorkoutTemplate(workoutName, exerciseTemplates);
     }
 
     /**

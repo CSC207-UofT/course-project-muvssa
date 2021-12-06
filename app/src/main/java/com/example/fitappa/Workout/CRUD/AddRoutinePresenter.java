@@ -8,7 +8,6 @@ import com.example.fitappa.Routine.RoutinesGateway;
 import java.util.List;
 
 class AddRoutinePresenter implements LoadsRoutines {
-    private final String PAGE_TITLE = "Add Routine";
     private final View view;
     private final RoutinesGateway gateway;
     private String name;
@@ -16,11 +15,19 @@ class AddRoutinePresenter implements LoadsRoutines {
     AddRoutinePresenter(View view) {
         this.view = view;
         this.gateway = new RoutinesGateway(this);
+
+        String PAGE_TITLE = "Add Routine";
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupAddRoutineButton();
     }
 
 
+    /**
+     * Take in a string representing a routine name and load the routines to try and add the routine
+     * to the list
+     *
+     * @param name String representing the name of the routine to attempt to add to the list
+     */
     void addRoutine(String name) {
         this.name = name;
         gateway.load();
@@ -34,14 +41,14 @@ class AddRoutinePresenter implements LoadsRoutines {
      */
     @Override
     public void loadRoutines(List<Routine> routines) {
-        Routine routine = new Routine(name);
         if (name.length() == 0) {
             view.setError("Please enter a name");
         } else if (routines.size() >= 3) {
-            view.setError("Unable to add routine. Please go back and remove a routine then try again");
+            view.setError("Too many routines! Unable to add. Please go back and remove a routine then try again");
         } else if (!isUniqueRoutineIn(name, routines)) {
             view.setError("Routine with the name \"" + name + "\" already exists");
         } else {
+            Routine routine = new Routine(name);
             routines.add(routine);
             gateway.save(routines);
             view.exitPage();

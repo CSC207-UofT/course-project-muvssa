@@ -9,39 +9,70 @@ import com.example.fitappa.Workout.Core.WorkoutTemplatesGateway;
 import java.io.Serializable;
 import java.util.List;
 
-public class AddWorkoutPresenter implements LoadsWorkoutTemplates {
-    private final String PAGE_TITLE = "Add Workout";
+class AddWorkoutPresenter implements LoadsWorkoutTemplates {
     private final WorkoutTemplatesGateway gateway;
     private final View view;
     private String workoutName;
 
-    public AddWorkoutPresenter(View view, Serializable routineName) {
+    AddWorkoutPresenter(View view, Serializable routineName) {
         this.view = view;
         this.gateway = new WorkoutTemplatesGateway(this, (String) routineName);
+        String PAGE_TITLE = "Add Workout";
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupAddWorkoutButton();
     }
 
-
-    public void addWorkoutTemplate(String name) {
-        // TODO @uthman this is where the save workout template will happen
-
+    /**
+     * Take in a string representing a workout name and load the workout templates from the gateway
+     * to try and add the workout template to the list
+     *
+     * @param name String representing the name of the workout to attempt to add to the list
+     */
+    void addWorkoutTemplate(String name) {
         workoutName = name;
         gateway.load();
     }
 
+    /**
+     * Load templates from the gateway and attempt to add a workout template to it
+     *
+     * @param workoutTemplates List of WorkoutTemplate which is retrieved from the gateway
+     */
     @Override
-    public void loadWorkoutTemplates(List<WorkoutTemplate> templates) {
-        WorkoutTemplate workoutTemplate = new WorkoutTemplate(workoutName);
-        workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise", 0, Category.REP));
-        workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 1", 0, Category.REP));
-        workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 2", 0, Category.REP));
+    public void loadWorkoutTemplates(List<WorkoutTemplate> workoutTemplates) {
 
-        templates.add(workoutTemplate);
-        gateway.save(templates);
-        view.exitPage();
+        if (workoutName.length() == 0) {
+            view.setError("Please enter a name");
+        } else if (workoutTemplates.size() >= 3) {
+            view.setError("Too many workouts!. Unable to add. Please go back and remove a routine then try again");
+        } else if (!isUniqueWorkoutTemplateIn(workoutName, workoutTemplates)) {
+            view.setError("Workout with the name \"" + workoutName + "\" already exists");
+        } else {
+            WorkoutTemplate workoutTemplate = new WorkoutTemplate(workoutName);
+            workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise", 0, Category.REP));
+            workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 1", 0, Category.REP));
+            workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 2", 0, Category.REP));
+            workoutTemplates.add(workoutTemplate);
+            gateway.save(workoutTemplates);
+            view.exitPage();
+        }
     }
 
+    /**
+     * Checks to see if the given name represents a unique routine name in the given routines
+     * list
+     *
+     * @param name             String name of the routine to check uniqueness for
+     * @param workoutTemplates List of routines to check if the routine is unique
+     * @return true iff the name represents a unique routine in the routines list
+     */
+    private boolean isUniqueWorkoutTemplateIn(String name, List<WorkoutTemplate> workoutTemplates) {
+        for (WorkoutTemplate workoutTemplate : workoutTemplates) {
+            if (workoutTemplate.getName().equals(name))
+                return false;
+        }
+        return true;
+    }
 
     /**
      * This is the view that this presenter will control
@@ -52,5 +83,12 @@ public class AddWorkoutPresenter implements LoadsWorkoutTemplates {
         void setupAddWorkoutButton();
 
         void exitPage();
+
+        /**
+         * Set an error for the workout name text field with a given error message
+         *
+         * @param message String error message to display for the workout name text
+         */
+        void setError(String message);
     }
 }

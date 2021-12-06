@@ -4,7 +4,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.StartWorkoutActivity;
 
@@ -13,9 +15,9 @@ import java.util.Objects;
 /**
  * This class is a view class meant to open the activity_create_workout xml, which allows users to create Workouts
  * and add them to Routines
- *
+ * <p>
  * The method in the class allows for the creation of multiple Workouts
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Abdullah
@@ -24,6 +26,8 @@ import java.util.Objects;
 
 public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutPresenter.View {
     private AddWorkoutPresenter presenter;
+    private EditText workoutNameField;
+
     /**
      * This method is called when the activity starts.
      *
@@ -45,7 +49,7 @@ public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutP
     @Override
     public void setupAddWorkoutButton() {
         Button addWorkoutBtn = findViewById(R.id.CreateWorkoutBtn2);
-        EditText workoutNameField = findViewById(R.id.WorkoutNameField);
+        workoutNameField = findViewById(R.id.WorkoutNameField);
         addWorkoutBtn.setOnClickListener(
                 v -> presenter.addWorkoutTemplate(workoutNameField.getText().toString()));
     }
@@ -54,6 +58,17 @@ public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutP
     public void exitPage() {
         startActivity(new Intent(this, StartWorkoutActivity.class));
 
+    }
+
+    /**
+     * Set an error for the workout name text field with a given error message
+     *
+     * @param message String error message to display for the workout name text
+     */
+    @Override
+    public void setError(String message) {
+        workoutNameField.setError(message);
+        workoutNameField.requestFocus();
     }
 
 
