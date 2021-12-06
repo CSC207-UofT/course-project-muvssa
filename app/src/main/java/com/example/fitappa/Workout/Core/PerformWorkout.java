@@ -78,7 +78,6 @@ public class PerformWorkout {
 
     /**
      * This method starts a workout. A workout can be started iff it wasn't started before
-     *
      */
     public void start() {
         this.startTime = LocalDateTime.now();
@@ -86,34 +85,48 @@ public class PerformWorkout {
 
 
     /**
+     *      * Precondition: Exercise with Identifier UID exists.
+     */
+    public PerformExercise<?> getExerciseByUID(String uid) {
+        for(PerformExercise<?> e : this.exercises) {
+            if (e.getIdentifier().equals(uid)) {
+                return e;
+            }
+        }
+        return null;
+    }
+
+
+    /**
      * Precondition: 1) 0 <= i < this.currWorkout.length(),
      *               2) the exercise at position <i> is of type RepExercise
-     * @param i represents the position of the exercise
+     * @param uid represents the unique id of the exercise
      * @param numReps represents the number of reps to add in the set
      */
-    public void addSet(int i, int numReps) {
-        this.exercises.get(i).addSet(setFactory.buildSet(numReps));
+    public void addSet(String uid, int numReps) {
+        getExerciseByUID(uid).addSet(setFactory.buildSet(numReps));
+
     }
 
     /**
      * Precondition: 1) 0 <= i < this.currWorkout.length(),
      *               2) the exercise at position <i> is of type WeightedExercise
-     * @param i represents the position of the exercise
+     * @param uid represents the unique id of the exercise
      * @param numReps represents the number of reps to add in the set
      * @param weight represents the weight to add in the set
      */
-    public void addSet(int i, int numReps, double weight) {
-        this.exercises.get(i).addSet(setFactory.buildSet(numReps, weight));
+    public void addSet(String uid, int numReps, double weight) {
+        getExerciseByUID(uid).addSet(setFactory.buildSet(numReps, weight));
     }
 
     /**
      * Precondition: 1) 0 <= i < this.currWorkout.length(),
      *               2) the exercise at position <i> is of type TimedExercise
-     * @param i represents the position of the exercise
+     * @param uid represents the unique id of the exercise
      * @param time represents the time in seconds to add to the set
      */
-    public void addSet(int i, double time) {
-        this.exercises.get(i).addSet(setFactory.buildSet(time));
+    public void addSet(String uid, double time) {
+        getExerciseByUID(uid).addSet(setFactory.buildSet(time));
     }
 
 

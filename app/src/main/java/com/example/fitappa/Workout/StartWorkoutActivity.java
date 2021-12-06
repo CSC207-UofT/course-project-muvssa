@@ -11,9 +11,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.DashboardActivity;
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.example.fitappa.Routine.Routine;
 import com.example.fitappa.Workout.CRUD.AddRoutineActivity;
@@ -34,43 +32,31 @@ import java.util.Objects;
  * @version 0.1
  */
 public class StartWorkoutActivity extends AppCompatActivity implements StartWorkoutPresenter.View {
-    private List<Routine> routineList;
     private StartWorkoutPresenter presenter;
-    // TODO: Remove this dependency
-    private Profile profile;
-    LinearLayout.LayoutParams params;
 
-
-    // TODO: Clean this mess
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_workout);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Start Workout");
-        this.profile = (Profile) getIntent().getSerializableExtra("profile");
-
-        // dummy data
-        Routine r = new Routine("MMA routine");
-        WorkoutTemplate w = new WorkoutTemplate("High Intensity");
-        ExerciseTemplate e1 = new ExerciseTemplate("Go crazy (Rep)", 0, "REP");
-        ExerciseTemplate e2 = new ExerciseTemplate("Go wild (Weight)", 0, "WEIGHTED");
-        w.addExercise(e1);
-        w.addExercise(e2);
-        r.addWorkout(w);
-        this.profile.addRoutine(r);
+        this.presenter = new StartWorkoutPresenter(this);
+    }
 
 
-        this.presenter = new StartWorkoutPresenter(this, profile);
+    /**
+     * Sets the title of this page
+     * @param title the title
+     */
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
 
+    /**
+     * Initialize the add routine functionality
+     */
+    @Override
+    public void initializeAddRoutine() {
         Button createRoutineBtn = findViewById(R.id.createRoutineBtn);
-        this.routineList = profile.getRoutines();
-
-        this.params = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-
-
         createRoutineBtn.setOnClickListener(v -> openAddRoutine());
-        init(routineList);
     }
 
     /**
@@ -85,7 +71,6 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
 
     private void backToDashboard() {
         Intent dashboard = new Intent(this, DashboardActivity.class);
-        dashboard.putExtra("profile", profile);
         startActivity(dashboard);
     }
 
@@ -95,7 +80,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      *
      * @param routines represents the List of the user's routines.
      */
-    public void init(List<Routine> routines) {
+    public void displayRoutines(List<Routine> routines) {
         LinearLayout routineContainer = findViewById(R.id.RoutinesContainer);
         routineContainer.removeAllViews();
 
@@ -104,7 +89,10 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         }
     }
 
-    // TODO: javadoc
+    /**
+     * Update the view with routine
+     * @param routine the routine
+     */
     public void updateRoutinesView(Routine routine) {
         LinearLayout routineContainer = findViewById(R.id.RoutinesContainer);
         addRoutineCard(routineContainer, routine);
@@ -153,21 +141,22 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         routineLayout.addView(routineName);
 
         // Linear Layout Per Workout
-        if(routine.getWorkouts().size() == 0) {
+        if (routine.size() == 0) {
             TextView noWorkouts = new TextView(this);
             noWorkouts.setText(getString(R.string.NoWorkoutInRoutine));
             noWorkouts.setPadding(0, 50, 0, 0);
             routineLayout.addView(noWorkouts);
         }
 
-        for(WorkoutTemplate workoutTemplate : routine.getWorkouts())
-        {
-            createWorkoutLayout(routineLayout, workoutTemplate);
+        for (WorkoutTemplate workoutTemplate : routine) {
+            createWorkoutLayout(routineLayout, workoutTemplate, routine.getName());
         }
 
         // Add a button to add workout
         Button addWorkoutBtn = new Button(this);
-        addWorkoutBtn.setLayoutParams(this.params);
+        addWorkoutBtn.setLayoutParams(new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT, 1));
         ((ViewGroup.MarginLayoutParams) addWorkoutBtn.getLayoutParams()).topMargin = 40;
         addWorkoutBtn.setText(getString(R.string.AddWorkout));
         addWorkoutBtn.setOnClickListener(v -> openAddWorkout(routine));
@@ -184,7 +173,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * @param routineLayout represents the view where the Linear Layout attaches to
      * @param workoutTemplate represents the workout for which the Linear Layout is created for.
      */
-    private void createWorkoutLayout(LinearLayout routineLayout, WorkoutTemplate workoutTemplate) {
+    private void createWorkoutLayout(LinearLayout routineLayout, WorkoutTemplate workoutTemplate, String routineName) {
         // Default Params
         LinearLayout.LayoutParams defaultParams = new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -220,7 +209,7 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
         Button editWorkoutBtn = new Button(this);
         editWorkoutBtn.setLayoutParams(defaultParams);
         editWorkoutBtn.setText(getString(R.string.EditWorkout));
-        editWorkoutBtn.setOnClickListener(v -> openEditWorkout(workoutTemplate));
+        editWorkoutBtn.setOnClickListener(v -> openEditWorkout(workoutTemplate, routineName));
         innerLayout.addView(editWorkoutBtn);
 
 
@@ -233,9 +222,11 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * opens edit workout activity
      * @param workoutTemplate represents a workout template
      */
-    private void openEditWorkout(WorkoutTemplate workoutTemplate) {
+    private void openEditWorkout(WorkoutTemplate workoutTemplate, String routineName) {
+        // Sends two pieces of information to ViewWorkout
         Intent editWorkout = new Intent(this, ViewWorkoutActivity.class);
-        editWorkout.putExtra(getString(R.string.WorkoutObject), workoutTemplate);
+        editWorkout.putExtra("workoutName", workoutTemplate.getName());
+        editWorkout.putExtra("routineName", routineName);
         startActivity(editWorkout);
     }
 
@@ -253,37 +244,18 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
      * This method opens the AddRoutineActivity View
      */
     private void openAddRoutine() {
-        Intent createRoutinesIntent = new Intent(this, AddRoutineActivity.class);
-        startActivityForResult(createRoutinesIntent, 1);
+        startActivity(new Intent(this, AddRoutineActivity.class));
     }
 
-    /**
-     * This method retrieves data from AddRoutineActivity view.
-     *
-     * @param requestCode represents the integer identification for the data
-     * @param resultCode  represents the result of the retrieve
-     * @param data        represents the data that is retrieved
-     */
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            presenter.addRoutine(data.getStringExtra("routineName"));
-        }
-
-        if (requestCode == 2 && resultCode == RESULT_OK) {
-            presenter.addWorkoutToRoutine(data.getStringExtra("workoutName"));
-        }
-
-    }
 
     /**
      * Opens the AddWorkoutActivity view
      */
     private void openAddWorkout(Routine r) {
-        Intent addWorkout = new Intent(this, AddWorkoutActivity.class);
-        this.presenter.setCurrentRoutine(r);
-        startActivityForResult(addWorkout, 2);
+        Intent i = new Intent(this, AddWorkoutActivity.class);
+        // pass a unique name
+        i.putExtra("routine", r.getName());
+        startActivity(i);
     }
 
 }

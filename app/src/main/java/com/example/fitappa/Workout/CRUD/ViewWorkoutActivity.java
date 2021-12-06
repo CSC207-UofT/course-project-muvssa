@@ -33,8 +33,6 @@ import java.util.Objects;
 public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkoutPresenter.View, ExerciseRepository.View {
     private ViewWorkoutPresenter presenter;
     private LinearLayout exerciseLayout;
-    private WorkoutTemplate workoutTemplate;
-    private List<ExerciseTemplate> exerciseTemplates;
 
     /**
      * This method is called when the activity starts.
@@ -45,26 +43,10 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_workout);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("View Workout");
-
-
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
-        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra(getString(R.string.WorkoutObject));
-        this.presenter = new ViewWorkoutPresenter(this, workoutTemplate);
-
-
-        // Set Title
-        TextView workoutLabel = findViewById(R.id.WorkoutLabel);
-        String t = "Exercises in " + workoutTemplate.getName();
-        workoutLabel.setText(t);
-
-
-
-
-        // Set on click listener
-        Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
-        addExerciseBtn.setOnClickListener(view -> openAddExercise());
-
+        this.presenter = new ViewWorkoutPresenter(this,
+                getIntent().getSerializableExtra("workoutName"),
+                getIntent().getSerializableExtra("routineName"));
     }
 
     /**
@@ -73,7 +55,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     public void onBackPressed() {
-        presenter.updateWorkoutRoutine();
+        goBack();
     }
 
     /**
@@ -82,21 +64,19 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     protected void onStart() {
+        // TODO: refactor this to go on oncreate (then use presenter)
         super.onStart();
-
         // Get the exercises from repository and fill the exercises field
         ExerciseRepository exerciseRepository = new ExerciseRepository(this);
         exerciseRepository.retrieveExercises();
-
     }
 
     /**
      * This method opens the AddExerciseActivity view.
      */
-    private void openAddExercise() {
+    private void openAddExercise(List<ExerciseTemplate> exerciseTemplates) {
         Intent addExercise = new Intent(this, AddExerciseActivity.class);
-        addExercise.putExtra("workoutObj", this.workoutTemplate);
-        addExercise.putExtra("exercises", (Serializable) this.exerciseTemplates);
+        addExercise.putExtra("exercises", (Serializable) exerciseTemplates);
         startActivityForResult(addExercise, 1);
     }
 
@@ -105,9 +85,12 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     public void goBack() {
-        finish();
-        Intent viewRoutine = new Intent(this, StartWorkoutActivity.class);
-        startActivity(viewRoutine);
+        startActivity(new Intent(this, StartWorkoutActivity.class));
+    }
+
+    @Override
+    public void setupExerciseBtn() {
+
     }
 
     /**
@@ -125,6 +108,11 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         }
     }
 
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
     /**
      * This method updates ExerciseLayout with the given Exercise
      *
@@ -137,14 +125,18 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         exerciseLayout.addView(button);
     }
 
-    /**
-     * This method loads all the Workout's exercises and updates it in the
-     * ExerciseLayout view component.
-     *
-     * @param exerciseTemplates represents the Exercise objects stored in the Workout
-     */
+    @Override
+    public void setTitle(String name) {
+        TextView workoutLabel = findViewById(R.id.WorkoutLabel);
+        String t = name;
+        workoutLabel.setText(t);
+    }
+
     @Override
     public void loadExercise(List<ExerciseTemplate> exerciseTemplates) {
-        this.exerciseTemplates = exerciseTemplates;
+        // Set on click listener
+        this.presenter.setExercises(exerciseTemplates);
+        Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
+        addExerciseBtn.setOnClickListener(view -> openAddExercise(exerciseTemplates));
     }
 }

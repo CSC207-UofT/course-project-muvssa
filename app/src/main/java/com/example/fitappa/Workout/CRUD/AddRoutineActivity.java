@@ -15,16 +15,17 @@ import java.util.Objects;
 /**
  * This class is a view class meant to open the activity_add_routine xml, allowing users to interact with a Routine
  * which is a list of workouts
- *
+ * <p>
  * The method in the class allow users to interact and create routines
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Abdullah
  * @since 0.4
  */
 
-public class AddRoutineActivity extends AppCompatActivity {
+public class AddRoutineActivity extends AppCompatActivity implements AddRoutinePresenter.View {
+    private AddRoutinePresenter presenter;
     private EditText routineName;
 
     /**
@@ -36,25 +37,36 @@ public class AddRoutineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_routine);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Routine");
-
-        // Initialize elements
-        Button submitBtn = findViewById(R.id.SaveRoutineBtn);
-        this.routineName = findViewById(R.id.RoutineNameField);
-        submitBtn.setOnClickListener(v -> goBack(routineName.getText().toString()));
+        this.presenter = new AddRoutinePresenter(this);
     }
 
     /**
-     * This method opens the ViewRoutinesActivity View and passes back the
-     * name of the routine, routineName to it.
-     *
-     * @param routineName the name of the routine that was created
+     * This method opens the ViewRoutinesActivity View
      */
-    private void goBack(String routineName) {
-        Intent viewRoutines = new Intent(this, StartWorkoutActivity.class);
-        viewRoutines.putExtra("routineName", routineName);
-        setResult(RESULT_OK, viewRoutines);
-        finish();
+    public void exitPage() {
+        startActivity(new Intent(this, StartWorkoutActivity.class));
     }
 
+    /**
+     * Set an error for the routine name text field with a given error message
+     *
+     * @param message String error message to display for the routine text
+     */
+    @Override
+    public void setError(String message) {
+        routineName.setError(message);
+        routineName.requestFocus();
+    }
+
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+    }
+
+    @Override
+    public void setupAddRoutineButton() {
+        Button submitBtn = findViewById(R.id.SaveRoutineBtn);
+        routineName = findViewById(R.id.RoutineNameField);
+        submitBtn.setOnClickListener(v -> presenter.addRoutine(routineName.getText().toString()));
+    }
 }

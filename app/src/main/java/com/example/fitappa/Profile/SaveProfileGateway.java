@@ -1,5 +1,6 @@
-package com.example.fitappa.Authentication;
+package com.example.fitappa.Profile;
 
+import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -10,7 +11,7 @@ import java.io.Serializable;
 /**
  * This is a gateway class to Firebase which lets a class save an object
  */
-class SaveProfileGateway implements Saveable, Serializable {
+public class SaveProfileGateway implements Saveable, Serializable {
 
     /**
      * Save object into some database

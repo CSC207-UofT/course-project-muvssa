@@ -10,7 +10,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.CRUD.ViewWorkoutActivity;
-import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.util.List;
 import java.util.Objects;
@@ -26,13 +25,9 @@ import java.util.Objects;
  * @author Abdullah
  * @since 0.6
  */
-
-
-public class AddExerciseActivity extends AppCompatActivity {
-
+public class AddExerciseActivity extends AppCompatActivity implements AddExercisePresenter.View {
     private LinearLayout exerciseLayout;
-    private WorkoutTemplate workoutTemplate;
-    private List<ExerciseTemplate> exerciseTemplates;
+    private AddExercisePresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -43,34 +38,18 @@ public class AddExerciseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
-        Objects.requireNonNull(getSupportActionBar()).setTitle("Add Exercise");
-
-        Button addExerciseBtn = findViewById(R.id.createExercise);
-
-        this.workoutTemplate = (WorkoutTemplate) getIntent().getSerializableExtra("workoutObj");
-        this.exerciseTemplates = (List<ExerciseTemplate>) getIntent().getSerializableExtra("exercises");
-
+        this.presenter = new AddExercisePresenter(this,
+                getIntent().getSerializableExtra("exercises"));
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
-        addExerciseBtn.setOnClickListener(v -> openCreateNewExercise());
-
-        displayExercises();
-    }
-
-    /**
-     * Go to Create New Exercise Activity
-     */
-    private void openCreateNewExercise() {
-        Intent addNewExercise = new Intent(this, CreateNewExerciseActivity.class);
-        startActivity(addNewExercise);
     }
 
     /**
      * This method displays all the exercises and updates it in the
      * ExerciseLayout view component.
      */
-    private void displayExercises() {
-        for (ExerciseTemplate exerciseTemplate : this.exerciseTemplates) {
+    public void displayExercises(List<ExerciseTemplate> exerciseTemplates) {
+        for (ExerciseTemplate exerciseTemplate : exerciseTemplates) {
             updateExerciseLayout(exerciseTemplate);
         }
     }
@@ -84,21 +63,31 @@ public class AddExerciseActivity extends AppCompatActivity {
     private void updateExerciseLayout(ExerciseTemplate exerciseTemplate) {
         Button button = new Button(this);
         button.setText(exerciseTemplate.getName());
-        button.setOnClickListener(view -> goBackToWorkout(exerciseTemplate));
+        button.setOnClickListener(view -> addExerciseToWorkout(exerciseTemplate));
 
+        LinearLayout exerciseLayout = findViewById(R.id.ExerciseLayout);
         exerciseLayout.addView(button);
     }
 
     /**
-     * This method opens the ViewWorkoutActivity view.
+     * This method opens the ViewWorkoutActivity view and sends the selected exercise.
      *
      * @param exerciseTemplate represents the exercise to be returned to ViewWorkoutActivity
      */
-    private void goBackToWorkout(ExerciseTemplate exerciseTemplate) {
+    private void addExerciseToWorkout(ExerciseTemplate exerciseTemplate) {
         Intent viewWorkout = new Intent(this, ViewWorkoutActivity.class);
-        viewWorkout.putExtra("workoutObj", this.workoutTemplate);
         viewWorkout.putExtra("exercise", exerciseTemplate);
         setResult(RESULT_OK, viewWorkout);
         finish();
+    }
+
+    /**
+     * Sets the app bar title
+     * @param title title of the app bar
+     */
+    @Override
+    public void updateAppBarTitle(String title) {
+        Objects.requireNonNull(getSupportActionBar()).setTitle(title);
+
     }
 }

@@ -61,20 +61,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="51dp" android:id="@+id/wrong"
         />
+
         <EditText
-                android:id="@+id/weight"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/weight"
-                android:inputType="textPersonName"/>
+            android:id="@+id/weight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/Weight"
+            android:inputType="textPersonName" />
+
         <EditText
-                android:id="@+id/height"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/height"
-                android:inputType="textPersonName"/>
+            android:id="@+id/height"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/Height"
+            android:inputType="textPersonName" />
         <EditText
                 android:id="@+id/firstName"
                 android:layout_width="match_parent"

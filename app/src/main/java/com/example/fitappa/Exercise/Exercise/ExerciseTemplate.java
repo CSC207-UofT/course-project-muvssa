@@ -1,17 +1,16 @@
 package com.example.fitappa.Exercise.Exercise;
+
 import com.example.fitappa.Exercise.Set.RepSet;
-import com.example.fitappa.Exercise.Set.TimedSet;
 import com.example.fitappa.Exercise.Set.WeightedSet;
 
 import java.io.Serializable;
 
 /**
- *
  * This class stores a template of an exercise.
- *
+ * <p>
  * The methods create a template which can create an Exercise object using the
  * factory design pattern.
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author abdullah
@@ -22,34 +21,20 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
     protected String name;
     protected int numSets;
     /* These values must be constant later
-    * Accepted values: REP, WEIGHTED, TIMED
-    * */
-    protected String category;
+     * Accepted values: REP, WEIGHTED, TIMED
+     * */
+    protected Category category;
 
     /**
      * Constructor for a User class, takes in all necessary variables needed to make a User
      *
-     * @param name   The String name referring to the name of the exercise
-     * @param sets   The int represents the number of sets
+     * @param name The String name referring to the name of the exercise
+     * @param sets The int represents the number of sets
      */
-    public ExerciseTemplate(String name, int sets, String category) {
+    public ExerciseTemplate(String name, int sets, Category category) {
         this.name = name;
         this.numSets = sets;
         this.category = category;
-    }
-
-    /**
-     * Factory Design Pattern for Exercise objects.
-     * Note that this method was implemented due to the CreatableExercise interface
-     * @return the appropriate Exercise object based on this.category
-     */
-    public PerformExercise<?> create() {
-        if (this.category.equals("REP"))
-            return new PerformExercise<RepSet>(this.name, this.category);
-        else if (this.category.equals("WEIGHTED"))
-            return new PerformExercise<WeightedSet>(this.name, this.category);
-        else
-            return new PerformExercise<TimedSet>(this.name, this.category);
     }
 
     /**
@@ -68,6 +53,19 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
     public ExerciseTemplate(String name) {
         this.name = name;
         this.numSets = 0;
+    }
+
+    /**
+     * Factory Design Pattern for Exercise objects.
+     * Note that this method was implemented due to the CreatableExercise interface
+     *
+     * @return the appropriate Exercise object based on this.category
+     */
+    public PerformExercise<?> create() {
+        if (category == Category.REP) {
+            return new PerformExercise<RepSet>(this.name, Category.REP);
+        }
+        return new PerformExercise<WeightedSet>(this.name, Category.WEIGHTED);
     }
 
     /**
@@ -92,7 +90,7 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
      * Necessary method for Firebase
      */
     @SuppressWarnings("unused")
-    public String getCategory() {
+    public Category getCategory() {
         return category;
     }
 }

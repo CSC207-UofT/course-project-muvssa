@@ -1,12 +1,6 @@
 package com.example.fitappa.Profile;
 
-
-import com.example.fitappa.Exercise.Exercise.DefaultExercises;
-import com.example.fitappa.Routine.Routine;
-
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class is the central storage for all relevant entities and use cases for the third and fourth layers of
@@ -17,16 +11,13 @@ import java.util.List;
  * @author Souren
  * @author Uthman
  * @author Abdullah
- *
+ * <p>
  * Since 2.6
  */
 public class Profile implements Serializable {
 
     private User user;
     private FollowManager followManager;
-    private List<Routine> routines;
-    private Saveable gateway;
-    private DefaultExercises defaultExercises;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -38,48 +29,22 @@ public class Profile implements Serializable {
     public Profile(String email, String username, String uniqueID) {
         this.user = new User(email, username, uniqueID);
         this.followManager = new FollowManager(this.user);
-        this.routines = new ArrayList<>();
-        this.defaultExercises = new DefaultExercises();
+    }
+
+    /**
+     * Constructor for profile that takes a User and FollowManager to initialize
+     * Used to retrieve data from firebase and pass in the retrieved user and followmanager
+     *
+     * @param user          User object to be initialized to this profile
+     * @param followManager FollowManager object to be initialized to this profile
+     */
+    public Profile(User user, FollowManager followManager) {
+        this.user = user;
+        this.followManager = followManager;
     }
 
     // empty constructor necessary for Firebase
     public Profile() {
-    }
-
-    /**
-     * Get the list of routines for this profile
-     *
-     * @return List of Routine of this profile
-     */
-    public List<Routine> getRoutines() {
-        return this.routines;
-    }
-
-    /**
-     * replaces the current routine list
-     *
-     * @param routines a list of routine objects
-     */
-    public void setRoutines(List<Routine> routines) {
-        this.routines = routines;
-    }
-
-    /**
-     * Get the object containing default exercises for this profile
-     *
-     * @return DefaultExercises object containing a list of exercises
-     */
-    public DefaultExercises getDefaultExercises() {
-        return defaultExercises;
-    }
-
-    /**
-     * Set the gateway for this profile so that it can be saved
-     *
-     * @param gateway Saveable interface representing a gateway with a save method
-     */
-    public void setGateway(Saveable gateway) {
-        this.gateway = gateway;
     }
 
     /**
@@ -120,15 +85,6 @@ public class Profile implements Serializable {
     }
 
     /**
-     * Adds a routine to the list
-     *
-     * @param r a routine to be added
-     */
-    public void addRoutine(Routine r) {
-        this.routines.add(r);
-    }
-
-    /**
      * Set the user's extra information
      *
      * @param weight    String weight of the user
@@ -145,40 +101,44 @@ public class Profile implements Serializable {
 
     /**
      * gets a string of the users weight
+     *
      * @return returns string of their weight
      */
-    String getUserWeight(){
+    String getUserWeight() {
         return user.getWeight();
     }
 
     /**
      * gets a string of the users height
+     *
      * @return returns string of their height
      */
-    String getUserHeight(){
+    String getUserHeight() {
         return user.getHeight();
     }
 
     /**
      * gets a string of the users first name
+     *
      * @return returns string of their first name
      */
-    String getUserFirstName(){
+    String getUserFirstName() {
         return user.getFirstName();
     }
 
     /**
      * gets a string of the users last name
+     *
      * @return returns string of their last name
      */
-    String getUserLastName(){
+    String getUserLastName() {
         return user.getLastName();
     }
 
     /**
      * Save this profile to a database through the gateway
      */
-    public void saveData() {
+    public void saveData(Saveable gateway) {
         gateway.save(this);
     }
 }

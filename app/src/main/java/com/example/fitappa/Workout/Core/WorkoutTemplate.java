@@ -19,11 +19,17 @@ public class WorkoutTemplate implements Serializable {
 
     /**
      * Constructor for a WorkoutTemplate
+     *
      * @param name represents the String name referring to the name of the workout
      */
     public WorkoutTemplate(String name) {
         this.name = name;
         this.exerciseTemplates = new ArrayList<>();
+    }
+
+    public WorkoutTemplate(String name, List<ExerciseTemplate> exerciseTemplates) {
+        this.name = name;
+        this.exerciseTemplates = exerciseTemplates;
     }
 
     /**
@@ -69,21 +75,6 @@ public class WorkoutTemplate implements Serializable {
      */
     public void addExercise(ExerciseTemplate exerciseTemplate) {
         this.exerciseTemplates.add(exerciseTemplate);
-    }
-
-
-    // TODO: Whoever created this method, please add the javadocs
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (!(o instanceof WorkoutTemplate))
-            return false;
-        WorkoutTemplate workoutTemplate = (WorkoutTemplate) o;
-        // erroring as when you want to update a specific routine it could have different workouts
-        // return name.equals(routine.name) && description.equals(routine.description) &&
-        //        workouts.equals(routine.workouts);
-        return name.equals(workoutTemplate.getName());
     }
 
 
