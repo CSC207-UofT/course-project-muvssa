@@ -10,29 +10,34 @@ public class ViewProfilePresenter {
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupElements();
 
-        loadProfile();
-
-        // TODO @uthman call this.setup() once profile is loaded
-
+        ProfileReader gateway = new ProfileReader(this);
+        gateway.retrieveProfile();
     }
 
-    public void saveSettings() {
-        // TODO @UTHMAN, save the settings here
-        // The view calls this method when save button is pressed
+    public void saveSettings(String firstName, String lastName, String weight, String height) {
+        profile.setUserExtraInfo(weight, height, firstName, lastName);
+
+        Saveable gateway = new SaveProfileGateway();
+        profile.saveData(gateway);
     }
 
     public void logout() {
-        // TODO @uthman
+        view.signOut();
     }
 
 
-    private void loadProfile() {
-        // TODO @uthman - uppdate: not sure if u need to do this
+    public void loadProfile(Profile profile) {
+        this.profile = profile;
+        view.setup(profile.getUsername(), profile.getUserFirstName(), profile.getUserLastName(), profile.getUserWeight(), profile.getUserHeight());
     }
 
     interface View {
         void updateAppBarTitle(String title);
+
         void setup(String username, String fname, String lname, String weight, String height);
+
         void setupElements();
+
+        void signOut();
     }
 }

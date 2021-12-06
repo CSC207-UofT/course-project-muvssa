@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.R;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
@@ -59,6 +60,7 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
      * Go back to dashboard activity with the current profile
      */
     private void backToDashboard() {
+        finish();
         Intent dashboard = new Intent(this, DashboardActivity.class);
         startActivity(dashboard);
     }
@@ -92,8 +94,7 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
 
 
     @Override
-    public void setup(String username, String fname, String lname, String weight, String height)
-    {
+    public void setup(String username, String fname, String lname, String weight, String height) {
         TextView usernameText = findViewById(R.id.userNameProfile);
         usernameText.setText(username);
 
@@ -102,6 +103,12 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
         weightField.setText(weight);
         heightField.setText(height);
 
+    }
+
+    @Override
+    public void signOut() {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(this, DashboardActivity.class));
     }
 
 }
