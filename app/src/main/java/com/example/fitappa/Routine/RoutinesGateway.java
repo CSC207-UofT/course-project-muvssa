@@ -1,8 +1,11 @@
 package com.example.fitappa.Routine;
 
+import android.util.Log;
+
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
+import com.example.fitappa.Workout.Core.WorkoutTemplate;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -10,7 +13,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 /**
@@ -56,15 +61,25 @@ public class RoutinesGateway implements Loadable, Saveable {
                 .addOnSuccessListener(documentSnapshot -> {
                     Routines routines = new Routines();
                     try {
-                        routines = documentSnapshot.get("routines", Routines.class);
+                        // Retrieve Map object from database
+                        Map<String, Object> data = documentSnapshot.getData();
+//                        Map<String, List<WorkoutTemplate>> routinesMap = (Map<String, List<WorkoutTemplate>>) documentSnapshot.get("routines");
+//
+//                        // Loop through the man and add each routine to the Routines object
+//                        for (Object routineName : routinesMap.keySet()) {
+//                            Routine routine = new Routine((String) routineName);
+//                            routine.setWorkouts((List<WorkoutTemplate>) routinesMap.get(routineName));
+//                            routines.add(routine);
+//                        }
+
+                        List<Routine> routineList = (List<Routine>) data.get("routines");
+
+                        // pass the retrieved routines object in List<Routine> format to the presenter
+                        presenter.loadRoutines(routineList);
+
                     } catch (RuntimeException ignored) {
-
-                    }
-
-                    if (routines != null) {
-                        presenter.loadRoutines(routines.getRoutines());
-                    } else {
-                        // If there are no routines stored in the database, send back an empty list
+                        // If the database fails to retrieve list of routines, pass an empty arraylist
+                        Log.d("test123", "inside catch for routine gateway");
                         presenter.loadRoutines(new ArrayList<>());
                     }
                 });
@@ -84,21 +99,22 @@ public class RoutinesGateway implements Loadable, Saveable {
             routines.add((Routine) object);
         }
 
-        documentReference.update("routines", routines);
+        // Add the routines to the database
+        documentReference.update("routines", routines.getRoutines());
     }
 
 
     // Defines a way to retrieve data from firebase and cast to a List<Routine>
     private static class Routines implements Serializable {
-        private final List<Routine> routines;
+        private final Map<String, List<WorkoutTemplate>> routines;
 
 
         /**
          * Constructor needed to be public for firebase to cast List into Routines
-         * Initialize list of routines to ArrayList
+         * Initialize list of routines to empty ArrayList
          */
         public Routines() {
-            routines = new ArrayList<>();
+            routines = new HashMap<>();
         }
 
         /**
@@ -107,12 +123,23 @@ public class RoutinesGateway implements Loadable, Saveable {
          *
          * @return List of Routine
          */
-        public List<Routine> getRoutines() {
+        public Map<String, List<WorkoutTemplate>> getRoutines() {
             return routines;
         }
 
+        private List<Routine> routineList() {
+            List<Routine> routineList = new ArrayList<>();
+            for (String name : routines.keySet()) {
+                Routine newRoutine = new Routine(name);
+                newRoutine.setWorkouts(routines.get(name));
+                routineList.add(newRoutine);
+            }
+
+            return routineList;
+        }
+
         private void add(Routine routine) {
-            routines.add(routine);
+            routines.put(routine.getName(), routine.getWorkouts());
         }
     }
 }

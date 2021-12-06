@@ -15,7 +15,7 @@ import java.util.Map;
  * @since 1.1
  */
 
-class FollowManager implements Serializable {
+public class FollowManager implements Serializable {
     private final User user;
     private final Map<String, FollowManager> following;
     private final Map<String, FollowManager> followers;

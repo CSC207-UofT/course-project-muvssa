@@ -60,6 +60,15 @@ public class Routine implements Serializable, Iterable<WorkoutTemplate> {
     }
 
     /**
+     * Get the list of workout templates from this routine
+     *
+     * @return List of WorkoutTemplate corresponding to this routine
+     */
+    public List<WorkoutTemplate> getWorkouts() {
+        return workoutTemplates;
+    }
+
+    /**
      * Sets the Routine's workouts to new ones given
      *
      * @param workoutTemplates list of new workouts

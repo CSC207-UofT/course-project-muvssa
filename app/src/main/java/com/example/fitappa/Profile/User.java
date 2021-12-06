@@ -15,7 +15,7 @@ import java.io.Serializable;
  * @since 2.9
  */
 
-class User implements Serializable {
+public class User implements Serializable {
 
     private String email;
     private String username;

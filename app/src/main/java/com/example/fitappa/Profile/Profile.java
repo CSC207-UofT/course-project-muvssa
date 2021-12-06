@@ -1,6 +1,7 @@
 package com.example.fitappa.Profile;
 
 import java.io.Serializable;
+
 /**
  * This class is the central storage for all relevant entities and use cases for the third and fourth layers of
  * clean architecture. It contains a User, FollowManager, list of Routines, Saveable gateway, and DefaultExercises.
@@ -10,7 +11,7 @@ import java.io.Serializable;
  * @author Souren
  * @author Uthman
  * @author Abdullah
- *
+ * <p>
  * Since 2.6
  */
 public class Profile implements Serializable {
@@ -28,6 +29,18 @@ public class Profile implements Serializable {
     public Profile(String email, String username, String uniqueID) {
         this.user = new User(email, username, uniqueID);
         this.followManager = new FollowManager(this.user);
+    }
+
+    /**
+     * Constructor for profile that takes a User and FollowManager to initialize
+     * Used to retrieve data from firebase and pass in the retrieved user and followmanager
+     *
+     * @param user          User object to be initialized to this profile
+     * @param followManager FollowManager object to be initialized to this profile
+     */
+    public Profile(User user, FollowManager followManager) {
+        this.user = user;
+        this.followManager = followManager;
     }
 
     // empty constructor necessary for Firebase
@@ -88,33 +101,37 @@ public class Profile implements Serializable {
 
     /**
      * gets a string of the users weight
+     *
      * @return returns string of their weight
      */
-    String getUserWeight(){
+    String getUserWeight() {
         return user.getWeight();
     }
 
     /**
      * gets a string of the users height
+     *
      * @return returns string of their height
      */
-    String getUserHeight(){
+    String getUserHeight() {
         return user.getHeight();
     }
 
     /**
      * gets a string of the users first name
+     *
      * @return returns string of their first name
      */
-    String getUserFirstName(){
+    String getUserFirstName() {
         return user.getFirstName();
     }
 
     /**
      * gets a string of the users last name
+     *
      * @return returns string of their last name
      */
-    String getUserLastName(){
+    String getUserLastName() {
         return user.getLastName();
     }
 

@@ -1,6 +1,8 @@
 package com.example.fitappa.Authentication;
 
+import com.example.fitappa.Profile.FollowManager;
 import com.example.fitappa.Profile.Profile;
+import com.example.fitappa.Profile.User;
 import com.google.firebase.firestore.DocumentSnapshot;
 // ToDo add author, since and other doc details
 
@@ -27,18 +29,22 @@ public class ProcessFirebase {
      * @param documentSnapshot DocumentSnapshot object retrieved from Firebase which contains a Profile
      */
     public void updateViewWithProfileFrom(DocumentSnapshot documentSnapshot) {
-        Profile profile = null;
-
         try {
-            profile = documentSnapshot.toObject(Profile.class);
+            // Get the user from the database
+            User retrievedUser = documentSnapshot.get("user", User.class);
+
+            // Get the FollowManager object from the database
+            FollowManager retrievedFollowerManager = documentSnapshot.get("followManager", FollowManager.class);
+
+            // Construct a profile from the retrieved data
+            Profile profile = new Profile(retrievedUser, retrievedFollowerManager);
+
+            // Update the presenter with the new profile
+            presenter.updateActivity(profile);
+
         } catch (RuntimeException e) {
+            // If firebase fails to return data, set an error
             presenter.setError();
         }
-
-        if (profile != null) {
-            // Update presenter with retrieved profile
-            presenter.updateActivity(profile);
-        }
-
     }
 }
