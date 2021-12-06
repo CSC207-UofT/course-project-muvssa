@@ -4,7 +4,6 @@ import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * This class is a presenter class  meant to send and receive information from the back end to help ViewWorkoutActivity
@@ -17,20 +16,20 @@ import java.util.List;
  * @since 0.3
  */
 
-class ViewWorkoutPresenter {
+class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
     private final View view;
-    private final WorkoutTemplate workoutTemplate; // TODO: @uthman, set the workout template once loaded
-    private final String PAGE_TITLE = "View Your Workout";
+    private final WorkoutTemplateGateway gateway;
     private final String routineName;
+    private WorkoutTemplate workoutTemplate; // TODO: @uthman, set the workout template once loaded
 
     /**
      * View of the workouts
      *
-     * @param view    represents how the user sees the workouts as type View
-     * @param workoutTemplate represents the workout as type Workout
+     * @param view                represents how the user sees the workouts as type View
+     * @param workoutTemplateName represents the workout as type WorkoutTemplate
      */
-    ViewWorkoutPresenter(View view, Serializable workoutTemplate, Serializable routineName) {
-        String workoutName = (String) workoutTemplate;
+    ViewWorkoutPresenter(View view, Serializable workoutTemplateName, Serializable routineName) {
+        String workoutName = (String) workoutTemplateName;
         this.routineName = (String) routineName;
 
         // TODO @uthman, load the workout with workoutName in the routine, routineName
@@ -40,18 +39,21 @@ class ViewWorkoutPresenter {
         this.workoutTemplate = new WorkoutTemplate("h");
 
         this.view = view;
+        String PAGE_TITLE = "View Your Workout";
         this.view.updateAppBarTitle(PAGE_TITLE);
-        this.init();
+
+        gateway = new WorkoutTemplateGateway(this, workoutName, this.routineName);
+        gateway.load();
     }
 
-    public void init() {
+    private void init() {
         // initialize view
-        for(ExerciseTemplate e : this.workoutTemplate.getExercises()) {
+        for (ExerciseTemplate e : this.workoutTemplate.getExercises()) {
             view.updateExerciseLayout(e);
         }
 
         this.view.setupExerciseBtn();
-        this.view.setTitle(this.workoutTemplate.getName() + "' exercises");
+        this.view.setTitle(this.workoutTemplate.getName() + "'s exercises");
     }
 
     /**
@@ -61,15 +63,26 @@ class ViewWorkoutPresenter {
      */
     void addExercise(ExerciseTemplate exerciseTemplate) {
         workoutTemplate.addExercise(exerciseTemplate);
+        gateway.save(workoutTemplate);
         view.updateExerciseLayout(exerciseTemplate);
+    }
+
+    @Override
+    public void loadWorkoutTemplate(WorkoutTemplate workoutTemplate) {
+        this.workoutTemplate = workoutTemplate;
+        init();
     }
 
     // Dependency Inversion
     interface View {
         void updateAppBarTitle(String title);
+
         void updateExerciseLayout(ExerciseTemplate e);
+
         void setTitle(String name);
+
         void goBack();
+
         void setupExerciseBtn();
     }
 
