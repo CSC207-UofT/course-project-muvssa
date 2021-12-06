@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout.CRUD;
 
-import android.util.Log;
-
 import androidx.annotation.NonNull;
 
 import com.example.fitappa.Exercise.Exercise.Category;
@@ -32,19 +30,14 @@ public class FirebaseWorkoutGetter {
         @SuppressWarnings("unchecked")
         Map<String, List<Map<String, Object>>> routineMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
 
-        Log.d("test123", "method1: " + (routineMap == null));
         // Get object representing a routine
         List<Map<String, Object>> workoutTemplateList = Objects.requireNonNull(routineMap).get(routineName);
-        Log.d("test123", "method2");
 
         // initialize workout templates
         List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
-        Log.d("test123", "method3");
 
         // Loop through the workout templates object and input workout templates to the list
         for (Map<String, Object> workoutMap : Objects.requireNonNull(workoutTemplateList)) {
-            Log.d("test123", "method4");
-
             WorkoutTemplate workoutTemplate = getWorkoutTemplate(workoutMap);
             workoutTemplates.add(workoutTemplate);
         }
@@ -77,7 +70,6 @@ public class FirebaseWorkoutGetter {
 
             // Add each exerciseTemplate to the list
             ExerciseTemplate exerciseTemplate = new ExerciseTemplate(name, integerToInt(sets), category);
-            Log.d("test123", exerciseTemplate.getName());
             exerciseTemplates.add(exerciseTemplate);
         }
 

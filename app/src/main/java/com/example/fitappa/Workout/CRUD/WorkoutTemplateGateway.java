@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout.CRUD;
 
-import android.util.Log;
-
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
@@ -39,22 +37,16 @@ public class WorkoutTemplateGateway implements Loadable, Saveable {
     public void load() {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
             try {
-                Log.d("test123", "try1");
                 FirebaseWorkoutGetter firebaseWorkoutGetter = new FirebaseWorkoutGetter(routineName);
-                Log.d("test123", "try2");
                 List<WorkoutTemplate> workoutTemplates = firebaseWorkoutGetter.getWorkoutTemplates(documentSnapshot);
 
-                Log.d("test123", "try3");
                 for (WorkoutTemplate workoutTemplate : workoutTemplates) {
-                    Log.d("test123", "try4");
                     if (workoutTemplate.getName().equals(workoutName)) {
-                        Log.d("test123", "try5");
                         presenter.loadWorkoutTemplate(workoutTemplate);
                     }
                 }
             } catch (RuntimeException e) {
-                Log.d("test123", "" + e.getLocalizedMessage());
-                presenter.loadWorkoutTemplate(null);
+                presenter.loadWorkoutTemplate(new WorkoutTemplate(""));
             }
         });
     }

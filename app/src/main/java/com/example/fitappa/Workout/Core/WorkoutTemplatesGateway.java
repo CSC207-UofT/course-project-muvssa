@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout.Core;
 
-import android.util.Log;
-
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
@@ -66,16 +64,12 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
                 // pass the retrieved workout templates to the presenter
                 presenter.loadWorkoutTemplates(workoutTemplates);
 
-                Log.d("test123", "Test");
-
-
             } catch (RuntimeException e) {
                 // If there is a failure from the database, pass in an empty list
                 presenter.loadWorkoutTemplates(new ArrayList<>());
             }
         });
     }
-
 
 
     /**
