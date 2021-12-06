@@ -26,7 +26,10 @@ public interface Set {
      * @return true if the set is complete
      */
     boolean isComplete();
-
+    /**
+     * String representation of the set
+     * @return String
+     */
     String toString();
 
 }
