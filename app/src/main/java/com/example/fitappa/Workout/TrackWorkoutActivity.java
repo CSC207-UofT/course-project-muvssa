@@ -255,14 +255,11 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         finish.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-        finish.setOnClickListener(v -> {
-            finishSet(setRow,
-                    (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
-                    (String) exerciseBody.getTag(R.string.TrackWorkoutUID));
-
-        });
+        finish.setOnClickListener(v -> finishSet(setRow,
+                (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
+                (String) exerciseBody.getTag(R.string.TrackWorkoutUID)));
         finish.setWidth(900 / 3);
-        finish.setText("Done");
+        finish.setText(getString(R.string.WorkoutDoneText));
         setRow.addView(finish);
 
 
@@ -309,14 +306,11 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         finish.setLayoutParams(new LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
                 ViewGroup.LayoutParams.WRAP_CONTENT, 1));
-        finish.setOnClickListener(v -> {
-            finishSet(setRow,
-                    (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
-                    (String) exerciseBody.getTag(R.string.TrackWorkoutUID));
-
-        });
+        finish.setOnClickListener(v -> finishSet(setRow,
+                (Category) exerciseBody.getTag(R.string.TrackWorkoutCategory),
+                (String) exerciseBody.getTag(R.string.TrackWorkoutUID)));
         finish.setWidth(900 / 4);
-        finish.setText("Done");
+        finish.setText(getString(R.string.WorkoutDoneText));
         setRow.addView(finish);
 
 
@@ -345,12 +339,10 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      * @param UID      UID of the exercise
      */
     private void finishSet(LinearLayout setRow, Category category, String UID) {
-        switch (category) {
-            case WEIGHTED:
-                finishWeightedSet(setRow, category, UID);
-                break;
-            default:
-                finishRepSet(setRow, category, UID);
+        if (category == Category.WEIGHTED) {
+            finishWeightedSet(setRow, UID);
+        } else {
+            finishRepSet(setRow, UID);
         }
     }
 
@@ -358,10 +350,9 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      * This method tell the presenter to add the set & update UI
      *
      * @param setRow   the set it referring to
-     * @param category category of the exercise
      * @param UID      UID of the exercise
      */
-    private void finishRepSet(LinearLayout setRow, Category category, String UID) {
+    private void finishRepSet(LinearLayout setRow, String UID) {
         // The Rep Count is at index 1 (EditText)
         EditText reps = (EditText) setRow.getChildAt(1);
         String numReps = reps.getText().toString();
@@ -380,10 +371,9 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      * This method tell the presenter to add the set & update UI
      *
      * @param setRow   the set it referring to
-     * @param category category of the exercise
      * @param UID      UID of the exercise
      */
-    private void finishWeightedSet(LinearLayout setRow, Category category, String UID) {
+    private void finishWeightedSet(LinearLayout setRow, String UID) {
         // Weight is at index 1 (EditText)
         EditText weight = (EditText) setRow.getChildAt(2);
         String numWeight = weight.getText().toString();
