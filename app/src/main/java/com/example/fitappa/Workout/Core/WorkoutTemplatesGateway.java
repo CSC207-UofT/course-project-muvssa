@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout.Core;
 
-import android.util.Log;
-
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
@@ -11,7 +9,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,29 +39,14 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
     public void load() {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
             try {
-//                ArrayList workoutTemplatesList = documentSnapshot.get("routines." + routineName, ArrayList.class);
 
                 Map<String, Object> data = documentSnapshot.getData();
-                if (data == null) {
-                    Log.d("test123", "data is null :(");
-                    return;
-                }
-                List<WorkoutTemplate> workoutTemplates = (List<WorkoutTemplate>) data.get("routines." + routineName);
-//                List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
-//
-//                assert workoutTemplatesList != null;
-//                for (Object object : workoutTemplatesList) {
-//                    workoutTemplates.add((WorkoutTemplate) object);
-//                }
 
-                Log.d("test123", "inside try");
-                if (workoutTemplates == null) {
-                    Log.d("test123", "workoutTemplates is null :(");
-                }
+                List<WorkoutTemplate> workoutTemplates = (List<WorkoutTemplate>) Objects.requireNonNull(data).get("routines." + routineName);
+
                 presenter.loadWorkoutTemplates(workoutTemplates != null ? workoutTemplates : new ArrayList<>());
 
             } catch (RuntimeException e) {
-                Log.d("test123", "inside catch");
                 presenter.loadWorkoutTemplates(new ArrayList<>());
             }
         });
@@ -81,33 +63,5 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
         }
 
         documentReference.update("routines." + routineName, templates);
-    }
-
-    // Defines a way to retrieve data from firebase and cast to a List<WorkoutTemplates>
-    private static class WorkoutTemplates implements Serializable {
-        private final List<WorkoutTemplate> workoutTemplates;
-
-
-        /**
-         * Constructor needed to be public for firebase to cast List into Routines
-         * Initialize list of workoutTemplates to ArrayList
-         */
-        public WorkoutTemplates() {
-            workoutTemplates = new ArrayList<>();
-        }
-
-        /**
-         * Method required to be public for Firebase.
-         * Gets the workout templates list from this instance.
-         *
-         * @return List of workout templates
-         */
-        public List<WorkoutTemplate> getWorkoutTemplates() {
-            return workoutTemplates;
-        }
-
-        private void add(WorkoutTemplate template) {
-            workoutTemplates.add(template);
-        }
     }
 }
