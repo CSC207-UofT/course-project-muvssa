@@ -2,6 +2,7 @@ package com.example.fitappa.Profile;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -62,4 +63,20 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
     }
+
+    @Override
+    public void setupElements() {
+        Button saveBtn = findViewById(R.id.saveSettingsBtn);
+        saveBtn.setOnClickListener(v -> presenter.saveSettings());
+
+        Button logoutBtn = findViewById(R.id.LogoutBtn);
+        logoutBtn.setOnClickListener(v -> presenter.logout());
+    }
+
+    @Override
+    public void setup(String username, String fname, String lname, String weight, String height)
+    {
+
+    }
+
 }
