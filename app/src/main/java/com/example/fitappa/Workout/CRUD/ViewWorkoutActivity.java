@@ -45,7 +45,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
         setContentView(R.layout.activity_view_workout);
         this.exerciseLayout = findViewById(R.id.ExerciseLayout);
         this.presenter = new ViewWorkoutPresenter(this,
-                getIntent().getSerializableExtra(getString(R.string.WorkoutObject)),
+                getIntent().getSerializableExtra("workoutName"),
                 getIntent().getSerializableExtra("routineName"));
     }
 

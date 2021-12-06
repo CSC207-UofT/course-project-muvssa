@@ -19,7 +19,7 @@ import java.util.List;
 
 class ViewWorkoutPresenter {
     private final View view;
-    private final WorkoutTemplate workoutTemplate;
+    private final WorkoutTemplate workoutTemplate; // TODO: @uthman, set the workout template once loaded
     private final String PAGE_TITLE = "View Your Workout";
     private final String routineName;
 
@@ -30,12 +30,21 @@ class ViewWorkoutPresenter {
      * @param workoutTemplate represents the workout as type Workout
      */
     ViewWorkoutPresenter(View view, Serializable workoutTemplate, Serializable routineName) {
-        this.workoutTemplate = (WorkoutTemplate) workoutTemplate;
+        String workoutName = (String) workoutTemplate;
         this.routineName = (String) routineName;
+
+        // TODO @uthman, load the workout with workoutName in the routine, routineName
+
+
+        // Temporary solution:
+        this.workoutTemplate = new WorkoutTemplate("h");
 
         this.view = view;
         this.view.updateAppBarTitle(PAGE_TITLE);
+        this.init();
+    }
 
+    public void init() {
         // initialize view
         for(ExerciseTemplate e : this.workoutTemplate.getExercises()) {
             view.updateExerciseLayout(e);
@@ -43,12 +52,7 @@ class ViewWorkoutPresenter {
 
         this.view.setupExerciseBtn();
         this.view.setTitle(this.workoutTemplate.getName() + "' exercises");
-
     }
-
-
-    // TODO: @uthman,
-
 
     /**
      * Adds an exercise to the workout and updates the view of the exercises

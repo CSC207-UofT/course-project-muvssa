@@ -1,5 +1,7 @@
 package com.example.fitappa.Workout.Core;
 
+import android.util.Log;
+
 import androidx.annotation.NonNull;
 
 import com.example.fitappa.Authentication.DatabaseConstants;
@@ -67,6 +69,9 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
                 // pass the retrieved workout templates to the presenter
                 presenter.loadWorkoutTemplates(workoutTemplates);
 
+                Log.d("test123", "Test");
+
+
 
             } catch (RuntimeException e) {
                 // If there is a failure from the database, pass in an empty list
@@ -99,6 +104,7 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
             WorkoutTemplate workoutTemplate = getWorkoutTemplate(workoutMap);
             workoutTemplates.add(workoutTemplate);
         }
+
         return workoutTemplates;
     }
 
@@ -127,6 +133,7 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
 
             // Add each exerciseTemplate to the list
             ExerciseTemplate exerciseTemplate = new ExerciseTemplate(name, integerToInt(sets), category);
+            Log.d("test123", exerciseTemplate.getName());
             exerciseTemplates.add(exerciseTemplate);
         }
 

@@ -1,5 +1,7 @@
 package com.example.fitappa.Routine;
 
+import android.util.Log;
+
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
