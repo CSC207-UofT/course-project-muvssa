@@ -49,9 +49,6 @@ class AddWorkoutPresenter implements LoadsWorkoutTemplates {
             view.setError("Workout with the name \"" + workoutName + "\" already exists");
         } else {
             WorkoutTemplate workoutTemplate = new WorkoutTemplate(workoutName);
-            workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise", 0, Category.REP));
-            workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 1", 0, Category.REP));
-            workoutTemplate.addExercise(new ExerciseTemplate("Dummy Exercise 2", 0, Category.REP));
             workoutTemplates.add(workoutTemplate);
             gateway.save(workoutTemplates);
             view.exitPage();
