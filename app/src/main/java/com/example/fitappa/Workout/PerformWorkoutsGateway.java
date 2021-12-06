@@ -35,13 +35,7 @@ public class PerformWorkoutsGateway implements Loadable, Saveable {
             @SuppressWarnings("unchecked")
             List<String> performedWorkoutsStrings = (List<String>) documentSnapshot.get("Performed Workouts");
 
-            List<PerformWorkout> performWorkouts = new ArrayList<>();
-            for (String performedWorkoutSting : performedWorkoutsStrings) {
-//                PerformWorkout performWorkout = new PerformWorkout(performedWorkoutSting);
-//                performWorkouts.add(performWorkout);
-            }
-
-
+//            presenter.doSomethingWith(performedWorkoutsStrings);
         });
     }
 
@@ -53,12 +47,15 @@ public class PerformWorkoutsGateway implements Loadable, Saveable {
     @Override
     public void save(Object o) {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
-            List<String> performedWorkouts;
+            List<String> performedWorkouts = null;
             try {
                 performedWorkouts = (List<String>) documentSnapshot.get("Performed Workouts");
-            } catch (RuntimeException e) {
-                performedWorkouts = new ArrayList<>();
+            } catch (RuntimeException ignored) {
             }
+
+            if (performedWorkouts == null)
+                performedWorkouts = new ArrayList<>();
+
 
             PerformWorkout performWorkout = (PerformWorkout) o;
             Objects.requireNonNull(performedWorkouts).add(performWorkout.toString());
