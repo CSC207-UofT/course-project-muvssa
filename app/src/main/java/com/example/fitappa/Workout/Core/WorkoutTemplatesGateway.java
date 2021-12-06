@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout.Core;
 
-import android.util.Log;
-
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
@@ -43,27 +41,22 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
             try {
 
-                Map<String, Object> data = documentSnapshot.getData();
-                Log.d("test123", "inside try1 " + (data == null));
+                Map<String, List<Map<String, Object>>> routineMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
 
-                List<Map<String, Object>> workoutTemplatesList = (List<Map<String, Object>>) Objects.requireNonNull(data).get("routines." + routineName);
-                Log.d("test123", "inside try2");
+                List<Map<String, Object>> workoutTemplateList = Objects.requireNonNull(routineMap).get(routineName);
 
                 List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
-                Log.d("test123", "inside try3: " + (workoutTemplates == null));
-                for (Map<String, Object> map : Objects.requireNonNull(workoutTemplatesList)) {
-                    Log.d("test123", "inside try4");
+
+                for (Map<String, Object> map : Objects.requireNonNull(workoutTemplateList)) {
                     WorkoutTemplate workoutTemplate = new WorkoutTemplate((String) map.get("name"), (List<ExerciseTemplate>) map.get("exercises"));
-                    Log.d("test123", "inside try5");
                     workoutTemplates.add(workoutTemplate);
-                    Log.d("test123", "inside try6");
                 }
-                Log.d("test123", "inside try7");
+
                 presenter.loadWorkoutTemplates(workoutTemplates);
 
+
             } catch (RuntimeException e) {
-                Log.d("test123", "inside catch");
-//                presenter.loadWorkoutTemplates(new ArrayList<>());
+                presenter.loadWorkoutTemplates(new ArrayList<>());
             }
         });
     }
