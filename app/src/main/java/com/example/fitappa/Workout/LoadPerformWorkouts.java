@@ -7,6 +7,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -31,6 +32,9 @@ public class LoadPerformWorkouts implements Loadable {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
             @SuppressWarnings("unchecked")
             List<String> performedWorkoutsStrings = (List<String>) documentSnapshot.get("Performed Workouts");
+
+            if (performedWorkoutsStrings == null)
+                performedWorkoutsStrings = new ArrayList<>();
 
             presenter.inititalizeView(performedWorkoutsStrings);
         });

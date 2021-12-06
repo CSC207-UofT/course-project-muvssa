@@ -9,11 +9,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.Exercise.AddExerciseActivity;
-import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Exercise.Exercise.ExerciseRepository;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.R;
 import com.example.fitappa.Workout.StartWorkoutActivity;
-import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
 import java.util.List;
@@ -21,9 +20,9 @@ import java.util.Objects;
 
 /**
  * This class is a view class meant to open the activity_view_workout xml, a place for the user to view their Workouts
- *
+ * <p>
  * The method in the class allow the user to go and view other Workouts or create more
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Abdullah
@@ -85,6 +84,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     public void goBack() {
+        finish();
         startActivity(new Intent(this, StartWorkoutActivity.class));
     }
 
