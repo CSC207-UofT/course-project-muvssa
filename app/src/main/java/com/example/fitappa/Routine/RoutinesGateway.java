@@ -1,8 +1,7 @@
 package com.example.fitappa.Routine;
 
-import android.util.Log;
-
 import com.example.fitappa.Authentication.DatabaseConstants;
+import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
@@ -61,26 +60,29 @@ public class RoutinesGateway implements Loadable, Saveable {
                 .addOnSuccessListener(documentSnapshot -> {
                     Routines routines = new Routines();
                     try {
-                        // Retrieve Map object from database
-//                        Map<String, Object> data = documentSnapshot.getData();
-                        Map<String, List<WorkoutTemplate>> routinesMap = (Map<String, List<WorkoutTemplate>>) documentSnapshot.get("routines");
+                        Map<String, List<Map<String, Object>>> routinesMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
 
                         // Loop through the man and add each routine to the Routines object
-                        for (Object routineName : routinesMap.keySet()) {
+                        for (Object routineName : Objects.requireNonNull(routinesMap).keySet()) {
                             Routine routine = new Routine((String) routineName);
-                            routine.setWorkouts((List<WorkoutTemplate>) routinesMap.get(routineName));
+
+                            List<Map<String, Object>> workoutTemplateMap = (List<Map<String, Object>>) routinesMap.get(routineName);
+
+                            List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
+                            for (Map<String, Object> map : Objects.requireNonNull(workoutTemplateMap)) {
+                                WorkoutTemplate tempWorkoutTemplate = new WorkoutTemplate((String) map.get("name"), (List<ExerciseTemplate>) map.get("exercises"));
+                                workoutTemplates.add(tempWorkoutTemplate);
+                            }
+
+                            routine.setWorkouts(workoutTemplates);
                             routines.add(routine);
                         }
-
-//                        assert data != null;
-//                        List<Routine> routineList = (List<Routine>) data.get("routines");
 
                         // pass the retrieved routines object in List<Routine> format to the presenter
                         presenter.loadRoutines(routines.routineList());
 
                     } catch (RuntimeException e) {
                         // If the database fails to retrieve list of routines, pass an empty arraylist
-                        Log.d("test123", "inside catch for routine gateway");
                         presenter.loadRoutines(new ArrayList<>());
                     }
                 });
