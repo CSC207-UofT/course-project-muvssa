@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.fitappa.Authentication.MainActivity;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -108,7 +109,7 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
     @Override
     public void signOut() {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(this, DashboardActivity.class));
+        startActivity(new Intent(this, MainActivity.class));
     }
 
 }
