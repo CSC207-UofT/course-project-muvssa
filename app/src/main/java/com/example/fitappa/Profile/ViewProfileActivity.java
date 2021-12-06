@@ -76,8 +76,8 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
         Button saveBtn = findViewById(R.id.saveSettingsBtn);
         saveBtn.setOnClickListener(v -> this.saveSettings());
 
-        //Button logoutBtn = findViewById(R.id.LogoutBtn);
-        //logoutBtn.setOnClickListener(v -> presenter.logout());
+        Button logoutBtn = findViewById(R.id.LogoutButton);
+        logoutBtn.setOnClickListener(v -> presenter.logout());
 
          this.fnameField = findViewById(R.id.FnameField);
          this.lnameField = findViewById(R.id.LnameField);
