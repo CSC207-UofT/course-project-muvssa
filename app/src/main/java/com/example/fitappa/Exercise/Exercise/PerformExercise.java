@@ -98,4 +98,18 @@ public class PerformExercise<T> implements Serializable {
         this.sets.add((T) s);
     }
 
+    @Override
+    public String toString() {
+        String s = "";
+
+        s += this.name + " with the following sets: \n";
+
+        for (T set : this.sets)
+        {
+            s += set.toString() + "\n";
+        }
+
+        return s;
+    }
+
 }

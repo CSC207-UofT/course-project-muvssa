@@ -38,6 +38,7 @@ public class WorkoutLogActivity extends AppCompatActivity implements WorkoutLogP
             TextView y = new TextView(this);
             y.setText("No workout logs found");
             y.setGravity(Gravity.CENTER);
+            y.setPadding(0 , 20, 0, 0);
             layout.addView(y);
         }
 
@@ -46,6 +47,7 @@ public class WorkoutLogActivity extends AppCompatActivity implements WorkoutLogP
             TextView t = new TextView(this);
             t.setText(log);
             t.setGravity(Gravity.CENTER);
+            t.setPadding(0 , 20, 0, 0);
             layout.addView(t);
         }
 

@@ -168,12 +168,12 @@ public class PerformWorkout {
     @Override
     public String toString() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String s = "The workout ";
+        String s = "The workout \"";
         s += this.name;
-        s += " was performed on " + this.startTime.format(formatter) + " with the following exercises: ";
+        s += "\" was performed on " + this.startTime.format(formatter) + " with the following exercises: \n";
 
         for(PerformExercise e : this.exercises) {
-            s += e.getName() + " (" + e.getCategory().toString() + ") ";
+            s += "\n" + e.toString();
         }
 
         return s;
