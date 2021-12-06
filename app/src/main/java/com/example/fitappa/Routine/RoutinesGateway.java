@@ -81,7 +81,7 @@ public class RoutinesGateway implements Loadable, Saveable {
      *
      * @param routines         Routines object with a map of routines
      * @param routinesMap      Map of routines taken from firebase
-     * @param documentSnapshot
+     * @param documentSnapshot DocumentSnapshot firebase object needed for firebase use case
      */
     private void fillRoutinesWithMap(Routines routines, Map<String, List<Map<String, Object>>> routinesMap, DocumentSnapshot documentSnapshot) {
         // Loop through the man and add each routine to the Routines object
@@ -122,7 +122,6 @@ public class RoutinesGateway implements Loadable, Saveable {
 
 
         /**
-         * Constructor needed to be public for firebase to cast List into Routines
          * Initialize list of routines to empty ArrayList
          */
         private Routines() {
