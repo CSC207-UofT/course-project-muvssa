@@ -1,164 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/userNameUpdate"
     android:layout_width="match_parent"
+    android:id="@+id/userNameUpdate"
     android:layout_height="match_parent">
 
-
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:orientation="vertical"
-        android:padding="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/returnHome"
+            android:layout_width="207dp"
+            android:layout_height="37dp"
+            android:backgroundTint="#112e51"
+            android:text="@string/returnHome" />
+
+        <ImageView
+            android:id="@+id/imageView19"
+            android:layout_width="89dp"
+            android:layout_height="83dp"
+            app:srcCompat="@drawable/logo" />
+
+        <Button
+            android:id="@+id/settingButton"
+            android:layout_width="210dp"
+            android:layout_height="38dp"
+            android:backgroundTint="#046b99"
+            android:text="@string/settingButton" />
+
+        <EditText
+            android:id="@+id/searchText"
+            android:layout_width="272dp"
+            android:layout_height="62dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/searchText" />
+
+        <Button
+            android:id="@+id/submitSearch"
+            android:layout_width="113dp"
+            android:layout_height="36dp"
+            android:backgroundTint="#046b99"
+            android:text="@string/submit_Search"
+            android:textStyle="bold" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="21dp" />
 
         <LinearLayout
+            android:layout_height="45dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:orientation="horizontal">
-
-            <ImageView
-                android:id="@+id/imageView19"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_weight="1"
-                android:maxWidth="100dp"
-                android:maxHeight="100dp"
-                app:srcCompat="@drawable/logo" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:text="@string/welcomeText"
-                android:textSize="25sp" />
+                android:id="@+id/textView"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
             <TextView
-                android:id="@+id/userNameProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
                 android:text="@string/user_Name"
-                android:textAlignment="center"
-                android:textSize="25sp" />
-
-            <Space
                 android:layout_width="wrap_content"
+                android:id="@+id/userNameProfile"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Large" />
         </LinearLayout>
 
         <LinearLayout
+            android:layout_height="match_parent"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:layout_weight="1"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
+            <LinearLayout
                 android:layout_height="wrap_content"
-                android:text="@string/Fname" />
-
-            <EditText
-                android:id="@+id/editTextTextPersonName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                 />
+                android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView10"
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="204dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followersText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                <TextView
+                    android:id="@+id/followerNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/followersNumber"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_height="31dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/Lname" />
+                android:orientation="horizontal">
 
-            <EditText
-                android:id="@+id/editTextTextPersonName5"
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="4dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/followingText"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+
+                <TextView
+                    android:id="@+id/followingNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/followingNumber"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName"
-                 />
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/textView14"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/Weight" />
-
-            <EditText
-                android:id="@+id/editTextNumberDecimal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal" />
-
-            <TextView
-                android:id="@+id/textView17"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="@string/Height" />
-
-            <EditText
-                android:id="@+id/editTextNumberDecimal2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="numberDecimal" />
-
+                <Button
+                    android:id="@+id/followButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#046b99"
+                    android:text="@string/followButton"
+                    android:textStyle="bold" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-            <Button
-                android:id="@+id/button3"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="100"
-                android:text="@string/Save" />
-
-            <Button
-                android:id="@+id/LogoutButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:backgroundTint="#046b99"
-                android:text="@string/LogoutButton" />
-        </LinearLayout>
-
+            android:layout_height="match_parent"
+            android:orientation="horizontal"></LinearLayout>
     </LinearLayout>
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
