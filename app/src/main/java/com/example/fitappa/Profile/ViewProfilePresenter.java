@@ -8,9 +8,13 @@ public class ViewProfilePresenter {
     public ViewProfilePresenter(View view) {
         this.view = view;
         this.view.updateAppBarTitle(PAGE_TITLE);
+        this.view.setupElements();
 
         ProfileReader gateway = new ProfileReader(this);
         gateway.retrieveProfile();
+
+        this.view.setup(profile.getUsername(), profile.getUserFirstName(), profile.getUserLastName(),
+                profile.getUserWeight(), profile.getUserHeight());
     }
 
     public void saveSettings(String firstName, String lastName, String weight, String height) {
