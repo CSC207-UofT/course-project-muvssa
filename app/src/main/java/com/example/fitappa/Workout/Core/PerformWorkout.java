@@ -176,6 +176,8 @@ public class PerformWorkout {
             s += "\n" + e.toString();
         }
 
+        s += "\n---------------------------------";
+
         return s;
     }
 
