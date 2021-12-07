@@ -10,11 +10,25 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+/**
+ * This class loads performed workouts
+ * <p>
+ * The method in the class load workouts from a documentSnapshot onto a list
+ * <p>
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.3
+ */
 
 public class LoadPerformWorkouts implements Loadable {
     private final DocumentReference documentReference;
     private final WorkoutLogPresenter presenter;
 
+    /**
+     * loads performed workout information to the database
+     * @param presenter presenter information on workouts come from
+     */
     public LoadPerformWorkouts(WorkoutLogPresenter presenter) {
         this.presenter = presenter;
         DatabaseConstants constants = new DatabaseConstants();

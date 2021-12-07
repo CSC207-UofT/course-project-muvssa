@@ -4,10 +4,16 @@ import com.example.fitappa.Profile.SaveProfileGateway;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-// ToDo add author, since and other doc details
 
 /**
  * This class is a gateway that deals with signing up a user with the database given an email, username, and password
+ *
+ * Methods in this class move information to the database
+ *
+ * Documentation in this class specifies what methods do
+ *
+ * @author Uthman
+ * @version 1.1
  */
 class SignUpGateway {
     private final AuthenticationPresenter presenter;

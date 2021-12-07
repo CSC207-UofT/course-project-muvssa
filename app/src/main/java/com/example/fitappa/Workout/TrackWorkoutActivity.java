@@ -25,6 +25,8 @@ import java.util.Objects;
 /**
  * The page responsible for tracking workouts
  *
+ * The methods help display a page for a user to track their workouts
+ *
  * @author abdullah
  * @version 0.1
  * @layer 4

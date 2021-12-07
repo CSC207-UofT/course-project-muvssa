@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
- * @since 0.1
+ * @since 1.2
  */
 
 class SettingsPresenter {

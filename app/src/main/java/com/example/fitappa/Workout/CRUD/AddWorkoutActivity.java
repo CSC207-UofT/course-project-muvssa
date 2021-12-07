@@ -40,12 +40,18 @@ public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutP
         this.presenter = new AddWorkoutPresenter(this, getIntent().getSerializableExtra("routine"));
     }
 
-
+    /**
+     * updates the title of the page
+     * @param title string title
+     */
     @Override
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
     }
 
+    /**
+     * implements the buttons
+     */
     @Override
     public void setupAddWorkoutButton() {
         Button addWorkoutBtn = findViewById(R.id.CreateWorkoutBtn2);
@@ -54,6 +60,9 @@ public class AddWorkoutActivity extends AppCompatActivity implements AddWorkoutP
                 v -> presenter.addWorkoutTemplate(workoutNameField.getText().toString()));
     }
 
+    /**
+     * exits the page
+     */
     @Override
     public void exitPage() {
         startActivity(new Intent(this, StartWorkoutActivity.class));

@@ -12,10 +12,25 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class save performed workouts
+ * <p>
+ * The method in the class save workouts from a list onto a DocumentReference
+ * <p>
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.3
+ */
+
 public class SavePerformWorkouts implements Saveable {
     private final DocumentReference documentReference;
     private final TrackWorkoutPresenter presenter;
 
+    /**
+     * Saves performed workout information to the database
+     * @param presenter presenter information on workouts come from
+     */
     public SavePerformWorkouts(TrackWorkoutPresenter presenter) {
         this.presenter = presenter;
         DatabaseConstants constants = new DatabaseConstants();
