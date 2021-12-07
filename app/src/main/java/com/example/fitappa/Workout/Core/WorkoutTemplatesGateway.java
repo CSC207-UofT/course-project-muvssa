@@ -1,9 +1,9 @@
 package com.example.fitappa.Workout.Core;
 
-import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.CRUD.FirebaseWorkoutGetter;
+import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,6 +25,7 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
     private final DocumentReference documentReference;
     private final LoadsWorkoutTemplates presenter;
     private final String routineName;
+    private final DatabaseConstants constants;
 
     /**
      * Constructor that takes in an interface LoadsWorkoutTemplates so that it can present
@@ -42,7 +43,7 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        DatabaseConstants constants = new DatabaseConstants();
+        constants = new DatabaseConstants();
 
         // get the document reference for the current user
         documentReference = FirebaseFirestore.getInstance()
@@ -90,6 +91,6 @@ public class WorkoutTemplatesGateway implements Loadable, Saveable {
         // Update the routine with the workoutTemplates
         // String is using dot notation to access the specific routine.
         // Ex. "routine.name" which would get the specific routine
-        documentReference.update("routines." + routineName, workoutTemplates);
+        documentReference.update(constants.getRoutines() + "." + routineName, workoutTemplates);
     }
 }

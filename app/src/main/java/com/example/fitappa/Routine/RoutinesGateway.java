@@ -1,10 +1,10 @@
 package com.example.fitappa.Routine;
 
-import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.CRUD.FirebaseWorkoutGetter;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
+import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -30,6 +30,7 @@ public class RoutinesGateway implements Loadable, Saveable {
 
     private final DocumentReference documentReference;
     private final LoadsRoutines presenter;
+    private final DatabaseConstants constants;
 
     /**
      * Constructor used when needing to load routines from a database and call a method
@@ -39,6 +40,7 @@ public class RoutinesGateway implements Loadable, Saveable {
      */
     public RoutinesGateway(LoadsRoutines presenter) {
         this.presenter = presenter;
+        this.constants = new DatabaseConstants();
 
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -62,15 +64,17 @@ public class RoutinesGateway implements Loadable, Saveable {
                     Routines routines = new Routines();
                     try {
                         @SuppressWarnings("unchecked")
-                        Map<String, List<Map<String, Object>>> routinesMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
+                        Map<String, List<Map<String, Object>>> routinesMap =
+                                (Map<String, List<Map<String, Object>>>) documentSnapshot
+                                        .get(constants.getRoutines());
 
                         fillRoutinesWithMap(routines, routinesMap, documentSnapshot);
 
-                        // pass the retrieved routines object in List<Routine> format to the presenter
+                        // pass the retrieved routines object in List<Routine> format to presenter
                         presenter.loadRoutines(routines.routineList());
 
                     } catch (RuntimeException e) {
-                        // If the database fails to retrieve list of routines, pass an empty arraylist
+                        // If database fails to retrieve list of routines, pass an empty arraylist
                         presenter.loadRoutines(new ArrayList<>());
                     }
                 });
@@ -83,14 +87,17 @@ public class RoutinesGateway implements Loadable, Saveable {
      * @param routinesMap      Map of routines taken from firebase
      * @param documentSnapshot DocumentSnapshot firebase object needed for firebase use case
      */
-    private void fillRoutinesWithMap(Routines routines, Map<String, List<Map<String, Object>>> routinesMap, DocumentSnapshot documentSnapshot) {
+    private void fillRoutinesWithMap(Routines routines,
+                                     Map<String, List<Map<String, Object>>> routinesMap,
+                                     DocumentSnapshot documentSnapshot) {
         // Loop through the man and add each routine to the Routines object
         for (Object routineNameObject : Objects.requireNonNull(routinesMap).keySet()) {
             String routineName = (String) routineNameObject;
             Routine routine = new Routine(routineName);
 
             FirebaseWorkoutGetter firebaseWorkoutGetter = new FirebaseWorkoutGetter(routineName);
-            List<WorkoutTemplate> workoutTemplates = firebaseWorkoutGetter.getWorkoutTemplates(documentSnapshot);
+            List<WorkoutTemplate> workoutTemplates =
+                    firebaseWorkoutGetter.getWorkoutTemplates(documentSnapshot);
 
             routine.setWorkouts(workoutTemplates);
             routines.add(routine);
@@ -112,7 +119,7 @@ public class RoutinesGateway implements Loadable, Saveable {
         }
 
         // Add the routines to the database
-        documentReference.update("routines", routines.getRoutines());
+        documentReference.update(constants.getRoutines(), routines.getRoutines());
     }
 
 

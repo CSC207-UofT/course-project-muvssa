@@ -1,8 +1,6 @@
 package com.example.fitappa.Profile;
 
-import android.util.Log;
-
-import com.example.fitappa.Authentication.DatabaseConstants;
+import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 /**
@@ -40,7 +38,6 @@ public class SaveProfileGateway implements Saveable {
             this.profile = (Profile) o;
         }
 
-        Log.d("test123", "profile is: " + profile.getUsername());
         FirebaseFirestore database = FirebaseFirestore.getInstance();
 
         database.collection(constants.getUsersCollection())

@@ -1,6 +1,6 @@
 package com.example.fitappa.Exercise.Exercise;
 
-import com.example.fitappa.Authentication.DatabaseConstants;
+import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,7 +40,7 @@ public class ExerciseRepository {
 
         // Get the collection reference to exercises from firebase
         CollectionReference exerciseCollection = FirebaseFirestore.getInstance()
-                .collection(constants.getExercisesCollection());
+                .collection(constants.getExercises());
 
         exerciseCollection.get()
                 .addOnSuccessListener(queryDocumentSnapshots -> {
