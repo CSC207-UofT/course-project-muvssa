@@ -29,7 +29,10 @@ public class ViewProfilePresenter implements LoadsProfile {
     }
 
     public void saveSettings(String firstName, String lastName, String weight, String height) {
-        profile.setExtraInfo(weight, height, firstName, lastName);
+        profile.setFirstName(firstName);
+        profile.setLastName(lastName);
+        profile.setHeight(height);
+        profile.setWeight(weight);
 
         Saveable gateway = new SaveProfileGateway();
         gateway.save(profile);

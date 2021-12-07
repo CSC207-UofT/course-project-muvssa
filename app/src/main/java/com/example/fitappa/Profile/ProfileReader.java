@@ -56,7 +56,11 @@ class ProfileReader implements Loadable {
                     String height = (String) documentSnapshot.get(constants.getHeight());
 
                     Profile profile = new Profile(email, username, firebaseUser.getUid());
-                    profile.setExtraInfo(weight, height, firstName, lastName);
+                    // Set extra info
+                    profile.setFirstName(firstName);
+                    profile.setLastName(lastName);
+                    profile.setHeight(height);
+                    profile.setWeight(weight);
 
                     presenter.loadProfile(profile);
                 });

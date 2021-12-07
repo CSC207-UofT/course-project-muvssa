@@ -19,7 +19,6 @@
         <activity android:name=".Exercise.AddExerciseActivity" />
         <activity android:name=".Workout.StartWorkoutActivity" />
         <activity android:name=".Profile.SetupActivity" />
-        <activity android:name=".Profile.SettingsActivity" />
         <activity
             android:name=".Authentication.MainActivity"
             android:exported="true">

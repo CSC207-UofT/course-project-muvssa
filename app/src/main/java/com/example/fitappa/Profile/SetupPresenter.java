@@ -32,7 +32,10 @@ class SetupPresenter implements LoadsProfile {
 
     @Override
     public void loadProfile(Profile profile) {
-        profile.setExtraInfo(weight, height, firstName, lastName);
+        profile.setWeight(weight);
+        profile.setHeight(height);
+        profile.setFirstName(firstName);
+        profile.setLastName(lastName);
 
         Saveable gateway = new SaveProfileGateway();
         gateway.save(profile);

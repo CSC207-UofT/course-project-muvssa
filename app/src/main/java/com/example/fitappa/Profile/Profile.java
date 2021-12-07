@@ -70,27 +70,21 @@ class Profile implements Serializable {
     }
 
     /**
-     * Set the user's extra information
-     *
-     * @param weight    String weight of the user
-     * @param height    String height of the user
-     * @param firstName String first name of the user
-     * @param lastName  String last name of the user
-     */
-    void setExtraInfo(String weight, String height, String firstName, String lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.height = height;
-        this.weight = weight;
-    }
-
-    /**
      * gets a string of the users weight
      *
      * @return returns string of their weight
      */
     public String getWeight() {
         return this.weight;
+    }
+
+    /**
+     * Set the weight of this profile
+     *
+     * @param weight String representing the weight of this profile
+     */
+    void setWeight(String weight) {
+        this.weight = weight;
     }
 
     /**
@@ -103,6 +97,15 @@ class Profile implements Serializable {
     }
 
     /**
+     * Set the height of this profile
+     *
+     * @param height String representing the height of this profile
+     */
+    void setHeight(String height) {
+        this.height = height;
+    }
+
+    /**
      * gets a string of the users first name
      *
      * @return returns string of their first name
@@ -112,11 +115,29 @@ class Profile implements Serializable {
     }
 
     /**
+     * Set the first name of this profile
+     *
+     * @param firstName String representing the first name for this profile
+     */
+    void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    /**
      * gets a string of the users last name
      *
      * @return returns string of their last name
      */
     public String getLastName() {
         return this.lastName;
+    }
+
+    /**
+     * Set the last name of this profile
+     *
+     * @param lastName String representing the last name of this profile
+     */
+    void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 }
