@@ -12,12 +12,29 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class is template gateway  meant move information from a database to load a WorkoutTemplate
+ * <p>
+ * The method in the class pull information from the database
+ * <p>
+ * The documentation in this class give a specification on what the methods do
+ *
+ * @author Abdullah
+ * @since 0.3
+ */
+
 public class WorkoutTemplateGateway implements Loadable, Saveable {
     private final LoadsWorkoutTemplate presenter;
     private final String workoutName;
     private final String routineName;
     private final DocumentReference documentReference;
 
+    /**
+     * A template for a workouts
+     * @param presenter takes in a specific type of workouts presenter
+     * @param workoutName takes in a string workouts name
+     * @param routineName a string routines name
+     */
     public WorkoutTemplateGateway(LoadsWorkoutTemplate presenter, String workoutName, String routineName) {
         this.presenter = presenter;
         this.routineName = routineName;

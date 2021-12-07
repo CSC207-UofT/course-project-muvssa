@@ -4,10 +4,17 @@ import android.util.Log;
 
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.google.firebase.firestore.FirebaseFirestore;
-// ToDo add author, since and other doc details
 
 /**
  * This is a gateway class to Firebase which lets a class save an object
+ *
+ * Methods in this class help move profiles to the database
+ *
+ * Documentation specifies what the methods do
+ *
+ * @author Uthman
+ *
+ * @since 1.2
  */
 public class SaveProfileGateway implements Saveable {
     private Profile profile;

@@ -11,6 +11,18 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+/**
+ * This class gets a users workouts from the database
+ *
+ * Methods in this class pull information from the database
+ *
+ * Documentation specifies what the methods do
+ *
+ * @author Abdullah
+ *
+ * @since 0.5
+ */
+
 public class FirebaseWorkoutGetter {
     private final String routineName;
 

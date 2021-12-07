@@ -7,11 +7,27 @@ import com.example.fitappa.Routine.RoutinesGateway;
 
 import java.util.List;
 
+/**
+ * This class is the presenter for AddRoutineActivity
+ *
+ * Methods in this class move information from the activity to the backend and vice versa
+ *
+ * Documentation specifies what the methods do
+ *
+ * @author Abdullah
+ *
+ * @since 0.2
+ */
+
 class AddRoutinePresenter implements LoadsRoutines {
     private final View view;
     private final RoutinesGateway gateway;
     private String name;
 
+    /**
+     * initializes the presenter by connecting it to the gateway and initializing buttons and title of the activity
+     * @param view represents AddRoutineActivity
+     */
     AddRoutinePresenter(View view) {
         this.view = view;
         this.gateway = new RoutinesGateway(this);

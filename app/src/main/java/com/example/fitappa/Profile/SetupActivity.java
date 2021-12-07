@@ -21,7 +21,7 @@ import com.example.fitappa.R;
  * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
- * @since 0.1
+ * @since 0.8
  */
 
 

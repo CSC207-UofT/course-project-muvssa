@@ -9,6 +9,8 @@ import java.io.Serializable;
 /**
  * Presenter for TrackWorkout
  *
+ * Methods move information to the back end from the TrackWorkoutActivity and vice versa
+ *
  * @author abdullah
  * @version 0.1
  * @layer Presenter (Third)

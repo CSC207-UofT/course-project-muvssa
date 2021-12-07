@@ -1,5 +1,19 @@
 package com.example.fitappa.Profile;
 
+/**
+ * This activity class represents a users profile on the UI
+ *
+ * Methods in this class load information from the presenter and send information users input to the backend
+ *
+ * Documentation specifies what the methods do
+ *
+ * @author Souren
+ * @author Uthman
+ * @author Abdulah
+ *
+ * @since 0.6
+ */
+
 public class ViewProfilePresenter implements LoadsProfile {
     private final View view;
     private final String PAGE_TITLE = "Profile";

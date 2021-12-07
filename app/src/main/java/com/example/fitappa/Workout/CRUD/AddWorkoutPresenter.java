@@ -9,6 +9,18 @@ import com.example.fitappa.Workout.Core.WorkoutTemplatesGateway;
 import java.io.Serializable;
 import java.util.List;
 
+/**
+ * This class is the presenter for AddWorkoutActivity
+ *
+ * Methods in this class move information from the activity to the backend and vice versa
+ *
+ * Documentation specifies what the methods do
+ *
+ * @author Abdullah
+ *
+ * @since 1.2
+ */
+
 class AddWorkoutPresenter implements LoadsWorkoutTemplates {
     private final WorkoutTemplatesGateway gateway;
     private final View view;
