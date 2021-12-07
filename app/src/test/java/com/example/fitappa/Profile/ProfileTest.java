@@ -1,57 +1,36 @@
 package com.example.fitappa.Profile;
 
+import static org.junit.Assert.assertEquals;
+
 import com.example.fitappa.Routine.Routine;
 
-import junit.framework.TestCase;
+import org.junit.Before;
+import org.junit.Test;
 
-public class ProfileTest extends TestCase {
+public class ProfileTest {
     Profile profile1;
     Profile profile2;
-    User user1;
-    User user2;
-    FollowManager userf;
-    FollowManager user2f;
-    FollowManager user3f;
     Routine routine1;
     Routine routine2;
 
 
+    @Before
     public void setUp() throws Exception {
         this.routine1 = new Routine("My routine");
         this.routine2 = new Routine("My routine2");
 
-        this.user1 = new User("johnnyappleseed@gmail.com", "Johnny", "");
-        this.profile1 = new Profile(user1.getEmail(), user1.getUsername(), "someUniqueID");
-//        profile1.addRoutine(routine1);
+        this.profile1 = new Profile("johnnyappleseed@gmail.com", "Johnny", "");
 
-        this.user2 = new User("helloworld@gmail.com", "Hello", "");
-        this.profile2 = new Profile(user2.getEmail(), user2.getUsername(), "someUniqueID");
-//        profile2.addRoutine(routine2);
+        this.profile2 = new Profile("helloworld@gmail.com", "Hello", "");
 
-        super.setUp();
     }
 
-    public void testGetUser() {
-        // sees if usernames and other elements of user matches that of the
-        // user returned by getUser()
-        assertEquals(user1.getUsername(), profile1.getUsername());
+    @Test
+    public void testGetEmail() {
+        assertEquals("johnnyappleseed@gmail.com", profile1.getEmail());
     }
 
-    public void testGetProfileFollow() {
-        user3f = new FollowManager(user1);
-        assertNotSame(user3f, profile1.getFollowManager()); // shows same data types are being compared
-        // shows the getter works
-        userf = profile1.getFollowManager();
-        userf.getFollowers().put("Username1", user2f);
-        userf.getFollowing().put("Username2", user2f);
-        user2f = profile2.getFollowManager();
-
-        assertTrue(userf.getFollowers().containsKey("Username1"));
-        assertTrue(userf.getFollowing().containsKey("Username2"));
-        assertEquals(user2f, profile2.getFollowManager());
-        assertNotSame(userf, profile2.getFollowManager()); //shows userf is not equal to user2f
-    }
-
+    @Test
     public void testGetRoutines() {
         // shows that it matches the elements of the
         // hard coded routines
@@ -59,6 +38,7 @@ public class ProfileTest extends TestCase {
 //        assertEquals(routine2, profile2.getRoutines().get(0));
     }
 
+    @Test
     public void testAddRoutine() {
         // shows that the element has been added by looking at
         // size and matching name

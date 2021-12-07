@@ -1,6 +1,5 @@
 package com.example.fitappa.Authentication;
 
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.SaveProfileGateway;
 import com.example.fitappa.Profile.Saveable;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,12 +38,10 @@ class SignUpGateway {
                     if (firebaseUser == null)
                         return;
 
-                    // Create a profile with the user's info
-                    Profile profile = new Profile(email, username, firebaseUser.getUid());
-
                     // Save the data of the profile to the database
-                    Saveable gateway = new SaveProfileGateway();
-                    profile.saveData(gateway);
+                    Saveable gateway = new SaveProfileGateway(email, username, firebaseUser.getUid());
+                    // pass null since we don't have access to the full profile object
+                    gateway.save(null);
 
                     // proceed to update activity
                     presenter.updateActivity();

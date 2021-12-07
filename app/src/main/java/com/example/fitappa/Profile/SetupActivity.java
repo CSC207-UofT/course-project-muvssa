@@ -42,9 +42,8 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
         Intent retrieveIntent = getIntent();
-        Profile profile = (Profile) retrieveIntent.getSerializableExtra("profile");
 
-        SetupPresenter presenter = new SetupPresenter(this, profile);
+        SetupPresenter presenter = new SetupPresenter(this);
 
         errorInput = findViewById(R.id.wrong);
         errorInput.setVisibility(View.INVISIBLE);

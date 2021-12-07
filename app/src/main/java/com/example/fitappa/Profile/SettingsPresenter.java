@@ -36,7 +36,7 @@ class SettingsPresenter {
      * @return string of their weight
      */
     String getSettingWeight() {
-        return profile.getUserWeight();
+        return profile.getWeight();
     }
 
     /**
@@ -45,7 +45,7 @@ class SettingsPresenter {
      * @return string of their height
      */
     String getSettingHeight() {
-        return profile.getUserHeight();
+        return profile.getHeight();
     }
 
     /**
@@ -54,7 +54,7 @@ class SettingsPresenter {
      * @return string of their first name
      */
     String getSettingFirstName() {
-        return profile.getUserFirstName();
+        return profile.getFirstName();
     }
 
     /**
@@ -63,7 +63,7 @@ class SettingsPresenter {
      * @return string of their last name
      */
     String getSettingLastName() {
-        return profile.getUserLastName();
+        return profile.getLastName();
     }
 
     /**
@@ -86,44 +86,44 @@ class SettingsPresenter {
         String last = l.getText().toString();
 
         if (weight.equals("")){
-            weight = profile.getUserWeight();
+            weight = profile.getWeight();
         }
         else if(!Pattern.matches(regex, weight)){
             w.setError("please input pounds");
             w.requestFocus();
-            weight = profile.getUserWeight();
+            weight = profile.getWeight();
         }
 
         if (height.equals("") ) {
-            height = profile.getUserHeight();
+            height = profile.getHeight();
         }
         else if(!Pattern.matches(regex, height)){
             System.out.println();
             h.setError("please input cm");
             h.requestFocus();
-            height = profile.getUserHeight();
+            height = profile.getHeight();
         }
 
         if (first.equals("") ) {
-            first = profile.getUserFirstName();
+            first = profile.getFirstName();
         }
         else if(!Pattern.matches(regex2, first)){
             f.setError("please letters");
             f.requestFocus();
-            first = profile.getUserFirstName();
+            first = profile.getFirstName();
         }
 
         if (last.equals("")) {
-            last = profile.getUserLastName();
+            last = profile.getLastName();
         } else if (!Pattern.matches(regex2, last)) {
             l.setError("please input letters");
             l.requestFocus();
-            last = profile.getUserLastName();
+            last = profile.getLastName();
         }
-        profile.setUserExtraInfo(weight, height, first, last);
+        profile.setExtraInfo(weight, height, first, last);
 
         Saveable gateway = new SaveProfileGateway();
-        profile.saveData(gateway);
+        gateway.save(profile);
 
         view.update();
     }

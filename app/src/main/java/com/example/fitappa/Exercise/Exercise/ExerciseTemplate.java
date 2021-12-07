@@ -26,7 +26,8 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
     protected Category category;
 
     /**
-     * Constructor for a User class, takes in all necessary variables needed to make a User
+     * Constructor for an Exercise class, takes in all necessary variables needed to make an
+     * Exercise Template
      *
      * @param name The String name referring to the name of the exercise
      * @param sets The int represents the number of sets
