@@ -3,7 +3,6 @@ package com.example.fitappa.Profile;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,7 +15,7 @@ import com.example.fitappa.R;
  * This class is a view class meant to open the activity_setting xml
  * <p>
  * The method in the class updated a users extra information
- *
+ * <p>
  * The documentation specifies what each method does
  *
  * @author Souren

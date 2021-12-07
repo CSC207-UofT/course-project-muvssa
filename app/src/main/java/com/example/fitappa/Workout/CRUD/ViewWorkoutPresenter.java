@@ -4,14 +4,12 @@ import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class is a presenter class  meant to send and receive information from the back end to help ViewWorkoutActivity
- *
+ * <p>
  * The methods in this class help move information to and from the ViewWorkoutActivity class
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Abdullah
@@ -21,8 +19,7 @@ import java.util.List;
 class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
     private final View view;
     private final WorkoutTemplateGateway gateway;
-    private WorkoutTemplate workoutTemplate; // TODO: @uthman, set the workout template once loaded
-    private List<ExerciseTemplate> exercises;
+    private WorkoutTemplate workoutTemplate;
 
     /**
      * View of the workouts
@@ -33,14 +30,6 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
     ViewWorkoutPresenter(View view, Serializable workoutTemplateName, Serializable receivedRoutineName) {
         String workoutName = (String) workoutTemplateName;
         String routineName = (String) receivedRoutineName;
-        this.exercises = new ArrayList<>();
-        this.exercises = new ArrayList<>();
-
-        // TODO @uthman, load the workout with workoutName in the routine, routineName
-
-
-        // Temporary solution:
-        this.workoutTemplate = new WorkoutTemplate("h");
 
         this.view = view;
         String PAGE_TITLE = "View Your Workout";
@@ -55,8 +44,6 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
         for (ExerciseTemplate e : this.workoutTemplate.getExercises()) {
             view.updateExerciseLayout(e);
         }
-
-        this.view.setupExerciseBtn();
         this.view.setTitle(this.workoutTemplate.getName() + "'s exercises");
     }
 
@@ -77,11 +64,6 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
         init();
     }
 
-    public void setExercises(List<ExerciseTemplate> exerciseTemplates) {
-        this.exercises = exerciseTemplates;
-    }
-
-
     // Dependency Inversion
     interface View {
         void updateAppBarTitle(String title);
@@ -89,10 +71,6 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
         void updateExerciseLayout(ExerciseTemplate e);
 
         void setTitle(String name);
-
-        void goBack();
-
-        void setupExerciseBtn();
     }
 
 }

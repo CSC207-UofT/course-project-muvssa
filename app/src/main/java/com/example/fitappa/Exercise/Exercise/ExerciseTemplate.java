@@ -19,10 +19,7 @@ import java.io.Serializable;
  */
 public class ExerciseTemplate implements Serializable, CreatableExercise {
     protected String name;
-    protected int numSets;
-    /* These values must be constant later
-     * Accepted values: REP, WEIGHTED, TIMED
-     * */
+    protected final int numSets;
     protected Category category;
 
     /**
@@ -44,16 +41,6 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
     @SuppressWarnings("unused")
     public ExerciseTemplate() {
         numSets = 0;
-    }
-
-    /**
-     * Creates an Exercise object given the name.
-     *
-     * @param name - name of the exercise
-     */
-    public ExerciseTemplate(String name) {
-        this.name = name;
-        this.numSets = 0;
     }
 
     /**

@@ -32,12 +32,11 @@ import java.util.Objects;
  * @version 0.1
  */
 public class StartWorkoutActivity extends AppCompatActivity implements StartWorkoutPresenter.View {
-    private StartWorkoutPresenter presenter;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start_workout);
-        this.presenter = new StartWorkoutPresenter(this);
+        new StartWorkoutPresenter(this);
     }
 
 
@@ -88,17 +87,6 @@ public class StartWorkoutActivity extends AppCompatActivity implements StartWork
             addRoutineCard(routineContainer, routine);
         }
     }
-
-    /**
-     * Update the view with routine
-     * @param routine the routine
-     */
-    public void updateRoutinesView(Routine routine) {
-        LinearLayout routineContainer = findViewById(R.id.RoutinesContainer);
-        addRoutineCard(routineContainer, routine);
-    }
-
-
 
     /**
      * A Routine Card is a View Component that has the following form:

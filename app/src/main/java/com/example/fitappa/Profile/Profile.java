@@ -38,6 +38,7 @@ class Profile implements Serializable {
     }
 
     // empty constructor necessary for Firebase
+    @SuppressWarnings("unused")
     public Profile() {
     }
 

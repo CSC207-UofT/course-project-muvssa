@@ -51,15 +51,6 @@ public class WorkoutTemplate implements Serializable {
     }
 
     /**
-     * Change the workouts name
-     *
-     * @param name new name for workout
-     */
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    /**
      * Gets the exercises for this workout
      *
      * @return list of exercises for this workout

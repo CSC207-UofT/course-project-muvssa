@@ -5,7 +5,9 @@ import android.widget.EditText;
 /**
  * This is a presenter for the LoginActivity.
  * <p>
- * The methods in this class is a gateway interactor since it interacts with a gateway and retrieves data from a database
+ * This class is an authentication presenter since it is a presenter for an activity that
+ * authenticates the user.
+ * <p>
  * It also determines what error message to display to the user.
  * <p>
  * The documentation in this class give a specification on what the methods do

@@ -31,13 +31,4 @@ public class SetFactory {
         return new WeightedSet(numReps, weight);
     }
 
-    /**
-     * a set that takes in time information is a time set.
-     * @param time represents the time taken to finish this set
-     * @return a TimedSet
-     */
-    public TimedSet buildSet(double time) {
-        return new TimedSet(time);
-    }
-
 }

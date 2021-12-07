@@ -16,23 +16,22 @@ import java.util.Objects;
 
 /**
  * This class is a view class meant to open the activity_profiles xml, representing a GUI of the users profile
- *
+ * <p>
  * The method in the class allow a user to interact with their profile, such as following, changing settings,
  * searching, etc
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
  * @author Uthman
  * @author Abdullah
- *
  * @since 2.2
  */
 
 public class ViewProfileActivity extends AppCompatActivity implements ViewProfilePresenter.View {
     private ViewProfilePresenter presenter;
-    private EditText fnameField;
-    private EditText lnameField;
+    private EditText firstNameField;
+    private EditText lastNameField;
     private EditText weightField;
     private EditText heightField;
 
@@ -80,27 +79,27 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
         Button logoutBtn = findViewById(R.id.LogoutButton);
         logoutBtn.setOnClickListener(v -> presenter.logout());
 
-         this.fnameField = findViewById(R.id.FnameField);
-         this.lnameField = findViewById(R.id.LnameField);
-         this.weightField = findViewById(R.id.WeightField);
-         this.heightField = findViewById(R.id.HeightField);
+        this.firstNameField = findViewById(R.id.FnameField);
+        this.lastNameField = findViewById(R.id.LnameField);
+        this.weightField = findViewById(R.id.WeightField);
+        this.heightField = findViewById(R.id.HeightField);
     }
 
     private void saveSettings() {
-        presenter.saveSettings(fnameField.getText().toString(),
-                lnameField.getText().toString(),
+        presenter.saveSettings(firstNameField.getText().toString(),
+                lastNameField.getText().toString(),
                 weightField.getText().toString(),
                 heightField.getText().toString());
     }
 
 
     @Override
-    public void setup(String username, String fname, String lname, String weight, String height) {
+    public void setup(String username, String firstName, String lastName, String weight, String height) {
         TextView usernameText = findViewById(R.id.userNameProfile);
         usernameText.setText(username);
 
-        fnameField.setText(fname);
-        lnameField.setText(lname);
+        firstNameField.setText(firstName);
+        lastNameField.setText(lastName);
         weightField.setText(weight);
         heightField.setText(height);
 

@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Presenter for WorkoutLogActivity
- *
+ * <p>
  * Methods move information to the back end from the WorkoutLogActivity and vice versa
  *
  * @author abdullah
@@ -15,10 +15,11 @@ import java.util.List;
  */
 
 public class WorkoutLogPresenter {
-    View view;
+    final View view;
 
     /**
      * Initializes the gateway and title update
+     *
      * @param view represents TrackWorkoutActivity
      */
     public WorkoutLogPresenter(View view) {
@@ -32,9 +33,10 @@ public class WorkoutLogPresenter {
 
     /**
      * initializes text on screen in the activity
+     *
      * @param performWorkoutStrings list of performed workout names
      */
-    void inititalizeView(List<String> performWorkoutStrings) {
+    void initializeView(List<String> performWorkoutStrings) {
         this.view.displayLog(performWorkoutStrings);
     }
 
@@ -42,14 +44,16 @@ public class WorkoutLogPresenter {
 
         /**
          * Updates the title of the page
+         *
          * @param title String representing the title
          */
         void updateAppBarTitle(String title);
 
         /**
          * displays workout logs on the page
+         *
          * @param logs a list of strings representing a workout
          */
-        void displayLog(List<String>  logs);
+        void displayLog(List<String> logs);
     }
 }

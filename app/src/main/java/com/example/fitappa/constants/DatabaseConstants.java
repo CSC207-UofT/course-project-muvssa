@@ -10,6 +10,7 @@ package com.example.fitappa.constants;
  * @author Uthman
  * @since 0.2
  */
+@SuppressWarnings("SameReturnValue")
 public class DatabaseConstants {
 
     /**
@@ -118,5 +119,14 @@ public class DatabaseConstants {
      */
     public String getWeight() {
         return "weight";
+    }
+
+    /**
+     * Get the string that represents the way a Performed Workouts is stored
+     *
+     * @return string that represents the way a Performed Workouts is stored
+     */
+    public String getPerformedWorkouts() {
+        return "Performed Workouts";
     }
 }

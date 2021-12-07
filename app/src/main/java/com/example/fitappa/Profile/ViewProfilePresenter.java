@@ -49,7 +49,7 @@ public class ViewProfilePresenter implements LoadsProfile {
     interface View {
         void updateAppBarTitle(String title);
 
-        void setup(String username, String fname, String lname, String weight, String height);
+        void setup(String username, String firstName, String lastName, String weight, String height);
 
         void setupElements();
 

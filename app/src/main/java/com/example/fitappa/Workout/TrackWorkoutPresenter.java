@@ -18,7 +18,6 @@ import java.io.Serializable;
 class TrackWorkoutPresenter {
     private final View view;
     private final PerformWorkout performWorkout;
-    private final String PAGE_TITLE = "Start Workout";
 
     /**
      * Constructor for TrackWorkoutPresenter
@@ -43,6 +42,8 @@ class TrackWorkoutPresenter {
     void initializePage(PerformWorkout workout) {
         this.view.populateLayout(workout);
         this.view.updateTitle(workout.getName());
+
+        final String PAGE_TITLE = "Start Workout";
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupCancel();
         this.view.setupEnd();
@@ -58,7 +59,7 @@ class TrackWorkoutPresenter {
     void finishWorkout() {
         this.performWorkout.finish();
 
-        Saveable gateway = new SavePerformWorkouts(this);
+        Saveable gateway = new SavePerformWorkouts();
         gateway.save(performWorkout);
 
 

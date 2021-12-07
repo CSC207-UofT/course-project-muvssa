@@ -1,5 +1,7 @@
 package com.example.fitappa.Exercise.Set;
 
+import androidx.annotation.NonNull;
+
 /**
  * A weighted set stores information about the number of reps,
  * the magnitude of the weight in LB.
@@ -25,15 +27,7 @@ public class WeightedSet extends RepSet implements Set {
         this.weight = weight;
     }
 
-    /**
-     * The volume of a weighted set is weight * number of reps
-     * @return the volume of this set
-     */
-    @Override
-    public double volume() {
-        return weight * this.numReps;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return "Weight: " + this.weight  + "lbs | Reps: " + this.numReps + "";

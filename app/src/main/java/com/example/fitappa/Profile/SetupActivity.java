@@ -15,9 +15,9 @@ import com.example.fitappa.R;
 /**
  * This class is a view class meant to open the activity_setup xml, and allow users to change information they previously
  * inputted
- *
+ * <p>
  * The method in the class moves the information the user inputs to DashboardActivity
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
@@ -41,7 +41,6 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
-        Intent retrieveIntent = getIntent();
 
         SetupPresenter presenter = new SetupPresenter(this);
 
@@ -55,7 +54,7 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
         Button enter = findViewById(R.id.submit);
 
         enter.setOnClickListener(v ->
-                presenter.setUp( weightText, heightText, firstNameText, lastNameText)
+                presenter.setUp(weightText, heightText, firstNameText, lastNameText)
         );
     }
 

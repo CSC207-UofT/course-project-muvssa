@@ -63,7 +63,6 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
      */
     @Override
     protected void onStart() {
-        // TODO: refactor this to go on oncreate (then use presenter)
         super.onStart();
         // Get the exercises from repository and fill the exercises field
         ExerciseRepository exerciseRepository = new ExerciseRepository(this);
@@ -73,6 +72,7 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     /**
      * This method opens the AddExerciseActivity view.
      */
+    @SuppressWarnings("deprecation")
     private void openAddExercise(List<ExerciseTemplate> exerciseTemplates) {
         Intent addExercise = new Intent(this, AddExerciseActivity.class);
         addExercise.putExtra("exercises", (Serializable) exerciseTemplates);
@@ -82,15 +82,9 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     /**
      * This method opens the ViewRoutineActivity view.
      */
-    @Override
-    public void goBack() {
+    private void goBack() {
         finish();
         startActivity(new Intent(this, StartWorkoutActivity.class));
-    }
-
-    @Override
-    public void setupExerciseBtn() {
-
     }
 
     /**
@@ -128,14 +122,12 @@ public class ViewWorkoutActivity extends AppCompatActivity implements ViewWorkou
     @Override
     public void setTitle(String name) {
         TextView workoutLabel = findViewById(R.id.WorkoutLabel);
-        String t = name;
-        workoutLabel.setText(t);
+        workoutLabel.setText(name);
     }
 
     @Override
     public void loadExercise(List<ExerciseTemplate> exerciseTemplates) {
         // Set on click listener
-        this.presenter.setExercises(exerciseTemplates);
         Button addExerciseBtn = findViewById(R.id.AddExerciseBtn);
         addExerciseBtn.setOnClickListener(view -> openAddExercise(exerciseTemplates));
     }

@@ -1,5 +1,7 @@
 package com.example.fitappa.Exercise.Set;
 
+import androidx.annotation.NonNull;
+
 /**
  * A Set represents set of an exercise repetitions in a workout.
  * This is a general set and should be used for exercises like
@@ -12,7 +14,7 @@ package com.example.fitappa.Exercise.Set;
  * @version 0.1
  */
 public class RepSet implements Set {
-    protected double numReps;
+    protected final double numReps;
 
     /**
      * This method creates a Set object
@@ -23,33 +25,7 @@ public class RepSet implements Set {
         this.numReps = numReps;
     }
 
-    /**
-     * This method sets the number of reps to numReps
-     * @param numReps the number of reps
-     */
-    public void completeSet(double numReps) {
-        this.numReps = numReps;
-    }
-
-    /**
-     * This method indicates if this set is complete / finished.
-     * @return true iff this.numReps != 0
-     */
-    public boolean isComplete() {
-        return this.numReps != 0;
-    }
-
-
-    /**
-     * Volume is quantitative measure of the work done.
-     * In the case of a general set, the volume is always 0
-     * @return 0
-     */
-    public double volume() {
-        return 0;
-    }
-
-
+    @NonNull
     @Override
     public String toString() {
         return "Reps: " + this.numReps + "";

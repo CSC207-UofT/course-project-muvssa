@@ -50,7 +50,7 @@ public class LoadPerformWorkouts implements Loadable {
             if (performedWorkoutsStrings == null)
                 performedWorkoutsStrings = new ArrayList<>();
 
-            presenter.inititalizeView(performedWorkoutsStrings);
+            presenter.initializeView(performedWorkoutsStrings);
         });
     }
 }

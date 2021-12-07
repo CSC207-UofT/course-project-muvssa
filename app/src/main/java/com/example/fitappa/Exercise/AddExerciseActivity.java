@@ -26,8 +26,6 @@ import java.util.Objects;
  * @since 0.6
  */
 public class AddExerciseActivity extends AppCompatActivity implements AddExercisePresenter.View {
-    private LinearLayout exerciseLayout;
-    private AddExercisePresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -38,10 +36,9 @@ public class AddExerciseActivity extends AppCompatActivity implements AddExercis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_exercise);
-        this.presenter = new AddExercisePresenter(this,
-                getIntent().getSerializableExtra("exercises"));
-        this.exerciseLayout = findViewById(R.id.ExerciseLayout);
 
+        // Initialize presenter
+        new AddExercisePresenter(this, getIntent().getSerializableExtra("exercises"));
     }
 
     /**

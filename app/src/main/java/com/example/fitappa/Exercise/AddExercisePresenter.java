@@ -5,18 +5,20 @@ import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import java.io.Serializable;
 import java.util.List;
 
-public class AddExercisePresenter {
+class AddExercisePresenter {
     private final View view;
     private final List<ExerciseTemplate> exercises; // The global exercises
 
     /**
      * Constructor on AddExercisePresenter
-     * @param view view
+     *
+     * @param view      view
      * @param exercises exercises
      */
-    public AddExercisePresenter(View view, Serializable exercises) {
+    @SuppressWarnings("unchecked")
+    AddExercisePresenter(View view, Serializable exercises) {
         this.view = view;
-        this.exercises = (List<ExerciseTemplate>) exercises; // from the db
+        this.exercises = (List<ExerciseTemplate>) exercises;
         init();
     }
 
@@ -32,6 +34,7 @@ public class AddExercisePresenter {
 
     interface View {
         void updateAppBarTitle(String title);
+
         void displayExercises(List<ExerciseTemplate> e);
     }
 }

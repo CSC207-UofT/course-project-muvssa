@@ -1,7 +1,5 @@
 package com.example.fitappa.Workout.CRUD;
 
-import com.example.fitappa.Exercise.Exercise.Category;
-import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.LoadsWorkoutTemplates;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplatesGateway;
@@ -11,13 +9,12 @@ import java.util.List;
 
 /**
  * This class is the presenter for AddWorkoutActivity
- *
+ * <p>
  * Methods in this class move information from the activity to the backend and vice versa
- *
+ * <p>
  * Documentation specifies what the methods do
  *
  * @author Abdullah
- *
  * @since 1.2
  */
 

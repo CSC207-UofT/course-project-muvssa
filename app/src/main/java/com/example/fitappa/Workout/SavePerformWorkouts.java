@@ -25,14 +25,11 @@ import java.util.Objects;
 
 public class SavePerformWorkouts implements Saveable {
     private final DocumentReference documentReference;
-    private final TrackWorkoutPresenter presenter;
 
     /**
      * Saves performed workout information to the database
-     * @param presenter presenter information on workouts come from
      */
-    public SavePerformWorkouts(TrackWorkoutPresenter presenter) {
-        this.presenter = presenter;
+    public SavePerformWorkouts() {
         DatabaseConstants constants = new DatabaseConstants();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         this.documentReference = FirebaseFirestore.getInstance()
@@ -45,12 +42,15 @@ public class SavePerformWorkouts implements Saveable {
      *
      * @param o object to be saved
      */
+    @SuppressWarnings("unchecked")
     @Override
     public void save(Object o) {
         documentReference.get().addOnSuccessListener(documentSnapshot -> {
+            DatabaseConstants constants = new DatabaseConstants();
+
             List<String> performedWorkouts = null;
             try {
-                performedWorkouts = (List<String>) documentSnapshot.get("Performed Workouts");
+                performedWorkouts = (List<String>) documentSnapshot.get(constants.getPerformedWorkouts());
             } catch (RuntimeException ignored) {
             }
 
@@ -61,7 +61,7 @@ public class SavePerformWorkouts implements Saveable {
             PerformWorkout performWorkout = (PerformWorkout) o;
             Objects.requireNonNull(performedWorkouts).add(performWorkout.toString());
 
-            documentReference.update("Performed Workouts", performedWorkouts);
+            documentReference.update(constants.getPerformedWorkouts(), performedWorkouts);
         });
     }
 }
