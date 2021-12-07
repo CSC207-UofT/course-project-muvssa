@@ -73,7 +73,7 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
      * Display an error message if the input doesn't meet format requirements
      */
     @Override
-    public void wrongInput() {
+    public void setError() {
         errorInput.setVisibility(View.VISIBLE);
     }
 

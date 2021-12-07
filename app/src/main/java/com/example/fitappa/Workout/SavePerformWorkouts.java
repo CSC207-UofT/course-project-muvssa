@@ -36,7 +36,7 @@ public class SavePerformWorkouts implements Saveable {
         DatabaseConstants constants = new DatabaseConstants();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         this.documentReference = FirebaseFirestore.getInstance()
-                .collection(constants.getUsersCollection())
+                .collection(constants.getUsers())
                 .document(Objects.requireNonNull(firebaseUser).getUid());
     }
 

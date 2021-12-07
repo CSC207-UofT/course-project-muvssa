@@ -1,5 +1,6 @@
 package com.example.fitappa.Profile;
 
+import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -8,8 +9,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import java.util.Objects;
 
 /**
- * This class is used for retrieving a profile from the database given a username, and updating the presenter
- * with the new profile if it was found
+ * This class is used for retrieving a profile from the database given a username, and updating
+ * the presenter with the new profile if it was found
  * <p>
  * The methods in this class work with the database to retrieve information
  * <p>
@@ -18,11 +19,12 @@ import java.util.Objects;
  * @author Uthman
  * @since 0.3
  */
-class ProfileReader {
+class ProfileReader implements Loadable {
     private final LoadsProfile presenter;
 
     /**
-     * Constructor that takes in an interface that allows this class to update the presenter with a retrieved profile
+     * Constructor that takes in an interface that allows this class to update the presenter with
+     * a retrieved profile
      *
      * @param presenter Interface that is used to update the presenter
      */
@@ -33,22 +35,25 @@ class ProfileReader {
     /**
      * Get a profile from the database and return it
      */
-    void retrieveProfile() {
+    @Override
+    public void load() {
+        DatabaseConstants constants = new DatabaseConstants();
+
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DocumentReference documentReference = FirebaseFirestore.getInstance()
-                .collection("users")
+                .collection(constants.getUsers())
                 .document(Objects.requireNonNull(firebaseUser).getUid());
 
         documentReference
                 .get()
                 .addOnSuccessListener(documentSnapshot -> {
 
-                    String username = (String) documentSnapshot.get("username");
-                    String email = (String) documentSnapshot.get("email");
-                    String firstName = (String) documentSnapshot.get("firstName");
-                    String lastName = (String) documentSnapshot.get("lastName");
-                    String weight = (String) documentSnapshot.get("weight");
-                    String height = (String) documentSnapshot.get("height");
+                    String username = (String) documentSnapshot.get(constants.getUsername());
+                    String email = (String) documentSnapshot.get(constants.getEmail());
+                    String firstName = (String) documentSnapshot.get(constants.getFirstName());
+                    String lastName = (String) documentSnapshot.get(constants.getLastName());
+                    String weight = (String) documentSnapshot.get(constants.getWeight());
+                    String height = (String) documentSnapshot.get(constants.getHeight());
 
                     Profile profile = new Profile(email, username, firebaseUser.getUid());
                     profile.setExtraInfo(weight, height, firstName, lastName);

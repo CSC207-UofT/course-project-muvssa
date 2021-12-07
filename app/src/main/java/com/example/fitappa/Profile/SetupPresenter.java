@@ -75,12 +75,12 @@ class SetupPresenter implements LoadsProfile {
         if (Pattern.matches(regex, weight) && Pattern.matches(regex, height) && Pattern.matches(regex2, firstName)
                 && Pattern.matches(regex2, lastName)) {
 
-            ProfileReader profileReader = new ProfileReader(this);
-            profileReader.retrieveProfile();
+            Loadable gateway = new ProfileReader(this);
+            gateway.load();
 
             view.goToDashboard();
         } else {
-            view.wrongInput();
+            view.setError();
         }
 
     }
@@ -94,6 +94,6 @@ class SetupPresenter implements LoadsProfile {
         /**
          * Display an error message if the input doesn't meet format requirements
          */
-        void wrongInput();
+        void setError();
     }
 }

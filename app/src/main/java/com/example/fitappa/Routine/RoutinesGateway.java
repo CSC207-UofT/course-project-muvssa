@@ -49,7 +49,7 @@ public class RoutinesGateway implements Loadable, Saveable {
 
         // get the document reference for the current user
         documentReference = FirebaseFirestore.getInstance()
-                .collection(constants.getUsersCollection())
+                .collection(constants.getUsers())
                 .document(Objects.requireNonNull(firebaseUser).getUid());
     }
 

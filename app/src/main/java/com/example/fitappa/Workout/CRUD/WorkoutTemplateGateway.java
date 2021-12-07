@@ -43,7 +43,7 @@ public class WorkoutTemplateGateway implements Loadable, Saveable {
         DatabaseConstants constants = new DatabaseConstants();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         documentReference = FirebaseFirestore.getInstance()
-                .collection(constants.getUsersCollection())
+                .collection(constants.getUsers())
                 .document(Objects.requireNonNull(firebaseUser).getUid());
     }
 

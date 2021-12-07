@@ -34,7 +34,7 @@ public class LoadPerformWorkouts implements Loadable {
         DatabaseConstants constants = new DatabaseConstants();
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         this.documentReference = FirebaseFirestore.getInstance()
-                .collection(constants.getUsersCollection())
+                .collection(constants.getUsers())
                 .document(Objects.requireNonNull(firebaseUser).getUid());
     }
 

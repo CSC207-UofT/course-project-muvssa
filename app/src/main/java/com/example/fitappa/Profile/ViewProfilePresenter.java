@@ -16,16 +16,16 @@ package com.example.fitappa.Profile;
 
 public class ViewProfilePresenter implements LoadsProfile {
     private final View view;
-    private final String PAGE_TITLE = "Profile";
     private Profile profile;
 
     public ViewProfilePresenter(View view) {
         this.view = view;
+        final String PAGE_TITLE = "Profile";
         this.view.updateAppBarTitle(PAGE_TITLE);
         this.view.setupElements();
 
-        ProfileReader gateway = new ProfileReader(this);
-        gateway.retrieveProfile();
+        Loadable gateway = new ProfileReader(this);
+        gateway.load();
     }
 
     public void saveSettings(String firstName, String lastName, String weight, String height) {
