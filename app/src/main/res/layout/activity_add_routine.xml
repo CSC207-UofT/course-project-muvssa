@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="15dp"
-    tools:context=".Workout.CRUD.AddRoutineActivity">
+    tools:context=".routine.AddRoutineActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
