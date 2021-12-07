@@ -5,6 +5,7 @@ import androidx.annotation.NonNull;
 import com.example.fitappa.Exercise.Exercise.Category;
 import com.example.fitappa.Exercise.Exercise.ExerciseTemplate;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
+import com.example.fitappa.constants.DatabaseConstants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,9 +14,11 @@ import java.util.Objects;
 
 public class FirebaseWorkoutGetter {
     private final String routineName;
+    private final DatabaseConstants constants;
 
     public FirebaseWorkoutGetter(String routineName) {
         this.routineName = routineName;
+        this.constants = new DatabaseConstants();
     }
 
     /**
@@ -25,13 +28,17 @@ public class FirebaseWorkoutGetter {
      * @return List of WorkoutTemplate representing the workout templates for a specific routine
      */
     @NonNull
-    public List<WorkoutTemplate> getWorkoutTemplates(com.google.firebase.firestore.DocumentSnapshot documentSnapshot) {
+    public List<WorkoutTemplate> getWorkoutTemplates(com.google.firebase.firestore.DocumentSnapshot
+                                                             documentSnapshot) {
         // Get object representing list of routines
         @SuppressWarnings("unchecked")
-        Map<String, List<Map<String, Object>>> routineMap = (Map<String, List<Map<String, Object>>>) documentSnapshot.get("routines");
+        Map<String, List<Map<String, Object>>> routineMap =
+                (Map<String, List<Map<String, Object>>>) documentSnapshot
+                        .get(constants.getRoutines());
 
         // Get object representing a routine
-        List<Map<String, Object>> workoutTemplateList = Objects.requireNonNull(routineMap).get(routineName);
+        List<Map<String, Object>> workoutTemplateList =
+                Objects.requireNonNull(routineMap).get(routineName);
 
         // initialize workout templates
         List<WorkoutTemplate> workoutTemplates = new ArrayList<>();
@@ -54,22 +61,24 @@ public class FirebaseWorkoutGetter {
     @NonNull
     private WorkoutTemplate getWorkoutTemplate(Map<String, Object> workoutTemplateMap) {
         // Get the workout's name
-        String workoutName = (String) workoutTemplateMap.get("name");
+        String workoutName = (String) workoutTemplateMap.get(constants.getName());
 
         // Get object representing the exercise templates list
         @SuppressWarnings("unchecked")
-        List<Map<String, Object>> exerciseTemplatesList = (List<Map<String, Object>>) workoutTemplateMap.get("exercises");
+        List<Map<String, Object>> exerciseTemplatesList =
+                (List<Map<String, Object>>) workoutTemplateMap.get(constants.getExercises());
 
         List<ExerciseTemplate> exerciseTemplates = new ArrayList<>();
         // Loop through and create the exerciseTemplates list
         for (Map<String, Object> exerciseMap : Objects.requireNonNull(exerciseTemplatesList)) {
-            String name = (String) exerciseMap.get("name");
-            Integer sets = (Integer) exerciseMap.get("sets");
-            String categoryString = (String) exerciseMap.get("category");
+            String name = (String) exerciseMap.get(constants.getName());
+            Integer sets = (Integer) exerciseMap.get(constants.getSets());
+            String categoryString = (String) exerciseMap.get(constants.getCategory());
             Category category = Category.valueOf(categoryString);
 
             // Add each exerciseTemplate to the list
-            ExerciseTemplate exerciseTemplate = new ExerciseTemplate(name, integerToInt(sets), category);
+            ExerciseTemplate exerciseTemplate =
+                    new ExerciseTemplate(name, integerToInt(sets), category);
             exerciseTemplates.add(exerciseTemplate);
         }
 

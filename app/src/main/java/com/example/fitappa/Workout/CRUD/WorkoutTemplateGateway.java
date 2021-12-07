@@ -1,9 +1,9 @@
 package com.example.fitappa.Workout.CRUD;
 
-import com.example.fitappa.Authentication.DatabaseConstants;
 import com.example.fitappa.Profile.Loadable;
 import com.example.fitappa.Profile.Saveable;
 import com.example.fitappa.Workout.Core.WorkoutTemplate;
+import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
