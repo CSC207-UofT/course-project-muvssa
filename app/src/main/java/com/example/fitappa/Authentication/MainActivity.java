@@ -3,18 +3,13 @@ package com.example.fitappa.Authentication;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fitappa.Authentication.login.LoginActivity;
-import com.example.fitappa.Authentication.signup.SignUpActivity;
 import com.example.fitappa.Profile.DashboardActivity;
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Objects;
 
@@ -23,7 +18,7 @@ import java.util.Objects;
  * <p>
  * This activity's methods gives the user two options, either login, or signup, and leads them to the corresponding
  * activities.
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Uthman
@@ -31,8 +26,7 @@ import java.util.Objects;
  * @author Abdullah
  * @since 0.2
  */
-public class MainActivity extends AppCompatActivity implements OpensActivityWithProfile {
-    private GatewayInteractor presenter;
+public class MainActivity extends AppCompatActivity {
 
     /**
      * This method is called when the activity starts.
@@ -41,14 +35,21 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Check if user is logged in before creating this view
+        checkAuth();
+
         super.onCreate(savedInstanceState);
         Objects.requireNonNull(getSupportActionBar()).hide();
-
-        presenter = new MainPresenter(this);
-
-        checkAuth();
         setContentView(R.layout.activity_main);
 
+        setupButtons();
+
+    }
+
+    /**
+     * Setup the buttons and listeners for this activity
+     */
+    private void setupButtons() {
         Button signUpBtn = findViewById(R.id.SignUp);
         Button loginBtn = findViewById(R.id.SignIn);
 
@@ -59,29 +60,26 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
     }
 
     /**
+     * This method opens the DashboardActivity View
+     */
+    private void openDashboard() {
+        finish();
+        Intent home = new Intent(this, DashboardActivity.class);
+        startActivity(home);
+    }
+
+    /**
      * This method checks if the user was already logged in. If they are already logged, go to DashboardActivity,
      * if not, continue.
      */
     private void checkAuth() {
-        // initialize constants
-        DatabaseConstants constants = new DatabaseConstants();
-
         // Get firebase user
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
+        // If a firebase user exists, then there is a user currently logged in, so proceed
+        // to Dashboard
         if (firebaseUser != null) {
-            // Check if a firebase authenticated user already exists (previously logged in)
-            FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-            db.collection(constants.getUsersCollection())
-                    .document(firebaseUser.getUid())
-                    .get()
-                    .addOnSuccessListener(documentSnapshot -> {
-                        ProcessFirebase processFirebase = new ProcessFirebase(presenter);
-                        processFirebase.updateViewWithProfileFrom(documentSnapshot);
-                    })
-                    // set error if fail to retrieve profile
-                    .addOnFailureListener(e -> presenter.setError());
+            openDashboard();
         }
     }
 
@@ -101,24 +99,4 @@ public class MainActivity extends AppCompatActivity implements OpensActivityWith
         startActivity(login);
     }
 
-    /**
-     * This method opens the DashboardActivity View and passes in a Profile
-     */
-    @Override
-    public void openActivityWith(Profile profile) {
-        finish();
-        Intent home = new Intent(this, DashboardActivity.class);
-        home.putExtra("profile", profile);
-        startActivity(home);
-    }
-
-    /**
-     * Display an error message given a message
-     *
-     * @param message String message to be displayed as error on call
-     */
-    @Override
-    public void showErrorMessage(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
-    }
 }

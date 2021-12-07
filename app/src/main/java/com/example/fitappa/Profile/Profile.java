@@ -1,7 +1,5 @@
 package com.example.fitappa.Profile;
 
-import android.util.Log;
-
 import java.io.Serializable;
 
 /**
@@ -16,9 +14,15 @@ import java.io.Serializable;
  * <p>
  * Since 2.6
  */
-public class Profile implements Serializable {
+class Profile implements Serializable {
 
-    private User user;
+    private String email;
+    private String username;
+    private String firstName;
+    private String lastName;
+    private String uniqueID;
+    private String height;
+    private String weight;
 
     /**
      * Constructor that creates a new profile given a user's information
@@ -27,18 +31,10 @@ public class Profile implements Serializable {
      * @param username Username for the user
      * @param uniqueID Unique identifier representing the User (necessary for database query)
      */
-    public Profile(String email, String username, String uniqueID) {
-        this(new User(email, username, uniqueID));
-    }
-
-    /**
-     * Constructor for profile that takes a User and FollowManager to initialize
-     * Used to retrieve data from firebase and pass in the retrieved user and followmanager
-     *
-     * @param user User object to be initialized to this profile
-     */
-    public Profile(User user) {
-        this.user = user;
+    Profile(String email, String username, String uniqueID) {
+        this.email = email;
+        this.username = username;
+        this.uniqueID = uniqueID;
     }
 
     // empty constructor necessary for Firebase
@@ -46,13 +42,12 @@ public class Profile implements Serializable {
     }
 
     /**
-     * Necessary method for Firebase
-     * Gets the current user of this profile instance
+     * Get the email of this user
      *
-     * @return User for this profile
+     * @return String representing this users email
      */
-    public User getUser() {
-        return user;
+    public String getEmail() {
+        return email;
     }
 
     /**
@@ -60,8 +55,8 @@ public class Profile implements Serializable {
      *
      * @return String representing the user's username
      */
-    String getUsername() {
-        return this.user.getUsername();
+    public String getUsername() {
+        return this.username;
     }
 
     /**
@@ -69,8 +64,8 @@ public class Profile implements Serializable {
      *
      * @return String representing the user's unique identifier
      */
-    public String retrieveUniqueID() {
-        return this.user.getUniqueID();
+    public String getUniqueID() {
+        return this.uniqueID;
     }
 
     /**
@@ -81,11 +76,11 @@ public class Profile implements Serializable {
      * @param firstName String first name of the user
      * @param lastName  String last name of the user
      */
-    public void setUserExtraInfo(String weight, String height, String firstName, String lastName) {
-        user.setFirstName(firstName);
-        user.setLastName(lastName);
-        user.setHeight(height);
-        user.setWeight(weight);
+    void setExtraInfo(String weight, String height, String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.height = height;
+        this.weight = weight;
     }
 
     /**
@@ -93,8 +88,8 @@ public class Profile implements Serializable {
      *
      * @return returns string of their weight
      */
-    String getUserWeight() {
-        return user.getWeight();
+    public String getWeight() {
+        return this.weight;
     }
 
     /**
@@ -102,8 +97,8 @@ public class Profile implements Serializable {
      *
      * @return returns string of their height
      */
-    String getUserHeight() {
-        return user.getHeight();
+    public String getHeight() {
+        return this.height;
     }
 
     /**
@@ -111,8 +106,8 @@ public class Profile implements Serializable {
      *
      * @return returns string of their first name
      */
-    String getUserFirstName() {
-        return user.getFirstName();
+    public String getFirstName() {
+        return this.firstName;
     }
 
     /**
@@ -120,15 +115,7 @@ public class Profile implements Serializable {
      *
      * @return returns string of their last name
      */
-    String getUserLastName() {
-        return user.getLastName();
-    }
-
-    /**
-     * Save this profile to a database through the gateway
-     */
-    public void saveData(Saveable gateway) {
-        Log.d("test123", "inside Profile.saveData");
-        gateway.save(this);
+    public String getLastName() {
+        return this.lastName;
     }
 }

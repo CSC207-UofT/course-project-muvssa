@@ -5,8 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fitappa.R;
@@ -42,9 +42,8 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_setup);
         Intent retrieveIntent = getIntent();
-        Profile profile = (Profile) retrieveIntent.getSerializableExtra("profile");
 
-        SetupPresenter presenter = new SetupPresenter(this, profile);
+        SetupPresenter presenter = new SetupPresenter(this);
 
         errorInput = findViewById(R.id.wrong);
         errorInput.setVisibility(View.INVISIBLE);
@@ -62,14 +61,11 @@ public class SetupActivity extends AppCompatActivity implements SetupPresenter.V
 
     /**
      * Goes to the DashboardActivity
-     *
-     * @param profile puts in a persons profile
      */
     @Override
-    public void goToDashboard(Profile profile) {
+    public void goToDashboard() {
         finish();
         Intent home = new Intent(this, DashboardActivity.class);
-        home.putExtra("profile", profile);
         startActivity(home);
     }
 

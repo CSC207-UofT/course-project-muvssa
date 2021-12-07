@@ -1,6 +1,6 @@
 package com.example.fitappa.Profile;
 
-public class ViewProfilePresenter {
+public class ViewProfilePresenter implements LoadsProfile {
     private final View view;
     private final String PAGE_TITLE = "Profile";
     private Profile profile;
@@ -15,10 +15,10 @@ public class ViewProfilePresenter {
     }
 
     public void saveSettings(String firstName, String lastName, String weight, String height) {
-        profile.setUserExtraInfo(weight, height, firstName, lastName);
+        profile.setExtraInfo(weight, height, firstName, lastName);
 
         Saveable gateway = new SaveProfileGateway();
-        profile.saveData(gateway);
+        gateway.save(profile);
     }
 
     public void logout() {
@@ -26,9 +26,10 @@ public class ViewProfilePresenter {
     }
 
 
+    @Override
     public void loadProfile(Profile profile) {
         this.profile = profile;
-        view.setup(profile.getUsername(), profile.getUserFirstName(), profile.getUserLastName(), profile.getUserWeight(), profile.getUserHeight());
+        view.setup(profile.getUsername(), profile.getFirstName(), profile.getLastName(), profile.getWeight(), profile.getHeight());
     }
 
     interface View {

@@ -1,4 +1,4 @@
-package com.example.fitappa.Authentication.signup;
+package com.example.fitappa.Authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fitappa.Authentication.OpensActivityWithProfile;
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.SetupActivity;
 import com.example.fitappa.R;
 
@@ -26,9 +24,7 @@ import java.util.Objects;
  * @since 2.1
  */
 public class SignUpActivity extends AppCompatActivity implements OpensActivityWithProfile {
-    private EditText usernameText;
-    private EditText passwordText;
-    private EditText emailText;
+    private SignUpPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -41,25 +37,33 @@ public class SignUpActivity extends AppCompatActivity implements OpensActivityWi
         setContentView(R.layout.activity_signup);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        usernameText = findViewById(R.id.userName1);
-        passwordText = findViewById(R.id.password);
-        emailText = findViewById(R.id.email);
-        Button enter = findViewById(R.id.submit);
+        presenter = new SignUpPresenter(this);
 
-        SignUpPresenter presenter = new SignUpPresenter(this);
+        setupButtons();
 
-        enter.setOnClickListener(v -> presenter.trySignUp(emailText, usernameText, passwordText));
+    }
+
+    /**
+     * Setup the buttons for this activity
+     */
+    private void setupButtons() {
+        EditText usernameText = findViewById(R.id.userName1);
+        EditText passwordText = findViewById(R.id.password);
+        EditText emailText = findViewById(R.id.email);
+
+        Button enterBtn = findViewById(R.id.submit);
+
+
+        enterBtn.setOnClickListener(v -> presenter.trySignUp(emailText, usernameText, passwordText));
     }
 
     /**
      * This method opens the SetUpActivity View while passing in the profile
-     *
-     * @param profile represents the Profile that was created
      */
     @Override
-    public void openActivityWith(Profile profile) {
+    public void openActivityWith() {
+        finish();
         Intent setup = new Intent(this, SetupActivity.class);
-        setup.putExtra("profile", profile);
         startActivity(setup);
     }
 

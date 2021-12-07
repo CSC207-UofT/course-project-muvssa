@@ -16,17 +16,16 @@ import java.util.Objects;
 
 /**
  * This class is a view class meant to open the activity_dashboard xml, a hub between other pages in the app
- *
+ * <p>
  * The method in the class allow the user to go to ViewProfileActivity, MainActivity, or StartWorkoutActivity
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
- * @author
+ * @author Abdullah
  * @since 0.6
  */
 
 public class DashboardActivity extends AppCompatActivity implements DashboardPresenter.View {
-    private DashboardPresenter presenter;
 
     /**
      * This method is called when the activity starts.
@@ -37,7 +36,7 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        this.presenter = new DashboardPresenter(this, getIntent().getSerializableExtra("profile"));
+        new DashboardPresenter(this);
     }
 
     @Override
@@ -46,25 +45,16 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     }
 
     @Override
-    public void setupLogoutBtn(Profile profile) {
+    public void setupButtons() {
         Button logoutBtn = findViewById(R.id.LogoutBtn);
         logoutBtn.setOnClickListener(v -> signOut());
-    }
 
-    @Override
-    public void setupWorkoutBtn(Profile profile) {
         Button startWorkoutBtn = findViewById(R.id.startWorkoutNav);
-        startWorkoutBtn.setOnClickListener(v -> openStartWorkout(profile));
-    }
+        startWorkoutBtn.setOnClickListener(v -> openStartWorkout());
 
-    @Override
-    public void setupProfileBtn(Profile profile) {
         Button openProfileBtn = findViewById(R.id.goToProfilesBtn);
-        openProfileBtn.setOnClickListener(v -> openProfile(profile));
-    }
+        openProfileBtn.setOnClickListener(v -> openProfile());
 
-    @Override
-    public void setupLogBtn() {
         Button btn = findViewById(R.id.WorkoutLogsBtn);
         btn.setOnClickListener(v -> openLogs());
     }
@@ -86,10 +76,8 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     /**
      * This method opens the ProfileActivity View
      */
-    private void openProfile(Profile profile) {
+    private void openProfile() {
         Intent profile1 = new Intent(this, ViewProfileActivity.class);
-        profile1.putExtra("persons_Profile", profile);
-        profile1.putExtra("my_Profile", profile);
         startActivity(profile1);
     }
 
@@ -105,9 +93,8 @@ public class DashboardActivity extends AppCompatActivity implements DashboardPre
     /**
      * This method opens the StartWorkout view
      */
-    private void openStartWorkout(Profile profile) {
+    private void openStartWorkout() {
         Intent startWorkout = new Intent(this, StartWorkoutActivity.class);
-        startWorkout.putExtra("profile", profile);
         startActivity(startWorkout);
     }
 

@@ -4,15 +4,21 @@ import android.util.Log;
 
 import com.example.fitappa.Authentication.DatabaseConstants;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
-
-import java.io.Serializable;
 // ToDo add author, since and other doc details
 
 /**
  * This is a gateway class to Firebase which lets a class save an object
  */
-public class SaveProfileGateway implements Saveable, Serializable {
+public class SaveProfileGateway implements Saveable {
+    private Profile profile;
+
+    public SaveProfileGateway() {
+
+    }
+
+    public SaveProfileGateway(String email, String username, String uniqueID) {
+        profile = new Profile(email, username, uniqueID);
+    }
 
     /**
      * Save object into some database
@@ -22,12 +28,16 @@ public class SaveProfileGateway implements Saveable, Serializable {
     @Override
     public void save(Object o) {
         DatabaseConstants constants = new DatabaseConstants();
-        Profile profile = (Profile) o;
+
+        if (o != null) {
+            this.profile = (Profile) o;
+        }
+
+        Log.d("test123", "profile is: " + profile.getUsername());
         FirebaseFirestore database = FirebaseFirestore.getInstance();
 
-        Log.d("test123", "inside SaveProfileGateway.save");
         database.collection(constants.getUsersCollection())
-                .document(profile.retrieveUniqueID())
-                .set(profile, SetOptions.mergeFields("user"));
+                .document(profile.getUniqueID())
+                .set(profile);
     }
 }
