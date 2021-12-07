@@ -1,8 +1,5 @@
-package com.example.fitappa.Authentication.signup;
+package com.example.fitappa.Authentication;
 
-import android.util.Log;
-
-import com.example.fitappa.Authentication.GatewayInteractor;
 import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.Profile.SaveProfileGateway;
 import com.example.fitappa.Profile.Saveable;
@@ -14,14 +11,14 @@ import com.google.firebase.auth.FirebaseUser;
  * This class is a gateway that deals with signing up a user with the database given an email, username, and password
  */
 class SignUpGateway {
-    private final GatewayInteractor presenter;
+    private final AuthenticationPresenter presenter;
 
     /**
-     * Constructor that takes an GatewayInteractor abstract class which represents a presenter for sign up
+     * Constructor that takes an AuthenticationPresenter abstract class which represents a presenter for sign up
      *
-     * @param presenter GatewayInteractor abstract class which represents a presenter for sign up
+     * @param presenter AuthenticationPresenter abstract class which represents a presenter for sign up
      */
-    SignUpGateway(GatewayInteractor presenter) {
+    SignUpGateway(AuthenticationPresenter presenter) {
         this.presenter = presenter;
     }
 
@@ -47,11 +44,10 @@ class SignUpGateway {
 
                     // Save the data of the profile to the database
                     Saveable gateway = new SaveProfileGateway();
-                    Log.d("test123", "inside SignUpGateway");
                     profile.saveData(gateway);
 
-                    // Update the presenter with the new profile
-                    presenter.updateActivity(profile);
+                    // proceed to update activity
+                    presenter.updateActivity();
                 })
                 .addOnFailureListener(e -> presenter.setError());
     }

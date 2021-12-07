@@ -68,7 +68,7 @@ class SetupPresenter {
             Saveable gateway = new SaveProfileGateway();
             profile.saveData(gateway);
 
-            view.goToDashboard(profile);
+            view.goToDashboard();
         }
         else{
             view.wrongInput();
@@ -79,10 +79,8 @@ class SetupPresenter {
     interface View {
         /**
          * Goes to the DashboardActivity
-         *
-         * @param profile puts in a persons profile
          */
-        void goToDashboard(Profile profile);
+        void goToDashboard();
 
         /**
          * Display an error message if the input doesn't meet format requirements

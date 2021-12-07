@@ -1,4 +1,4 @@
-package com.example.fitappa.Authentication.login;
+package com.example.fitappa.Authentication;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,9 +8,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.fitappa.Authentication.OpensActivityWithProfile;
 import com.example.fitappa.Profile.DashboardActivity;
-import com.example.fitappa.Profile.Profile;
 import com.example.fitappa.R;
 
 import java.util.Objects;
@@ -26,8 +24,6 @@ import java.util.Objects;
  * @since 0.2
  */
 public class LoginActivity extends AppCompatActivity implements OpensActivityWithProfile {
-    private EditText passwordField;
-    private EditText emailField;
     private LoginPresenter presenter;
 
     /**
@@ -43,8 +39,15 @@ public class LoginActivity extends AppCompatActivity implements OpensActivityWit
 
         presenter = new LoginPresenter(this);
 
-        passwordField = findViewById(R.id.PasswordField);
-        emailField = findViewById(R.id.EmailField);
+        setup();
+    }
+
+    /**
+     * Setup the text fields and buttons for this activity
+     */
+    private void setup() {
+        EditText passwordField = findViewById(R.id.PasswordField);
+        EditText emailField = findViewById(R.id.EmailField);
         TextView loginBtn = findViewById(R.id.LogInBtn);
 
         loginBtn.setOnClickListener(v -> presenter.tryLogin(emailField, passwordField));
@@ -52,14 +55,11 @@ public class LoginActivity extends AppCompatActivity implements OpensActivityWit
 
     /**
      * This method opens the DashboardActivity while passing in the profile.
-     *
-     * @param profile represents the Profile of the authenticated user
      */
     @Override
-    public void openActivityWith(Profile profile) {
+    public void openActivityWith() {
         finish();
         Intent home = new Intent(this, DashboardActivity.class);
-        home.putExtra("profile", profile);
         startActivity(home);
     }
 

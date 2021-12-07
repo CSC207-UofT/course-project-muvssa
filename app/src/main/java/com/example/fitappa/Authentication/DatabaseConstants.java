@@ -29,13 +29,4 @@ public class DatabaseConstants {
     public String getExercisesCollection() {
         return "exercises";
     }
-
-    /**
-     * Get the name for the document that contains username
-     *
-     * @return String representing name for the document that contains username
-     */
-    public String getUsernameDocument() {
-        return "user.username";
-    }
 }

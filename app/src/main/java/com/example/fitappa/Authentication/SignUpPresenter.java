@@ -1,9 +1,6 @@
-package com.example.fitappa.Authentication.signup;
+package com.example.fitappa.Authentication;
 
 import android.widget.EditText;
-
-import com.example.fitappa.Authentication.GatewayInteractor;
-import com.example.fitappa.Authentication.OpensActivityWithProfile;
 
 import java.util.regex.Pattern;
 
@@ -11,17 +8,16 @@ import java.util.regex.Pattern;
  * This is a presenter for the SignupActivity.
  * This class is a gateway interactor since it interacts with a gateway and retrieves data from a database
  * It also determines what error message to display to the user.
-
+ * <p>
  * The methods in this activity allow information to move to and from the back end
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Souren
  * @author Uthman
- *
  * @since 2.1
  */
-class SignUpPresenter extends GatewayInteractor {
+class SignUpPresenter extends AuthenticationPresenter {
     private final SignUpGateway gateway;
 
     /**

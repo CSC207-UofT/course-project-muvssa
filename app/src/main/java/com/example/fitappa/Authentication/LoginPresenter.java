@@ -1,22 +1,19 @@
-package com.example.fitappa.Authentication.login;
+package com.example.fitappa.Authentication;
 
 import android.widget.EditText;
 
-import com.example.fitappa.Authentication.GatewayInteractor;
-import com.example.fitappa.Authentication.OpensActivityWithProfile;
-
 /**
  * This is a presenter for the LoginActivity.
- *
+ * <p>
  * The methods in this class is a gateway interactor since it interacts with a gateway and retrieves data from a database
  * It also determines what error message to display to the user.
- *
+ * <p>
  * The documentation in this class give a specification on what the methods do
  *
  * @author Uthman
  * @since 0.2
  */
-class LoginPresenter extends GatewayInteractor {
+class LoginPresenter extends AuthenticationPresenter {
     private final LoginGateway gateway;
 
     /**
