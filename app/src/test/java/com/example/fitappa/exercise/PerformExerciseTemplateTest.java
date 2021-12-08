@@ -41,11 +41,14 @@ public class PerformExerciseTemplateTest extends TestCase {
     }
 
     public void testcreate() {
+        //sees if the instances match once the PerformExercise object is created
         assertEquals("skipping", x.create().getName());
         assertEquals(Category.WEIGHTED, y.create().getCategory());
     }
 
     public void testaddgetSet() {
+        //sees if adding a set in to the list of sets works
+        //also checks if getSet method works
         RepSet s1 = new RepSet(10.0);
         WeightedSet s2 = new WeightedSet(10.0, 20.1);
         PerformExercise<?> x1 = x.create();
