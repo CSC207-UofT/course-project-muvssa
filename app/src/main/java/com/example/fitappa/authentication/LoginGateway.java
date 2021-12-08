@@ -1,7 +1,5 @@
 package com.example.fitappa.authentication;
 
-import android.util.Log;
-
 import com.google.firebase.auth.FirebaseAuth;
 
 /**
@@ -34,20 +32,11 @@ class LoginGateway {
      * @param password password to log in with
      */
     void login(String email, String password) {
-        Log.d("test123", "trying login1...");
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
-        Log.d("test123", "trying login2...: ");
         mAuth.signInWithEmailAndPassword(email, password)
                 // If login succeeds, proceed to update activity from the presenter
-                .addOnSuccessListener(authResult -> {
-                    Log.d("test123", "trying login3...");
-                    presenter.updateActivity();
-                    Log.d("test123", "trying login4...");
-                })
+                .addOnSuccessListener(authResult -> presenter.updateActivity())
                 // If login fails, set an error with the presenter
-                .addOnFailureListener(e -> {
-                    Log.d("test123", "failed login... " + e.getLocalizedMessage());
-                    presenter.setError();
-                });
+                .addOnFailureListener(e -> presenter.setError());
     }
 }
