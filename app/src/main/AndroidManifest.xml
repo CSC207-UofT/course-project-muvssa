@@ -9,17 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".View.DashboardActivity" />
-        <activity android:name=".View.LoginActivity" />
-        <activity android:name=".View.ViewWorkoutActivity" />
-        <activity android:name=".View.ViewRoutineActivity" />
-        <activity android:name=".View.AddRoutineActivity" />
-        <activity android:name=".View.TrackWorkoutActivity" />
-        <activity android:name=".View.AddWorkoutActivity" />
-        <activity android:name=".View.AddExerciseActivity" />
-        <activity android:name=".View.ViewRoutinesActivity" />
+        <activity android:name=".workout.workout_log.WorkoutLogActivity" />
+        <activity android:name=".profile.DashboardActivity" />
+        <activity android:name=".authentication.LoginActivity" />
+        <activity android:name=".workout.workout_template.ViewWorkoutActivity" />
+        <activity android:name=".routine.AddRoutineActivity" />
+        <activity android:name=".workout.track_workout.TrackWorkoutActivity" />
+        <activity android:name=".workout.workout_template.AddWorkoutActivity" />
+        <activity android:name=".exercise.exercise_template.AddExerciseActivity" />
+        <activity android:name=".routine.StartWorkoutFromRoutinesActivity" />
+        <activity android:name=".profile.SetupActivity" />
         <activity
-            android:name=".View.MainActivity"
+            android:name=".authentication.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +29,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".View.SignUpActivity"
+            android:name=".authentication.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".View.ViewProfileActivity"
+            android:name=".profile.ViewProfileActivity"
             android:exported="true" />
     </application>
 

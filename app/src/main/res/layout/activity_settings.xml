@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/userNameUpdate"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/submitSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save Changes"
+        android:backgroundTint="#754956"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="145dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="160dp"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:id="@+id/back"
+        android:layout_width="219dp"
+            android:layout_height="wrap_content"
+            android:text="Go Back" android:backgroundTint="#632247"
+            android:layout_alignParentStart="true"
+            android:layout_marginStart="103dp" android:layout_alignParentBottom="true"
+            android:layout_marginBottom="97dp" android:layout_centerHorizontal="true"/>
+    <EditText
+            android:id="@+id/weightChangeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/weightChangeInput"
+            android:inputType="textPersonName" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" android:layout_marginTop="71dp" android:layout_alignParentEnd="true"
+            android:layout_marginStart="20dp" android:layout_marginEnd="138dp"/>
+    <TextView
+            android:text="@string/weightSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="20dp" android:layout_alignParentTop="true" android:layout_marginTop="50dp"
+            android:id="@+id/weightSetting"/>
+    <EditText
+            android:id="@+id/lastChangeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/weightChangeInput"
+            android:inputType="textPersonName" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" android:layout_marginTop="328dp" android:layout_alignParentEnd="true"
+            android:layout_marginStart="24dp" android:layout_marginEnd="133dp" android:layout_centerVertical="true"/>
+    <TextView
+            android:text="@string/lastNameSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="24dp" android:layout_alignParentTop="true" android:layout_marginTop="299dp"
+            android:id="@+id/lastNameSetting"/>
+    <EditText
+            android:id="@+id/firstChangeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/weightChangeInput"
+            android:inputType="textPersonName" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" android:layout_marginTop="237dp" android:layout_alignParentEnd="true"
+            android:layout_marginStart="23dp" android:layout_marginEnd="135dp"/>
+    <TextView
+            android:text="@string/firstNameSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp" android:layout_alignParentTop="true" android:layout_marginTop="207dp"
+            android:id="@+id/firstNameSetting"/>
+    <EditText
+            android:id="@+id/heightChangeInput"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="@string/weightChangeInput"
+            android:inputType="textPersonName" android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true" android:layout_marginTop="157dp" android:layout_alignParentEnd="true"
+            android:layout_marginStart="23dp" android:layout_marginEnd="135dp"/>
+    <TextView
+            android:text="@string/heightSetting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_alignParentStart="true"
+            android:layout_marginStart="23dp" android:layout_alignParentTop="true" android:layout_marginTop="131dp"
+            android:id="@+id/heightSetting"/>
+</RelativeLayout>
