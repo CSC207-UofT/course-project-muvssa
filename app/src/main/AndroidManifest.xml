@@ -9,19 +9,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat">
-        <activity android:name=".Workout.WorkoutLogActivity" />
-        <activity android:name=".Profile.DashboardActivity" />
-        <activity android:name=".Authentication.LoginActivity" />
-        <activity android:name=".Workout.CRUD.ViewWorkoutActivity" />
-        <activity android:name=".Workout.CRUD.AddRoutineActivity" />
-        <activity android:name=".Workout.TrackWorkoutActivity" />
-        <activity android:name=".Workout.CRUD.AddWorkoutActivity" />
-        <activity android:name=".Exercise.AddExerciseActivity" />
-        <activity android:name=".Workout.StartWorkoutActivity" />
-        <activity android:name=".Profile.SetupActivity" />
-        <activity android:name=".Profile.SettingsActivity" />
+        <activity android:name=".workout.workout_log.WorkoutLogActivity" />
+        <activity android:name=".profile.DashboardActivity" />
+        <activity android:name=".authentication.LoginActivity" />
+        <activity android:name=".workout.workout_template.ViewWorkoutActivity" />
+        <activity android:name=".routine.AddRoutineActivity" />
+        <activity android:name=".workout.track_workout.TrackWorkoutActivity" />
+        <activity android:name=".workout.workout_template.AddWorkoutActivity" />
+        <activity android:name=".exercise.exercise_template.AddExerciseActivity" />
+        <activity android:name=".routine.StartWorkoutFromRoutinesActivity" />
+        <activity android:name=".profile.SetupActivity" />
         <activity
-            android:name=".Authentication.MainActivity"
+            android:name=".authentication.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,10 +29,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Authentication.SignUpActivity"
+            android:name=".authentication.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".Profile.ViewProfileActivity"
+            android:name=".profile.ViewProfileActivity"
             android:exported="true" />
     </application>
 

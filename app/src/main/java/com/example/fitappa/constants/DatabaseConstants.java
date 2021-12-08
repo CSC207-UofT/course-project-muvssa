@@ -10,6 +10,7 @@ package com.example.fitappa.constants;
  * @author Uthman
  * @since 0.2
  */
+@SuppressWarnings("SameReturnValue")
 public class DatabaseConstants {
 
     /**
@@ -17,7 +18,7 @@ public class DatabaseConstants {
      *
      * @return String representing collection name for users
      */
-    public String getUsersCollection() {
+    public String getUsers() {
         return "users";
     }
 
@@ -64,5 +65,68 @@ public class DatabaseConstants {
      */
     public String getCategory() {
         return "category";
+    }
+
+    /**
+     * Get the string that represents the way a username is stored
+     *
+     * @return string that represents the way a username is stored
+     */
+    public String getUsername() {
+        return "username";
+    }
+
+    /**
+     * Get the string that represents the way a email is stored
+     *
+     * @return string that represents the way a email is stored
+     */
+    public String getEmail() {
+        return "email";
+    }
+
+    /**
+     * Get the string that represents the way a firstName is stored
+     *
+     * @return string that represents the way a firstName is stored
+     */
+    public String getFirstName() {
+        return "firstName";
+    }
+
+    /**
+     * Get the string that represents the way a lastName is stored
+     *
+     * @return string that represents the way a lastName is stored
+     */
+    public String getLastName() {
+        return "lastName";
+    }
+
+    /**
+     * Get the string that represents the way a height is stored
+     *
+     * @return string that represents the way a height is stored
+     */
+    public String getHeight() {
+        return "height";
+    }
+
+    /**
+     * Get the string that represents the way a weight is stored
+     *
+     * @return string that represents the way a weight is stored
+     */
+    public String getWeight() {
+        return "weight";
+    }
+
+    /**
+     * Get the string that represents the way a Performed Workouts is stored
+     *
+     * @return string that represents the way a Performed Workouts is stored
+     */
+    public String getPerformedWorkouts() {
+        return "Performed Workouts";
     }
 }
