@@ -14,11 +14,11 @@ package com.example.fitappa.profile;
  * @since 0.6
  */
 
-public class ViewProfilePresenter implements LoadsProfile {
+class ViewProfilePresenter implements LoadsProfile {
     private final View view;
     private Profile profile;
 
-    public ViewProfilePresenter(View view) {
+    ViewProfilePresenter(View view) {
         this.view = view;
         final String PAGE_TITLE = "profile";
         this.view.updateAppBarTitle(PAGE_TITLE);
@@ -28,7 +28,7 @@ public class ViewProfilePresenter implements LoadsProfile {
         gateway.load();
     }
 
-    public void saveSettings(String firstName, String lastName, String weight, String height) {
+    void saveSettings(String firstName, String lastName, String weight, String height) {
         profile.setFirstName(firstName);
         profile.setLastName(lastName);
         profile.setHeight(height);
@@ -38,7 +38,7 @@ public class ViewProfilePresenter implements LoadsProfile {
         gateway.save(profile);
     }
 
-    public void logout() {
+    void logout() {
         view.signOut();
     }
 
