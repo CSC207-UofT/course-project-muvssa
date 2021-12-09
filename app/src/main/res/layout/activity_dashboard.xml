@@ -61,12 +61,6 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/testest"
-            android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:orientation="vertical" />
-
         <Button
             android:id="@+id/LogoutBtn"
             android:layout_width="340dp"
@@ -79,7 +73,6 @@
     </LinearLayout>
 
     <ImageView
-        android:id="@+id/imageView10"
         android:layout_width="342dp"
         android:layout_height="100dp"
         android:layout_marginStart="52dp"

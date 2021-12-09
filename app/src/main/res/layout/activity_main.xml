@@ -76,7 +76,6 @@
             app:srcCompat="@drawable/main_2" />
 
         <ImageView
-            android:id="@+id/imageView15"
             android:layout_width="187dp"
             android:layout_height="109dp"
             android:layout_marginStart="-20dp"

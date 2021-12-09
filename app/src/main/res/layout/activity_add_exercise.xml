@@ -16,7 +16,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/routineLabel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="33dp"
@@ -38,11 +37,10 @@
             android:orientation="vertical">
 
             <Button
-                android:id="@+id/createExercise"
                 android:layout_width="158dp"
                 android:layout_height="36dp"
                 android:backgroundTint="#632247"
-                android:text="@string/create_exercisetemplate"
+                android:text="@string/create_exercise_template"
                 android:textColor="#e1f2ee"
                 android:textStyle="normal" />
         </LinearLayout>

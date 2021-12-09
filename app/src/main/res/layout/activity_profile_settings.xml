@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/userNameUpdate"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -22,7 +21,6 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:id="@+id/imageView19"
                 android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
@@ -41,7 +39,6 @@
 
 
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/welcomeText"
@@ -65,7 +62,6 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/f_name" />
@@ -80,7 +76,6 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -96,7 +91,6 @@
                 android:inputType="textPersonName" />
 
             <TextView
-                android:id="@+id/textView14"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -112,7 +106,6 @@
                 android:inputType="numberDecimal" />
 
             <TextView
-                android:id="@+id/textView17"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
