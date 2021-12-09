@@ -1,9 +1,12 @@
 package com.example.fitappa.workout.workout_template;
 
+import androidx.annotation.NonNull;
+
 import com.example.fitappa.exercise.exercise_template.ExerciseTemplate;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -13,8 +16,8 @@ import java.util.List;
  * @version 0.1
  * @layer 1
  */
-public class WorkoutTemplate implements Serializable {
-    private String name;
+public class WorkoutTemplate implements Serializable, Iterable<ExerciseTemplate> {
+    private final String name;
     private final List<ExerciseTemplate> exerciseTemplates;
 
     /**
@@ -22,7 +25,7 @@ public class WorkoutTemplate implements Serializable {
      *
      * @param name represents the String name referring to the name of the workout
      */
-    public WorkoutTemplate(String name) {
+    WorkoutTemplate(String name) {
         this.name = name;
         this.exerciseTemplates = new ArrayList<>();
     }
@@ -30,14 +33,6 @@ public class WorkoutTemplate implements Serializable {
     public WorkoutTemplate(String name, List<ExerciseTemplate> exerciseTemplates) {
         this.name = name;
         this.exerciseTemplates = exerciseTemplates;
-    }
-
-    /**
-     * Constructor for WorkoutTemplate
-     */
-    @SuppressWarnings("unused")
-    WorkoutTemplate() {
-        exerciseTemplates = new ArrayList<>();
     }
 
     /**
@@ -51,15 +46,6 @@ public class WorkoutTemplate implements Serializable {
     }
 
     /**
-     * Gets the exercises for this workout
-     *
-     * @return list of exercises for this workout
-     */
-    public List<ExerciseTemplate> getExercises() {
-        return exerciseTemplates;
-    }
-
-    /**
      * A method used to add exercises
      *
      * @param exerciseTemplate new exercise to be added to workout
@@ -69,5 +55,15 @@ public class WorkoutTemplate implements Serializable {
     }
 
 
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @NonNull
+    @Override
+    public Iterator<ExerciseTemplate> iterator() {
+        return exerciseTemplates.iterator();
+    }
 }
 

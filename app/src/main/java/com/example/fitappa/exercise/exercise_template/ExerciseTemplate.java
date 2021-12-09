@@ -78,9 +78,8 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
 
     /**
      * Necessary method for Firebase
+     * Get the Category for this exercise template
      */
-    @SuppressWarnings("unused")
-    @Override
     public Category getCategory() {
         return category;
     }

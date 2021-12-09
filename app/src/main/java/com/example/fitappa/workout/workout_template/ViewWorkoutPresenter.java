@@ -40,7 +40,7 @@ class ViewWorkoutPresenter implements LoadsWorkoutTemplate {
 
     private void init() {
         // initialize view
-        for (ExerciseTemplate e : this.workoutTemplate.getExercises()) {
+        for (ExerciseTemplate e : this.workoutTemplate) {
             view.updateExerciseLayout(e);
         }
         this.view.setTitle(this.workoutTemplate.getName() + "'s exercises");

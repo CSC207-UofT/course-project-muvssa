@@ -1,14 +1,13 @@
-package com.example.fitappa.exercise;
-
-import com.example.fitappa.exercise.exercise_template.Category;
-import com.example.fitappa.exercise.exercise_template.ExerciseTemplate;
+package com.example.fitappa.exercise.exercise_template;
 
 import com.example.fitappa.exercise.set.RepSet;
 import com.example.fitappa.exercise.set.WeightedSet;
 import com.example.fitappa.workout.track_workout.PerformExercise;
+
 import junit.framework.TestCase;
 
-/** tests PerformExercise class and ExerciseTemplate class
+/**
+ * tests PerformExercise class and ExerciseTemplate class
  * Two ExerciseTemplate objects are created for this test
  */
 @SuppressWarnings("unused")
@@ -20,6 +19,7 @@ public class PerformExerciseTemplateTest extends TestCase {
 
     /**
      * Setup
+     *
      * @throws Exception in case
      */
     public void setUp() throws Exception {

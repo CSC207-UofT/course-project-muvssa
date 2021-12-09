@@ -53,6 +53,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      *
      * @param title of the app
      */
+    @Override
     public void updateAppBarTitle(String title) {
         Objects.requireNonNull(getSupportActionBar()).setTitle(title);
 
@@ -63,6 +64,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
      *
      * @param workoutTitle title of the workout
      */
+    @Override
     public void updateTitle(String workoutTitle) {
         ((TextView) findViewById(R.id.WorkoutNameText)).setText(workoutTitle);
     }
@@ -70,11 +72,12 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
     /**
      * Populate the layout with the exercises in workout
      */
+    @Override
     public void populateLayout(PerformWorkout workout) {
         LinearLayout exerciseLayout = findViewById(R.id.ExerciseContainer);
         exerciseLayout.removeAllViews();
 
-        for (PerformExercise<?> e : workout.getExercises()) {
+        for (PerformExercise<?> e : workout) {
             buildExerciseComponent(exerciseLayout, e);
         }
     }
@@ -97,7 +100,7 @@ public class TrackWorkoutActivity extends AppCompatActivity implements TrackWork
         endBtn.setOnClickListener(v -> presenter.finishWorkout());
     }
 
-
+    @Override
     public void exit() {
         startActivity(new Intent(this, StartWorkoutFromRoutinesActivity.class));
     }

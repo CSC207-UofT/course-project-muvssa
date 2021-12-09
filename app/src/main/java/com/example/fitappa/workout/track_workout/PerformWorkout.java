@@ -9,6 +9,7 @@ import com.example.fitappa.workout.workout_template.WorkoutTemplate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Objects;
 
@@ -19,7 +20,7 @@ import java.util.Objects;
  * @version 0.1
  * @layer 2
  */
-class PerformWorkout {
+class PerformWorkout implements Iterable<PerformExercise<?>> {
     private final List<PerformExercise<?>> exercises;
     private final SetFactory setFactory;
     private final String name;
@@ -38,7 +39,7 @@ class PerformWorkout {
         this.exercises = new ArrayList<>();
         this.setFactory = new SetFactory();
         // Dependency inversion to ensure no violation of clean :-)
-        for (CreatableExercise exerciseTemplate : template.getExercises()) {
+        for (CreatableExercise exerciseTemplate : template) {
             this.exercises.add(exerciseTemplate.create());
         }
     }
@@ -130,4 +131,14 @@ class PerformWorkout {
         return stringBuilder.toString();
     }
 
+    /**
+     * Returns an iterator over elements of type {@code T}.
+     *
+     * @return an Iterator.
+     */
+    @NonNull
+    @Override
+    public Iterator<PerformExercise<?>> iterator() {
+        return exercises.iterator();
+    }
 }
