@@ -41,14 +41,6 @@ public class SaveProfileGateway implements Saveable {
 
         database.collection(constants.getUsers())
                 .document(profile.getUniqueID())
-                /*.update(
-                        constants.getUsername(), profile.getUsername(),
-                        constants.getEmail(), profile.getEmail(),
-                        constants.getFirstName(), profile.getFirstName(),
-                        constants.getLastName(), profile.getLastName(),
-                        constants.getHeight(), profile.getHeight(),
-                        constants.getWeight(), profile.getWeight()
-                );*/
-        .set(profile, SetOptions.merge());
+                .set(profile, SetOptions.merge());
     }
 }
