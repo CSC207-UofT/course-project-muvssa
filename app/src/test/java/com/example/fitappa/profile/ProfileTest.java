@@ -15,7 +15,6 @@ public class ProfileTest {
         profile1 = new Profile("johnnyappleseed@gmail.com", "Johnny", "101290");
         profile2 = new Profile("helloworld@gmail.com", "Hello", "239092");
 
-
     }
 
     @After

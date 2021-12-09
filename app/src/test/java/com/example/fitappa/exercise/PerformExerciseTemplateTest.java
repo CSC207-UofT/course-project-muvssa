@@ -14,11 +14,13 @@ import junit.framework.TestCase;
 public class PerformExerciseTemplateTest extends TestCase {
     ExerciseTemplate x;
     ExerciseTemplate y;
+    PerformExercise n;
 
 
     public void setUp() throws Exception {
         x = new ExerciseTemplate("skipping", 10, Category.REP);
-        y = new ExerciseTemplate("curls", 10, Category.WEIGHTED);
+        y = new ExerciseTemplate("curls", 20, Category.WEIGHTED);
+        n = x.create();
         super.setUp();
     }
 
@@ -26,24 +28,28 @@ public class PerformExerciseTemplateTest extends TestCase {
         //sees if the name matches string once got
         assertEquals("skipping", x.getName());
         assertEquals("curls", y.create().getName());
+        assertNotSame("skipping", y.create().getName());
     }
 
     public void testGetNumSets() {
         //sees if the number of sets matches int once got
         assertEquals(10, x.getNumSets());
-        assertEquals(10, y.getNumSets());
+        assertEquals(20, y.getNumSets());
+        assertNotSame(10, y.getNumSets());
     }
 
     public void testGetCategory() {
         //sees if the category matches once got
         assertEquals(Category.REP, x.create().getCategory());
         assertEquals(Category.WEIGHTED, y.getCategory());
+        assertNotSame(Category.REP, y.getCategory());
     }
 
     public void testcreate() {
         //sees if the instances match once the PerformExercise object is created
         assertEquals("skipping", x.create().getName());
         assertEquals(Category.WEIGHTED, y.create().getCategory());
+        assertTrue(y.create() instanceof PerformExercise);
     }
 
     public void testaddgetSet() {

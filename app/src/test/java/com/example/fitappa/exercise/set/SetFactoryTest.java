@@ -35,6 +35,9 @@ public class SetFactoryTest {
         int reps = 15;
         assertEquals(z.numReps, x.buildSet(reps, 20).numReps, reps);
         assertNotSame(y, x.buildSet(reps, 20));
-
+        int reps1 = 14;
+        int reps2 = 20;
+        assertTrue(x.buildSet(reps1) instanceof RepSet);
+        assertTrue(x.buildSet(reps2, 20.0) instanceof WeightedSet);
     }
 }

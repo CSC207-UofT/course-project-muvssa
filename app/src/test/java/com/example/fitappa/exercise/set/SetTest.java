@@ -26,5 +26,6 @@ public class SetTest {
         //checks to see if ToString result matches desired string
         assertEquals("Reps: 10.0", x.toString());
         assertEquals("Weight: 20.0lbs | Reps: 10.0", y.toString());
+        assertTrue(y.toString() instanceof String);
     }
 }
