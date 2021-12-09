@@ -50,6 +50,7 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
      *
      * @return the appropriate exercise object based on this.category
      */
+    @Override
     public PerformExercise<?> create() {
         if (category == Category.REP) {
             return new PerformExercise<RepSet>(this.name, Category.REP);
@@ -79,6 +80,7 @@ public class ExerciseTemplate implements Serializable, CreatableExercise {
      * Necessary method for Firebase
      */
     @SuppressWarnings("unused")
+    @Override
     public Category getCategory() {
         return category;
     }
