@@ -67,6 +67,10 @@ public class PerformExercise<T> implements Serializable {
         return name;
     }
 
+    public List<T> getSets() {
+        return sets;
+    }
+
     /**
      * A crucial component of an exercise is the ability to add sets
      * However, every exercise is different and has different types of sets.
