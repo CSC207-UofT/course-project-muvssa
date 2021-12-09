@@ -13,38 +13,48 @@ import static org.junit.Assert.*;
  *
  * @author Munim
  */
+@SuppressWarnings("ConstantConditions")
 public class SetFactoryTest {
     SetFactory x;
     RepSet y;
     WeightedSet z;
 
+    /**
+     * Set up
+     */
     @BeforeClass
-    public static void setUpBeforeClass() throws Exception {
+    public static void setUpBeforeClass() {
         System.out.println("Executing a JUNIT test file");
     }
 
+    /**
+     * Setup
+     */
     @AfterClass
-    public static void tearDownAfterClass() throws Exception {
+    public static void tearDownAfterClass() {
         System.out.println("Execution of JUNIT test file done");
     }
 
+    /**
+     * This setup method allows us to set up a few objects for testing purposes.
+     * *
+     * y is a RepSet object to support in testing of x
+     * z is a WeightedSet object to support in testing of x
+     */
     @Before
-    public void setUp() throws Exception {
-        /**
-         * This setup method allows us to set up a few objects for testing purposes.
-         * *
-         * @objects x is a SetFactory object that we will test
-         * y is a RepSet object to support in testing of x
-         * z is a WeightedSet object to support in testing of x
-         */
+    public void setUp() {
         System.out.println("Executing a new test");
         x = new SetFactory();
         y = new RepSet(10);
         z = new WeightedSet(15, 20);
     }
 
+
+    /**
+     * Tear down
+     */
     @After
-    public void tearDown() throws Exception {
+    public void tearDown() {
         System.out.println("Execution done");
     }
 
@@ -56,7 +66,6 @@ public class SetFactoryTest {
      *
      * method was simply called, no special situations
      */
-
     @Test
     public void testBuildSet() {
         int reps = 15;

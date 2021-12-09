@@ -11,12 +11,17 @@ import junit.framework.TestCase;
 /** tests PerformExercise class and ExerciseTemplate class
  * Two ExerciseTemplate objects are created for this test
  */
+@SuppressWarnings("unused")
 public class PerformExerciseTemplateTest extends TestCase {
     ExerciseTemplate x;
     ExerciseTemplate y;
-    PerformExercise n;
+    PerformExercise<?> n;
 
 
+    /**
+     * Setup
+     * @throws Exception in case
+     */
     public void setUp() throws Exception {
         x = new ExerciseTemplate("skipping", 10, Category.REP);
         y = new ExerciseTemplate("curls", 20, Category.WEIGHTED);
@@ -24,6 +29,9 @@ public class PerformExerciseTemplateTest extends TestCase {
         super.setUp();
     }
 
+    /**
+     * Test get name
+     */
     public void testTestGetName() {
         //sees if the name matches string once got
         assertEquals("skipping", x.getName());
@@ -31,6 +39,9 @@ public class PerformExerciseTemplateTest extends TestCase {
         assertNotSame("skipping", y.create().getName());
     }
 
+    /**
+     * Test get Num Sets
+     */
     public void testGetNumSets() {
         //sees if the number of sets matches int once got
         assertEquals(10, x.getNumSets());
@@ -38,6 +49,9 @@ public class PerformExerciseTemplateTest extends TestCase {
         assertNotSame(10, y.getNumSets());
     }
 
+    /**
+     * Test get category
+     */
     public void testGetCategory() {
         //sees if the category matches once got
         assertEquals(Category.REP, x.create().getCategory());
@@ -45,14 +59,20 @@ public class PerformExerciseTemplateTest extends TestCase {
         assertNotSame(Category.REP, y.getCategory());
     }
 
-    public void testcreate() {
+    /**
+     * Test Create
+     */
+    public void testCreate() {
         //sees if the instances match once the PerformExercise object is created
         assertEquals("skipping", x.create().getName());
         assertEquals(Category.WEIGHTED, y.create().getCategory());
-        assertTrue(y.create() instanceof PerformExercise);
     }
 
-    public void testaddgetSet() {
+
+    /**
+     * Test add and get set
+     */
+    public void testAddGetSet() {
         //sees if adding a set in to the list of sets works
         //also checks if getSet method works
         RepSet s1 = new RepSet(10.0);
