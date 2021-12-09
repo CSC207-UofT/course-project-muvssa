@@ -2,6 +2,7 @@ package com.example.fitappa.profile;
 
 import com.example.fitappa.constants.DatabaseConstants;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 /**
  * This is a gateway class to Firebase which lets a class save an object
@@ -40,13 +41,14 @@ public class SaveProfileGateway implements Saveable {
 
         database.collection(constants.getUsers())
                 .document(profile.getUniqueID())
-                .update(
+                /*.update(
                         constants.getUsername(), profile.getUsername(),
                         constants.getEmail(), profile.getEmail(),
                         constants.getFirstName(), profile.getFirstName(),
                         constants.getLastName(), profile.getLastName(),
                         constants.getHeight(), profile.getHeight(),
                         constants.getWeight(), profile.getWeight()
-                );
+                );*/
+        .set(profile, SetOptions.merge());
     }
 }
