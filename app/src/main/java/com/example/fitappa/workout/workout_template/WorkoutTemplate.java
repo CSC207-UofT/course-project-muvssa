@@ -22,12 +22,12 @@ public class WorkoutTemplate implements Serializable {
      *
      * @param name represents the String name referring to the name of the workout
      */
-    WorkoutTemplate(String name) {
+    public WorkoutTemplate(String name) {
         this.name = name;
         this.exerciseTemplates = new ArrayList<>();
     }
 
-    WorkoutTemplate(String name, List<ExerciseTemplate> exerciseTemplates) {
+    public WorkoutTemplate(String name, List<ExerciseTemplate> exerciseTemplates) {
         this.name = name;
         this.exerciseTemplates = exerciseTemplates;
     }
@@ -36,7 +36,7 @@ public class WorkoutTemplate implements Serializable {
      * Constructor for WorkoutTemplate
      */
     @SuppressWarnings("unused")
-    public WorkoutTemplate() {
+    WorkoutTemplate() {
         exerciseTemplates = new ArrayList<>();
     }
 

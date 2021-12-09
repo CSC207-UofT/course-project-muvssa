@@ -19,4 +19,10 @@ public interface CreatableExercise {
      * @return The correct PerformExercise object
      */
     PerformExercise<?> create();
+
+    /**
+     * returns Category
+     * @return Category of the Exercise
+     */
+    Category getCategory();
 }
