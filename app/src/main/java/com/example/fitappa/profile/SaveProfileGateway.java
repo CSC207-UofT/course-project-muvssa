@@ -1,6 +1,8 @@
 package com.example.fitappa.profile;
 
 import com.example.fitappa.constants.DatabaseConstants;
+import com.example.fitappa.exercise.set.Set;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 

@@ -1,7 +1,5 @@
 package com.example.fitappa.profile;
 
-import java.io.Serializable;
-
 /**
  * This class is the central storage for all relevant entities and use cases for the third and fourth layers of
  * clean architecture. It contains a User, FollowManager, list of Routines, Saveable gateway, and DefaultExercises.
@@ -14,13 +12,13 @@ import java.io.Serializable;
  * <p>
  * Since 2.6
  */
-class Profile implements Serializable {
+class Profile {
 
-    private String email;
-    private String username;
+    private final String email;
+    private final String username;
     private String firstName;
     private String lastName;
-    private String uniqueID;
+    private final String uniqueID;
     private String height;
     private String weight;
 
@@ -37,17 +35,12 @@ class Profile implements Serializable {
         this.uniqueID = uniqueID;
     }
 
-    // empty constructor necessary for Firebase
-    @SuppressWarnings("unused")
-    public Profile() {
-    }
-
     /**
      * Get the email of this user
      *
      * @return String representing this users email
      */
-    public String getEmail() {
+    String getEmail() {
         return email;
     }
 
@@ -56,7 +49,7 @@ class Profile implements Serializable {
      *
      * @return String representing the user's username
      */
-    public String getUsername() {
+    String getUsername() {
         return this.username;
     }
 
@@ -65,7 +58,7 @@ class Profile implements Serializable {
      *
      * @return String representing the user's unique identifier
      */
-    public String getUniqueID() {
+    String getUniqueID() {
         return this.uniqueID;
     }
 
