@@ -21,17 +21,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
-        </LinearLayout>
 
     </LinearLayout>
 
@@ -48,60 +37,69 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <EditText
-                android:id="@+id/userName1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="@string/user_Name"
-                android:inputType="textPersonName" android:textAlignment="viewStart" android:textStyle="bold"/>
+            android:id="@+id/userName1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/user_Name"
+            android:inputType="textPersonName"
+            android:textAlignment="viewStart"
+            android:textStyle="bold" />
 
         <EditText
-                android:id="@+id/password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="password"
-                android:inputType="textPassword" android:textStyle="bold"/>
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="password"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:textStyle="bold" />
 
         <EditText
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="email"
-                android:inputType="textEmailAddress" android:textStyle="bold"/>
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="emailAddress"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <Button
-                    android:id="@+id/submit"
-                    android:layout_width="175dp"
-                    android:layout_height="wrap_content"
-                    android:text="Sign Up" android:backgroundTint="#632247" android:textStyle="normal"/>
-
-            <Space
-                android:layout_width="wrap_content"
+                android:id="@+id/submit"
+                android:layout_width="175dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:backgroundTint="#632247"
+                android:text="@string/sign_up"
+                android:textStyle="normal" />
+
 
         </LinearLayout>
 
     </LinearLayout>
+
     <ImageView
-            android:layout_width="360dp"
-            android:layout_height="122dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView11"
-            app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="75dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="45dp" android:layout_marginBottom="201dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout3" android:layout_marginEnd="46dp"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        android:id="@+id/imageView11"
+        android:layout_width="360dp"
+        android:layout_height="122dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="75dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="201dp"
+        android:contentDescription="@string/Height"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

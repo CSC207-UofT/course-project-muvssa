@@ -43,7 +43,7 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profiles);
+        setContentView(R.layout.activity_profile_settings);
         this.presenter = new ViewProfilePresenter(this);
     }
 
@@ -79,8 +79,8 @@ public class ViewProfileActivity extends AppCompatActivity implements ViewProfil
         Button logoutBtn = findViewById(R.id.LogoutButton);
         logoutBtn.setOnClickListener(v -> presenter.logout());
 
-        this.firstNameField = findViewById(R.id.FnameField);
-        this.lastNameField = findViewById(R.id.LnameField);
+        this.firstNameField = findViewById(R.id.f_name_field);
+        this.lastNameField = findViewById(R.id.l_name_field);
         this.weightField = findViewById(R.id.WeightField);
         this.heightField = findViewById(R.id.HeightField);
     }

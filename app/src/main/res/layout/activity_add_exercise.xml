@@ -31,7 +31,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" />
-        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -43,7 +42,7 @@
                 android:layout_width="158dp"
                 android:layout_height="36dp"
                 android:backgroundTint="#632247"
-                android:text="create exerciseTemplate"
+                android:text="@string/create_exercisetemplate"
                 android:textColor="#e1f2ee"
                 android:textStyle="normal" />
         </LinearLayout>

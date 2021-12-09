@@ -23,9 +23,10 @@
 
             <ImageView
                 android:id="@+id/imageView19"
-                android:layout_width="100dp"
+                android:layout_width="0dp"
                 android:layout_height="100dp"
                 android:layout_weight="1"
+                android:contentDescription="@string/sign_in"
                 android:maxWidth="100dp"
                 android:maxHeight="100dp"
                 app:srcCompat="@drawable/logo" />
@@ -35,12 +36,9 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_marginTop="30dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <TextView
                 android:id="@+id/textView"
@@ -53,20 +51,16 @@
                 android:id="@+id/userNameProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
                 android:text="@string/user_Name"
                 android:textAlignment="center"
                 android:textSize="25sp" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="0dp"
             android:layout_weight="1"
             android:orientation="vertical">
 
@@ -74,30 +68,32 @@
                 android:id="@+id/textView3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/Fname" />
+                android:text="@string/f_name" />
 
             <EditText
-                android:id="@+id/FnameField"
+                android:id="@+id/f_name_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="name"
                 android:ems="10"
-                android:inputType="textPersonName"
-                />
+                android:hint="@string/f_name"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:text="@string/Lname" />
+                android:text="@string/l_name" />
 
             <EditText
-                android:id="@+id/LnameField"
+                android:id="@+id/l_name_field"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="name"
                 android:ems="10"
-                android:inputType="textPersonName"
-                />
+                android:hint="@string/l_name"
+                android:inputType="textPersonName" />
 
             <TextView
                 android:id="@+id/textView14"
@@ -110,7 +106,9 @@
                 android:id="@+id/WeightField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="name"
                 android:ems="10"
+                android:hint="@string/Weight"
                 android:inputType="numberDecimal" />
 
             <TextView
@@ -124,7 +122,9 @@
                 android:id="@+id/HeightField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:autofillHints="name"
                 android:ems="10"
+                android:hint="@string/Height"
                 android:inputType="numberDecimal" />
 
         </LinearLayout>
@@ -134,30 +134,28 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <Button
                 android:id="@+id/saveSettingsBtn"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginEnd="10dp"
                 android:layout_weight="100"
+                android:background="@color/secondary"
                 android:text="@string/Save" />
 
             <Button
                 android:id="@+id/LogoutButton"
+                style="?android:attr/borderlessButtonStyle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:backgroundTint="#632247"
+                android:background="@color/primary"
                 android:text="@string/LogoutButton" />
         </LinearLayout>
 
     </LinearLayout>
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -24,6 +24,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
                 android:orientation="horizontal">
 
                 <TextView
@@ -34,19 +35,15 @@
                     android:text="@string/DefaultWorkoutName"
                     android:textSize="28sp" />
 
-                <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
                 <Button
                     android:id="@+id/EndWorkoutBtn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:backgroundTint="#4d0207"
+                    android:layout_marginStart="100dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/tertiary"
                     android:text="@string/EndWorkout"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="InefficientWeight,TouchTargetSizeCheck" />
             </LinearLayout>
 
             <LinearLayout
@@ -116,7 +113,7 @@
                                 android:layout_width="30dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="1"
+                                android:text="@string/_1"
                                 android:textAlignment="center" />
 
                             <EditText
@@ -124,7 +121,9 @@
                                 android:layout_width="30dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:autofillHints="set"
                                 android:ems="10"
+                                android:hint="@string/Set"
                                 android:inputType="numberSigned" />
 
                             <EditText
@@ -132,7 +131,9 @@
                                 android:layout_width="30dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
+                                android:autofillHints="reps"
                                 android:ems="10"
+                                android:hint="@string/NumReps"
                                 android:inputType="numberSigned" />
                         </LinearLayout>
 
@@ -146,7 +147,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="10dp"
-                                android:text="@string/AddSet" android:backgroundTint="#754956"/>
+                                android:backgroundTint="#754956"
+                                android:text="@string/AddSet" />
                         </LinearLayout>
                     </LinearLayout>
 
@@ -157,7 +159,7 @@
                 android:id="@+id/CancelWorkoutBtn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#632247"
+                android:backgroundTint="@color/primary"
                 android:text="@string/CancelWorkout" />
 
         </LinearLayout>

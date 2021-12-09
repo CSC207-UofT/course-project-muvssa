@@ -44,17 +44,19 @@
             android:id="@+id/RoutineNameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="name"
             android:ems="10"
             android:hint="@string/RoutineTitle"
             android:inputType="textPersonName" />
 
         <Button
-                android:id="@+id/SaveRoutineBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#632247"
-                android:text="@string/Create"
-                android:textStyle="normal" android:textColor="#e1f2ee"/>
+            android:id="@+id/SaveRoutineBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#632247"
+            android:text="@string/Create"
+            android:textColor="#e1f2ee"
+            android:textStyle="normal" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
