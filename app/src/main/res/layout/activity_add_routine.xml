@@ -22,7 +22,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/routineLabel6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -32,7 +31,6 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/routineLabel8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="21dp"
@@ -44,17 +42,19 @@
             android:id="@+id/RoutineNameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="name"
             android:ems="10"
             android:hint="@string/RoutineTitle"
             android:inputType="textPersonName" />
 
         <Button
-                android:id="@+id/SaveRoutineBtn"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:backgroundTint="#632247"
-                android:text="@string/Create"
-                android:textStyle="normal" android:textColor="#e1f2ee"/>
+            android:id="@+id/SaveRoutineBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#632247"
+            android:text="@string/Create"
+            android:textColor="#e1f2ee"
+            android:textStyle="normal" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,7 +16,6 @@
         tools:layout_editor_absoluteY="15dp">
 
         <TextView
-            android:id="@+id/routineLabel2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="36dp"
@@ -26,40 +25,33 @@
             android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/routineLabel3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="21dp"
             android:gravity="center"
-            android:text="Get started by naming your workoutTemplate"
+            android:text="@string/get_started_by_naming_your_workouttemplate"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
-
             <ImageView
-                android:id="@+id/imageView2"
                 android:layout_width="63dp"
                 android:layout_height="50dp"
+                android:contentDescription="@string/image"
+                android:gravity="center"
                 app:srcCompat="@drawable/dumbbell" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
 
         <EditText
             android:id="@+id/WorkoutNameField"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:autofillHints="name"
             android:ems="10"
             android:hint="@string/DefaultWorkoutName"
             android:inputType="textPersonName"
@@ -68,25 +60,18 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_horizontal"
             android:orientation="horizontal">
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
 
             <Button
-                    android:id="@+id/CreateWorkoutBtn2"
-                    android:layout_width="157dp"
-                    android:layout_height="49dp"
-                    android:backgroundTint="#632247"
-                    android:text="Add Workout"
-                    android:textStyle="normal" android:textColor="#E1F2EE"/>
+                android:id="@+id/CreateWorkoutBtn2"
+                android:layout_width="157dp"
+                android:layout_height="49dp"
+                android:backgroundTint="#632247"
+                android:gravity="center"
+                android:text="@string/add_workout" />
 
-            <Space
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1" />
         </LinearLayout>
 
     </LinearLayout>

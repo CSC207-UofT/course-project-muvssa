@@ -16,49 +16,49 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+
+        <ImageView
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="122dp"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="75dp"
+            android:layout_marginEnd="46dp"
+            android:layout_marginBottom="201dp"
+            android:contentDescription="@string/NumReps"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo" />
 
-            <ImageView
-                android:id="@+id/imageView13"
-                android:layout_width="match_parent"
-                android:layout_height="122dp"
-                android:layout_marginStart="45dp"
-                android:layout_marginTop="75dp"
-                android:layout_marginEnd="46dp"
-                android:layout_marginBottom="201dp"
-                app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo" />
-            <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
 
-            <EditText
-                    android:id="@+id/EmailField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Email"
-                    android:inputType="textPersonName" android:textColor="#F6F6F6"/>
+        <EditText
+            android:id="@+id/EmailField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textPersonName"
+            android:textColor="#F6F6F6"
+            tools:ignore="TextFields" />
 
-            <EditText
-                    android:id="@+id/PasswordField"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:ems="10"
-                    android:hint="Password"
-                    android:inputType="textPassword"/>
-            <Button
-                    android:id="@+id/LogInBtn"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Sign In" android:backgroundTint="#632247" android:textColor="#E1F2EE"/>
-        </LinearLayout>
+        <EditText
+            android:id="@+id/PasswordField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:autofillHints="name"
+            android:ems="10"
+            android:hint="@string/password"
+            android:inputType="textPassword" />
+
+        <Button
+            android:id="@+id/LogInBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#632247"
+            android:text="@string/sign_in"
+            android:textColor="#E1F2EE" />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

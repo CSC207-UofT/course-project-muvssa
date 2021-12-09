@@ -23,9 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0">
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -37,8 +34,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#754956"
-                android:text="Start A Workout"
+                android:backgroundTint="@color/secondary"
+                android:text="@string/start_a_workout"
                 android:textColor="#F6F3F5"
                 android:textStyle="normal" />
 
@@ -47,8 +44,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#754956"
-                android:text="WORKOUT LOGS"
+                android:backgroundTint="@color/secondary"
+                android:text="@string/workout_logs"
                 android:textColor="#FAF6F6"
                 android:textStyle="normal" />
 
@@ -57,35 +54,37 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#754956"
-                android:text="Profile"
+                android:backgroundTint="@color/secondary"
+                android:text="@string/profile"
                 android:textColor="#FAF6F6"
                 android:textStyle="normal" />
 
         </LinearLayout>
 
-        <Space
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" />
-
         <Button
             android:id="@+id/LogoutBtn"
             android:layout_width="340dp"
             android:layout_height="wrap_content"
-            android:backgroundTint="#632247"
-            android:text="Logout"
+            android:backgroundTint="@color/primary"
+            android:text="@string/logout"
             android:textAlignment="center"
             android:textColor="#e1f2ee"
             android:textStyle="normal" />
     </LinearLayout>
+
     <ImageView
-            android:layout_width="342dp"
-            android:layout_height="100dp" app:srcCompat="@drawable/logo" android:id="@+id/imageView10"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="52dp" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginBottom="129dp"
-            app:layout_constraintBottom_toTopOf="@+id/linearLayout4" android:layout_marginEnd="26dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintVertical_bias="1.0" android:layout_marginTop="-15dp"/>
+        android:layout_width="342dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="-15dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginBottom="129dp"
+        android:contentDescription="@string/NumReps"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/logo" />
 </androidx.constraintlayout.widget.ConstraintLayout>

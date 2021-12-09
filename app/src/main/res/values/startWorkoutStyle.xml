@@ -1,9 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="routinesCardStyle">
-        <item name="android:layout_marginBottom">25dp</item>
-        <item name="android:layout_marginVertical">25dp</item>
 
-
-    </style>
 </resources>
