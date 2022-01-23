@@ -11,6 +11,9 @@ _Run in Android Studio for best experience_
 - Start a workout and keep track of progress
 - Document previous workouts in a workout log
 
+<br></br>
+Refer to the [Design Document](phase2/design_document.pdf) for more details
+
 ## Screenshots
 
 <img alt="Home Page" src="FitApp-screenshots/HomePage.png" width="250"/>
